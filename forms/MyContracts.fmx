@@ -1,0 +1,445 @@
+object MyContractsForm: TMyContractsForm
+  Left = 0
+  Top = 0
+  Caption = 'MyContractsForm'
+  ClientHeight = 480
+  ClientWidth = 640
+  SystemStatusBar.Visibility = Invisible
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnClose = FormClose
+  OnKeyUp = FormKeyUp
+  DesignerMasterStyle = 3
+  inline HeaderFrame1: THeaderFrame
+    Align = Top
+    Position.Y = 25.000000000000000000
+    Size.Width = 640.000000000000000000
+    Size.Height = 60.000000000000000000
+    Size.PlatformDefault = False
+    inherited RectangleHeader: TRectangle
+      Size.Width = 640.000000000000000000
+      inherited ButtonBack: TButton
+        Position.Y = 5.000000000000000000
+        Size.Width = 48.000000000000000000
+        Size.Height = 48.000000000000000000
+        OnClick = HeaderFrame1ButtonBackClick
+      end
+      inherited LabelAppName: TLabel
+        Size.Width = 552.000000000000000000
+        Size.Height = 70.000000000000000000
+      end
+    end
+    inherited Line1: TLine
+      Size.Width = 640.000000000000000000
+    end
+  end
+  object ListViewMyContracts: TListView
+    ItemAppearanceClassName = 'TDynamicAppearance'
+    ItemEditAppearanceClassName = 'TDynamicAppearance'
+    HeaderAppearanceClassName = 'TListHeaderObjects'
+    FooterAppearanceClassName = 'TListHeaderObjects'
+    Align = Client
+    Size.Width = 640.000000000000000000
+    Size.Height = 395.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    ItemAppearance.ItemHeight = 130
+    ItemAppearanceObjects.ItemObjects.ObjectsCollection = <
+      item
+        AppearanceObjectName = 'ganmcxadebeli_name'
+        AppearanceClassName = 'TTextObjectAppearance'
+        Appearance.Font.Size = 13.000000000000000000
+        Appearance.TextAlign = Leading
+        Appearance.WordWrap = True
+        Appearance.Trimming = Word
+        Appearance.Width = 515.000000000000000000
+        Appearance.Height = 30.000000000000000000
+        Appearance.Align = Trailing
+        Appearance.PlaceOffset.Y = -1.000000000000000000
+      end
+      item
+        AppearanceObjectName = 'offered_price'
+        AppearanceClassName = 'TTextObjectAppearance'
+        Appearance.Font.Size = 13.000000000000000000
+        Appearance.TextAlign = Leading
+        Appearance.WordWrap = True
+        Appearance.Trimming = Word
+        Appearance.Width = 515.000000000000000000
+        Appearance.Height = 30.000000000000000000
+        Appearance.Align = Trailing
+        Appearance.PlaceOffset.Y = 28.000000000000000000
+      end
+      item
+        AppearanceObjectName = 'offer_description'
+        AppearanceClassName = 'TTextObjectAppearance'
+        Appearance.Font.Size = 11.000000000000000000
+        Appearance.TextAlign = Leading
+        Appearance.TextVertAlign = Leading
+        Appearance.WordWrap = True
+        Appearance.Trimming = Word
+        Appearance.Width = 515.000000000000000000
+        Appearance.Height = 44.000000000000000000
+        Appearance.Align = Trailing
+        Appearance.PlaceOffset.Y = 86.000000000000000000
+      end
+      item
+        AppearanceObjectName = 'ContractImage'
+        AppearanceClassName = 'TImageObjectAppearance'
+        Appearance.Width = 105.000000000000000000
+        Appearance.Height = 105.000000000000000000
+        Appearance.PlaceOffset.Y = 12.000000000000000000
+      end
+      item
+        AppearanceObjectName = 'create_date'
+        AppearanceClassName = 'TTextObjectAppearance'
+        Appearance.Font.Size = 13.000000000000000000
+        Appearance.TextAlign = Leading
+        Appearance.WordWrap = True
+        Appearance.Trimming = Word
+        Appearance.Width = 515.000000000000000000
+        Appearance.Height = 30.000000000000000000
+        Appearance.Align = Trailing
+        Appearance.PlaceOffset.Y = 57.000000000000000000
+      end>
+    ItemAppearanceObjects.ItemEditObjects.ObjectsCollection = <
+      item
+        AppearanceObjectName = 'Text1'
+        AppearanceClassName = 'TTextObjectAppearance'
+      end>
+    ItemAppearanceObjects.FooterObjects.Text.Width = 603.000000000000000000
+    ItemAppearanceObjects.FooterObjects.Text.Height = 30.000000000000000000
+    OnItemClick = ListViewMyContractsItemClick
+    OnPullRefresh = ListViewMyContractsPullRefresh
+    SearchVisible = True
+    SelectionCrossfade = True
+    PullToRefresh = True
+    object LabelNotFound: TLabel
+      Align = Top
+      StyledSettings = [Family, Style]
+      Margins.Top = 50.000000000000000000
+      Position.Y = 98.000000000000000000
+      Size.Width = 640.000000000000000000
+      Size.Height = 23.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 11.000000000000000000
+      TextSettings.FontColor = claRed
+      TextSettings.HorzAlign = Center
+      Text = #4304#4320#4330#4308#4320#4311#4312' '#4329#4304#4316#4304#4332#4308#4320#4312' '#4304#4320' '#4315#4317#4312#4331#4308#4305#4316#4304
+      Visible = False
+      TabOrder = 0
+    end
+  end
+  object RectanglePreloader: TRectangle
+    Align = Client
+    Fill.Bitmap.Bitmap.PNG = {
+      89504E470D0A1A0A0000000D49484452000000010000000108060000001F15C4
+      89000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+      000D49444154185763606060480300006B0067166DC4120000000049454E44AE
+      426082}
+    Fill.Bitmap.WrapMode = Tile
+    Fill.Kind = Bitmap
+    Size.Width = 640.000000000000000000
+    Size.Height = 430.000000000000000000
+    Size.PlatformDefault = False
+    Visible = False
+    object FMXLoadingIndicator1: TFMXLoadingIndicator
+      Align = Center
+      HitTest = False
+      Size.Width = 100.000000000000000000
+      Size.Height = 100.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Color = xFFFF3434
+      Kind = BallClipRotatePulse
+    end
+  end
+  object RectangleStatusBar: TRectangle
+    Align = MostTop
+    Fill.Color = xFFFF3434
+    Size.Width = 640.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Kind = None
+    object LabelStatusBar: TLabel
+      Align = Client
+      StyledSettings = []
+      Size.Width = 640.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Family = 'Arial'
+      TextSettings.Font.Size = 14.000000000000000000
+      TextSettings.Font.StyleExt = {00070000000000000004000000}
+      TextSettings.FontColor = claWhite
+      Text = 'Azomva'
+      TabOrder = 0
+    end
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = FDMemTableContracts
+    ScopeMappings = <>
+    Left = 320
+    Top = 72
+  end
+  object RESTRequestContracts: TRESTRequest
+    Client = DModule.RESTClient
+    Params = <
+      item
+        name = 'sesskey'
+        Value = '818e8acaa47f1b8712d72922545e2847'
+      end
+      item
+        name = 'user_id'
+        Value = '31'
+      end>
+    Resource = 'user/mycontractsdamkveti'
+    Response = RESTResponseContracts
+    SynchronizedEvents = False
+    Left = 320
+    Top = 120
+  end
+  object RESTResponseContracts: TRESTResponse
+    ContentType = 'application/json'
+    Left = 320
+    Top = 176
+  end
+  object RESTResponseDataSetAdapterContracts: TRESTResponseDataSetAdapter
+    Active = True
+    Dataset = FDMemTableContracts
+    FieldDefs = <>
+    ResponseJSON = RESTResponseContracts
+    Left = 320
+    Top = 224
+  end
+  object FDMemTableContracts: TFDMemTable
+    Active = True
+    FieldDefs = <
+      item
+        Name = 'app_id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'amzomveli_id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'ganmcxadebeli_id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'ganmcxadebeli_name'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'offered_price'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'offer_description'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'create_date'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'imageindex'
+        DataType = ftWideString
+        Size = 255
+      end>
+    IndexDefs = <>
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    StoreDefs = True
+    Left = 320
+    Top = 272
+    object FDMemTableContractsapp_id: TWideStringField
+      FieldName = 'app_id'
+      Size = 255
+    end
+    object FDMemTableContractsamzomveli_id: TWideStringField
+      FieldName = 'amzomveli_id'
+      Size = 255
+    end
+    object FDMemTableContractsganmcxadebeli_id: TWideStringField
+      FieldName = 'ganmcxadebeli_id'
+      Size = 255
+    end
+    object FDMemTableContractsganmcxadebeli_name: TWideStringField
+      FieldName = 'ganmcxadebeli_name'
+      Size = 255
+    end
+    object FDMemTableContractsoffered_price: TWideStringField
+      FieldName = 'offered_price'
+      Size = 255
+    end
+    object FDMemTableContractsoffer_description: TWideStringField
+      FieldName = 'offer_description'
+      Size = 255
+    end
+    object FDMemTableContractscreate_date: TWideStringField
+      FieldName = 'create_date'
+      Size = 255
+    end
+    object FDMemTableContractsimageindex: TWideStringField
+      FieldName = 'imageindex'
+      Size = 255
+    end
+  end
+  object ImageList1: TImageList
+    Source = <
+      item
+        MultiResBitmap.Height = 50
+        MultiResBitmap.Width = 50
+        MultiResBitmap.LoadSize = 0
+        MultiResBitmap = <
+          item
+            Width = 50
+            Height = 50
+            PNG = {
+              89504E470D0A1A0A0000000D49484452000000320000003208060000001E3F88
+              B1000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+              09F5494441546843ED997B7454C51DC77FBFB97777F3DA85248664C32368A540
+              0B02B540C15A0A25952A14CE29B5144D76494F79FCA1481E206D3D886D81925D
+              1E82ED2955F250A08278ECA1ADCAAB96D652A9078B0856443429B01B0249D8DD
+              24ECE3CEF437776F9004F2D864839E1E3E27273BF73773F7DEEFCCFC7EF39B59
+              B8C52D6ED121687C7E26F45F9B7F97C6700E224CE180A98C4358203FC610F79C
+              2FAC7891DE4E184D3B05335D0E274318CC391E6236F33F3D0BB6341975BD86DD
+              35EFEB1CC413F4DC6F1BA6EBE1E26D01CCE12D293B69586EC800777E7F005333
+              F6733BEB148054698C008498807F51471CA2DE38148E286F5E5AB6D5AFDF1107
+              32DDF99319674F0083C9BA210C3EA1423947B103905D5040F4151A4EA2E73F4A
+              6D06538B0B82E31A95693BCF16559E1BE0FE515A18C2A318B0715CC0787AE171
+              CC04FD2302AA31ABD439169998438333097C301A6C40BA5A10A48DBF03423944
+              E55386316604C29740E353505146CA6B0DA09E5EFA695328BCB17AF9F67ABDD1
+              35E4AC7024846CB08BDE69BA61EA880B246A7B2B1F495D33BF8F590DDFCB904F
+              2201244CF94A6B613D232CC42513E0BAA029BCB96EF1369F616E972CB7F37E10
+              627E0042B956B424C911E42A1C67288ED08B1FD1B8F6564DC90B1FCBB61D3A7B
+              DAC6876CA6907A2F39E3BD02519F7E9D8280286008F5D22805A35316341120AF
+              DD93D6D8E43CB9725748B7C599F845AD152B54BBF59302E07C1928CA1DD22440
+              FB901EF10B6F4AC20E58B025ACB7EB257A2CE4CE8D8F581AC3FE85F44D8BE9F2
+              7669D304FF8022D2AA9B21A0856E0BD11DD28A0B00F9120096A31B39BC2F18AC
+              F0FA7276C3CA955CB7DD246217425328DB5A95CFB9588E0ADE294DF4C6A7C88F
+              56792FE76C230114E96E3E310BB1973A0F5E5D07389C20D7FEA5675060273CB8
+              8BA2EA67474C42324B0B4630C68F87405C3471B6C81B18F47277A6905C8DC380
+              D36A522C95F1F221667C760961C2DA461F349B7D982E18BF3D1611322864AECB
+              7FD0EE76FE59130DD50CF0597B207458DA8D263D22E6A995B5CEB1102FE3AF69
+              A14421E0F74A442D39F7F8B3678DEAEBB0BB1C77D31AE2D442DA5CD5A2A6491B
+              A51421F96415C04C977F4A56ADDF3BBD785350D67597D89D9DC872CF7B1821B2
+              1940E903BE4B61614B7F95F290D728473A830C352E781F5A17C7900FCDA231FF
+              B2719B0CCB471564650A28DB05F0815780EF3703DE46E57D2A34CD3C5BF452B3
+              D13466BA254422E73985A7A7E885F3E96BA873DB81876B399AB6A99C979D5B5A
+              F9AE61D59169FC15050FC4434CB785B490B1D691A5329C2E508C272FCAA19141
+              FA0BD0E89CA4CCF5408DCDFCB78E1C3A5E627A2C241E64ADCF1B8E5C39288BDD
+              151353D4EA2DBC4B9EA78C409B228B082C372C525E19E09E9D18ADED1A9F0B21
+              1229865276B9D07AE5CE3156319F1B21124F71C57FDA8A91395DB4B6633A1562
+              FFEDFC24CAAF6E9AE0AB6222E09162AE58F10F5D11D3AEB367BAE6C94854AAF8
+              6028D8AED0C6C8F2A239145E7AA3AD696F400BE930D0F020AD9A76DAA4ED4DF0
+              8B99552B2BAE18D5D781596EC706E4620885CCE380EC3D2622272817994A29C8
+              5AD9C02F824D56BF2551AEE474F986A7B07C0A95BA7C4CD3135A8901F17A820F
+              66E962767E5FC9F82471B0A2B0A1F426C310F9C798E17256A908838C7B5B23E0
+              A71E7FCE9A01B6B37704217850057520D9A6798ACB5F375AF43AD9EB1DA3431A
+              EE3721A4D31AF532254689415F788AC566FA3447A3BD3C0E5A3D373564368DA7
+              2E1EC9388EF06370B6BED1E7B0DB53523EDB682A0F0256D3903C8E9AD8C814F5
+              A9B345CFD51955BD4E2B3106B48D3E4F6BCF07543A050ABEDADA470460DA930F
+              355BC0644E4EB3265E4DE40430FB3AE7692AE95B598900217D66D1CDF2996C57
+              8153202FA3D108262699469E5B56FEA151A5D33A1AD1DCA7213B2BFDC11FF2DF
+              A3DB683EF65BE73C41A5A808B999D204A520F883B06ADE2EC5EBF65E4680FA47
+              F9C9AC6AA0AD08C98DC2EAEFE4BF460CEEA1BD43654675D2190560985E036209
+              4DB7118A22E4B597EE9E467B8CB1D1BA38429D93BD29EFEA349270087F4D7E9A
+              047EA41BDA70DDE15B60C2CCC356734386C5AF4E000B8C62887DA45D3028F216
+              56AC9765DFDE637E6BEEE8BB682C46D1432FA6E4DE7D3AB0EF9DCBB22E1ED86D
+              0E37D4D7EF4C993191A5E48EA9B5DE37662AA5A2BFA1AA6472F6B581BDC7DE8A
+              B6FC94F6D711DAD602E3DFA421DB140946EA6A7FF2C2D51ECA7639070A84F7A9
+              981CB5E80710AF3061FEB1A778CB45C3D46D32DD8E12DA41EAE1FF5A6408AE19
+              D8F4C08DCE07DA5DB16B4AB6BE575358FE0C0F41831A5453E501B4B4673FB368
+              A0E0429E90270B1F68D4437FA12DD365FAA2591C43FAB4EC2935BEC1EB3510FA
+              AE531E50CB0591A2EA42B2DFDFDE2147A78E9AE572AE408427E54E106CE9879B
+              A07E5C12A4264811DC0ADFB9505CBECFBE216F5038A21C95E15143FCC285C2B2
+              33C6ED9D92FEAB026B66933FD8F628D5EECE3B42337F2C073EBEA6A892CA1DD3
+              EE88B4E0B59A57518F6CA047CAB6DF902200EA38B7467411B28DE7B1E7AB4D80
+              C76459D1F852BBCB99DB956826B35B330B7E549F927C34B3F4E17E8659DF6C81
+              AF6134C811E75C46CC4EE972E8CCDA382F8385C50CF28DE76898DFF516958F32
+              AA20ABD4918701A8001B8D5D0B5CFCD5AC524AB1A4A2C1B05C8F0CEDD5892768
+              1F3F94AE2ED0F79653C2A871C485FA6F3602DC944514471B774CA723D2827771
+              592DC3C00E8A5F11F45D1A4E0E3F51DAEDAE793F6C1121575BAA5F2F33576038
+              29A8A14BBFB93D68BE2B8C2D33AEFA512F2C45C4E5BA080E9566BFF89951D729
+              5D162291DB4F21A0947CC524FC97DEB0BB1DC729ABDCA68F84C66BC211D3304F
+              514521370B12498211E6C85E376E27D1F36F338AD7F25FF94F68E2348DC672CA
+              188AA55FD07AE5E828DB6D4B4C42245EAB6585106275D4677084CC0278A8B921
+              94A60E69F999AEE6B18A2A9A5B8D34C79352CFA4A6481B2DAE730143B5592EC7
+              2A79DD027D57BEFC44066FD25E648DB7A8C2DD15E76E4B977DA42DE49CC92654
+              0A284A3D2D04DFE32DAEFCAE514509A6A38852189A56FCA4A7A8523FD7CA7639
+              BE455B85FD7A038043E40FFB2823223FC3D9327F32A558BE2A43BE511F33DD16
+              22C92A2DC841567BA6D1971E4C4C81E9E981C6BF3758134A855F79446F6085FB
+              C859F5C826A15191F9D203D1AB2872B1554CA605DE92B2970C53B788796A5D8B
+              B7646B9510E99B936D90C8181CA8B72507052A8FEAC7A97D70CDB5227444D41F
+              683E55D0FF9F53047432130CEFA908498F464487F6F3765B55099516D0A23980
+              27A4373233F40D0BB86456C4D4F34B2AFE2D9BE5AC77F40D85F0A4DCED5178BB
+              E77C71F93FA43D5EF45C481BE4E97A207C7917229B214FEE93AD50417B7F0F2D
+              6D79D11F86F8414F61E5547A32B949FCB82EFBED2975AF1DD1064DF8E2EE668B
+              C966B6D44D044C1A4B8E3F1919A6C9455241C8F34D3CD6E94FD3B112F711B916
+              996A70C626D3DA904262DEF61495EF8DF748FC9F01F03F90482A0DC89FAAA600
+              00000049454E44AE426082}
+            FileName = 'E:\Dropbox\projects\azomva.com\icons\UI\Handshake_50px.png'
+          end>
+        Name = 'Handshake_50px'
+      end>
+    Destination = <
+      item
+        Layers = <
+          item
+            Name = 'Handshake_50px'
+            SourceRect.Right = 50.000000000000000000
+            SourceRect.Bottom = 50.000000000000000000
+          end>
+      end>
+    Left = 464
+    Top = 161
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 20
+    Top = 5
+    object LinkListControlToField1: TLinkListControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      Control = ListViewMyContracts
+      FillExpressions = <
+        item
+          SourceMemberName = 'ganmcxadebeli_name'
+          ControlMemberName = 'ganmcxadebeli_name'
+        end
+        item
+          SourceMemberName = 'offered_price'
+          ControlMemberName = 'offered_price'
+        end
+        item
+          SourceMemberName = 'offer_description'
+          ControlMemberName = 'offer_description'
+        end
+        item
+          SourceMemberName = 'create_date'
+          ControlMemberName = 'create_date'
+        end
+        item
+          SourceMemberName = 'imageindex'
+          ControlMemberName = 'ContractImage'
+        end>
+      FillHeaderExpressions = <>
+      FillBreakGroups = <>
+    end
+  end
+end

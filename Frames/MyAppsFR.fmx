@@ -1,0 +1,660 @@
+object MyAppsFrame: TMyAppsFrame
+  Size.Width = 583.000000000000000000
+  Size.Height = 573.000000000000000000
+  Size.PlatformDefault = False
+  object ListView1: TListView
+    ItemAppearanceClassName = 'TDynamicAppearance'
+    ItemEditAppearanceClassName = 'TDynamicAppearance'
+    HeaderAppearanceClassName = 'TListHeaderObjects'
+    FooterAppearanceClassName = 'TListHeaderObjects'
+    OnUpdateObjects = ListView1UpdateObjects
+    Transparent = True
+    Images = ImageListAppList
+    Align = Client
+    Size.Width = 583.000000000000000000
+    Size.Height = 573.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    ParentShowHint = False
+    ShowHint = False
+    ItemAppearance.ItemHeight = 150
+    ItemAppearance.HeaderHeight = 1
+    ItemAppearance.FooterHeight = 1
+    ItemAppearanceObjects.ItemObjects.ObjectsCollection = <
+      item
+        AppearanceObjectName = 'create_date'
+        AppearanceClassName = 'TTextObjectAppearance'
+        Appearance.Font.Size = 11.000000000000000000
+        Appearance.TextAlign = Leading
+        Appearance.WordWrap = True
+        Appearance.TextColor = xFF938686
+        Appearance.Width = 166.000000000000000000
+        Appearance.Height = 30.000000000000000000
+        Appearance.PlaceOffset.X = 34.000000000000000000
+        Appearance.PlaceOffset.Y = 118.000000000000000000
+      end
+      item
+        AppearanceObjectName = 'location'
+        AppearanceClassName = 'TTextObjectAppearance'
+        Appearance.Font.Family = 'BPG Nino Mtavruli'
+        Appearance.Font.Size = 18.000000000000000000
+        Appearance.Font.StyleExt = {00070000000000000004000000}
+        Appearance.TextAlign = Leading
+        Appearance.WordWrap = True
+        Appearance.TextColor = xFF232121
+        Appearance.Height = 40.000000000000000000
+        Appearance.PlaceOffset.Y = 10.000000000000000000
+      end
+      item
+        AppearanceObjectName = 'app_property_requisites_count'
+        AppearanceClassName = 'TTextObjectAppearance'
+        Appearance.Font.Family = 'BPG Nino Mtavruli'
+        Appearance.Font.Size = 11.000000000000000000
+        Appearance.TextAlign = Trailing
+        Appearance.TextColor = xFF938686
+        Appearance.Width = 200.000000000000000000
+        Appearance.Height = 30.000000000000000000
+        Appearance.Align = Trailing
+        Appearance.PlaceOffset.X = -31.000000000000000000
+        Appearance.PlaceOffset.Y = 117.000000000000000000
+      end
+      item
+        AppearanceObjectName = 'IconCalendar'
+        AppearanceClassName = 'TImageObjectAppearance'
+        Appearance.ScalingMode = Stretch
+        Appearance.Width = 25.000000000000000000
+        Appearance.Height = 25.000000000000000000
+        Appearance.PlaceOffset.X = 3.000000000000000000
+        Appearance.PlaceOffset.Y = 53.000000000000000000
+      end
+      item
+        AppearanceObjectName = 'details'
+        AppearanceClassName = 'TTextObjectAppearance'
+        Appearance.Font.Size = 10.000000000000000000
+        Appearance.TextAlign = Leading
+        Appearance.WordWrap = True
+        Appearance.TextColor = xFF938686
+        Appearance.Trimming = Word
+        Appearance.Height = 35.000000000000000000
+        Appearance.Visible = False
+        Appearance.PlaceOffset.Y = 150.000000000000000000
+      end
+      item
+        AppearanceObjectName = 'area'
+        AppearanceClassName = 'TTextObjectAppearance'
+        Appearance.Font.Size = 14.000000000000000000
+        Appearance.TextAlign = Leading
+        Appearance.TextColor = xFF232121
+        Appearance.Height = 35.000000000000000000
+        Appearance.PlaceOffset.X = 30.000000000000000000
+        Appearance.PlaceOffset.Y = 47.000000000000000000
+      end
+      item
+        AppearanceObjectName = 'IconCreateDate'
+        AppearanceClassName = 'TImageObjectAppearance'
+        Appearance.Width = 25.000000000000000000
+        Appearance.Height = 25.000000000000000000
+        Appearance.PlaceOffset.X = 3.000000000000000000
+        Appearance.PlaceOffset.Y = 120.000000000000000000
+      end
+      item
+        AppearanceObjectName = 'ArrowIcon'
+        AppearanceClassName = 'TImageObjectAppearance'
+        Appearance.Width = 25.000000000000000000
+        Appearance.Height = 25.000000000000000000
+        Appearance.Align = Trailing
+        Appearance.PlaceOffset.X = -3.000000000000000000
+        Appearance.PlaceOffset.Y = 120.000000000000000000
+      end
+      item
+        AppearanceObjectName = 'ID'
+        AppearanceClassName = 'TTextObjectAppearance'
+        Appearance.TextAlign = Trailing
+        Appearance.Width = 100.000000000000000000
+        Appearance.Height = 30.000000000000000000
+        Appearance.Align = Trailing
+        Appearance.PlaceOffset.X = -3.000000000000000000
+        Appearance.PlaceOffset.Y = 12.000000000000000000
+      end
+      item
+        AppearanceObjectName = 'v_app_property_requisites_count'
+        AppearanceClassName = 'TTextObjectAppearance'
+        Appearance.Visible = False
+      end>
+    ItemAppearanceObjects.ItemEditObjects.ObjectsCollection = <>
+    ItemAppearanceObjects.HeaderObjects.Text.TextColor = claSeagreen
+    ItemAppearanceObjects.HeaderObjects.Text.Height = 0.009999999776482582
+    ItemAppearanceObjects.HeaderObjects.Text.Visible = False
+    ItemAppearanceObjects.FooterObjects.Text.Height = 1.000000000000000000
+    ItemAppearanceObjects.FooterObjects.Text.Visible = False
+    StyleLookup = 'AppLIstListview'
+    CanSwipeDelete = False
+    OnItemClickEx = ListView1ItemClickEx
+    SearchVisible = True
+    PullToRefresh = True
+  end
+  object RESTRequestApps: TRESTRequest
+    Client = DModule.RESTClient
+    Params = <
+      item
+        name = 'sesskey'
+        Value = 'e3f2fbce4b903b401a9bb67d43be1ec8'
+      end
+      item
+        name = 'user_id'
+        Value = '31'
+      end>
+    Resource = 'apps/getmyapps'
+    Response = RESTResponseApps
+    OnAfterExecute = RESTRequestAppsAfterExecute
+    SynchronizedEvents = False
+    Left = 42
+    Top = 200
+  end
+  object RESTResponseApps: TRESTResponse
+    ContentType = 'application/json'
+    Left = 42
+    Top = 248
+  end
+  object RESTResponseDataSetAdapterApps: TRESTResponseDataSetAdapter
+    Active = True
+    Dataset = FDMemTableApps
+    FieldDefs = <>
+    ResponseJSON = RESTResponseApps
+    Left = 42
+    Top = 296
+  end
+  object FDMemTableApps: TFDMemTable
+    Active = True
+    FieldDefs = <
+      item
+        Name = 'status'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'app_id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'user_id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'deadlineby_user'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'execute_days'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'imageIndex'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'username'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'note'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'status_name'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'status_color'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'status_progress'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'app_status_id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'notification_on_email'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'notification_on_device'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'create_date'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'app_property_requisites'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'location'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'area'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'app_property_requisites_count'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'IconCreateDate'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'IconCalendar'
+        DataType = ftWideString
+        Size = 255
+      end>
+    IndexDefs = <>
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    StoreDefs = True
+    Left = 42
+    Top = 344
+    object FDMemTableAppsid: TWideStringField
+      FieldName = 'id'
+      Size = 255
+    end
+    object FDMemTableAppsuser_id: TWideStringField
+      FieldName = 'user_id'
+      Size = 255
+    end
+    object FDMemTableAppsdeadlineby_user: TWideStringField
+      FieldName = 'deadlineby_user'
+      Size = 255
+    end
+    object FDMemTableAppsexecute_days: TWideStringField
+      FieldName = 'execute_days'
+      Size = 255
+    end
+    object FDMemTableAppsimageIndex: TWideStringField
+      FieldName = 'imageIndex'
+      Size = 255
+    end
+    object FDMemTableAppsusername: TWideStringField
+      FieldName = 'username'
+      Size = 255
+    end
+    object FDMemTableAppsnote: TWideStringField
+      FieldName = 'note'
+      Size = 255
+    end
+    object FDMemTableAppsstatus_name: TWideStringField
+      FieldName = 'status_name'
+      Size = 255
+    end
+    object FDMemTableAppsstatus_color: TWideStringField
+      FieldName = 'status_color'
+      Size = 255
+    end
+    object FDMemTableAppsstatus_progress: TWideStringField
+      FieldName = 'status_progress'
+      Size = 255
+    end
+    object FDMemTableAppsapp_status_id: TWideStringField
+      FieldName = 'app_status_id'
+      Size = 255
+    end
+    object FDMemTableAppsnotification_on_email: TWideStringField
+      FieldName = 'notification_on_email'
+      Size = 255
+    end
+    object FDMemTableAppsnotification_on_device: TWideStringField
+      FieldName = 'notification_on_device'
+      Size = 255
+    end
+    object FDMemTableAppscreate_date: TWideStringField
+      FieldName = 'create_date'
+      Size = 255
+    end
+    object FDMemTableAppsapp_property_requisites: TWideStringField
+      FieldName = 'app_property_requisites'
+      Size = 255
+    end
+    object FDMemTableAppslocation: TWideStringField
+      FieldName = 'location'
+      Size = 255
+    end
+    object FDMemTableAppsarea: TWideStringField
+      FieldName = 'area'
+      Size = 255
+    end
+    object FDMemTableAppsapp_property_requisites_count: TWideStringField
+      FieldName = 'app_property_requisites_count'
+      Size = 255
+    end
+    object FDMemTableAppsIconCreateDate: TWideStringField
+      FieldName = 'IconCreateDate'
+      Size = 255
+    end
+    object FDMemTableAppsIconCalendar: TWideStringField
+      FieldName = 'IconCalendar'
+      Size = 255
+    end
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = FDMemTableApps
+    ScopeMappings = <>
+    Left = 368
+    Top = 272
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 20
+    Top = 5
+    object LinkListControlToField1: TLinkListControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      Control = ListView1
+      FillExpressions = <
+        item
+          SourceMemberName = 'id'
+          ControlMemberName = 'ID'
+          CustomFormat = #39'ID# '#39'+%s'
+        end
+        item
+          SourceMemberName = 'location'
+          ControlMemberName = 'location'
+        end
+        item
+          SourceMemberName = 'area'
+          ControlMemberName = 'area'
+          CustomFormat = #39#4317#4305#4312#4308#4325#4322'('#4308#4305')'#4312#4321' '#4324#4304#4320#4311#4317#4305#4312': '#39' + %s'
+        end
+        item
+          SourceMemberName = 'create_date'
+          ControlMemberName = 'create_date'
+        end
+        item
+          SourceMemberName = 'app_property_requisites'
+          ControlMemberName = 'details'
+        end
+        item
+          SourceMemberName = 'IconCreateDate'
+          ControlMemberName = 'IconCreateDate'
+        end
+        item
+          SourceMemberName = 'IconCalendar'
+          ControlMemberName = 'IconCalendar'
+        end
+        item
+          SourceMemberName = 'app_property_requisites_count'
+          ControlMemberName = 'app_property_requisites_count'
+          CustomFormat = #39#4317#4305#4312#4308#4325#4322#4308#4305#4312#4321' '#4320#4304#4317#4307#4308#4316#4317#4305#4304': '#39' + %s'
+        end
+        item
+          SourceMemberName = 'app_property_requisites_count'
+          ControlMemberName = 'v_app_property_requisites_count'
+        end>
+      FillHeaderExpressions = <>
+      FillBreakGroups = <>
+    end
+  end
+  object ImageListAppList: TImageList
+    Source = <
+      item
+        MultiResBitmap.Height = 45
+        MultiResBitmap.Width = 45
+        MultiResBitmap.LoadSize = 0
+        MultiResBitmap = <
+          item
+            Width = 45
+            Height = 45
+            PNG = {
+              89504E470D0A1A0A0000000D494844520000002D0000002D08060000003A1AE2
+              9A000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+              033F494441546843ED99CBCB4C611CC78F7BEE4216A294A505D952C88A8592AD
+              8D852556161656C86541B110BD2194923BC93FA05C72CF35A25C12A25E97F775
+              F7FD1CE731BF79E6DC66CE9999D2F9D467E63CCFCC39CF6FCEF99D79E6F9CD80
+              200896CA5D728CCCC373B9425E095BC5982A0FC9D9612B9B6F72331B3FE5EF26
+              BD24CB608F8C3B7EAA03F5F04BFA7C899E93D81F3D17E5A4FCFC773396B838FA
+              498F5E393A6CD6B82597CBC172241D1143E553F92C6C95C3443943BA2B0EA4C1
+              1BB95B2EA2C3F09107826EB80472A7EC266B64BFF4E322DE7F417399EE47DBCE
+              A3B21B6C92368E8792ABCB765DD05C92C992336C7738213BC95669C7BF2C49D1
+              DB51BB2E689C4687E00CBB3E3C263BC11669C7E5DE727C92F43504BD808E0802
+              75FDD8EE54F15382804748E04CBF97F437043D870E03A9E15EC353B21D30B9D9
+              71EEC841D241F0B9838623D2BD8EC76599F829715D8E929686A0ED0E0BE98881
+              49C0BEEF9C2C831DD21EF79EB467D8417AF449DEC31746F03A6AA0BB11E3F053
+              E5B42CC236698F474A0C9771F041DC77763883CF9407E54A1A1910A81DA847B6
+              C25A698F1397123ECC8CC4B9246C35899F2AADE0F21399D0E252A274F6CA2792
+              33D60ACBE463795EBAAFB58A8A8A8A8A8A8A8AFF8EBCB5BF24C645CF1D63BD64
+              D9735552216A067E86B268A6CEB28F8E4EE0AF3816CB66182BEDFEFC3E6F1A2E
+              D30699B43EB46C977640CABDB6D69707EA8707A43D0E8BE72CA8F76D94ACB4C2
+              0A8EDB79121D09F8959FBB928264AB508EB0C74BAB6451DD7D2179DF5B3AEC8E
+              B65863F1EB1237E5105914BF92C54A260E5637DF25EF0917B6944EDD4E73E9F0
+              48ABFC94419E4A16E37D90BC9E59AC293B2592B820ED387EAA34146B6CD0F3E8
+              88F02B3F65A5441269454FCA0B89417387829F1204DC8955735AAAB834AE0BFA
+              87A4C2B32A6A3BFD6260BBF12B5987255058A75D173433949F5BDC7459959F76
+              E0A70AB5C347D1765DD0BE176537E10CC7C59518F40D395E02B9EC6CD7596756
+              B5E338CE483FB65EA654AA91C3A4E595E43FBC0961AB06B9CD5DBC5A9EA5A320
+              B32467748A74413948D7AF727AD8AA11FEB7683F455EAFC932E0575EDCF153E5
+              CCF189F86F9A3F1F295867F94EAE930F64515ECAF992092B6E2CDFBE20087AFE
+              008B47ADB851B95B640000000049454E44AE426082}
+            FileName = 
+              'E:\Dropbox\projects\azomva.com\Design\azomvebi\icons\AppList\1.p' +
+              'ng'
+          end>
+        Name = '1'
+      end
+      item
+        MultiResBitmap.Height = 45
+        MultiResBitmap.Width = 45
+        MultiResBitmap.LoadSize = 0
+        MultiResBitmap = <
+          item
+            Width = 45
+            Height = 45
+            PNG = {
+              89504E470D0A1A0A0000000D494844520000002D0000002D08060000003A1AE2
+              9A000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+              067C494441546843D5996B88555514C7BDF3149BAEA3948F482C351D29228328
+              EC2506251545668354221114695A44C3F4605E9AEF0F3A990505299516E99065
+              20057EEA455F8AA8212A4A45D49266729CEB3493F7DEE9F7DFB3F7F59C7BCEBD
+              E7CC2075FDC3BA6BEFF5DF679FB5D75E679F7DF64D8C2A82D5AB57DF924EA7F7
+              9697978FB32687138383830B5B5A5ABEB0F56163CD9A35176732992F29CE18B2
+              0C015B6F229158DEDADAFAB6350550667528B2D9ECD5D6E10338F911FA43E42B
+              64021DDF801E31706E026A06FA17F407C83EEEF131F7BB90F27CA42072916E6F
+              6FAFEEEFEFAFEAEBEBCB58D3283A780AB5B6B9B939D7CE46E804C517D0ED43D6
+              E1A3ACAC6C0E03FF9CE2BDF4AF8018307B59B80E02B6D49A84B29A9A9AC18686
+              86D3A6A21FD260417777F79181818153387ADA09D45A242B47D54EC0D14B6D71
+              ADB7ED70C53AACD91C6B7AB3803B08B728AF7D6F2A953A4ACA3CA236C6692EBC
+              07428EEDA7BC0BFD2EB21307BF45128CF294DA59A4F4230EB51351DB6189BDC7
+              2788223E20ED4192BE8FA0737DAB3DFE8D653077AB8199F6B6B6B68D181AEAEA
+              EA2AEAEBEB73E9B16AD5AA07513BE12E4B2693BFCB76F2E4C96BA9EB015AC2B4
+              BE23DB48401A8CC7912EF278456D6DED1BB231DB096C7F637B0D7E996968812F
+              9807F762BFCF3D8859FD7476764E37B5B3306941E3433D3D3DFD12EBB06C93A4
+              470A9C9B2A4D7F5B5DDF72D8DA464BE703FB1969DFEAC145BE259069DA877A99
+              E979DF23EF61DB62F58841DF3FA25EA21FCDD66EF52D4D30B69132AFAA4D21B8
+              F458CF281A29D631E53FC9566A507AA076E35FBD2FD2389EB6C59286711A674D
+              C42B2B2BFF942E55903AE5D22E3D5AF1BB853C3B48354D6E6B2A4A0D33717A2B
+              ABC74AE774334EB7196A6825F1A54DA900A737E3F433BE0791484FA7FC9B6951
+              62B0EBF41E9C7EC097D3E01FAB4B1AC6690D419A5CBE40BA54416C8D9F2599BB
+              51A8B0BA20C8A516D4CDC86463F080093A841AC3DB6CA25B71782EB47F18803B
+              4664B48DADC9E34EC17571CD144C155E8E376117D77CC30B445BE282888C349D
+              2D41DD86BEDC2BD8A671833B9179DC78AAB3AB0C778D38F47521DCF5E228CFCE
+              E7B0DF04BF12298AC84883349D665855C6D87A0E7AA289D82EF6B90F5993014F
+              F8349CF895A26F832FD0762911DD515D5D3DBEB1B1B1D79A0DB8C77E1C5F60AB
+              051119696E6EA6AF08C2FA70C108040587CD5B8D2FA44A63F00087A3EE651027
+              3D423B229AE65AE7441EDCD6B2CAEA1CC867670B6C3FE1C2FA0A204EA4DD1AEE
+              035369F6E020B0C9E21AB32F06FD56E78063EE4BA5CF6A2F626DD8229D8E0239
+              1D3628D76F58FFC5B838CF58AC4687895C9DDDCF06407A2C865B6CABF9E880B3
+              453FE8B32B8C231D3B6DB120E244BA46794D447758794B1ABB394C813BECB13B
+              4E5F3CC26721DCD72248933DA8ED79DC3106937F3014409C484F44B2EEF3DD0B
+              22B5849B7CCAB2F6983519F0908E565EE35823D7E9702707AED117F53E6D7C86
+              2C6701A781DC3F542B8CC8481349F331990FB77A805AABBD98A91F9630F3F1EA
+              050331E7265C7F89317800A7D3A548C4498F9243A4D34C73E8DAE959F2024B57
+              5555D57169221DF87CC3D62DCDF5C78CC18FC01219863839ADF38804F976A52A
+              A48B363D83683318A674B238D955B7DC2CCBCD813BEEE5C05538AEA3B8F994FF
+              C8E32EA29E7FE214409CF4D01195DAFD20A1F3EFADFE0EADC8DDEEEC8E433AC4
+              818D888FA37D93081C3C10C2CDA57C4E96BC098C5E51582EA1E3276D79854838
+              9DE93D2EBBE59E40D68903DB911CA7324B9B39E4A1CD8BD8967939E467FAD30E
+              B228E2A4C738469F61590B9CFA30F55BE1B4FF7DDD9A0C5819C6607F1E67DE6C
+              6A6A32A7A30E5CA333C1C5B4D189AC0FE4F91D5CB7D0560B2232D28CFC0C1278
+              557B96BCA4D55E98D37DA2E98E8573C06696BAB0250FD4585D1471D2A3E410E9
+              34D3558904F61D6EC923477B8CC1836432A9BF2414553DC4F938AA9FB0258F74
+              F27D141442AC250FA9201775402947E8DB6CD6CD80A9DF8A03CF52347DC16552
+              A9D414B4AA4F73DD5CDAB8B53E8D7D9E0AD8D761FF8B6299FA033A17BF91543C
+              274B9E890C582FE1065A1954360F12B37005B64DB25B4E07F46665412FB275C3
+              219BA8DF250E3C477D83EC94D5AFB849F46766A918229D66EBF928A39F8DCCCA
+              1768ED316616E2C2EC9222D7D4A1DDA00AC2CC21D37BFE9E4F9F2F704E1BCDD4
+              44E6D3FF091E56F3056FD283D06F43E9DFA42D10474995585FC5FF11B2F8844B
+              890D68F3EF9673FA61A2FC0A4FAEEF8FC85202FEF5E25F4B7373F3E67F017500
+              B7BF879D641A0000000049454E44AE426082}
+            FileName = 
+              'E:\Dropbox\projects\azomva.com\Design\azomvebi\icons\AppList\cal' +
+              'endar.png'
+          end>
+        Name = 'calendar'
+      end
+      item
+        MultiResBitmap.Height = 50
+        MultiResBitmap.Width = 50
+        MultiResBitmap.LoadSize = 0
+        MultiResBitmap = <
+          item
+            Width = 50
+            Height = 50
+            PNG = {
+              89504E470D0A1A0A0000000D49484452000000320000003208060000001E3F88
+              B1000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+              028B494441546843ED96BB6E134114867D2B2D102F40010A6F9070092090A888
+              20D0F316B4BEDB6FC00320515300516801718B6C11DE020A0A2428DCF8C277D8
+              63E485B3B3E3DD09D57C92356726939DFDE7CC7F662B9148241289442291481E
+              556D9DF47ABDC7B55AEDB0D3E93CD5A1FF42BFDFDFAE56AB0FE7F3F903E2990E
+              9BE40A190C06CF68F625E6A1BBED76FB83C427CD70383C3F9BCD3ED5EBF5D3CB
+              E572BC582C765D629C4210F182E64ED24BE0A157BBDDEE7BED9E08ACBB451626
+              224287645D117319310B1D4A9129847F382403B7B59B82F16B64E69D7683C226
+              9DA3395E17B1C60481B778B71FDAFF434DDB144C3CC81221B03B6F49FD0DED06
+              438E13023E678810B6F98D93308D29049EA07CA9B109625EB1F075ED96864C5C
+              C01313C253C9884DA3D178A4610AD7D1BA4856E4F83492119B1005408D2D9E38
+              A343266CDE3D043FD76E0AA7D947A3D10E06FB489895B9DF94290096B12D58E3
+              2E6B1C68F71F72CB2F99915A7E44E81453A400E4187B9D3DEEB0971A9BE40A11
+              548C69B27598731331AFB5EB448E13BB7C4CE8F404EC2342AE0127CE5D5EC1CE
+              4D587487D0ACE12B98E35500789E97B1E1BE8F08C14B88A062AE103A3F1598F3
+              063132CF44324173E4636C44C85785175E476B9D32052094B12D361622142900
+              BC5830635B141222F8160032B0D56C36BF4EA7D32F748318DBA2B010C1273308
+              F94E167E129E4D463211637B7BE26F4A091110E3F505E0428CCDD1336F6C5F4A
+              0B117C0B804511635B6CBCB045ABD51AF34297089DF78CC15E0811421021022F
+              24F78C88F1458CBD7175CA22981041C5E47E0180F78DED4B5021828AC9FC02E0
+              6F1BDDD8BE0431BB8555001011C4D816C133B2625500B847BEF1937B2498B123
+              914824128944229102542ABF00E742517650FB966E0000000049454E44AE4260
+              82}
+            FileName = 
+              'E:\Dropbox\projects\azomva.com\Design\azomvebi\icons\AppList\Arr' +
+              'owDown.png'
+          end>
+        Name = 'ArrowDown'
+      end
+      item
+        MultiResBitmap.Height = 50
+        MultiResBitmap.Width = 50
+        MultiResBitmap.LoadSize = 0
+        MultiResBitmap = <
+          item
+            Width = 50
+            Height = 50
+            PNG = {
+              89504E470D0A1A0A0000000D49484452000000320000003208060000001E3F88
+              B1000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+              0287494441546843ED973B4FDB5014C713C74B3E09121BA0F04669D656852E0C
+              2CDD1162CC9687F2F8201DD928ADDA3584125E5D61E135C00740440231244EFF
+              473E5424DC6BDFD8D7DBF949D6F5B19DEBFBF739FF6327250882200882200861
+              A4794C847ABDFEB1DFEFEF60F7C5719C4FD56AF5AF7FC63E8909A9D56A9FD3E9
+              F40F0E090F62164AA5D219C7567178B40A44AC8D88201CCFF33A3837C7B155AC
+              6704E5F405C3AE1F29F10683C1BCED32B32A04225631ECF9513010336B538C35
+              21646C0CBFFCC808AB99B1E2113236867144100E7C74D26C3667398E456C211A
+              639B62AD01C41242C68688EF1CEAB8C3BBE481F755B898E30862721C4722B210
+              3676507722BAD96C76126358F950999DC5111349081B3BB03B210B8FD8A68AC5
+              E21316788D85AEF0292DB8E624AA98B185E046A1C62611994C26876B6FF950AA
+              5C2E1FA24B2D73A823720318ABFD626164EC404F901F5CD7CD61E1377C688846
+              A3B108411D0E75F448345AF329C7A11867C4C4D86CEA799D0802E78E304F9E43
+              1D633700A38CB0B1C3DED85DDC7C3A48C45B90990F78EA2D0EB5E01AA32F8050
+              216CEC504F60987EEB09132066190BFDC3A10EA32F80C0D28A6A6C536C36006D
+              466C18DB141B0D4099114CBC65220243A0B14D316D00F89C39C6035EE77808A5
+              905EAFB7CDBB3ABA94094C7AC9716C20E600620A1C2A410953057DF5A361741E
+              A17A549A8B3C816DCA462646C19CFB10A3FD024069FD4669916FDFA1F5087E80
+              BFD8CE3126FE6FB25763572A952B3E9408C8F412EE7BC8E12B3F715F7A0D2809
+              6CBF10E3424C87C4900894D34C12995031D200F62082FE426BC9F0A8A4DD6E7B
+              F97CFE1BC44C40CC26263BE75389D36AB5EE0B85C2050CFE8C07BAC187054110
+              04411004212AA9D43F9B863E2628C7928D0000000049454E44AE426082}
+            FileName = 
+              'E:\Dropbox\projects\azomva.com\Design\azomvebi\icons\AppList\Arr' +
+              'owUp.png'
+          end>
+        Name = 'ArrowUp'
+      end>
+    Destination = <
+      item
+        Layers = <
+          item
+            Name = '1'
+            SourceRect.Right = 45.000000000000000000
+            SourceRect.Bottom = 45.000000000000000000
+          end>
+      end
+      item
+        Layers = <
+          item
+            Name = 'calendar'
+            SourceRect.Right = 45.000000000000000000
+            SourceRect.Bottom = 45.000000000000000000
+          end>
+      end
+      item
+        Layers = <
+          item
+            Name = 'ArrowDown'
+            SourceRect.Right = 50.000000000000000000
+            SourceRect.Bottom = 50.000000000000000000
+          end>
+      end
+      item
+        Layers = <
+          item
+            Name = 'ArrowUp'
+            SourceRect.Right = 50.000000000000000000
+            SourceRect.Bottom = 50.000000000000000000
+          end>
+      end>
+    Left = 208
+    Top = 100
+  end
+end

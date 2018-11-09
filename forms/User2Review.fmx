@@ -1,0 +1,281 @@
+object User2ReviewForm: TUser2ReviewForm
+  Left = 0
+  Top = 0
+  Caption = 'User2ReviewForm'
+  ClientHeight = 510
+  ClientWidth = 379
+  SystemStatusBar.Visibility = Invisible
+  StyleBook = MainForm.StyleBookMainForm
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnClose = FormClose
+  OnKeyUp = FormKeyUp
+  DesignerMasterStyle = 3
+  inline HeaderFrame1: THeaderFrame
+    Align = Top
+    Position.Y = 25.000000000000000000
+    Size.Width = 379.000000000000000000
+    Size.Height = 60.000000000000000000
+    Size.PlatformDefault = False
+    inherited RectangleHeader: TRectangle
+      Size.Width = 379.000000000000000000
+      inherited ButtonBack: TButton
+        Position.Y = 5.000000000000000000
+        Size.Width = 48.000000000000000000
+        Size.Height = 48.000000000000000000
+        OnClick = HeaderFrame1ButtonBackClick
+      end
+      inherited LabelAppName: TLabel
+        Size.Width = 281.000000000000000000
+      end
+    end
+    inherited Line1: TLine
+      Size.Width = 379.000000000000000000
+    end
+  end
+  object PreloaderRectangle: TRectangle
+    Align = Client
+    Fill.Bitmap.Bitmap.PNG = {
+      89504E470D0A1A0A0000000D49484452000000010000000108060000001F15C4
+      89000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+      000D49444154185763606060480300006B0067166DC4120000000049454E44AE
+      426082}
+    Fill.Bitmap.WrapMode = Tile
+    Fill.Kind = Bitmap
+    Size.Width = 486.000000000000000000
+    Size.Height = 430.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Kind = None
+    Visible = False
+    object FMXLoadingIndicator1: TFMXLoadingIndicator
+      Align = Center
+      HitTest = False
+      Size.Width = 100.000000000000000000
+      Size.Height = 100.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Color = xFFFF3434
+      Kind = BallClipRotatePulse
+    end
+  end
+  object TabControl1: TTabControl
+    Align = Client
+    Images = MainForm.ImageListRed
+    Size.Width = 379.000000000000000000
+    Size.Height = 425.000000000000000000
+    Size.PlatformDefault = False
+    TabHeight = 54.000000000000000000
+    TabIndex = 1
+    TabOrder = 2
+    TabPosition = Bottom
+    OnChange = TabControl1Change
+    Sizes = (
+      379s
+      371s
+      379s
+      371s)
+    object TabItemRating: TTabItem
+      CustomIcon = <
+        item
+        end>
+      StyledSettings = [Family, Size, Style]
+      IsSelected = False
+      ImageIndex = 25
+      Size.Width = 189.000000000000000000
+      Size.Height = 54.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'TabItemMainPageNumbers'
+      TabOrder = 0
+      Text = '12'
+      ExplicitSize.cx = 100.000000000000000000
+      ExplicitSize.cy = 49.000000000000000000
+      object ButtonSave: TButton
+        Align = Top
+        Images = MainForm.ImageList1
+        ImageIndex = 10
+        Position.Y = 300.000000000000000000
+        Size.Width = 379.000000000000000000
+        Size.Height = 44.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Text = #4328#4308#4324#4304#4321#4308#4305#4312#4321' '#4307#4304#4324#4312#4325#4321#4312#4320#4308#4305#4304
+      end
+      object LabelPrice: TLabel
+        Align = Top
+        Margins.Top = 5.000000000000000000
+        Margins.Bottom = 5.000000000000000000
+        Position.Y = 5.000000000000000000
+        Size.Width = 379.000000000000000000
+        Size.Height = 23.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.HorzAlign = Center
+        Text = #4324#4304#4321#4312
+        TabOrder = 1
+      end
+      object LabelQuality: TLabel
+        Align = Top
+        Margins.Top = 5.000000000000000000
+        Margins.Bottom = 5.000000000000000000
+        Position.Y = 183.000000000000000000
+        Size.Width = 379.000000000000000000
+        Size.Height = 23.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.HorzAlign = Center
+        Text = #4334#4304#4320#4312#4321#4334#4312
+        TabOrder = 2
+      end
+      object LabelSum: TLabel
+        Align = Top
+        Margins.Top = 5.000000000000000000
+        Margins.Bottom = 5.000000000000000000
+        Position.Y = 272.000000000000000000
+        Size.Width = 379.000000000000000000
+        Size.Height = 23.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.HorzAlign = Center
+        Text = '2.5+2.5+2.5 = 2.5'
+        TabOrder = 3
+      end
+      object LabelTime: TLabel
+        Align = Top
+        Margins.Top = 5.000000000000000000
+        Margins.Bottom = 5.000000000000000000
+        Position.Y = 94.000000000000000000
+        Size.Width = 379.000000000000000000
+        Size.Height = 23.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.HorzAlign = Center
+        Text = #4307#4320#4317
+        TabOrder = 4
+      end
+      object TMSFMXRatingPrice: TTMSFMXRating
+        Align = Top
+        DisableFocusEffect = False
+        Position.Y = 211.000000000000000000
+        TabOrder = 5
+        Size.Width = 379.000000000000000000
+        Size.Height = 56.000000000000000000
+        Size.PlatformDefault = False
+        Value = 2.500000000000000000
+        OnValueClick = TMSFMXRatingPriceValueClick
+        Version = '1.5.0.0'
+      end
+      object TMSFMXRatingQuality: TTMSFMXRating
+        Align = Top
+        DisableFocusEffect = False
+        Position.Y = 122.000000000000000000
+        TabOrder = 6
+        Size.Width = 379.000000000000000000
+        Size.Height = 56.000000000000000000
+        Size.PlatformDefault = False
+        Value = 2.500000000000000000
+        OnValueClick = TMSFMXRatingQualityValueClick
+        Version = '1.5.0.0'
+      end
+      object TMSFMXRatingTime: TTMSFMXRating
+        Align = Top
+        DisableFocusEffect = False
+        Position.Y = 33.000000000000000000
+        TabOrder = 7
+        Size.Width = 379.000000000000000000
+        Size.Height = 56.000000000000000000
+        Size.PlatformDefault = False
+        Value = 2.500000000000000000
+        OnValueClick = TMSFMXRatingTimeValueClick
+        Version = '1.5.0.0'
+      end
+    end
+    object TabItemFeedback: TTabItem
+      CustomIcon = <
+        item
+        end>
+      StyledSettings = [Family, Size, Style]
+      IsSelected = True
+      ImageIndex = 28
+      Size.Width = 190.000000000000000000
+      Size.Height = 54.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'TabItemMainPage'
+      TabOrder = 0
+      Text = #4306#4304#4315#4317#4334#4315#4304#4323#4320#4308#4305#4304
+      ExplicitSize.cx = 100.000000000000000000
+      ExplicitSize.cy = 49.000000000000000000
+      object RectangleComment: TRectangle
+        Align = Client
+        Size.Width = 379.000000000000000000
+        Size.Height = 371.000000000000000000
+        Size.PlatformDefault = False
+        object MemoComment: TMemo
+          Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+          DataDetectorTypes = []
+          Align = Client
+          Margins.Left = 10.000000000000000000
+          Margins.Top = 10.000000000000000000
+          Margins.Right = 10.000000000000000000
+          Margins.Bottom = 20.000000000000000000
+          Size.Width = 359.000000000000000000
+          Size.Height = 301.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          Viewport.Width = 351.000000000000000000
+          Viewport.Height = 293.000000000000000000
+        end
+        object RectangleCommentHeader: TRectangle
+          Align = Top
+          Margins.Left = 1.000000000000000000
+          Margins.Top = 1.000000000000000000
+          Margins.Right = 1.000000000000000000
+          Position.X = 1.000000000000000000
+          Position.Y = 1.000000000000000000
+          Size.Width = 377.000000000000000000
+          Size.Height = 39.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Kind = None
+          object Button1: TButton
+            Align = Right
+            Images = MainForm.ImageList1
+            ImageIndex = 11
+            Position.X = 341.000000000000000000
+            Size.Width = 36.000000000000000000
+            Size.Height = 39.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+          end
+          object ButtonBack: TButton
+            Align = Left
+            IconTintColor = claWhitesmoke
+            Images = MainForm.ImageList1
+            ImageIndex = 49
+            Size.Width = 39.000000000000000000
+            Size.Height = 39.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            OnClick = ButtonBackClick
+          end
+        end
+      end
+    end
+  end
+  object RectangleStatusBar: TRectangle
+    Align = MostTop
+    Fill.Color = xFFFF3434
+    Size.Width = 379.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Kind = None
+    object LabelStatusBar: TLabel
+      Align = Client
+      StyledSettings = []
+      Size.Width = 379.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Family = 'Arial'
+      TextSettings.Font.Size = 14.000000000000000000
+      TextSettings.Font.StyleExt = {00070000000000000004000000}
+      TextSettings.FontColor = claWhite
+      Text = 'Azomva'
+      TabOrder = 0
+    end
+  end
+end

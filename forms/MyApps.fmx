@@ -1,0 +1,276 @@
+object FormMyApps: TFormMyApps
+  Left = 0
+  Top = 0
+  Caption = 'My Apps'
+  ClientHeight = 480
+  ClientWidth = 486
+  Position = MainFormCenter
+  SystemStatusBar.Visibility = Invisible
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnClose = FormClose
+  OnKeyUp = FormKeyUp
+  DesignerMasterStyle = 3
+  object PreloaderRectangle: TRectangle
+    Align = Client
+    Fill.Bitmap.Bitmap.PNG = {
+      89504E470D0A1A0A0000000D49484452000000010000000108060000001F15C4
+      89000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+      000D49444154185763606060480300006B0067166DC4120000000049454E44AE
+      426082}
+    Fill.Bitmap.WrapMode = Tile
+    Fill.Kind = Bitmap
+    Size.Width = 486.000000000000000000
+    Size.Height = 480.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Kind = None
+    Visible = False
+    object FMXLoadingIndicator1: TFMXLoadingIndicator
+      Align = Center
+      HitTest = False
+      Size.Width = 100.000000000000000000
+      Size.Height = 100.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Color = xFF198D60
+      Kind = BallClipRotatePulse
+    end
+  end
+  object RESTRequestMyApps: TRESTRequest
+    Client = DModule.RESTClient
+    Params = <
+      item
+        name = 'sesskey'
+        Value = '97a276b8dcd111f1a2354e8c25f5f131'
+      end
+      item
+        name = 'user_id'
+        Value = '27'
+      end>
+    Resource = 'apps/getmyapps'
+    Response = RESTResponseMyApps
+    OnAfterExecute = RESTRequestMyAppsAfterExecute
+    SynchronizedEvents = False
+    Left = 112
+    Top = 48
+  end
+  object RESTResponseMyApps: TRESTResponse
+    ContentType = 'application/json'
+    Left = 112
+    Top = 96
+  end
+  object RESTResponseDataSetAdapterMyApps: TRESTResponseDataSetAdapter
+    Active = True
+    Dataset = FDMemTableMyApps
+    FieldDefs = <>
+    ResponseJSON = RESTResponseMyApps
+    Left = 112
+    Top = 144
+  end
+  object FDMemTableMyApps: TFDMemTable
+    Active = True
+    FieldDefs = <
+      item
+        Name = 'status'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'app_id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'user_id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'create_date'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'deadlineby_user'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'imageIndex'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'username'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'note'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'status_name'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'status_color'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'status_progress'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'app_status_id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'notification_on_device'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'notification_on_email'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'app_property_requisites'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'location'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'area'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'app_property_requisites_count'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'dropdownarrow_imageindex'
+        DataType = ftWideString
+        Size = 255
+      end>
+    IndexDefs = <>
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    StoreDefs = True
+    Left = 112
+    Top = 200
+    object FDMemTableMyAppsid: TWideStringField
+      FieldName = 'id'
+      Size = 255
+    end
+    object FDMemTableMyAppsuser_id: TWideStringField
+      FieldName = 'user_id'
+      Size = 255
+    end
+    object FDMemTableMyAppscreate_date: TWideStringField
+      FieldName = 'create_date'
+      Size = 255
+    end
+    object FDMemTableMyAppsdeadlineby_user: TWideStringField
+      FieldName = 'deadlineby_user'
+      Size = 255
+    end
+    object FDMemTableMyAppsimageIndex: TWideStringField
+      FieldName = 'imageIndex'
+      Size = 255
+    end
+    object FDMemTableMyAppsusername: TWideStringField
+      FieldName = 'username'
+      Size = 255
+    end
+    object FDMemTableMyAppsnote: TWideStringField
+      FieldName = 'note'
+      Size = 255
+    end
+    object FDMemTableMyAppsstatus_name: TWideStringField
+      FieldName = 'status_name'
+      Size = 255
+    end
+    object FDMemTableMyAppsstatus_color: TWideStringField
+      FieldName = 'status_color'
+      Size = 255
+    end
+    object FDMemTableMyAppsstatus_progress: TWideStringField
+      FieldName = 'status_progress'
+      Size = 255
+    end
+    object FDMemTableMyAppsapp_status_id: TWideStringField
+      FieldName = 'app_status_id'
+      Size = 255
+    end
+    object FDMemTableMyAppsnotification_on_email: TWideStringField
+      FieldName = 'notification_on_email'
+      Size = 255
+    end
+    object FDMemTableMyAppsnotification_on_device: TWideStringField
+      FieldName = 'notification_on_device'
+      Size = 255
+    end
+    object FDMemTableMyAppsapp_property_requisites: TWideStringField
+      FieldName = 'app_property_requisites'
+      Size = 255
+    end
+    object FDMemTableMyAppslocation: TWideStringField
+      FieldName = 'location'
+      Size = 255
+    end
+    object FDMemTableMyAppsarea: TWideStringField
+      FieldName = 'area'
+      Size = 255
+    end
+    object FDMemTableMyAppsapp_property_requisites_count: TWideStringField
+      FieldName = 'app_property_requisites_count'
+      Size = 255
+    end
+    object FDMemTableMyAppsdropdownarrow_imageindex: TWideStringField
+      FieldName = 'dropdownarrow_imageindex'
+      Size = 255
+    end
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = FDMemTableMyApps
+    ScopeMappings = <>
+    Left = 112
+    Top = 256
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 116
+    Top = 309
+  end
+  object BindingsList2: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 114
+    Top = 362
+  end
+end
