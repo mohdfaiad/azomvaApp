@@ -33,11 +33,11 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="logo\logos\android\960x720.png" Condition="'$(Config)'=='Debug'">
-            <RemoteDir>Azomva\res\drawable-xlarge\</RemoteDir>
-            <RemoteName>splash_image.png</RemoteName>
-            <DeployClass>Android_SplashImage960</DeployClass>
-            <Operation>1</Operation>
+        <DeployFile Include="..\azomva.com\Design\azomvebi\icons\AppList\ListViewItemBottom.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>Azomva\assets\internal\</RemoteDir>
+            <RemoteName>ListViewItemBottom.png</RemoteName>
+            <DeployClass>ProjectFile</DeployClass>
+            <Operation>0</Operation>
             <LocalCommand/>
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
@@ -51,11 +51,11 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="..\azomva.com\Design\azomvebi\icons\AppList\ListViewItemBottom.png" Condition="'$(Config)'=='Debug'">
-            <RemoteDir>Azomva\assets\internal\</RemoteDir>
-            <RemoteName>ListViewItemBottom.png</RemoteName>
-            <DeployClass>ProjectFile</DeployClass>
-            <Operation>0</Operation>
+        <DeployFile Include="logo\logos\android\960x720.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>Azomva\res\drawable-xlarge\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage960</DeployClass>
+            <Operation>1</Operation>
             <LocalCommand/>
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
@@ -114,6 +114,15 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
+        <DeployFile Include="logo\logos\android\470x320.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>Azomva\res\drawable-normal\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage470</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
         <DeployFile Include="Android\Debug\splash_image_def.xml" Condition="'$(Config)'=='Debug'">
             <RemoteDir>Azomva\res\drawable\</RemoteDir>
             <RemoteName>splash_image_def.xml</RemoteName>
@@ -123,19 +132,10 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="E:\Dropbox\projects\azomva.com\fonts\BPG Nino Mtavruli.ttf" Condition="'$(Config)'=='Debug'">
-            <RemoteDir>Azomva\assets\internal\</RemoteDir>
-            <RemoteName>BPG Nino Mtavruli.ttf</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="logo\logos\android\470x320.png" Condition="'$(Config)'=='Debug'">
-            <RemoteDir>Azomva\res\drawable-normal\</RemoteDir>
-            <RemoteName>splash_image.png</RemoteName>
-            <DeployClass>Android_SplashImage470</DeployClass>
+        <DeployFile Include="Android\Debug\styles.xml" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>Azomva\res\values\</RemoteDir>
+            <RemoteName>styles.xml</RemoteName>
+            <DeployClass>AndroidSplashStyles</DeployClass>
             <Operation>1</Operation>
             <LocalCommand/>
             <RemoteCommand/>
@@ -159,11 +159,11 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="Android\Debug\styles.xml" Condition="'$(Config)'=='Debug'">
-            <RemoteDir>Azomva\res\values\</RemoteDir>
-            <RemoteName>styles.xml</RemoteName>
-            <DeployClass>AndroidSplashStyles</DeployClass>
-            <Operation>1</Operation>
+        <DeployFile Include="E:\Dropbox\projects\azomva.com\fonts\BPG Nino Mtavruli.ttf" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>Azomva\assets\internal\</RemoteDir>
+            <RemoteName>BPG Nino Mtavruli.ttf</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
             <LocalCommand/>
             <RemoteCommand/>
             <Overwrite>True</Overwrite>

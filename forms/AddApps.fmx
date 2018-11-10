@@ -77,7 +77,7 @@ object FormAddApps: TFormAddApps
           DefaultItemStyles.GroupFooterStyle = ''
           ShowCheckboxes = True
           OnItemClick = ListBoxServiceTypesItemClick
-          Viewport.Width = 595.000000000000000000
+          Viewport.Width = 575.000000000000000000
           Viewport.Height = 442.000000000000000000
         end
         object Label4: TLabel
@@ -842,8 +842,8 @@ object FormAddApps: TFormAddApps
             TabOrder = 1
             OnEnter = MemoNoteEnter
             OnExit = MemoNoteExit
-            Viewport.Width = 575.000000000000000000
-            Viewport.Height = 64.000000000000000000
+            Viewport.Width = 567.000000000000000000
+            Viewport.Height = 56.000000000000000000
           end
           object ButtonFinishAdding: TButton
             Align = Top

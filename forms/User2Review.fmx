@@ -65,16 +65,16 @@ object User2ReviewForm: TUser2ReviewForm
     Size.Width = 379.000000000000000000
     Size.Height = 425.000000000000000000
     Size.PlatformDefault = False
-    TabHeight = 54.000000000000000000
+    TabHeight = 49.000000000000000000
     TabIndex = 1
     TabOrder = 2
     TabPosition = Bottom
     OnChange = TabControl1Change
     Sizes = (
       379s
-      371s
+      376s
       379s
-      371s)
+      376s)
     object TabItemRating: TTabItem
       CustomIcon = <
         item
@@ -83,7 +83,7 @@ object User2ReviewForm: TUser2ReviewForm
       IsSelected = False
       ImageIndex = 25
       Size.Width = 189.000000000000000000
-      Size.Height = 54.000000000000000000
+      Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'TabItemMainPageNumbers'
       TabOrder = 0
@@ -194,7 +194,7 @@ object User2ReviewForm: TUser2ReviewForm
       IsSelected = True
       ImageIndex = 28
       Size.Width = 190.000000000000000000
-      Size.Height = 54.000000000000000000
+      Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'TabItemMainPage'
       TabOrder = 0
@@ -204,7 +204,7 @@ object User2ReviewForm: TUser2ReviewForm
       object RectangleComment: TRectangle
         Align = Client
         Size.Width = 379.000000000000000000
-        Size.Height = 371.000000000000000000
+        Size.Height = 376.000000000000000000
         Size.PlatformDefault = False
         object MemoComment: TMemo
           Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
@@ -215,11 +215,11 @@ object User2ReviewForm: TUser2ReviewForm
           Margins.Right = 10.000000000000000000
           Margins.Bottom = 20.000000000000000000
           Size.Width = 359.000000000000000000
-          Size.Height = 301.000000000000000000
+          Size.Height = 306.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 0
           Viewport.Width = 351.000000000000000000
-          Viewport.Height = 293.000000000000000000
+          Viewport.Height = 298.000000000000000000
         end
         object RectangleCommentHeader: TRectangle
           Align = Top

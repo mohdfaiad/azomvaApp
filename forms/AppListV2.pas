@@ -16,7 +16,7 @@ uses
   FMX.Bind.Editors, Data.Bind.EngExt, FMX.Bind.DBEngExt, System.Threading,
   FMX.MultiView, FMX.Layouts, FMX.ListBox, FMX.Ani, FMX.LoadingIndicator,
   Header, System.ImageList, FMX.ImgList, appDetailsFR, FMX.Effects,
-  FMX.TabControl, FMX.ScrollBox, FMX.Memo, FMX.Edit, FMX.SearchBox;
+  FMX.TabControl, FMX.ScrollBox, FMX.Memo, FMX.Edit, FMX.SearchBox, FMX.Gestures, System.Actions, FMX.ActnList;
 
 type
   TAppListFormV2 = class(TForm)
@@ -189,6 +189,9 @@ type
     ShadowEffect4: TShadowEffect;
     edtSearchAppsKeywordEdit: TEdit;
     btnSearch: TButton;
+    GestureManager1: TGestureManager;
+    ActionListApps: TActionList;
+    ActionSlideDownAppDetails: TAction;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ListViewAppsListPullRefresh(Sender: TObject);
     procedure ListViewAppsListItemClickEx(const Sender: TObject; ItemIndex: Integer; const LocalClickPos: TPointF;
@@ -207,6 +210,7 @@ type
     procedure ListViewAmzomveliUpdateObjects(const Sender: TObject; const AItem: TListViewItem);
     procedure btnSearchClick(Sender: TObject);
     procedure edtSearchAppsKeywordEditKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
+    procedure ActionSlideDownAppDetailsExecute(Sender: TObject);
   private
     app_id: Integer;
     is_owner: Boolean;
@@ -245,10 +249,15 @@ begin
       if ListViewAppsList.Controls[I] is TSearchBox then
       begin
         self.SearchBoxAppsListView := TSearchBox(ListViewAppsList.Controls[I]);
-        self.SearchBoxAppsListView.Visible := False;
+        // self.SearchBoxAppsListView.Visible := False;
         Break;
       End;
-  LayoutAppsDetails.Margins.Left := self.ListViewAppsList.Width;
+
+  LayoutAppsDetails.Position.Y := self.RectangleMain.Height + HeaderFrame1.Height + RectangleStatusBar.Height;
+  self.FloatAnimationLAD.StartValue := LayoutAppsDetails.Position.Y;
+  self.FloatAnimationLAD.StopValue := HeaderFrame1.Height + RectangleStatusBar.Height;
+  LayoutAppsDetails.Height := self.RectangleMain.Height;
+
   self.loadOnlyMyApps := loadOnlyMyApps;
   self.LabelStatusBar.Text := DModule.statusBarTitle;
   self.RectangleStatusBar.Opacity := DModule.statusBarOpacity;
@@ -263,6 +272,22 @@ begin
       self.reloadItems('id', 'desc');
     end);
   aTask.Start;
+end;
+
+procedure TAppListFormV2.HeaderFrame1ButtonBackClick(Sender: TObject);
+begin
+  if self.LayoutAppsDetails.Position.Y = (HeaderFrame1.Height + RectangleStatusBar.Height) then
+  begin
+    FMXLoadingLoadAppDetails.Visible := True;
+    FloatAnimationLAD.StartValue := HeaderFrame1.Height + RectangleStatusBar.Height;;
+    FloatAnimationLAD.StopValue := self.RectangleMain.Height + HeaderFrame1.Height + RectangleStatusBar.Height;
+    FloatAnimationLAD.Start;
+    self.HeaderFrame1.LabelAppName.Text := 'განცხადების სია';
+  end
+  else
+  begin
+    self.Close;
+  end;
 end;
 
 procedure TAppListFormV2.reloadItems(sort_field, sort: String);
@@ -309,10 +334,10 @@ procedure TAppListFormV2.ListViewAppsSearchAction(p_keyword: String);
 begin
   if Assigned(self.SearchBoxAppsListView) then
     self.SearchBoxAppsListView.Text := p_keyword;
+  // self.SearchBoxAppsListView.Inflate;
 end;
 
-procedure TAppListFormV2.edtSearchAppsKeywordEditKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
-Shift: TShiftState);
+procedure TAppListFormV2.edtSearchAppsKeywordEditKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
 begin
   self.ListViewAppsSearchAction(edtSearchAppsKeywordEdit.Text);
 end;
@@ -338,22 +363,6 @@ begin
     self.Close;
 end;
 
-procedure TAppListFormV2.HeaderFrame1ButtonBackClick(Sender: TObject);
-begin
-  if self.LayoutAppsDetails.Margins.Left = 0 then
-  begin
-    FMXLoadingLoadAppDetails.Visible := True;
-    FloatAnimationLAD.StartValue := 0;
-    FloatAnimationLAD.StopValue := self.ListViewAppsList.Width;
-    FloatAnimationLAD.Start;
-    self.HeaderFrame1.LabelAppName.Text := 'განცხადების სია';
-  end
-  else
-  begin
-    self.Close;
-  end;
-end;
-
 procedure TAppListFormV2.ListViewAppDetailsUpdateObjects(const Sender: TObject; const AItem: TListViewItem);
 begin
   // Grey line background
@@ -370,18 +379,16 @@ begin
   TListItemImage(AItem.Objects.FindDrawable('ImageLine4')).Bitmap := DModule.getBitmapFromResource('AppDetails_line');
 end;
 
-procedure TAppListFormV2.ListViewAppsListItemClickEx(const Sender: TObject; ItemIndex: Integer;
-const LocalClickPos: TPointF; const ItemObject: TListItemDrawable);
+procedure TAppListFormV2.ListViewAppsListItemClickEx(const Sender: TObject; ItemIndex: Integer; const LocalClickPos: TPointF;
+const ItemObject: TListItemDrawable);
 var
   id, v_height: Integer;
 begin
   if (ItemObject is TListItemText) or (ItemObject is TListItemImage) then
   begin
-    if (ItemObject.Name = 'app_property_requisites_count') or (ItemObject.Name = 'ArrowIcon') or
-      (ItemObject.Name = 'SelectedLineRedBG') then
+    if (ItemObject.Name = 'app_property_requisites_count') or (ItemObject.Name = 'ArrowIcon') or (ItemObject.Name = 'SelectedLineRedBG') then
     begin
-      v_height := TListItemText(ListViewAppsList.Selected.View.FindDrawable('v_app_property_requisites_count'))
-        .Text.ToInteger * 35;
+      v_height := TListItemText(ListViewAppsList.Selected.View.FindDrawable('v_app_property_requisites_count')).Text.ToInteger * 35;
       if ListViewAppsList.Selected.Height = 150 then
       begin
         ListViewAppsList.Selected.Height := v_height + 150;
@@ -393,8 +400,7 @@ begin
 
         TListItemText(ListViewAppsList.Selected.View.FindDrawable('create_date')).TextColor := TAlphaColorRec.White;
 
-        TListItemText(ListViewAppsList.Items[ItemIndex].View.FindDrawable('create_date')).TextColor :=
-          TAlphaColor($FFFFFF);
+        TListItemText(ListViewAppsList.Items[ItemIndex].View.FindDrawable('create_date')).TextColor := TAlphaColor($FFFFFF);
       end
       else
       begin
@@ -405,8 +411,7 @@ begin
         TListItemImage(ListViewAppsList.Selected.View.FindDrawable('SelectedLineRedBG')).Visible := False;
 
         TListItemText(ListViewAppsList.Selected.View.FindDrawable('create_date')).TextColor := TAlphaColorRec.Black;
-        TListItemText(ListViewAppsList.Selected.View.FindDrawable('app_property_requisites_count')).TextColor :=
-          TAlphaColorRec.Black;
+        TListItemText(ListViewAppsList.Selected.View.FindDrawable('app_property_requisites_count')).TextColor := TAlphaColorRec.Black;
       end;
     end
     else
@@ -417,13 +422,25 @@ begin
   end;
 end;
 
+procedure TAppListFormV2.ActionSlideDownAppDetailsExecute(Sender: TObject);
+begin
+  if self.LayoutAppsDetails.Position.Y = (HeaderFrame1.Height + RectangleStatusBar.Height) then
+  begin
+    FMXLoadingLoadAppDetails.Visible := True;
+    FloatAnimationLAD.StartValue := HeaderFrame1.Height + RectangleStatusBar.Height;;
+    FloatAnimationLAD.StopValue := self.RectangleMain.Height + HeaderFrame1.Height + RectangleStatusBar.Height;
+    FloatAnimationLAD.Start;
+    self.HeaderFrame1.LabelAppName.Text := 'განცხადების სია';
+  end
+end;
+
 procedure TAppListFormV2.appDetailsLayout(p_id: Integer);
 begin
   FMXLoadingLoadAppDetails.Visible := True;
   initDetails(p_id);
   self.HeaderFrame1.LabelAppName.Text := 'განცხადება N ' + p_id.ToString;
-  FloatAnimationLAD.StartValue := self.ListViewAppsList.Width;
-  FloatAnimationLAD.StopValue := 0;
+  FloatAnimationLAD.StartValue := self.RectangleMain.Height + HeaderFrame1.Height + RectangleStatusBar.Height;
+  FloatAnimationLAD.StopValue := HeaderFrame1.Height + RectangleStatusBar.Height;
   FloatAnimationLAD.Start;
 end;
 
@@ -453,8 +470,7 @@ begin
 
   // Bottom grey background
   TListItemImage(AItem.Objects.FindDrawable('ImageGreyLine')).OwnsBitmap := True;
-  TListItemImage(AItem.Objects.FindDrawable('ImageGreyLine')).Bitmap :=
-    DModule.getBitmapFromResource('AppList_middleGreyLine');
+  TListItemImage(AItem.Objects.FindDrawable('ImageGreyLine')).Bitmap := DModule.getBitmapFromResource('AppList_middleGreyLine');
 
 end;
 
@@ -492,11 +508,9 @@ begin
   TListItemImage(AItem.Objects.FindDrawable('ImageOfferPrice')).Bitmap := DModule.getBitmapFromResource('OfferPriceBG');
   // Bottom grey background
   TListItemImage(AItem.Objects.FindDrawable('ImageBottomBackground')).OwnsBitmap := True;
-  TListItemImage(AItem.Objects.FindDrawable('ImageBottomBackground')).Bitmap :=
-    DModule.getBitmapFromResource('OfferBottomBackground');
+  TListItemImage(AItem.Objects.FindDrawable('ImageBottomBackground')).Bitmap := DModule.getBitmapFromResource('OfferBottomBackground');
 
-  TListItemImage(AItem.Objects.FindDrawable('ImageStars')).ImageIndex :=
-    TListItemText(AItem.Objects.FindDrawable('TextStars')).Text.ToInteger;
+  TListItemImage(AItem.Objects.FindDrawable('ImageStars')).ImageIndex := TListItemText(AItem.Objects.FindDrawable('TextStars')).Text.ToInteger;
 end;
 
 procedure TAppListFormV2.ListViewPropertiesUpdateObjects(const Sender: TObject; const AItem: TListViewItem);
@@ -528,8 +542,7 @@ procedure TAppListFormV2.ListViewAmzomveliUpdateObjects(const Sender: TObject; c
 begin
   TListItemImage(AItem.Objects.FindDrawable('PhoneImage')).ImageIndex := 6;
   TListItemImage(AItem.Objects.FindDrawable('EmailImage')).ImageIndex := 7;
-  TListItemImage(AItem.Objects.FindDrawable('ImageStars')).ImageIndex :=
-    TListItemText(AItem.Objects.FindDrawable('TextStars')).Text.ToInteger;
+  TListItemImage(AItem.Objects.FindDrawable('ImageStars')).ImageIndex := TListItemText(AItem.Objects.FindDrawable('TextStars')).Text.ToInteger;
   TListItemImage(AItem.Objects.FindDrawable('ImageBottomBG1')).ImageIndex := 8;
   TListItemImage(AItem.Objects.FindDrawable('ImageBottomBG2')).ImageIndex := 8;
   TListItemImage(AItem.Objects.FindDrawable('ImageBottomBG3')).ImageIndex := 8;
@@ -579,7 +592,7 @@ begin
       TThread.Queue(nil,
         procedure
         begin
-          LabelPrice.Text := offered_price + '₾';
+          LabelPrice.Text := FDMemTableBids.FieldByName('offered_price').AsString + '₾';
           ListViewProperties.Height := FDMemTableapp_property_requisites.RecordCount * 340;
         end);
       if FDMemTableApp.Active = True then
