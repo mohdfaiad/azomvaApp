@@ -11,6 +11,8 @@ object GanmcxadeblisRegForm: TGanmcxadeblisRegForm
   FormFactor.Devices = [Desktop]
   OnClose = FormClose
   OnKeyUp = FormKeyUp
+  OnVirtualKeyboardShown = FormVirtualKeyboardShown
+  OnVirtualKeyboardHidden = FormVirtualKeyboardHidden
   DesignerMasterStyle = 3
   object VertScrollBoxMain: TVertScrollBox
     Align = Client
@@ -794,7 +796,7 @@ object GanmcxadeblisRegForm: TGanmcxadeblisRegForm
       Margins.Bottom = 100.000000000000000000
       Position.X = 36.755569458007810000
       Position.Y = 45.000000000000000000
-      Size.Width = 522.489074707031300000
+      Size.Width = 522.489074707031200000
       Size.Height = 281.000000000000000000
       Size.PlatformDefault = False
       Stroke.Thickness = 0.300000011920929000
@@ -813,7 +815,7 @@ object GanmcxadeblisRegForm: TGanmcxadeblisRegForm
         Margins.Top = 5.000000000000000000
         Margins.Right = 10.000000000000000000
         Margins.Bottom = 5.000000000000000000
-        Size.Width = 502.489074707031300000
+        Size.Width = 502.489074707031200000
         Size.Height = 60.000000000000000000
         Size.PlatformDefault = False
         TextPrompt = 'E-mail'
@@ -843,7 +845,7 @@ object GanmcxadeblisRegForm: TGanmcxadeblisRegForm
         Margins.Top = 5.000000000000000000
         Margins.Right = 10.000000000000000000
         Margins.Bottom = 5.000000000000000000
-        Size.Width = 502.489074707031300000
+        Size.Width = 502.489074707031200000
         Size.Height = 60.000000000000000000
         Size.PlatformDefault = False
         TextPrompt = '******'
@@ -1197,13 +1199,13 @@ object GanmcxadeblisRegForm: TGanmcxadeblisRegForm
         Margins.Right = 3.000000000000000000
         Position.X = 3.000000000000000000
         Position.Y = 5.000000000000000000
-        Size.Width = 516.489074707031300000
+        Size.Width = 516.489074707031200000
         Size.Height = 63.000000000000000000
         Size.PlatformDefault = False
       end
       object ButtonCloseAuth: TButton
         Anchors = [akTop, akRight]
-        Position.X = 469.489074707031300000
+        Position.X = 469.489074707031200000
         Position.Y = -1.000000000000000000
         Size.Width = 48.000000000000000000
         Size.Height = 48.000000000000000000
@@ -1220,7 +1222,7 @@ object GanmcxadeblisRegForm: TGanmcxadeblisRegForm
         Margins.Bottom = 10.000000000000000000
         Position.X = 10.000000000000000000
         Position.Y = 211.000000000000000000
-        Size.Width = 502.489074707031300000
+        Size.Width = 502.489074707031200000
         Size.Height = 60.000000000000000000
         Size.PlatformDefault = False
         StyleLookup = 'buttonRed'

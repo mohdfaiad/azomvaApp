@@ -82,13 +82,16 @@ type
     procedure PhoneEditExit(Sender: TObject);
     procedure PasswordEditExit(Sender: TObject);
     procedure CPasswordEditExit(Sender: TObject);
+    procedure FormVirtualKeyboardHidden(Sender: TObject; KeyboardVisible: Boolean; const Bounds: TRect);
+    procedure FormVirtualKeyboardShown(Sender: TObject; KeyboardVisible: Boolean; const Bounds: TRect);
   private
-    function equalPassword(pass1, pass2: string): boolean;
-    function checkEmailPass(EmailAddress, password, op: string): boolean;
+    function equalPassword(pass1, pass2: string): Boolean;
+    function checkEmailPass(EmailAddress, password, op: string): Boolean;
     { Private declarations }
   public
     { Public declarations }
-    closeAfterReg: boolean;
+    closeAfterReg: Boolean;
+    v_KeyboardVisible: Boolean;
     procedure initForm;
   end;
 
@@ -112,6 +115,7 @@ var
   vauthForm: TauthForm;
   helper: THelperUnit;
 begin
+  self.v_KeyboardVisible := False;
   self.Show;
   self.RectangleStatusBar.Opacity := DModule.statusBarOpacity;
   self.LabelStatusBar.Text := DModule.statusBarTitle;
@@ -178,7 +182,7 @@ begin
   end;
 end;
 
-function TGanmcxadeblisRegForm.checkEmailPass(EmailAddress, password, op: string): boolean;
+function TGanmcxadeblisRegForm.checkEmailPass(EmailAddress, password, op: string): Boolean;
 // var HelperUnit: THelperUnit;
 begin
   // HelperUnit := THelperUnit.Create;
@@ -226,7 +230,7 @@ begin
   end;
 end;
 
-function TGanmcxadeblisRegForm.equalPassword(pass1, pass2: string): boolean;
+function TGanmcxadeblisRegForm.equalPassword(pass1, pass2: string): Boolean;
 begin
   if pass1.Equals(pass2) then
   begin
@@ -256,8 +260,19 @@ end;
 
 procedure TGanmcxadeblisRegForm.FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
 begin
-  if Key = 137 then
-    self.Close;
+  if self.v_KeyboardVisible = False then
+    if Key = 137 then
+      self.Close;
+end;
+
+procedure TGanmcxadeblisRegForm.FormVirtualKeyboardHidden(Sender: TObject; KeyboardVisible: Boolean; const Bounds: TRect);
+begin
+  self.v_KeyboardVisible := False;
+end;
+
+procedure TGanmcxadeblisRegForm.FormVirtualKeyboardShown(Sender: TObject; KeyboardVisible: Boolean; const Bounds: TRect);
+begin
+  self.v_KeyboardVisible := True;
 end;
 
 procedure TGanmcxadeblisRegForm.FullNameEditExit(Sender: TObject);
@@ -341,7 +356,7 @@ begin
       status: integer;
       msg: string;
       vauthForm: TauthForm;
-      auth: boolean;
+      auth: Boolean;
     begin
       RESTRequestReg.Params.Clear;
       RESTRequestReg.AddParameter('user_type_id', '1');
@@ -391,4 +406,3 @@ begin
 end;
 
 end.
-

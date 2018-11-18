@@ -611,6 +611,7 @@ begin
   try
 
     DModule.FDTableNotifications.Active := True;
+    DModule.FDTableNotifications.Filtered := False;
     DModule.FDTableNotifications.Filter := 'id=' + p_notification_id.ToString;
     DModule.FDTableNotifications.Filtered := True;
 
@@ -711,9 +712,9 @@ end;
 
 procedure TMainForm.ActionMyAppsExecute(Sender: TObject);
 begin
-  if Assigned(AppListForm) then
-    AppListForm.Free;
-  with TAppListForm.Create(Application) do
+  if Assigned(AppListFormV2) then
+    AppListFormV2.Free;
+  with TAppListFormV2.Create(Application) do
   begin
     initForm(True);
   end;

@@ -211,11 +211,15 @@ type
     procedure btnSearchClick(Sender: TObject);
     procedure edtSearchAppsKeywordEditKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
     procedure ActionSlideDownAppDetailsExecute(Sender: TObject);
+    procedure RectangleCancelTap(Sender: TObject; const Point: TPointF);
+    procedure FormVirtualKeyboardHidden(Sender: TObject; KeyboardVisible: Boolean; const Bounds: TRect);
+    procedure FormVirtualKeyboardShown(Sender: TObject; KeyboardVisible: Boolean; const Bounds: TRect);
   private
     app_id: Integer;
     is_owner: Boolean;
     loadOnlyMyApps: Boolean;
     SearchBoxAppsListView: TSearchBox;
+    v_KeyboardVisible: Boolean;
     procedure reloadItems(sort_field, sort: String);
     procedure appDetailsLayout(p_id: Integer);
     procedure initDetails(papp_id: Integer);
@@ -243,6 +247,7 @@ var
   aTask: ITask;
   I: Integer;
 begin
+  self.v_KeyboardVisible := False;
   self.Show;
   if not Assigned(self.SearchBoxAppsListView) then
     for I := 0 to ListViewAppsList.Controls.Count - 1 do
@@ -359,8 +364,19 @@ end;
 
 procedure TAppListFormV2.FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
 begin
-  if Key = 137 then
-    self.Close;
+  if self.v_KeyboardVisible = False then
+    if Key = 137 then
+      self.Close;
+end;
+
+procedure TAppListFormV2.FormVirtualKeyboardHidden(Sender: TObject; KeyboardVisible: Boolean; const Bounds: TRect);
+begin
+self.v_KeyboardVisible := False;
+end;
+
+procedure TAppListFormV2.FormVirtualKeyboardShown(Sender: TObject; KeyboardVisible: Boolean; const Bounds: TRect);
+begin
+self.v_KeyboardVisible := True;
 end;
 
 procedure TAppListFormV2.ListViewAppDetailsUpdateObjects(const Sender: TObject; const AItem: TListViewItem);
@@ -382,36 +398,46 @@ end;
 procedure TAppListFormV2.ListViewAppsListItemClickEx(const Sender: TObject; ItemIndex: Integer; const LocalClickPos: TPointF;
 const ItemObject: TListItemDrawable);
 var
-  id, v_height: Integer;
+  id, v_height, v_detailsHeight: Integer;
 begin
   if (ItemObject is TListItemText) or (ItemObject is TListItemImage) then
   begin
-    if (ItemObject.Name = 'app_property_requisites_count') or (ItemObject.Name = 'ArrowIcon') or (ItemObject.Name = 'SelectedLineRedBG') then
+    if (ItemObject.Name = 'app_property_requisites_count') or (ItemObject.Name = 'BlottomBlock') or (ItemObject.Name = 'SelectedLineRedBG') then
     begin
-      v_height := TListItemText(ListViewAppsList.Selected.View.FindDrawable('v_app_property_requisites_count')).Text.ToInteger * 35;
-      if ListViewAppsList.Selected.Height = 150 then
+      v_height := 170; // TListItemText(ListViewAppsList.Selected.View.FindDrawable('v_app_property_requisites_count')).Text.ToInteger * 150;
+      v_detailsHeight := 150;
+      if ListViewAppsList.Selected.Height = v_height then
       begin
-        ListViewAppsList.Selected.Height := v_height + 150;
+        ListViewAppsList.Selected.Height := v_height + v_detailsHeight;
         TListItem(ListViewAppsList.Selected).View.FindDrawable('details').Visible := True;
-        TListItem(ListViewAppsList.Selected).View.FindDrawable('details').Height := v_height;
+        TListItem(ListViewAppsList.Selected).View.FindDrawable('DetailsBackground').Visible := True;
+        TListItem(ListViewAppsList.Selected).View.FindDrawable('details').Height := v_detailsHeight;
         TListItemImage(ListViewAppsList.Selected.View.FindDrawable('ArrowIcon')).ImageIndex := 3;
         TListItemImage(ListViewAppsList.Selected.View.FindDrawable('IconCalendar')).ImageIndex := 5;
-        TListItemImage(ListViewAppsList.Selected.View.FindDrawable('SelectedLineRedBG')).Visible := True;
 
-        TListItemText(ListViewAppsList.Selected.View.FindDrawable('create_date')).TextColor := TAlphaColorRec.White;
+        TListItemText(ListViewAppsList.Items[ItemIndex].View.FindDrawable('app_property_requisites_count')).TextColor := TAlphaColorRec.White;
+        TListItemText(ListViewAppsList.Items[ItemIndex].View.FindDrawable('create_date')).TextColor := TAlphaColorRec.White;
 
-        TListItemText(ListViewAppsList.Items[ItemIndex].View.FindDrawable('create_date')).TextColor := TAlphaColor($FFFFFF);
+        // BlottomBlock Red
+        TListItemImage(ListViewAppsList.Items[ItemIndex].View.FindDrawable('BlottomBlock')).OwnsBitmap := True;
+        TListItemImage(ListViewAppsList.Items[ItemIndex].View.FindDrawable('BlottomBlock')).Bitmap :=
+          DModule.getBitmapFromResource('BlottomBlockRed');
+
       end
       else
       begin
-        ListViewAppsList.Selected.Height := 150;
+        ListViewAppsList.Selected.Height := v_height;
         TListItem(ListViewAppsList.Selected).View.FindDrawable('details').Visible := False;
+        TListItem(ListViewAppsList.Selected).View.FindDrawable('DetailsBackground').Visible := False;
         TListItemImage(ListViewAppsList.Selected.View.FindDrawable('ArrowIcon')).ImageIndex := 2;
         TListItemImage(ListViewAppsList.Selected.View.FindDrawable('IconCalendar')).ImageIndex := 1;
-        TListItemImage(ListViewAppsList.Selected.View.FindDrawable('SelectedLineRedBG')).Visible := False;
 
         TListItemText(ListViewAppsList.Selected.View.FindDrawable('create_date')).TextColor := TAlphaColorRec.Black;
         TListItemText(ListViewAppsList.Selected.View.FindDrawable('app_property_requisites_count')).TextColor := TAlphaColorRec.Black;
+
+        // BlottomBlock
+        TListItemImage(ListViewAppsList.Items[ItemIndex].View.FindDrawable('BlottomBlock')).OwnsBitmap := True;
+        TListItemImage(ListViewAppsList.Items[ItemIndex].View.FindDrawable('BlottomBlock')).Bitmap := DModule.getBitmapFromResource('BlottomBlock');
       end;
     end
     else
@@ -464,13 +490,21 @@ begin
   TListItemImage(AItem.Objects.FindDrawable('ImageID')).OwnsBitmap := True;
   TListItemImage(AItem.Objects.FindDrawable('ImageID')).Bitmap := DModule.getBitmapFromResource('AppListImageID');
 
-  // Bottom grey background
-  TListItemImage(AItem.Objects.FindDrawable('ImageBottom')).OwnsBitmap := True;
-  TListItemImage(AItem.Objects.FindDrawable('ImageBottom')).Bitmap := DModule.getBitmapFromResource('ImageBottom');
+  // BlottomBlock
+  TListItemImage(AItem.Objects.FindDrawable('BlottomBlock')).OwnsBitmap := True;
+  TListItemImage(AItem.Objects.FindDrawable('BlottomBlock')).Bitmap := DModule.getBitmapFromResource('BlottomBlock');
 
-  // Bottom grey background
-  TListItemImage(AItem.Objects.FindDrawable('ImageGreyLine')).OwnsBitmap := True;
-  TListItemImage(AItem.Objects.FindDrawable('ImageGreyLine')).Bitmap := DModule.getBitmapFromResource('AppList_middleGreyLine');
+  // DetailsBackground
+  TListItemImage(AItem.Objects.FindDrawable('DetailsBackground')).OwnsBitmap := True;
+  TListItemImage(AItem.Objects.FindDrawable('DetailsBackground')).Bitmap := DModule.getBitmapFromResource('DetailsBackground');
+
+  // Top BG
+  TListItemImage(AItem.Objects.FindDrawable('ImageTopBG')).OwnsBitmap := True;
+  TListItemImage(AItem.Objects.FindDrawable('ImageTopBG')).Bitmap := DModule.getBitmapFromResource('ItemSpaceBG');
+
+  // Bottom BG
+  TListItemImage(AItem.Objects.FindDrawable('ImageBottomBG')).OwnsBitmap := True;
+  TListItemImage(AItem.Objects.FindDrawable('ImageBottomBG')).Bitmap := DModule.getBitmapFromResource('ItemSpaceBG');
 
 end;
 
@@ -492,6 +526,9 @@ begin
 end;
 
 procedure TAppListFormV2.ListViewOffersUpdateObjects(const Sender: TObject; const AItem: TListViewItem);
+var
+  StarName: String;
+  StarNumber: Integer;
 begin
   if TListItemText(AItem.Objects.FindDrawable('approved')).Text = 'დადასტურებულია' then
   begin
@@ -506,11 +543,32 @@ begin
   // ImageOfferPrice
   TListItemImage(AItem.Objects.FindDrawable('ImageOfferPrice')).OwnsBitmap := True;
   TListItemImage(AItem.Objects.FindDrawable('ImageOfferPrice')).Bitmap := DModule.getBitmapFromResource('OfferPriceBG');
+
   // Bottom grey background
   TListItemImage(AItem.Objects.FindDrawable('ImageBottomBackground')).OwnsBitmap := True;
   TListItemImage(AItem.Objects.FindDrawable('ImageBottomBackground')).Bitmap := DModule.getBitmapFromResource('OfferBottomBackground');
 
-  TListItemImage(AItem.Objects.FindDrawable('ImageStars')).ImageIndex := TListItemText(AItem.Objects.FindDrawable('TextStars')).Text.ToInteger;
+  // Rating Stars
+  StarNumber := TListItemText(AItem.Objects.FindDrawable('TextStars')).Text.ToInteger;
+  case StarNumber of
+    0:
+      StarName := '0star';
+    1:
+      StarName := '1star';
+    2:
+      StarName := '2star';
+    3:
+      StarName := '3star';
+    4:
+      StarName := '4star';
+    5:
+      StarName := '5star';
+  end;
+
+  TListItemImage(AItem.Objects.FindDrawable('ImageStars')).OwnsBitmap := True;
+  TListItemImage(AItem.Objects.FindDrawable('ImageStars')).Bitmap := DModule.getBitmapFromResource(StarName);
+
+  // TListItemImage(AItem.Objects.FindDrawable('ImageStars')).ImageIndex := TListItemText(AItem.Objects.FindDrawable('TextStars')).Text.ToInteger;
 end;
 
 procedure TAppListFormV2.ListViewPropertiesUpdateObjects(const Sender: TObject; const AItem: TListViewItem);
@@ -527,6 +585,11 @@ begin
 
   TListItemImage(AItem.Objects.FindDrawable('ImageLine4')).OwnsBitmap := True;
   TListItemImage(AItem.Objects.FindDrawable('ImageLine4')).Bitmap := DModule.getBitmapFromResource('AppDetails_line');
+end;
+
+procedure TAppListFormV2.RectangleCancelTap(Sender: TObject; const Point: TPointF);
+begin
+  RectangleCancel.Visible := False;
 end;
 
 procedure TAppListFormV2.ListViewAmzomveliPullRefresh(Sender: TObject);
@@ -560,6 +623,7 @@ begin
     procedure()
     var
       offered_price: string;
+      is_my_app: Integer;
     begin
       RESTRequestApp.Params.Clear;
       RESTRequestApp.AddParameter('app_id', self.app_id.ToString);
@@ -596,7 +660,9 @@ begin
           ListViewProperties.Height := FDMemTableapp_property_requisites.RecordCount * 340;
         end);
       if FDMemTableApp.Active = True then
-        if FDMemTableApp.FieldByName('is_my_app').AsInteger = 1 then
+      begin
+        is_my_app := FDMemTableApp.FieldByName('is_my_app').AsInteger;
+        if is_my_app = 1 then
         begin
           TThread.Queue(nil,
             procedure
@@ -604,6 +670,7 @@ begin
               TabItemOffer.Visible := True;
             end);
         end;
+      end;
       if FDMemTableBids.RecordCount > 0 then
         TThread.Queue(nil,
           procedure

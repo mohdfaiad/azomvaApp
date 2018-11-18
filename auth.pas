@@ -111,8 +111,11 @@ type
     procedure FloatAnimationPassAuthFinish(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
+    procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
+    procedure FormVirtualKeyboardHidden(Sender: TObject; KeyboardVisible: Boolean; const Bounds: TRect);
+    procedure FormVirtualKeyboardShown(Sender: TObject; KeyboardVisible: Boolean; const Bounds: TRect);
   private
-    function checkEmailPass(EmailAddress, password, op: string): boolean;
+    function checkEmailPass(EmailAddress, password, op: string): Boolean;
     procedure AuthHttpRequest(p_AuthEmail, p_AuthPassword: string);
     procedure deleteUser;
     procedure insertUser(p_params: TStringList);
@@ -120,10 +123,11 @@ type
     { Private declarations }
   public
     { Public declarations }
-    closeAfterReg: boolean;
-    isConsole: boolean;
+    closeAfterReg: Boolean;
+    isConsole: Boolean;
+    v_KeyboardVisible: Boolean;
     procedure initForm;
-    function consoleAuth(p_AuthEmail, p_AuthPassword: string): boolean;
+    function consoleAuth(p_AuthEmail, p_AuthPassword: string): Boolean;
   end;
 
 var
@@ -144,6 +148,7 @@ var
 
   helper: THelperUnit;
 begin
+  self.v_KeyboardVisible := False;
   self.LabelStatusBar.Text := DModule.statusBarTitle;
   self.RectangleStatusBar.Opacity := DModule.statusBarOpacity;
   self.Show;
@@ -257,7 +262,7 @@ begin
     end);
 end;
 
-function TauthForm.checkEmailPass(EmailAddress, password, op: string): boolean;
+function TauthForm.checkEmailPass(EmailAddress, password, op: string): Boolean;
 // var HelperUnit: THelperUnit;
 begin
   // HelperUnit := THelperUnit.Create;
@@ -339,9 +344,9 @@ begin
     SQL.Add('insert into ' + DModule.SQLiteDBName + '.current_user ');
     SQL.Add('(full_name,phone,email,token,created,Legacy_server_key,GCMAppID,MyContractsCount,MyAppsCount,notifications)');
     SQL.Add('values');
-    SQL.Add('("' + p_params.Strings[0] + '","' + p_params.Strings[1] + '","' + p_params.Strings[2] + '","' +
-      p_params.Strings[3] + '","' + p_params.Strings[4] + '","' + p_params.Strings[5] + '","' + p_params.Strings[6] +
-      '","' + p_params.Strings[7] + '","' + p_params.Strings[8] + '","' + p_params.Strings[9] + '")');
+    SQL.Add('("' + p_params.Strings[0] + '","' + p_params.Strings[1] + '","' + p_params.Strings[2] + '","' + p_params.Strings[3] + '","' +
+      p_params.Strings[4] + '","' + p_params.Strings[5] + '","' + p_params.Strings[6] + '","' + p_params.Strings[7] + '","' + p_params.Strings[8] +
+      '","' + p_params.Strings[9] + '")');
     ExecSQL;
   end;
   DModule.FDTableCurrentUser.Refresh;
@@ -356,7 +361,7 @@ begin
   RESTRequestAuth.Execute;
 end;
 
-function TauthForm.consoleAuth(p_AuthEmail, p_AuthPassword: string): boolean;
+function TauthForm.consoleAuth(p_AuthEmail, p_AuthPassword: string): Boolean;
 begin
   self.AuthHttpRequest(p_AuthEmail, p_AuthPassword);
   if FDMemTableAuth.FieldByName('loginstatus').AsInteger = 1 then
@@ -383,6 +388,23 @@ end;
 procedure TauthForm.FormCreate(Sender: TObject);
 begin
   self.closeAfterReg := False;
+end;
+
+procedure TauthForm.FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
+begin
+  if self.v_KeyboardVisible = False then
+    if Key = 137 then
+      self.Close;
+end;
+
+procedure TauthForm.FormVirtualKeyboardHidden(Sender: TObject; KeyboardVisible: Boolean; const Bounds: TRect);
+begin
+  self.v_KeyboardVisible := False;
+end;
+
+procedure TauthForm.FormVirtualKeyboardShown(Sender: TObject; KeyboardVisible: Boolean; const Bounds: TRect);
+begin
+  self.v_KeyboardVisible := True;
 end;
 
 procedure TauthForm.HeaderFrame1ButtonBackClick(Sender: TObject);

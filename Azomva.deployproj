@@ -24,9 +24,198 @@
     <ItemGroup Condition="'$(Platform)'=='iOSDevice64'"/>
     <ItemGroup Condition="'$(Platform)'=='iOSDevice32'"/>
     <ItemGroup Condition="'$(Platform)'=='Android'">
-        <DeployFile Include="..\azomva.com\Design\azomvebi\icons\AppDetails\OfferPrice.png" Condition="'$(Config)'=='Debug'">
+        <DeployFile Include="..\azomva.com\Design\azomvebi\icons\AppList\400x40SelectedLineRedBG.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Azomva\assets\internal\</RemoteDir>
+            <RemoteName>400x40SelectedLineRedBG.png</RemoteName>
+            <DeployClass>ProjectFile</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="GlobalFiles\styles.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Azomva\res\values-v21\</RemoteDir>
+            <RemoteName>styles.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="SQLite\main.sqlite3" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Azomva\assets\internal\</RemoteDir>
+            <RemoteName>main.sqlite3</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\azomva.com\Design\azomvebi\icons\stars\2.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Azomva\assets\internal\</RemoteDir>
+            <RemoteName>2.png</RemoteName>
+            <DeployClass>ProjectFile</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\azomva.com\Design\azomvebi\icons\stars\5.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>Azomva\assets\internal\</RemoteDir>
+            <RemoteName>5.png</RemoteName>
+            <DeployClass>ProjectFile</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\Debug\splash_image_def.xml" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>Azomva\res\drawable\</RemoteDir>
+            <RemoteName>splash_image_def.xml</RemoteName>
+            <DeployClass>AndroidSplashImageDef</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\azomva.com\Design\azomvebi\icons\AppList\DetailsBackground.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>Azomva\assets\internal\</RemoteDir>
+            <RemoteName>DetailsBackground.png</RemoteName>
+            <DeployClass>ProjectFile</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="logo\logos\android\48x48.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>Azomva\res\drawable-mdpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon48</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="GlobalFiles\Strings.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Azomva\res\values\</RemoteDir>
+            <RemoteName>Strings.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="logo\logos\android\144x144.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Azomva\res\drawable-xxhdpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon144</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\azomva.com\Design\azomvebi\icons\AppDetails\Line.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>Azomva\assets\internal\</RemoteDir>
+            <RemoteName>Line.png</RemoteName>
+            <DeployClass>ProjectFile</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\azomva.com\Design\azomvebi\icons\AppDetails\OfferPrice.png" Condition="'$(Config)'=='Release'">
             <RemoteDir>Azomva\assets\internal\</RemoteDir>
             <RemoteName>OfferPrice.png</RemoteName>
+            <DeployClass>ProjectFile</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\azomva.com\Design\azomvebi\icons\AppDetails\Line.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Azomva\assets\internal\</RemoteDir>
+            <RemoteName>Line.png</RemoteName>
+            <DeployClass>ProjectFile</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="GlobalFiles\network_security_config.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Azomva\res\xml\</RemoteDir>
+            <RemoteName>network_security_config.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\azomva.com\Design\azomvebi\icons\stars\3.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>Azomva\assets\internal\</RemoteDir>
+            <RemoteName>3.png</RemoteName>
+            <DeployClass>ProjectFile</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="logo\logos\android\470x320.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Azomva\res\drawable-normal\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage470</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\azomva.com\Design\azomvebi\icons\stars\1.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Azomva\assets\internal\</RemoteDir>
+            <RemoteName>1.png</RemoteName>
+            <DeployClass>ProjectFile</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\azomva.com\Design\azomvebi\icons\AppList\BottomBlock.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>Azomva\assets\internal\</RemoteDir>
+            <RemoteName>BottomBlock.png</RemoteName>
+            <DeployClass>ProjectFile</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="logo\logos\android\36x36.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>Azomva\res\drawable-ldpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon36</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="GlobalFiles\colors.xml" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>Azomva\res\values\</RemoteDir>
+            <RemoteName>colors.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\Release\styles.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Azomva\res\values\</RemoteDir>
+            <RemoteName>styles.xml</RemoteName>
+            <DeployClass>AndroidSplashStyles</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\azomva.com\Design\azomvebi\icons\AppList\400x40SelectedLineRedBG.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>Azomva\assets\internal\</RemoteDir>
+            <RemoteName>400x40SelectedLineRedBG.png</RemoteName>
             <DeployClass>ProjectFile</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -42,28 +231,10 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="SQLite\main.sqlite3" Condition="'$(Config)'=='Debug'">
-            <RemoteDir>Azomva\assets\internal\</RemoteDir>
-            <RemoteName>main.sqlite3</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="logo\logos\android\960x720.png" Condition="'$(Config)'=='Debug'">
-            <RemoteDir>Azomva\res\drawable-xlarge\</RemoteDir>
-            <RemoteName>splash_image.png</RemoteName>
-            <DeployClass>Android_SplashImage960</DeployClass>
-            <Operation>1</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="logo\logos\android\96x96.png" Condition="'$(Config)'=='Debug'">
-            <RemoteDir>Azomva\res\drawable-xhdpi\</RemoteDir>
-            <RemoteName>ic_launcher.png</RemoteName>
-            <DeployClass>Android_LauncherIcon96</DeployClass>
+        <DeployFile Include="$(BDS)\lib\android\release\mips\libnative-activity.so" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Azomva\library\lib\mips\</RemoteDir>
+            <RemoteName>libAzomva.so</RemoteName>
+            <DeployClass>AndroidLibnativeMipsFile</DeployClass>
             <Operation>1</Operation>
             <LocalCommand/>
             <RemoteCommand/>
@@ -78,29 +249,11 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="logo\logos\android\426x320.png" Condition="'$(Config)'=='Debug'">
-            <RemoteDir>Azomva\res\drawable-small\</RemoteDir>
-            <RemoteName>splash_image.png</RemoteName>
-            <DeployClass>Android_SplashImage426</DeployClass>
-            <Operation>1</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="$(BDS)\lib\android\debug\mips\libnative-activity.so" Condition="'$(Config)'=='Debug'">
-            <RemoteDir>Azomva\library\lib\mips\</RemoteDir>
-            <RemoteName>libAzomva.so</RemoteName>
-            <DeployClass>AndroidLibnativeMipsFile</DeployClass>
-            <Operation>1</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="$(NDKBasePath)\prebuilt\android-arm\gdbserver\gdbserver" Condition="'$(Config)'=='Debug'">
-            <RemoteDir>Azomva\library\lib\armeabi-v7a\</RemoteDir>
-            <RemoteName>gdbserver</RemoteName>
-            <DeployClass>AndroidGDBServer</DeployClass>
-            <Operation>1</Operation>
+        <DeployFile Include="fonts\FontAwesome.ttf" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Azomva\assets\internal\</RemoteDir>
+            <RemoteName>FontAwesome.ttf</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
             <LocalCommand/>
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
@@ -123,15 +276,6 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="Android\Debug\splash_image_def.xml" Condition="'$(Config)'=='Debug'">
-            <RemoteDir>Azomva\res\drawable\</RemoteDir>
-            <RemoteName>splash_image_def.xml</RemoteName>
-            <DeployClass>AndroidSplashImageDef</DeployClass>
-            <Operation>1</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="Android\Debug\styles.xml" Condition="'$(Config)'=='Debug'">
             <RemoteDir>Azomva\res\values\</RemoteDir>
             <RemoteName>styles.xml</RemoteName>
@@ -141,19 +285,200 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="GlobalFiles\styles.xml" Condition="'$(Config)'=='Debug'">
-            <RemoteDir>Azomva\res\values-v21\</RemoteDir>
-            <RemoteName>styles.xml</RemoteName>
+        <DeployFile Include="$(BDS)\lib\android\release\armeabi\libnative-activity.so" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Azomva\library\lib\armeabi\</RemoteDir>
+            <RemoteName>libAzomva.so</RemoteName>
+            <DeployClass>AndroidLibnativeArmeabiFile</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\azomva.com\Design\azomvebi\icons\AppList\ListViewItemImageID.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Azomva\assets\internal\</RemoteDir>
+            <RemoteName>ListViewItemImageID.png</RemoteName>
+            <DeployClass>ProjectFile</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\azomva.com\Design\azomvebi\icons\stars\1.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>Azomva\assets\internal\</RemoteDir>
+            <RemoteName>1.png</RemoteName>
+            <DeployClass>ProjectFile</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\azomva.com\Design\azomvebi\icons\stars\2.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>Azomva\assets\internal\</RemoteDir>
+            <RemoteName>2.png</RemoteName>
+            <DeployClass>ProjectFile</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\azomva.com\Design\azomvebi\icons\stars\5.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Azomva\assets\internal\</RemoteDir>
+            <RemoteName>5.png</RemoteName>
+            <DeployClass>ProjectFile</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="fonts\BPG Nino Mtavruli.ttf" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Azomva\assets\internal\</RemoteDir>
+            <RemoteName>BPG Nino Mtavruli.ttf</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="logo\logos\android\48x48.png" Condition="'$(Config)'=='Debug'">
-            <RemoteDir>Azomva\res\drawable-mdpi\</RemoteDir>
+        <DeployFile Include="..\azomva.com\Design\azomvebi\icons\AppDetails\2000x40amzomveli.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>Azomva\assets\internal\</RemoteDir>
+            <RemoteName>2000x40amzomveli.png</RemoteName>
+            <DeployClass>ProjectFile</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\azomva.com\Design\azomvebi\icons\stars\4.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Azomva\assets\internal\</RemoteDir>
+            <RemoteName>4.png</RemoteName>
+            <DeployClass>ProjectFile</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="GlobalFiles\Strings.xml" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>Azomva\res\values\</RemoteDir>
+            <RemoteName>Strings.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\Release\libAzomva.so" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Azomva\library\lib\armeabi-v7a\</RemoteDir>
+            <RemoteName>libAzomva.so</RemoteName>
+            <DeployClass>ProjectOutput</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="..\azomva.com\Design\azomvebi\icons\AppList\ItemSpaceBG.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Azomva\assets\internal\</RemoteDir>
+            <RemoteName>ItemSpaceBG.png</RemoteName>
+            <DeployClass>ProjectFile</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="logo\logos\android\72x72.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Azomva\res\drawable-hdpi\</RemoteDir>
             <RemoteName>ic_launcher.png</RemoteName>
-            <DeployClass>Android_LauncherIcon48</DeployClass>
+            <DeployClass>Android_LauncherIcon72</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="logo\logos\android\96x96.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Azomva\res\drawable-xhdpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon96</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\Release\AndroidManifest.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Azomva\</RemoteDir>
+            <RemoteName>AndroidManifest.xml</RemoteName>
+            <DeployClass>ProjectAndroidManifest</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="GlobalFiles\network_security_config.xml" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>Azomva\res\xml\</RemoteDir>
+            <RemoteName>network_security_config.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\azomva.com\Design\azomvebi\icons\AppList\ListViewItemMiddleGreyLine.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Azomva\assets\internal\</RemoteDir>
+            <RemoteName>ListViewItemMiddleGreyLine.png</RemoteName>
+            <DeployClass>ProjectFile</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\azomva.com\Design\azomvebi\icons\AppDetails\OfferPrice.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>Azomva\assets\internal\</RemoteDir>
+            <RemoteName>OfferPrice.png</RemoteName>
+            <DeployClass>ProjectFile</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\Release\splash_image_def.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Azomva\res\drawable\</RemoteDir>
+            <RemoteName>splash_image_def.xml</RemoteName>
+            <DeployClass>AndroidSplashImageDef</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="logo\logos\android\960x720.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>Azomva\res\drawable-xlarge\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage960</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\azomva.com\Design\azomvebi\icons\AppList\ItemSpaceBG.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>Azomva\assets\internal\</RemoteDir>
+            <RemoteName>ItemSpaceBG.png</RemoteName>
+            <DeployClass>ProjectFile</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\azomva.com\Design\azomvebi\icons\stars\0.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Azomva\assets\internal\</RemoteDir>
+            <RemoteName>0.png</RemoteName>
+            <DeployClass>ProjectFile</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\lib\android\debug\mips\libnative-activity.so" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>Azomva\library\lib\mips\</RemoteDir>
+            <RemoteName>libAzomva.so</RemoteName>
+            <DeployClass>AndroidLibnativeMipsFile</DeployClass>
             <Operation>1</Operation>
             <LocalCommand/>
             <RemoteCommand/>
@@ -204,9 +529,135 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="..\azomva.com\Design\azomvebi\icons\AppDetails\Line.png" Condition="'$(Config)'=='Debug'">
+        <DeployFile Include="..\azomva.com\Design\azomvebi\icons\stars\0.png" Condition="'$(Config)'=='Debug'">
             <RemoteDir>Azomva\assets\internal\</RemoteDir>
-            <RemoteName>Line.png</RemoteName>
+            <RemoteName>0.png</RemoteName>
+            <DeployClass>ProjectFile</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\azomva.com\Design\azomvebi\icons\AppList\ListViewItemBottom.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Azomva\assets\internal\</RemoteDir>
+            <RemoteName>ListViewItemBottom.png</RemoteName>
+            <DeployClass>ProjectFile</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\Release\classes.dex" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Azomva\classes\</RemoteDir>
+            <RemoteName>classes.dex</RemoteName>
+            <DeployClass>AndroidClassesDexFile</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="logo\logos\android\960x720.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Azomva\res\drawable-xlarge\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage960</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="logo\logos\android\426x320.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Azomva\res\drawable-small\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage426</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="logo\logos\android\36x36.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Azomva\res\drawable-ldpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon36</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="SQLite\main.sqlite3" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>Azomva\assets\internal\</RemoteDir>
+            <RemoteName>main.sqlite3</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="GlobalFiles\colors.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Azomva\res\values\</RemoteDir>
+            <RemoteName>colors.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\azomva.com\Design\azomvebi\icons\AppList\DetailsBackground.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Azomva\assets\internal\</RemoteDir>
+            <RemoteName>DetailsBackground.png</RemoteName>
+            <DeployClass>ProjectFile</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="logo\logos\android\96x96.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>Azomva\res\drawable-xhdpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon96</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\azomva.com\Design\azomvebi\icons\stars\4.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>Azomva\assets\internal\</RemoteDir>
+            <RemoteName>4.png</RemoteName>
+            <DeployClass>ProjectFile</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="logo\logos\android\426x320.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>Azomva\res\drawable-small\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage426</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="logo\logos\android\640x480.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Azomva\res\drawable-large\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage640</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="GlobalFiles\styles.xml" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>Azomva\res\values-v21\</RemoteDir>
+            <RemoteName>styles.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\azomva.com\Design\azomvebi\icons\stars\3.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Azomva\assets\internal\</RemoteDir>
+            <RemoteName>3.png</RemoteName>
             <DeployClass>ProjectFile</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -222,7 +673,7 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="..\azomva.com\Design\azomvebi\icons\AppDetails\2000x40amzomveli.png" Condition="'$(Config)'=='Debug'">
+        <DeployFile Include="..\azomva.com\Design\azomvebi\icons\AppDetails\2000x40amzomveli.png" Condition="'$(Config)'=='Release'">
             <RemoteDir>Azomva\assets\internal\</RemoteDir>
             <RemoteName>2000x40amzomveli.png</RemoteName>
             <DeployClass>ProjectFile</DeployClass>
@@ -231,11 +682,11 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="GlobalFiles\Strings.xml" Condition="'$(Config)'=='Debug'">
-            <RemoteDir>Azomva\res\values\</RemoteDir>
-            <RemoteName>Strings.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
+        <DeployFile Include="logo\logos\android\48x48.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Azomva\res\drawable-mdpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon48</DeployClass>
+            <Operation>1</Operation>
             <LocalCommand/>
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
@@ -250,37 +701,10 @@
             <Overwrite>True</Overwrite>
             <Required>True</Required>
         </DeployFile>
-        <DeployFile Include="..\azomva.com\Design\azomvebi\icons\AppList\BottomBlock.png" Condition="'$(Config)'=='Debug'">
+        <DeployFile Include="..\azomva.com\Design\azomvebi\icons\AppList\BottomBlock.png" Condition="'$(Config)'=='Release'">
             <RemoteDir>Azomva\assets\internal\</RemoteDir>
             <RemoteName>BottomBlock.png</RemoteName>
             <DeployClass>ProjectFile</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="logo\logos\android\36x36.png" Condition="'$(Config)'=='Debug'">
-            <RemoteDir>Azomva\res\drawable-ldpi\</RemoteDir>
-            <RemoteName>ic_launcher.png</RemoteName>
-            <DeployClass>Android_LauncherIcon36</DeployClass>
-            <Operation>1</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="GlobalFiles\network_security_config.xml" Condition="'$(Config)'=='Debug'">
-            <RemoteDir>Azomva\res\xml\</RemoteDir>
-            <RemoteName>network_security_config.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="GlobalFiles\colors.xml" Condition="'$(Config)'=='Debug'">
-            <RemoteDir>Azomva\res\values\</RemoteDir>
-            <RemoteName>colors.xml</RemoteName>
-            <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
             <RemoteCommand/>
@@ -297,18 +721,18 @@
         </DeployFile>
     </ItemGroup>
     <ItemGroup Condition="'$(Platform)'=='iOSSimulator'">
-        <DeployFile Include="$(BDS)\Redist\iossimulator\libPCRE.dylib">
+        <DeployFile Include="$(BDS)\Redist\iossimulator\libcgunwind.1.0.dylib">
             <RemoteDir>Azomva.app\</RemoteDir>
-            <RemoteName>libPCRE.dylib</RemoteName>
+            <RemoteName>libcgunwind.1.0.dylib</RemoteName>
             <DeployClass>DependencyModule</DeployClass>
             <Operation>1</Operation>
             <LocalCommand/>
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="$(BDS)\Redist\iossimulator\libcgunwind.1.0.dylib">
+        <DeployFile Include="$(BDS)\Redist\iossimulator\libPCRE.dylib">
             <RemoteDir>Azomva.app\</RemoteDir>
-            <RemoteName>libcgunwind.1.0.dylib</RemoteName>
+            <RemoteName>libPCRE.dylib</RemoteName>
             <DeployClass>DependencyModule</DeployClass>
             <Operation>1</Operation>
             <LocalCommand/>
