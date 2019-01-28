@@ -16,7 +16,8 @@ uses
   FMX.Bind.Editors, Data.Bind.EngExt, FMX.Bind.DBEngExt, System.Threading,
   FMX.MultiView, FMX.Layouts, FMX.ListBox, FMX.Ani, FMX.LoadingIndicator,
   Header, System.ImageList, FMX.ImgList, appDetailsFR, FMX.Effects,
-  FMX.TabControl, FMX.ScrollBox, FMX.Memo, FMX.Edit, FMX.SearchBox, FMX.Gestures, System.Actions, FMX.ActnList;
+  FMX.TabControl, FMX.ScrollBox, FMX.Memo, FMX.Edit, FMX.SearchBox,
+  FMX.Gestures, System.Actions, FMX.ActnList;
 
 type
   TAppListFormV2 = class(TForm)
@@ -194,26 +195,37 @@ type
     ActionSlideDownAppDetails: TAction;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ListViewAppsListPullRefresh(Sender: TObject);
-    procedure ListViewAppsListItemClickEx(const Sender: TObject; ItemIndex: Integer; const LocalClickPos: TPointF;
+    procedure ListViewAppsListItemClickEx(const Sender: TObject;
+      ItemIndex: Integer; const LocalClickPos: TPointF;
       const ItemObject: TListItemDrawable);
     procedure ButtonCloseObjectDetailsClick(Sender: TObject);
-    procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
+    procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
+      Shift: TShiftState);
     procedure HeaderFrame1ButtonBackClick(Sender: TObject);
-    procedure ListViewAppsListUpdateObjects(const Sender: TObject; const AItem: TListViewItem);
+    procedure ListViewAppsListUpdateObjects(const Sender: TObject;
+      const AItem: TListViewItem);
     procedure FloatAnimationLADFinish(Sender: TObject);
-    procedure ListViewAppDetailsUpdateObjects(const Sender: TObject; const AItem: TListViewItem);
-    procedure ListViewOffersItemClick(const Sender: TObject; const AItem: TListViewItem);
+    procedure ListViewAppDetailsUpdateObjects(const Sender: TObject;
+      const AItem: TListViewItem);
+    procedure ListViewOffersItemClick(const Sender: TObject;
+      const AItem: TListViewItem);
     procedure ListViewOffersPullRefresh(Sender: TObject);
     procedure ListViewAmzomveliPullRefresh(Sender: TObject);
-    procedure ListViewOffersUpdateObjects(const Sender: TObject; const AItem: TListViewItem);
-    procedure ListViewPropertiesUpdateObjects(const Sender: TObject; const AItem: TListViewItem);
-    procedure ListViewAmzomveliUpdateObjects(const Sender: TObject; const AItem: TListViewItem);
+    procedure ListViewOffersUpdateObjects(const Sender: TObject;
+      const AItem: TListViewItem);
+    procedure ListViewPropertiesUpdateObjects(const Sender: TObject;
+      const AItem: TListViewItem);
+    procedure ListViewAmzomveliUpdateObjects(const Sender: TObject;
+      const AItem: TListViewItem);
     procedure btnSearchClick(Sender: TObject);
-    procedure edtSearchAppsKeywordEditKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
+    procedure edtSearchAppsKeywordEditKeyUp(Sender: TObject; var Key: Word;
+      var KeyChar: Char; Shift: TShiftState);
     procedure ActionSlideDownAppDetailsExecute(Sender: TObject);
     procedure RectangleCancelTap(Sender: TObject; const Point: TPointF);
-    procedure FormVirtualKeyboardHidden(Sender: TObject; KeyboardVisible: Boolean; const Bounds: TRect);
-    procedure FormVirtualKeyboardShown(Sender: TObject; KeyboardVisible: Boolean; const Bounds: TRect);
+    procedure FormVirtualKeyboardHidden(Sender: TObject;
+      KeyboardVisible: Boolean; const Bounds: TRect);
+    procedure FormVirtualKeyboardShown(Sender: TObject;
+      KeyboardVisible: Boolean; const Bounds: TRect);
   private
     app_id: Integer;
     is_owner: Boolean;
@@ -258,9 +270,11 @@ begin
         Break;
       End;
 
-  LayoutAppsDetails.Position.Y := self.RectangleMain.Height + HeaderFrame1.Height + RectangleStatusBar.Height;
+  LayoutAppsDetails.Position.Y := self.RectangleMain.Height +
+    HeaderFrame1.Height + RectangleStatusBar.Height + 150;
   self.FloatAnimationLAD.StartValue := LayoutAppsDetails.Position.Y;
-  self.FloatAnimationLAD.StopValue := HeaderFrame1.Height + RectangleStatusBar.Height;
+  self.FloatAnimationLAD.StopValue := HeaderFrame1.Height +
+    RectangleStatusBar.Height;
   LayoutAppsDetails.Height := self.RectangleMain.Height;
 
   self.loadOnlyMyApps := loadOnlyMyApps;
@@ -281,11 +295,14 @@ end;
 
 procedure TAppListFormV2.HeaderFrame1ButtonBackClick(Sender: TObject);
 begin
-  if self.LayoutAppsDetails.Position.Y = (HeaderFrame1.Height + RectangleStatusBar.Height) then
+  if self.LayoutAppsDetails.Position.Y = (HeaderFrame1.Height +
+    RectangleStatusBar.Height) then
   begin
     FMXLoadingLoadAppDetails.Visible := True;
-    FloatAnimationLAD.StartValue := HeaderFrame1.Height + RectangleStatusBar.Height;;
-    FloatAnimationLAD.StopValue := self.RectangleMain.Height + HeaderFrame1.Height + RectangleStatusBar.Height;
+    FloatAnimationLAD.StartValue := HeaderFrame1.Height +
+      RectangleStatusBar.Height;;
+    FloatAnimationLAD.StopValue := self.RectangleMain.Height +
+      HeaderFrame1.Height + RectangleStatusBar.Height;
     FloatAnimationLAD.Start;
     self.HeaderFrame1.LabelAppName.Text := 'განცხადების სია';
   end
@@ -342,7 +359,8 @@ begin
   // self.SearchBoxAppsListView.Inflate;
 end;
 
-procedure TAppListFormV2.edtSearchAppsKeywordEditKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
+procedure TAppListFormV2.edtSearchAppsKeywordEditKeyUp(Sender: TObject;
+var Key: Word; var KeyChar: Char; Shift: TShiftState);
 begin
   self.ListViewAppsSearchAction(edtSearchAppsKeywordEdit.Text);
 end;
@@ -362,82 +380,112 @@ begin
   Action := TCloseAction.caFree;
 end;
 
-procedure TAppListFormV2.FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
+procedure TAppListFormV2.FormKeyUp(Sender: TObject; var Key: Word;
+var KeyChar: Char; Shift: TShiftState);
 begin
   if self.v_KeyboardVisible = False then
     if Key = 137 then
       self.Close;
 end;
 
-procedure TAppListFormV2.FormVirtualKeyboardHidden(Sender: TObject; KeyboardVisible: Boolean; const Bounds: TRect);
+procedure TAppListFormV2.FormVirtualKeyboardHidden(Sender: TObject;
+KeyboardVisible: Boolean; const Bounds: TRect);
 begin
-self.v_KeyboardVisible := False;
+  self.v_KeyboardVisible := False;
 end;
 
-procedure TAppListFormV2.FormVirtualKeyboardShown(Sender: TObject; KeyboardVisible: Boolean; const Bounds: TRect);
+procedure TAppListFormV2.FormVirtualKeyboardShown(Sender: TObject;
+KeyboardVisible: Boolean; const Bounds: TRect);
 begin
-self.v_KeyboardVisible := True;
+  self.v_KeyboardVisible := True;
 end;
 
-procedure TAppListFormV2.ListViewAppDetailsUpdateObjects(const Sender: TObject; const AItem: TListViewItem);
+procedure TAppListFormV2.ListViewAppDetailsUpdateObjects(const Sender: TObject;
+const AItem: TListViewItem);
 begin
   // Grey line background
   TListItemImage(AItem.Objects.FindDrawable('ImageLine1')).OwnsBitmap := True;
-  TListItemImage(AItem.Objects.FindDrawable('ImageLine1')).Bitmap := DModule.getBitmapFromResource('AppDetails_line');
+  TListItemImage(AItem.Objects.FindDrawable('ImageLine1')).Bitmap :=
+    DModule.getBitmapFromResource('AppDetails_line');
 
   TListItemImage(AItem.Objects.FindDrawable('ImageLine2')).OwnsBitmap := True;
-  TListItemImage(AItem.Objects.FindDrawable('ImageLine2')).Bitmap := DModule.getBitmapFromResource('AppDetails_line');
+  TListItemImage(AItem.Objects.FindDrawable('ImageLine2')).Bitmap :=
+    DModule.getBitmapFromResource('AppDetails_line');
 
   TListItemImage(AItem.Objects.FindDrawable('ImageLine3')).OwnsBitmap := True;
-  TListItemImage(AItem.Objects.FindDrawable('ImageLine3')).Bitmap := DModule.getBitmapFromResource('AppDetails_line');
+  TListItemImage(AItem.Objects.FindDrawable('ImageLine3')).Bitmap :=
+    DModule.getBitmapFromResource('AppDetails_line');
 
   TListItemImage(AItem.Objects.FindDrawable('ImageLine4')).OwnsBitmap := True;
-  TListItemImage(AItem.Objects.FindDrawable('ImageLine4')).Bitmap := DModule.getBitmapFromResource('AppDetails_line');
+  TListItemImage(AItem.Objects.FindDrawable('ImageLine4')).Bitmap :=
+    DModule.getBitmapFromResource('AppDetails_line');
 end;
 
-procedure TAppListFormV2.ListViewAppsListItemClickEx(const Sender: TObject; ItemIndex: Integer; const LocalClickPos: TPointF;
+procedure TAppListFormV2.ListViewAppsListItemClickEx(const Sender: TObject;
+ItemIndex: Integer; const LocalClickPos: TPointF;
 const ItemObject: TListItemDrawable);
 var
   id, v_height, v_detailsHeight: Integer;
 begin
   if (ItemObject is TListItemText) or (ItemObject is TListItemImage) then
   begin
-    if (ItemObject.Name = 'app_property_requisites_count') or (ItemObject.Name = 'BlottomBlock') or (ItemObject.Name = 'SelectedLineRedBG') then
+    if (ItemObject.Name = 'app_property_requisites_count') or
+      (ItemObject.Name = 'BlottomBlock') or
+      (ItemObject.Name = 'SelectedLineRedBG') then
     begin
-      v_height := 170; // TListItemText(ListViewAppsList.Selected.View.FindDrawable('v_app_property_requisites_count')).Text.ToInteger * 150;
+      v_height := 170;
+      // TListItemText(ListViewAppsList.Selected.View.FindDrawable('v_app_property_requisites_count')).Text.ToInteger * 150;
       v_detailsHeight := 150;
       if ListViewAppsList.Selected.Height = v_height then
       begin
         ListViewAppsList.Selected.Height := v_height + v_detailsHeight;
-        TListItem(ListViewAppsList.Selected).View.FindDrawable('details').Visible := True;
-        TListItem(ListViewAppsList.Selected).View.FindDrawable('DetailsBackground').Visible := True;
-        TListItem(ListViewAppsList.Selected).View.FindDrawable('details').Height := v_detailsHeight;
-        TListItemImage(ListViewAppsList.Selected.View.FindDrawable('ArrowIcon')).ImageIndex := 3;
-        TListItemImage(ListViewAppsList.Selected.View.FindDrawable('IconCalendar')).ImageIndex := 5;
+        TListItem(ListViewAppsList.Selected).View.FindDrawable('details')
+          .Visible := True;
+        TListItem(ListViewAppsList.Selected).View.FindDrawable
+          ('DetailsBackground').Visible := True;
+        TListItem(ListViewAppsList.Selected).View.FindDrawable('details').Height
+          := v_detailsHeight;
+        TListItemImage(ListViewAppsList.Selected.View.FindDrawable('ArrowIcon'))
+          .ImageIndex := 3;
+        TListItemImage(ListViewAppsList.Selected.View.FindDrawable
+          ('IconCalendar')).ImageIndex := 5;
 
-        TListItemText(ListViewAppsList.Items[ItemIndex].View.FindDrawable('app_property_requisites_count')).TextColor := TAlphaColorRec.White;
-        TListItemText(ListViewAppsList.Items[ItemIndex].View.FindDrawable('create_date')).TextColor := TAlphaColorRec.White;
+        TListItemText(ListViewAppsList.Items[ItemIndex].View.FindDrawable
+          ('app_property_requisites_count')).TextColor := TAlphaColorRec.White;
+        TListItemText(ListViewAppsList.Items[ItemIndex].View.FindDrawable
+          ('create_date')).TextColor := TAlphaColorRec.White;
 
         // BlottomBlock Red
-        TListItemImage(ListViewAppsList.Items[ItemIndex].View.FindDrawable('BlottomBlock')).OwnsBitmap := True;
-        TListItemImage(ListViewAppsList.Items[ItemIndex].View.FindDrawable('BlottomBlock')).Bitmap :=
-          DModule.getBitmapFromResource('BlottomBlockRed');
+        TListItemImage(ListViewAppsList.Items[ItemIndex].View.FindDrawable
+          ('BlottomBlock')).OwnsBitmap := True;
+        TListItemImage(ListViewAppsList.Items[ItemIndex].View.FindDrawable
+          ('BlottomBlock')).Bitmap := DModule.getBitmapFromResource
+          ('BlottomBlockRed');
 
       end
       else
       begin
         ListViewAppsList.Selected.Height := v_height;
-        TListItem(ListViewAppsList.Selected).View.FindDrawable('details').Visible := False;
-        TListItem(ListViewAppsList.Selected).View.FindDrawable('DetailsBackground').Visible := False;
-        TListItemImage(ListViewAppsList.Selected.View.FindDrawable('ArrowIcon')).ImageIndex := 2;
-        TListItemImage(ListViewAppsList.Selected.View.FindDrawable('IconCalendar')).ImageIndex := 1;
+        TListItem(ListViewAppsList.Selected).View.FindDrawable('details')
+          .Visible := False;
+        TListItem(ListViewAppsList.Selected).View.FindDrawable
+          ('DetailsBackground').Visible := False;
+        TListItemImage(ListViewAppsList.Selected.View.FindDrawable('ArrowIcon'))
+          .ImageIndex := 2;
+        TListItemImage(ListViewAppsList.Selected.View.FindDrawable
+          ('IconCalendar')).ImageIndex := 1;
 
-        TListItemText(ListViewAppsList.Selected.View.FindDrawable('create_date')).TextColor := TAlphaColorRec.Black;
-        TListItemText(ListViewAppsList.Selected.View.FindDrawable('app_property_requisites_count')).TextColor := TAlphaColorRec.Black;
+        TListItemText(ListViewAppsList.Selected.View.FindDrawable('create_date')
+          ).TextColor := TAlphaColorRec.Black;
+        TListItemText(ListViewAppsList.Selected.View.FindDrawable
+          ('app_property_requisites_count')).TextColor := TAlphaColorRec.Black;
 
         // BlottomBlock
-        TListItemImage(ListViewAppsList.Items[ItemIndex].View.FindDrawable('BlottomBlock')).OwnsBitmap := True;
-        TListItemImage(ListViewAppsList.Items[ItemIndex].View.FindDrawable('BlottomBlock')).Bitmap := DModule.getBitmapFromResource('BlottomBlock');
+        TListItemImage(ListViewAppsList.Items[ItemIndex].View.FindDrawable
+          ('BlottomBlock')).OwnsBitmap := True;
+        TListItemImage(ListViewAppsList.Items[ItemIndex].View.FindDrawable
+          ('BlottomBlock')).Bitmap := DModule.getBitmapFromResource
+          ('BlottomBlock');
       end;
     end
     else
@@ -450,11 +498,14 @@ end;
 
 procedure TAppListFormV2.ActionSlideDownAppDetailsExecute(Sender: TObject);
 begin
-  if self.LayoutAppsDetails.Position.Y = (HeaderFrame1.Height + RectangleStatusBar.Height) then
+  if self.LayoutAppsDetails.Position.Y = (HeaderFrame1.Height +
+    RectangleStatusBar.Height) then
   begin
     FMXLoadingLoadAppDetails.Visible := True;
-    FloatAnimationLAD.StartValue := HeaderFrame1.Height + RectangleStatusBar.Height;;
-    FloatAnimationLAD.StopValue := self.RectangleMain.Height + HeaderFrame1.Height + RectangleStatusBar.Height;
+    FloatAnimationLAD.StartValue := HeaderFrame1.Height +
+      RectangleStatusBar.Height;;
+    FloatAnimationLAD.StopValue := self.RectangleMain.Height +
+      HeaderFrame1.Height + RectangleStatusBar.Height;
     FloatAnimationLAD.Start;
     self.HeaderFrame1.LabelAppName.Text := 'განცხადების სია';
   end
@@ -465,8 +516,10 @@ begin
   FMXLoadingLoadAppDetails.Visible := True;
   initDetails(p_id);
   self.HeaderFrame1.LabelAppName.Text := 'განცხადება N ' + p_id.ToString;
-  FloatAnimationLAD.StartValue := self.RectangleMain.Height + HeaderFrame1.Height + RectangleStatusBar.Height;
-  FloatAnimationLAD.StopValue := HeaderFrame1.Height + RectangleStatusBar.Height;
+  FloatAnimationLAD.StartValue := self.RectangleMain.Height +
+    HeaderFrame1.Height + RectangleStatusBar.Height;
+  FloatAnimationLAD.StopValue := HeaderFrame1.Height +
+    RectangleStatusBar.Height;
   FloatAnimationLAD.Start;
 end;
 
@@ -476,7 +529,8 @@ begin
   self.reloadItems('id', 'desc');
 end;
 
-procedure TAppListFormV2.ListViewAppsListUpdateObjects(const Sender: TObject; const AItem: TListViewItem);
+procedure TAppListFormV2.ListViewAppsListUpdateObjects(const Sender: TObject;
+const AItem: TListViewItem);
 var
   v_width: Single;
 begin
@@ -488,27 +542,35 @@ begin
 
   // ID background
   TListItemImage(AItem.Objects.FindDrawable('ImageID')).OwnsBitmap := True;
-  TListItemImage(AItem.Objects.FindDrawable('ImageID')).Bitmap := DModule.getBitmapFromResource('AppListImageID');
+  TListItemImage(AItem.Objects.FindDrawable('ImageID')).Bitmap :=
+    DModule.getBitmapFromResource('AppListImageID');
 
   // BlottomBlock
   TListItemImage(AItem.Objects.FindDrawable('BlottomBlock')).OwnsBitmap := True;
-  TListItemImage(AItem.Objects.FindDrawable('BlottomBlock')).Bitmap := DModule.getBitmapFromResource('BlottomBlock');
+  TListItemImage(AItem.Objects.FindDrawable('BlottomBlock')).Bitmap :=
+    DModule.getBitmapFromResource('BlottomBlock');
 
   // DetailsBackground
-  TListItemImage(AItem.Objects.FindDrawable('DetailsBackground')).OwnsBitmap := True;
-  TListItemImage(AItem.Objects.FindDrawable('DetailsBackground')).Bitmap := DModule.getBitmapFromResource('DetailsBackground');
+  TListItemImage(AItem.Objects.FindDrawable('DetailsBackground'))
+    .OwnsBitmap := True;
+  TListItemImage(AItem.Objects.FindDrawable('DetailsBackground')).Bitmap :=
+    DModule.getBitmapFromResource('DetailsBackground');
 
   // Top BG
   TListItemImage(AItem.Objects.FindDrawable('ImageTopBG')).OwnsBitmap := True;
-  TListItemImage(AItem.Objects.FindDrawable('ImageTopBG')).Bitmap := DModule.getBitmapFromResource('ItemSpaceBG');
+  TListItemImage(AItem.Objects.FindDrawable('ImageTopBG')).Bitmap :=
+    DModule.getBitmapFromResource('ItemSpaceBG');
 
   // Bottom BG
-  TListItemImage(AItem.Objects.FindDrawable('ImageBottomBG')).OwnsBitmap := True;
-  TListItemImage(AItem.Objects.FindDrawable('ImageBottomBG')).Bitmap := DModule.getBitmapFromResource('ItemSpaceBG');
+  TListItemImage(AItem.Objects.FindDrawable('ImageBottomBG'))
+    .OwnsBitmap := True;
+  TListItemImage(AItem.Objects.FindDrawable('ImageBottomBG')).Bitmap :=
+    DModule.getBitmapFromResource('ItemSpaceBG');
 
 end;
 
-procedure TAppListFormV2.ListViewOffersItemClick(const Sender: TObject; const AItem: TListViewItem);
+procedure TAppListFormV2.ListViewOffersItemClick(const Sender: TObject;
+const AItem: TListViewItem);
 begin
   if FDMemTableBids.FieldByName('approved_id').AsInteger > 0 then
     RectangleCancel.Visible := True
@@ -525,31 +587,41 @@ begin
   initDetails(self.app_id);
 end;
 
-procedure TAppListFormV2.ListViewOffersUpdateObjects(const Sender: TObject; const AItem: TListViewItem);
+procedure TAppListFormV2.ListViewOffersUpdateObjects(const Sender: TObject;
+const AItem: TListViewItem);
 var
   StarName: String;
   StarNumber: Integer;
 begin
-  if TListItemText(AItem.Objects.FindDrawable('approved')).Text = 'დადასტურებულია' then
+  if TListItemText(AItem.Objects.FindDrawable('approved')).Text = 'დადასტურებულია'
+  then
   begin
     TListItemImage(AItem.Objects.FindDrawable('ImageCheckBox')).ImageIndex := 9;
-    TListItemText(AItem.Objects.FindDrawable('approved')).TextColor := TAlphaColorRec.Green;
+    TListItemText(AItem.Objects.FindDrawable('approved')).TextColor :=
+      TAlphaColorRec.Green;
   end
   else
   begin
-    TListItemImage(AItem.Objects.FindDrawable('ImageCheckBox')).ImageIndex := 10;
-    TListItemText(AItem.Objects.FindDrawable('approved')).TextColor := TAlphaColorRec.Red;
+    TListItemImage(AItem.Objects.FindDrawable('ImageCheckBox'))
+      .ImageIndex := 10;
+    TListItemText(AItem.Objects.FindDrawable('approved')).TextColor :=
+      TAlphaColorRec.Red;
   end;
   // ImageOfferPrice
-  TListItemImage(AItem.Objects.FindDrawable('ImageOfferPrice')).OwnsBitmap := True;
-  TListItemImage(AItem.Objects.FindDrawable('ImageOfferPrice')).Bitmap := DModule.getBitmapFromResource('OfferPriceBG');
+  TListItemImage(AItem.Objects.FindDrawable('ImageOfferPrice'))
+    .OwnsBitmap := True;
+  TListItemImage(AItem.Objects.FindDrawable('ImageOfferPrice')).Bitmap :=
+    DModule.getBitmapFromResource('OfferPriceBG');
 
   // Bottom grey background
-  TListItemImage(AItem.Objects.FindDrawable('ImageBottomBackground')).OwnsBitmap := True;
-  TListItemImage(AItem.Objects.FindDrawable('ImageBottomBackground')).Bitmap := DModule.getBitmapFromResource('OfferBottomBackground');
+  TListItemImage(AItem.Objects.FindDrawable('ImageBottomBackground'))
+    .OwnsBitmap := True;
+  TListItemImage(AItem.Objects.FindDrawable('ImageBottomBackground')).Bitmap :=
+    DModule.getBitmapFromResource('OfferBottomBackground');
 
   // Rating Stars
-  StarNumber := TListItemText(AItem.Objects.FindDrawable('TextStars')).Text.ToInteger;
+  StarNumber := TListItemText(AItem.Objects.FindDrawable('TextStars'))
+    .Text.ToInteger;
   case StarNumber of
     0:
       StarName := '0star';
@@ -566,28 +638,35 @@ begin
   end;
 
   TListItemImage(AItem.Objects.FindDrawable('ImageStars')).OwnsBitmap := True;
-  TListItemImage(AItem.Objects.FindDrawable('ImageStars')).Bitmap := DModule.getBitmapFromResource(StarName);
+  TListItemImage(AItem.Objects.FindDrawable('ImageStars')).Bitmap :=
+    DModule.getBitmapFromResource(StarName);
 
   // TListItemImage(AItem.Objects.FindDrawable('ImageStars')).ImageIndex := TListItemText(AItem.Objects.FindDrawable('TextStars')).Text.ToInteger;
 end;
 
-procedure TAppListFormV2.ListViewPropertiesUpdateObjects(const Sender: TObject; const AItem: TListViewItem);
+procedure TAppListFormV2.ListViewPropertiesUpdateObjects(const Sender: TObject;
+const AItem: TListViewItem);
 begin
   // Grey line background
   TListItemImage(AItem.Objects.FindDrawable('ImageLine1')).OwnsBitmap := True;
-  TListItemImage(AItem.Objects.FindDrawable('ImageLine1')).Bitmap := DModule.getBitmapFromResource('AppDetails_line');
+  TListItemImage(AItem.Objects.FindDrawable('ImageLine1')).Bitmap :=
+    DModule.getBitmapFromResource('AppDetails_line');
 
   TListItemImage(AItem.Objects.FindDrawable('ImageLine2')).OwnsBitmap := True;
-  TListItemImage(AItem.Objects.FindDrawable('ImageLine2')).Bitmap := DModule.getBitmapFromResource('AppDetails_line');
+  TListItemImage(AItem.Objects.FindDrawable('ImageLine2')).Bitmap :=
+    DModule.getBitmapFromResource('AppDetails_line');
 
   TListItemImage(AItem.Objects.FindDrawable('ImageLine3')).OwnsBitmap := True;
-  TListItemImage(AItem.Objects.FindDrawable('ImageLine3')).Bitmap := DModule.getBitmapFromResource('AppDetails_line');
+  TListItemImage(AItem.Objects.FindDrawable('ImageLine3')).Bitmap :=
+    DModule.getBitmapFromResource('AppDetails_line');
 
   TListItemImage(AItem.Objects.FindDrawable('ImageLine4')).OwnsBitmap := True;
-  TListItemImage(AItem.Objects.FindDrawable('ImageLine4')).Bitmap := DModule.getBitmapFromResource('AppDetails_line');
+  TListItemImage(AItem.Objects.FindDrawable('ImageLine4')).Bitmap :=
+    DModule.getBitmapFromResource('AppDetails_line');
 end;
 
-procedure TAppListFormV2.RectangleCancelTap(Sender: TObject; const Point: TPointF);
+procedure TAppListFormV2.RectangleCancelTap(Sender: TObject;
+const Point: TPointF);
 begin
   RectangleCancel.Visible := False;
 end;
@@ -601,11 +680,13 @@ begin
   initDetails(self.app_id);
 end;
 
-procedure TAppListFormV2.ListViewAmzomveliUpdateObjects(const Sender: TObject; const AItem: TListViewItem);
+procedure TAppListFormV2.ListViewAmzomveliUpdateObjects(const Sender: TObject;
+const AItem: TListViewItem);
 begin
   TListItemImage(AItem.Objects.FindDrawable('PhoneImage')).ImageIndex := 6;
   TListItemImage(AItem.Objects.FindDrawable('EmailImage')).ImageIndex := 7;
-  TListItemImage(AItem.Objects.FindDrawable('ImageStars')).ImageIndex := TListItemText(AItem.Objects.FindDrawable('TextStars')).Text.ToInteger;
+  TListItemImage(AItem.Objects.FindDrawable('ImageStars')).ImageIndex :=
+    TListItemText(AItem.Objects.FindDrawable('TextStars')).Text.ToInteger;
   TListItemImage(AItem.Objects.FindDrawable('ImageBottomBG1')).ImageIndex := 8;
   TListItemImage(AItem.Objects.FindDrawable('ImageBottomBG2')).ImageIndex := 8;
   TListItemImage(AItem.Objects.FindDrawable('ImageBottomBG3')).ImageIndex := 8;
@@ -656,8 +737,10 @@ begin
       TThread.Queue(nil,
         procedure
         begin
-          LabelPrice.Text := FDMemTableBids.FieldByName('offered_price').AsString + '₾';
-          ListViewProperties.Height := FDMemTableapp_property_requisites.RecordCount * 340;
+          LabelPrice.Text := FDMemTableBids.FieldByName('offered_price')
+            .AsString + '₾';
+          ListViewProperties.Height :=
+            FDMemTableapp_property_requisites.RecordCount * 340;
         end);
       if FDMemTableApp.Active = True then
       begin

@@ -38,7 +38,8 @@ uses
   Androidapi.JNIBridge,
   Androidapi.JNI.JavaTypes,
   Androidapi.JNI.Net,
-  Androidapi.JNI.Provider, IPPeerClient, REST.Backend.PushTypes, System.JSON, REST.Backend.BindSource,
+  Androidapi.JNI.Provider, IPPeerClient, REST.Backend.PushTypes, System.JSON,
+  REST.Backend.BindSource,
   REST.Backend.PushDevice
 {$ENDIF ANDROID}
 {$IFDEF IOS}
@@ -250,7 +251,8 @@ type
     procedure ActionSignOutExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
-    procedure NotificationCenter1ReceiveLocalNotification(Sender: TObject; ANotification: TNotification);
+    procedure NotificationCenter1ReceiveLocalNotification(Sender: TObject;
+      ANotification: TNotification);
     procedure ActionRegGanmcxadebeliExecute(Sender: TObject);
     procedure ButtonUserAreaClick(Sender: TObject);
     procedure ButtonAppsListClick(Sender: TObject);
@@ -269,7 +271,8 @@ type
     procedure ActionService2Execute(Sender: TObject);
     procedure ActionService3Execute(Sender: TObject);
     procedure InfoButtonAddAppClick(Sender: TObject);
-    procedure RESTRequestVersioningHTTPProtocolError(Sender: TCustomRESTRequest);
+    procedure RESTRequestVersioningHTTPProtocolError
+      (Sender: TCustomRESTRequest);
     procedure TextMainPageTextTap(Sender: TObject; const Point: TPointF);
     procedure ActionUserNotificationsExecute(Sender: TObject);
     procedure Image8Tap(Sender: TObject; const Point: TPointF);
@@ -296,8 +299,10 @@ type
     // procedure DoReceiveNotificationEvent(Sender: TObject; const ServiceNotification: TPushServiceNotification);
     // procedure DoServiceConnectionChange(Sender: TObject; PushChanges: TPushService.TChanges);
   private
-    procedure PushClientChangeHandler(Sender: TObject; AChange: TPushService.TChanges);
-    procedure PushClientReceiveNotificationHandler(Sender: TObject; const ANotification: TPushServiceNotification);
+    procedure PushClientChangeHandler(Sender: TObject;
+      AChange: TPushService.TChanges);
+    procedure PushClientReceiveNotificationHandler(Sender: TObject;
+      const ANotification: TPushServiceNotification);
 {$IFDEF ANDROID}
     // procedure ServiceAppStart;
     // function isServiceStarted: Boolean;
@@ -314,7 +319,8 @@ type
     FPushClient: TPushClient;
     PushService: TPushService;
     ServiceConnection: TPushServiceConnection;
-    procedure notificationAlert(p_notification_id, p_ApplicationIconBadgeNumber: integer);
+    procedure notificationAlert(p_notification_id, p_ApplicationIconBadgeNumber
+      : integer);
 {$ENDIF ANDROID}
     procedure userAuthUI;
     procedure showConnectionIsOffline;
@@ -352,16 +358,20 @@ begin
       TThread.Queue(nil,
         procedure
         begin
-          DModule.MyAppsCount := FDMemTableMyAppsCount.FieldByName('MyAppsCount').AsInteger;
+          DModule.MyAppsCount := FDMemTableMyAppsCount.FieldByName
+            ('MyAppsCount').AsInteger;
           TabItemMyApps.Text := DModule.MyAppsCount.ToString;
-          self.LabelTotalAppsCount.Text := FDMemTableMyAppsCount.FieldByName('TotalAppsCount').AsString;
-          self.ButtonMyApps.Text := '(' + DModule.MyAppsCount.ToString + ') ჩემი განცხადებები';
+          self.LabelTotalAppsCount.Text := FDMemTableMyAppsCount.FieldByName
+            ('TotalAppsCount').AsString;
+          self.ButtonMyApps.Text := '(' + DModule.MyAppsCount.ToString +
+            ') ჩემი განცხადებები';
           TabItemMyApps.Text := DModule.MyAppsCount.ToString;
-          DModule.updateCurrentUserField('MyAppsCount', DModule.MyAppsCount.ToString);
+          DModule.updateCurrentUserField('MyAppsCount',
+            DModule.MyAppsCount.ToString);
         end);
     end);
   aTask.Start;
-  MyAppsFrame1.initFrame;
+  //MyAppsFrame1.initFrame;
 end;
 
 procedure TMainForm.userAuthUI;
@@ -369,30 +379,27 @@ begin
   DModule.FDTableCurrentUser.Active := True;
   self.RectangleNonAuth.Visible := False;
   LabelFullName.Text := DModule.full_name;
-  ButtonUserNotifications.Text := '(' + DModule.FDTableCurrentUser.FieldByName('notifications').AsString +
-    ') შეტყობინებები';
-  ButtonContracts.Text := '(' + DModule.FDTableCurrentUser.FieldByName('MyContractsCount').AsString +
-    ') ჩემი შეთანხმებები';
-  ButtonMyApps.Text := '(' + DModule.FDTableCurrentUser.FieldByName('MyAppsCount').AsString + ') ჩემი განცხადებები';
-  TabItemMyApps.Text := DModule.FDTableCurrentUser.FieldByName('MyAppsCount').AsString;
-  TabItemMyContracts.Text := DModule.FDTableCurrentUser.FieldByName('MyContractsCount').AsString;
+  ButtonUserNotifications.Text := '(' + DModule.FDTableCurrentUser.FieldByName
+    ('notifications').AsString + ') შეტყობინებები';
+  ButtonContracts.Text := '(' + DModule.FDTableCurrentUser.FieldByName
+    ('MyContractsCount').AsString + ') ჩემი შეთანხმებები';
+  ButtonMyApps.Text := '(' + DModule.FDTableCurrentUser.FieldByName
+    ('MyAppsCount').AsString + ') ჩემი განცხადებები';
+  TabItemMyApps.Text := DModule.FDTableCurrentUser.FieldByName
+    ('MyAppsCount').AsString;
+  TabItemMyContracts.Text := DModule.FDTableCurrentUser.FieldByName
+    ('MyContractsCount').AsString;
   self.RectangleProfile.Visible := True;
   ButtonGanmcxReg.Visible := False;
   ButtonAuth.Visible := False;
   TabItemMyApps.Visible := True;
   TabItemMyOffers.Visible := True;
-  MyAppsFrame1.initFrame;
+  //MyAppsFrame1.initFrame;
   NotificationOffersFrame1.initFrame;
   RectangleMyAppsPleaseLogin.Visible := False;
   RectangleMyOffersPleaseLogin.Visible := False;
   RectangleMyContractsPleaseLogin.Visible := False;
   self.PreloaderRectangle.Visible := False;
-  // TabItemMainPage
-  // TabItemMainPageLoader
-  // TabItemMyApps.StylesData['']
-  TabItemMyApps.StyleLookup := 'TabItemMainPageNumbers';
-  TabItemMyOffers.StyleLookup := 'TabItemMainPageNumbersActive';
-  TabItemMyContracts.StyleLookup := 'TabItemMainPageNumbers';
 end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
@@ -408,8 +415,10 @@ begin
   TTimer(Sender).Enabled := False;
   if FDMemTableInit.Active = True then
   begin
-    LabelTotalAppsCount.Text := FDMemTableInit.FieldByName('total_apps_count').AsString;
-    TabItemMyApps.Text := FDMemTableInitUser.FieldByName('MyAppsCount').AsString;
+    LabelTotalAppsCount.Text := FDMemTableInit.FieldByName
+      ('total_apps_count').AsString;
+    TabItemMyApps.Text := FDMemTableInitUser.FieldByName('MyAppsCount')
+      .AsString;
     self.userAuthData;
   end;
 end;
@@ -533,22 +542,29 @@ begin
     DModule.phone := FDMemTableInitUser.FieldByName('phone').AsString;
     DModule.email := FDMemTableInitUser.FieldByName('email').AsString;
     DModule.sesskey := FDMemTableInitUser.FieldByName('sesskey').AsString;
-    DModule.notifications := FDMemTableInitUser.FieldByName('notifications').AsInteger;
-    DModule.MyContractsCount := FDMemTableInitUser.FieldByName('MyContractsCount').AsInteger;
-    DModule.MyAppsCount := FDMemTableInitUser.FieldByName('MyAppsCount').AsInteger;
-    DModule.Azomva_GCMAppID := FDMemTableInit.FieldByName('Azomva_GCMAppID').AsString;
-    DModule.Azomva_Legacy_server_key := FDMemTableInit.FieldByName('Azomva_Legacy_server_key').AsString;
+    DModule.notifications := FDMemTableInitUser.FieldByName('notifications')
+      .AsInteger;
+    DModule.MyContractsCount := FDMemTableInitUser.FieldByName
+      ('MyContractsCount').AsInteger;
+    DModule.MyAppsCount := FDMemTableInitUser.FieldByName('MyAppsCount')
+      .AsInteger;
+    DModule.Azomva_GCMAppID := FDMemTableInit.FieldByName
+      ('Azomva_GCMAppID').AsString;
+    DModule.Azomva_Legacy_server_key := FDMemTableInit.FieldByName
+      ('Azomva_Legacy_server_key').AsString;
     self.initNotificationReceiver;
     self.userAuthUI;
   end;
 end;
 
-procedure TMainForm.RESTRequestVersioningAfterExecute(Sender: TCustomRESTRequest);
+procedure TMainForm.RESTRequestVersioningAfterExecute
+  (Sender: TCustomRESTRequest);
 begin
   TimerVersioningOpenTable.Enabled := True;
 end;
 
-procedure TMainForm.RESTRequestVersioningHTTPProtocolError(Sender: TCustomRESTRequest);
+procedure TMainForm.RESTRequestVersioningHTTPProtocolError
+  (Sender: TCustomRESTRequest);
 begin
   self.showConnectionIsOffline;
 end;
@@ -565,22 +581,32 @@ var
   notRec: TNotificationRec;
 
 begin
-  v_notification_id := ANotification.JSON.GetValue('id').Value.Replace('"', '').ToInteger;
+  v_notification_id := ANotification.JSON.GetValue('id').Value.Replace('"', '')
+    .ToInteger;
   with DModule.FDTableNotifications do
   begin
     Open('notifications');
     Insert;
-    FieldByName('user_id').AsString := ANotification.JSON.GetValue('user_id').Value.Replace('"', '');
-    FieldByName('app_id').AsString := ANotification.JSON.GetValue('app_id').Value.Replace('"', '');
-    FieldByName('offer_user_id').AsString := ANotification.JSON.GetValue('offer_user_id').Value.Replace('"', '');
-    FieldByName('app_offer_id').AsString := ANotification.JSON.GetValue('app_offer_id').Value.Replace('"', '');
-    FieldByName('notification_id').AsString := v_notification_id.ToString;
-    FieldByName('notification_type_id').AsString := ANotification.JSON.GetValue('notification_type_id')
+    FieldByName('user_id').AsString := ANotification.JSON.GetValue('user_id')
       .Value.Replace('"', '');
-    FieldByName('formAction').AsString := ANotification.JSON.GetValue('formAction').Value.Replace('"', '');
-    FieldByName('title').AsString := ANotification.JSON.GetValue('title').Value.Replace('"', '');
-    FieldByName('description').AsString := ANotification.JSON.GetValue('description').Value.Replace('"', '');
-    FieldByName('create_date').AsString := ANotification.JSON.GetValue('create_date').Value.Replace('"', '');
+    FieldByName('app_id').AsString := ANotification.JSON.GetValue('app_id')
+      .Value.Replace('"', '');
+    FieldByName('offer_user_id').AsString := ANotification.JSON.GetValue
+      ('offer_user_id').Value.Replace('"', '');
+    FieldByName('app_offer_id').AsString := ANotification.JSON.GetValue
+      ('app_offer_id').Value.Replace('"', '');
+    FieldByName('notification_id').AsString := v_notification_id.ToString;
+    FieldByName('notification_type_id').AsString :=
+      ANotification.JSON.GetValue('notification_type_id')
+      .Value.Replace('"', '');
+    FieldByName('formAction').AsString := ANotification.JSON.GetValue
+      ('formAction').Value.Replace('"', '');
+    FieldByName('title').AsString := ANotification.JSON.GetValue('title')
+      .Value.Replace('"', '');
+    FieldByName('description').AsString := ANotification.JSON.GetValue
+      ('description').Value.Replace('"', '');
+    FieldByName('create_date').AsString := ANotification.JSON.GetValue
+      ('create_date').Value.Replace('"', '');
     FieldByName('is_read').AsInteger := 0;
     Post;
   end;
@@ -602,7 +628,8 @@ begin
     self.notificationAlert(notRec); }
 end;
 
-procedure TMainForm.notificationAlert(p_notification_id, p_ApplicationIconBadgeNumber: integer);
+procedure TMainForm.notificationAlert(p_notification_id,
+  p_ApplicationIconBadgeNumber: integer);
 var
   MyNotification: TNotification;
   notification_name: String;
@@ -615,24 +642,28 @@ begin
     DModule.FDTableNotifications.Filter := 'id=' + p_notification_id.ToString;
     DModule.FDTableNotifications.Filtered := True;
 
-    notification_name := DModule.FDTableNotifications.FieldByName('id').AsString + '_' +
-      DModule.FDTableNotifications.FieldByName('app_id').AsString + '_' + DModule.FDTableNotifications.FieldByName
-      ('formAction').AsString;
+    notification_name := DModule.FDTableNotifications.FieldByName('id').AsString
+      + '_' + DModule.FDTableNotifications.FieldByName('app_id').AsString + '_'
+      + DModule.FDTableNotifications.FieldByName('formAction').AsString;
     MyNotification.Name := notification_name;
-    MyNotification.title := DModule.FDTableNotifications.FieldByName('title').AsString;
-    MyNotification.AlertBody := DModule.FDTableNotifications.FieldByName('description').AsString;
+    MyNotification.title := DModule.FDTableNotifications.FieldByName
+      ('title').AsString;
+    MyNotification.AlertBody := DModule.FDTableNotifications.FieldByName
+      ('description').AsString;
     MyNotification.EnableSound := True;
     MyNotification.Number := p_ApplicationIconBadgeNumber;
     MyNotification.HasAction := True;
     MyNotification.AlertAction := 'Launch';
     NotificationCenter1.PresentNotification(MyNotification);
-    NotificationCenter1.ApplicationIconBadgeNumber := p_ApplicationIconBadgeNumber;
+    NotificationCenter1.ApplicationIconBadgeNumber :=
+      p_ApplicationIconBadgeNumber;
   finally
     MyNotification.DisposeOf;
   end;
 end;
 
-procedure TMainForm.NotificationCenter1ReceiveLocalNotification(Sender: TObject; ANotification: TNotification);
+procedure TMainForm.NotificationCenter1ReceiveLocalNotification(Sender: TObject;
+ANotification: TNotification);
 var
   Splitted: TArray<String>;
   v_id, v_app_id, v_formAction: String;
@@ -653,7 +684,8 @@ begin
   end;
 end;
 
-procedure TMainForm.PushClientChangeHandler(Sender: TObject; AChange: TPushService.TChanges);
+procedure TMainForm.PushClientChangeHandler(Sender: TObject;
+AChange: TPushService.TChanges);
 var
   aTask: ITask;
 begin
@@ -664,7 +696,8 @@ begin
       begin
         RESTRequestDeviceToken.Params.Clear;
         RESTRequestDeviceToken.AddParameter('deviceid', self.getDeviceID);
-        RESTRequestDeviceToken.AddParameter('devicetoken', TIdURI.ParamsEncode(FPushClient.DeviceToken));
+        RESTRequestDeviceToken.AddParameter('devicetoken',
+          TIdURI.ParamsEncode(FPushClient.DeviceToken));
         RESTRequestDeviceToken.AddParameter('sesskey', DModule.sesskey);
         RESTRequestDeviceToken.AddParameter('user_id', DModule.id.ToString);
         RESTRequestDeviceToken.Execute;
@@ -853,12 +886,14 @@ begin
   AuthAction.Execute;
 end;
 
-procedure TMainForm.RectangleBannerAppsTap(Sender: TObject; const Point: TPointF);
+procedure TMainForm.RectangleBannerAppsTap(Sender: TObject;
+const Point: TPointF);
 begin
   ActionAppsList.Execute;
 end;
 
-procedure TMainForm.RectangleHowItWorkTap(Sender: TObject; const Point: TPointF);
+procedure TMainForm.RectangleHowItWorkTap(Sender: TObject;
+const Point: TPointF);
 begin
   TRectangle(Sender).Visible := False;
 end;
@@ -877,6 +912,10 @@ begin
     TabItemMyContracts.ImageIndex := 29;
     TabItemMyApps.ImageIndex := 13;
     TabItemMyOffers.ImageIndex := 14;
+
+    TabItemMyApps.StyleLookup := 'TabItemMainPageNumbers';
+    TabItemMyOffers.StyleLookup := 'TabItemMainPageNumbers';
+    TabItemMyContracts.StyleLookup := 'TabItemMainPageNumbers';
   end
   else if TabControl1.ActiveTab = TabItemUserArea then
   begin
@@ -885,6 +924,9 @@ begin
     TabItemMyContracts.ImageIndex := 29;
     TabItemMyApps.ImageIndex := 13;
     TabItemMyOffers.ImageIndex := 14;
+    TabItemMyApps.StyleLookup := 'TabItemMainPageNumbers';
+    TabItemMyOffers.StyleLookup := 'TabItemMainPageNumbers';
+    TabItemMyContracts.StyleLookup := 'TabItemMainPageNumbers';
   end
   else if TabControl1.ActiveTab = TabItemMyContracts then
   begin
@@ -893,6 +935,9 @@ begin
     TabItemMyContracts.ImageIndex := 30;
     TabItemMyApps.ImageIndex := 13;
     TabItemMyOffers.ImageIndex := 14;
+    TabItemMyApps.StyleLookup := 'TabItemMainPageNumbers';
+    TabItemMyOffers.StyleLookup := 'TabItemMainPageNumbers';
+    TabItemMyContracts.StyleLookup := 'TabItemMainPageNumbersActive';
   end
   else if TabControl1.ActiveTab = TabItemMyApps then
   begin
@@ -901,6 +946,9 @@ begin
     TabItemMyContracts.ImageIndex := 29;
     TabItemMyApps.ImageIndex := 12;
     TabItemMyOffers.ImageIndex := 14;
+    TabItemMyApps.StyleLookup := 'TabItemMainPageNumbersActive';
+    TabItemMyOffers.StyleLookup := 'TabItemMainPageNumbers';
+    TabItemMyContracts.StyleLookup := 'TabItemMainPageNumbers';
   end
   else if TabControl1.ActiveTab = TabItemMyOffers then
   begin
@@ -909,6 +957,9 @@ begin
     TabItemMyContracts.ImageIndex := 29;
     TabItemMyApps.ImageIndex := 13;
     TabItemMyOffers.ImageIndex := 15;
+    TabItemMyApps.StyleLookup := 'TabItemMainPageNumbers';
+    TabItemMyOffers.StyleLookup := 'TabItemMainPageNumbersActive';
+    TabItemMyContracts.StyleLookup := 'TabItemMainPageNumbers';
   end;
 end;
 
@@ -1039,7 +1090,8 @@ begin
   RectangleHowItWork.Visible := False;
 end;
 
-procedure TMainForm.LabelTotalAppsCountTap(Sender: TObject; const Point: TPointF);
+procedure TMainForm.LabelTotalAppsCountTap(Sender: TObject;
+const Point: TPointF);
 begin
   ActionAppsList.Execute;
 end;
@@ -1064,8 +1116,9 @@ end;
   Device_token := PushService.DeviceTokenValue[TPushService.TDeviceTokenNames.DeviceToken];
   end; }
 
-procedure RenderingSetupCallback(const Sender, Context: TObject; var ColorBits, DepthBits: integer;
-var Stencil: Boolean; var Multisamples: integer);
+procedure RenderingSetupCallback(const Sender, Context: TObject;
+var ColorBits, DepthBits: integer; var Stencil: Boolean;
+var Multisamples: integer);
 begin
   // Override OpenGL rendering setup to use custom values.
   ColorBits := 16; // default is 24
@@ -1078,7 +1131,8 @@ procedure RegisterRenderingSetup;
 var
   SetupService: IFMXRenderingSetupService;
 begin
-  if TPlatformServices.Current.SupportsPlatformService(IFMXRenderingSetupService, IInterface(SetupService)) then
+  if TPlatformServices.Current.SupportsPlatformService
+    (IFMXRenderingSetupService, IInterface(SetupService)) then
     SetupService.Subscribe(RenderingSetupCallback);
   // There is also SetupService.Unsubscribe, which removes the hook.
 end;

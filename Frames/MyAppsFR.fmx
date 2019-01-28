@@ -2,12 +2,12 @@ object MyAppsFrame: TMyAppsFrame
   Size.Width = 583.000000000000000000
   Size.Height = 573.000000000000000000
   Size.PlatformDefault = False
-  object ListView1: TListView
+  object ListViewMyApps: TListView
     ItemAppearanceClassName = 'TDynamicAppearance'
     ItemEditAppearanceClassName = 'TDynamicAppearance'
     HeaderAppearanceClassName = 'TListHeaderObjects'
     FooterAppearanceClassName = 'TListHeaderObjects'
-    OnUpdateObjects = ListView1UpdateObjects
+    OnUpdateObjects = ListViewMyAppsUpdateObjects
     Transparent = True
     Images = ImageListAppList
     Align = Client
@@ -129,7 +129,7 @@ object MyAppsFrame: TMyAppsFrame
     ItemAppearanceObjects.FooterObjects.Text.Visible = False
     StyleLookup = 'AppLIstListview'
     CanSwipeDelete = False
-    OnItemClickEx = ListView1ItemClickEx
+    OnItemClickEx = ListViewMyAppsItemClickEx
     SearchVisible = True
     PullToRefresh = True
   end
@@ -137,12 +137,12 @@ object MyAppsFrame: TMyAppsFrame
     Client = DModule.RESTClient
     Params = <
       item
-        name = 'sesskey'
-        Value = 'e3f2fbce4b903b401a9bb67d43be1ec8'
+        Name = 'sesskey'
+        Value = 'a8eed956845cabbdafd62f6412af92c8'
       end
       item
-        name = 'user_id'
-        Value = '31'
+        Name = 'user_id'
+        Value = '135'
       end>
     Resource = 'apps/getmyapps'
     Response = RESTResponseApps
@@ -167,16 +167,6 @@ object MyAppsFrame: TMyAppsFrame
   object FDMemTableApps: TFDMemTable
     Active = True
     FieldDefs = <
-      item
-        Name = 'status'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'app_id'
-        DataType = ftWideString
-        Size = 255
-      end
       item
         Name = 'id'
         DataType = ftWideString
@@ -244,6 +234,11 @@ object MyAppsFrame: TMyAppsFrame
       end
       item
         Name = 'create_date'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'location_id'
         DataType = ftWideString
         Size = 255
       end
@@ -383,21 +378,11 @@ object MyAppsFrame: TMyAppsFrame
     object LinkListControlToField1: TLinkListControlToField
       Category = 'Quick Bindings'
       DataSource = BindSourceDB1
-      Control = ListView1
+      Control = ListViewMyApps
       FillExpressions = <
         item
           SourceMemberName = 'id'
           ControlMemberName = 'ID'
-          CustomFormat = #39'ID# '#39'+%s'
-        end
-        item
-          SourceMemberName = 'location'
-          ControlMemberName = 'location'
-        end
-        item
-          SourceMemberName = 'area'
-          ControlMemberName = 'area'
-          CustomFormat = #39#4317#4305#4312#4308#4325#4322'('#4308#4305')'#4312#4321' '#4324#4304#4320#4311#4317#4305#4312': '#39' + %s'
         end
         item
           SourceMemberName = 'create_date'
@@ -408,21 +393,20 @@ object MyAppsFrame: TMyAppsFrame
           ControlMemberName = 'details'
         end
         item
-          SourceMemberName = 'IconCreateDate'
-          ControlMemberName = 'IconCreateDate'
+          SourceMemberName = 'location'
+          ControlMemberName = 'location'
         end
         item
-          SourceMemberName = 'IconCalendar'
-          ControlMemberName = 'IconCalendar'
-        end
-        item
-          SourceMemberName = 'app_property_requisites_count'
-          ControlMemberName = 'app_property_requisites_count'
-          CustomFormat = #39#4317#4305#4312#4308#4325#4322#4308#4305#4312#4321' '#4320#4304#4317#4307#4308#4316#4317#4305#4304': '#39' + %s'
+          SourceMemberName = 'area'
+          ControlMemberName = 'area'
         end
         item
           SourceMemberName = 'app_property_requisites_count'
           ControlMemberName = 'v_app_property_requisites_count'
+        end
+        item
+          SourceMemberName = 'app_property_requisites_count'
+          ControlMemberName = 'app_property_requisites_count'
         end>
       FillHeaderExpressions = <>
       FillBreakGroups = <>

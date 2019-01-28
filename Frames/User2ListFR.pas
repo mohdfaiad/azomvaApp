@@ -15,9 +15,7 @@ uses
   FireDAC.Stan.Param, FireDAC.Stan.Error,
   FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
-  REST.Response.Adapter, FMX.TMSRatingGrid,
-  FMX.TMSBaseControl, FMX.TMSGauge,
-  FMX.RatingBar, FMX.TMSRating, Data.Bind.GenData, Data.Bind.EngExt,
+  REST.Response.Adapter, Data.Bind.GenData, Data.Bind.EngExt,
   FMX.Bind.DBEngExt, System.Rtti,
   System.Bindings.Outputs, FMX.Bind.Editors,
   Data.Bind.DBScope, System.Threading, System.ImageList, FMX.ImgList;

@@ -18,7 +18,7 @@ uses
 
 type
   TMyAppsFrame = class(TFrame)
-    ListView1: TListView;
+    ListViewMyApps: TListView;
     RESTRequestApps: TRESTRequest;
     RESTResponseApps: TRESTResponse;
     RESTResponseDataSetAdapterApps: TRESTResponseDataSetAdapter;
@@ -45,10 +45,10 @@ type
     FDMemTableAppsIconCalendar: TWideStringField;
     BindSourceDB1: TBindSourceDB;
     BindingsList1: TBindingsList;
-    LinkListControlToField1: TLinkListControlToField;
     ImageListAppList: TImageList;
-    procedure ListView1UpdateObjects(const Sender: TObject; const AItem: TListViewItem);
-    procedure ListView1ItemClickEx(const Sender: TObject; ItemIndex: Integer; const LocalClickPos: TPointF;
+    LinkListControlToField1: TLinkListControlToField;
+    procedure ListViewMyAppsUpdateObjects(const Sender: TObject; const AItem: TListViewItem);
+    procedure ListViewMyAppsItemClickEx(const Sender: TObject; ItemIndex: Integer; const LocalClickPos: TPointF;
       const ItemObject: TListItemDrawable);
     procedure RESTRequestAppsAfterExecute(Sender: TCustomRESTRequest);
   private
@@ -73,29 +73,29 @@ begin
   end;
 end;
 
-procedure TMyAppsFrame.ListView1ItemClickEx(const Sender: TObject; ItemIndex: Integer; const LocalClickPos: TPointF;
+procedure TMyAppsFrame.ListViewMyAppsItemClickEx(const Sender: TObject; ItemIndex: Integer; const LocalClickPos: TPointF;
   const ItemObject: TListItemDrawable);
 var
   id, v_height: Integer;
 begin
   if (ItemObject is TListItemText) or (ItemObject is TListItemImage) then
   begin
-    v_height := TListItemText(ListView1.Selected.View.FindDrawable('v_app_property_requisites_count'))
+    v_height := TListItemText(ListViewMyApps.Selected.View.FindDrawable('v_app_property_requisites_count'))
       .Text.ToInteger * 35;
     if (ItemObject.Name = 'app_property_requisites_count') or (ItemObject.Name = 'ArrowIcon') then
     begin
-      if ListView1.Selected.Height = 150 then
+      if ListViewMyApps.Selected.Height = 150 then
       begin
-        ListView1.Selected.Height := v_height + 150;
-        TListItem(ListView1.Selected).View.FindDrawable('details').Visible := True;
-        TListItem(ListView1.Selected).View.FindDrawable('details').Height := v_height;
-        TListItemImage(ListView1.Selected.View.FindDrawable('ArrowIcon')).ImageIndex := 3;
+        ListViewMyApps.Selected.Height := v_height + 150;
+        TListItem(ListViewMyApps.Selected).View.FindDrawable('details').Visible := True;
+        TListItem(ListViewMyApps.Selected).View.FindDrawable('details').Height := v_height;
+        TListItemImage(ListViewMyApps.Selected.View.FindDrawable('ArrowIcon')).ImageIndex := 3;
       end
       else
       begin
-        ListView1.Selected.Height := 150;
-        TListItem(ListView1.Selected).View.FindDrawable('details').Visible := False;
-        TListItemImage(ListView1.Selected.View.FindDrawable('ArrowIcon')).ImageIndex := 2;
+        ListViewMyApps.Selected.Height := 150;
+        TListItem(ListViewMyApps.Selected).View.FindDrawable('details').Visible := False;
+        TListItemImage(ListViewMyApps.Selected.View.FindDrawable('ArrowIcon')).ImageIndex := 2;
       end;
     end
     else
@@ -109,11 +109,36 @@ begin
   end;
 end;
 
-procedure TMyAppsFrame.ListView1UpdateObjects(const Sender: TObject; const AItem: TListViewItem);
+procedure TMyAppsFrame.ListViewMyAppsUpdateObjects(const Sender: TObject; const AItem: TListViewItem);
+var
+  v_width: Single;
 begin
   TListItemImage(AItem.Objects.FindDrawable('IconCreateDate')).ImageIndex := 0;
   TListItemImage(AItem.Objects.FindDrawable('IconCalendar')).ImageIndex := 1;
   TListItemImage(AItem.Objects.FindDrawable('ArrowIcon')).ImageIndex := 2;
+  v_width := self.Width - 110;
+  TListItemText(AItem.Objects.FindDrawable('location')).Width := v_width;
+
+  // ID background
+  TListItemImage(AItem.Objects.FindDrawable('ImageID')).OwnsBitmap := True;
+  TListItemImage(AItem.Objects.FindDrawable('ImageID')).Bitmap := DModule.getBitmapFromResource('AppListImageID');
+
+  // BlottomBlock
+  TListItemImage(AItem.Objects.FindDrawable('BlottomBlock')).OwnsBitmap := True;
+  TListItemImage(AItem.Objects.FindDrawable('BlottomBlock')).Bitmap := DModule.getBitmapFromResource('BlottomBlock');
+
+  // DetailsBackground
+  TListItemImage(AItem.Objects.FindDrawable('DetailsBackground')).OwnsBitmap := True;
+  TListItemImage(AItem.Objects.FindDrawable('DetailsBackground')).Bitmap := DModule.getBitmapFromResource('DetailsBackground');
+
+  // Top BG
+  TListItemImage(AItem.Objects.FindDrawable('ImageTopBG')).OwnsBitmap := True;
+  TListItemImage(AItem.Objects.FindDrawable('ImageTopBG')).Bitmap := DModule.getBitmapFromResource('ItemSpaceBG');
+
+  // Bottom BG
+  TListItemImage(AItem.Objects.FindDrawable('ImageBottomBG')).OwnsBitmap := True;
+  TListItemImage(AItem.Objects.FindDrawable('ImageBottomBG')).Bitmap := DModule.getBitmapFromResource('ItemSpaceBG');
+
 end;
 
 procedure TMyAppsFrame.reloadItems(sort_field, sort: String);
@@ -144,7 +169,7 @@ end;
 
 procedure TMyAppsFrame.RESTRequestAppsAfterExecute(Sender: TCustomRESTRequest);
 begin
-  self.ListView1.PullRefreshWait := False;
+  self.ListViewMyApps.PullRefreshWait := False;
 end;
 
 end.
