@@ -1,26 +1,26 @@
 ﻿[HeaderFrame1]
-Coordinates=10,1508,101,36
+Coordinates=961,1646,101,36
 
 [EditUserParamsEmail]
-Coordinates=1445,565,140,80
+Coordinates=1920,592,140,80
 
 [MemoNote]
-Coordinates=1332,1354,77,58
+Coordinates=1672,1350,77,58
 
 [TabItemFinish]
-Coordinates=808,1508,96,36
+Coordinates=1320,1708,96,36
 
 [TabItemRequizites]
-Coordinates=679,1567,122,36
+Coordinates=1039,1708,122,36
 
 [EditUserParamsFullname]
-Coordinates=1850,630,161,80
+Coordinates=1910,732,161,80
 
 [RESTRequestAddApp]
-Coordinates=436,1164,142,102
+Coordinates=1637,1178,142,102
 
 [ButtonNextStep1]
-Coordinates=1637,1164,112,58
+Coordinates=1587,1478,112,58
 
 [LabelServiceType]
 Coordinates=148,1204,118,58
@@ -35,74 +35,74 @@ Coordinates=853,817,91,36
 Coordinates=1083,56,172,36
 
 [TabItemGeneral]
-Coordinates=690,1508,107,36
+Coordinates=1187,1708,107,36
 
 [RESTResponseDataSetAdapterAddApp]
 Coordinates=1083,199,243,36
 
 [EditCadcode]
-Coordinates=1346,1277,88,58
+Coordinates=1473,1478,88,58
 Visible=True
 
 [TabItemAppOwner]
-Coordinates=297,1567,122,36
+Coordinates=659,1646,122,36
 
 [EditUserParamsPhone]
-Coordinates=1857,501,145,80
+Coordinates=1461,662,145,80
 
 [ComboBoxLocation]
-Coordinates=637,830,126,146
+Coordinates=1411,951,126,146
 Visible=True
 ExplicitSubNodes=Item.ImageIndex
 
 [SpeedButton1]
-Coordinates=1869,1277,96,58
+Coordinates=890,1478,96,58
 
 [HeaderFrame1.LabelAppName]
-Coordinates=1448,1164,192,58
+Coordinates=1725,1478,192,58
 
 [ComboBox1]
 Coordinates=1312,860,101,146
 
 [FDMemTableAddApp]
-Coordinates=584,1164,137,102
+Coordinates=10,1350,137,102
 
 [EditAddress]
-Coordinates=1760,1164,84,58
+Coordinates=1562,1350,84,58
 
 [EditArea]
-Coordinates=1541,1277,64,58
+Coordinates=1393,1350,64,58
 
 [RESTResponseAddApp]
-Coordinates=638,10,152,344
+Coordinates=1233,10,152,344
 
 [HeaderFrame1.ButtonBack]
-Coordinates=187,1431,170,58
+Coordinates=538,1562,170,58
 
 [HeaderFrame1.RectangleHeader]
-Coordinates=1484,1431,204,36
+Coordinates=1442,1708,204,36
 
 [CheckBoxDeviceNotifications]
-Coordinates=712,1354,183,58
+Coordinates=1111,1562,183,58
 
 [CheckBoxEmailNotifications]
-Coordinates=223,1354,176,58
+Coordinates=849,1350,176,58
 
 [ButtonNextStep2]
-Coordinates=1623,1277,112,58
+Coordinates=1012,1478,112,58
 Visible=True
 
 [PreloaderRectangle]
-Coordinates=934,1431,128,36
+Coordinates=807,1646,128,36
 
 [ButtonFinishAdding]
-Coordinates=1069,1277,126,58
+Coordinates=234,1478,126,58
 
 [FMXLoadingIndicator1]
-Coordinates=1250,1508,144,36
+Coordinates=1672,1708,144,36
 
 []
-Coordinates=1315,1164,107,51
+Coordinates=1857,10,175,322
 Visible=True
 
 [MainForm.FDMemTablePages]
@@ -114,42 +114,42 @@ Visible=False
 Coordinates=648,403,171,36
 
 [ListBoxServiceTypes]
-Coordinates=1040,420,139,278
+Coordinates=440,592,139,278
 Visible=True
 ExplicitSubNodes=ItemIndex
 
 [MainForm.RESTResponseSignOut]
-Coordinates=1009,10,214,344
+Coordinates=1411,10,214,344
 
 [MainForm.RESTResponseVersioning]
-Coordinates=1218,10,228,344
+Coordinates=733,10,228,344
 
 [MainForm.BindSourceDB2]
-Coordinates=713,501,167,300
+Coordinates=1078,592,167,256
 
 [MainForm.RESTRequestVersioning]
-Coordinates=10,812,219,212
+Coordinates=765,940,219,212
 
 [DModule.RESTClient]
-Coordinates=1173,1164,137,80
+Coordinates=686,1350,137,80
 
 [MainForm.RESTRequestSignOut]
-Coordinates=236,1164,204,102
+Coordinates=1147,1178,204,102
 
 [MainForm.BindSourceDB1]
 Coordinates=1424,1354,144,51
 
 [MainForm.FDMemTableAuth]
-Coordinates=1657,10,180,344
+Coordinates=1651,10,180,344
 
 [MainForm.RESTRequestDeviceToken]
-Coordinates=728,1164,232,102
+Coordinates=173,1350,232,102
 
 [authForm.BindSourceDB1]
 Coordinates=516,1665,164,58
 
 [RectDialogFinishApp]
-Coordinates=240,1508,135,36
+Coordinates=1842,1708,135,36
 
 [authForm.RESTRequestAuth]
 Coordinates=1554,1123,181,168
@@ -167,23 +167,20 @@ Coordinates=1107,501,188,344
 Coordinates=1475,1326,178,102
 
 [RectangleFinishMain]
-Coordinates=359,1431,135,36
+Coordinates=10,1646,135,36
 
 [ActionAddApp]
 Coordinates=366,283,96,36
 
-[ListView1]
-Coordinates=352,501,175,322
-
 [ComboBoxApp_property_types]
-Coordinates=1518,812,193,146
+Coordinates=10,1178,193,146
 Visible=True
 
 [FDMemTablePropRequz]
-Coordinates=883,501,156,278
+Coordinates=896,592,156,278
 
 [FDMemTableTMPApp]
-Coordinates=967,812,141,190
+Coordinates=1010,940,141,190
 
 [FDMemTableTMPAppnote]
 Coordinates=347,403,166,36
@@ -198,20 +195,20 @@ Coordinates=1275,694,209,36
 Coordinates=1505,105,236,36
 
 [ButtonAppReCreate]
-Coordinates=1208,1277,129,58
+Coordinates=192,1562,129,58
 
 [FDMemTableAppOwner]
-Coordinates=1133,1015,152,124
+Coordinates=788,1178,152,124
 
 [FDMemTableApp_service_typesMemtitle]
 Coordinates=1131,474,249,36
 
 [FDMemTableApp_service_typesMem]
-Coordinates=952,1164,229,80
+Coordinates=431,1350,229,80
 
 [FDMemTableApp]
 Visible=True
-Coordinates=1605,1508,115,36
+Coordinates=1866,1572,115,36
 
 [FDMemTableAppstatus_name]
 Coordinates=1522,1,188,36
@@ -256,7 +253,7 @@ Coordinates=1522,768,198,36
 Coordinates=1304,419,163,36
 
 [BindSourceDBApp]
-Coordinates=271,10,176,556
+Coordinates=1741,1562,115,36
 
 [FDMemTableAppnote]
 Coordinates=1304,529,140,36
@@ -307,28 +304,28 @@ Coordinates=1821,386,183,36
 Coordinates=1620,160,153,36
 
 [RadioButtonVada1]
-Coordinates=428,1567,122,36
+Coordinates=171,1646,122,36
 
 [RadioButtonVada2]
-Coordinates=502,1431,122,36
+Coordinates=361,1708,122,36
 
 [RadioButtonVada3]
-Coordinates=165,1567,122,36
+Coordinates=891,1708,122,36
 
 [FDMemTablePropRequzapp_service_types]
 Coordinates=766,314,263,36
 
 [TMSFMXDateTimeEdit1]
-Coordinates=10,1567,153,36
+Coordinates=1882,1562,153,36
 
 [RectangleRadioGroup]
-Coordinates=1835,1431,142,36
+Coordinates=1718,1646,142,36
 
 [FDMemTablePropRequzapp_property_type_id]
 Coordinates=766,366,280,36
 
 [MainForm.FDMemTableInitUser]
-Coordinates=444,10,198,366
+Coordinates=509,10,198,410
 
 [FDMemTablePropRequzemail]
 Coordinates=646,455,187,36
@@ -343,78 +340,78 @@ Coordinates=1044,784,192,36
 Coordinates=0,0,70,33
 
 [Label4Dge]
-Coordinates=977,1277,77,58
+Coordinates=817,1562,77,58
 
 [RectangleVada1]
-Coordinates=1071,1431,109,36
+Coordinates=1606,1562,109,36
 
 [Label1Dge]
-Coordinates=1449,1277,77,58
+Coordinates=1370,1478,77,58
 
 [HeaderFrame1.Line1]
-Coordinates=384,1508,136,36
+Coordinates=1421,1646,136,36
 
 [RectangleVada3]
-Coordinates=121,1508,109,36
+Coordinates=1583,1646,109,36
 
 [RectangleVada2]
-Coordinates=560,1567,109,36
+Coordinates=2061,1562,109,36
 
 [Label7Dge]
-Coordinates=123,1277,77,58
+Coordinates=1907,1350,77,58
 
 [LabelOfferFinishDateTime]
-Coordinates=1594,1354,165,58
+Coordinates=920,1562,165,58
 
 [LabelAdditComment]
-Coordinates=571,1354,131,58
+Coordinates=604,1478,131,58
 
 [LabelNaxazisMomzadebisVada]
-Coordinates=386,1277,194,58
+Coordinates=1150,1478,194,58
 
 [TabControlMain]
-Coordinates=918,1567,106,36
+Coordinates=1289,1646,106,36
 
 [Label4]
-Coordinates=1762,1354,53,58
+Coordinates=2010,1350,53,58
 
 [ImageNaxazisMomzadebisVada]
-Coordinates=1834,1354,198,58
+Coordinates=10,1478,198,58
 
 [LabelFinish]
-Coordinates=1235,1354,81,58
+Coordinates=1943,1478,81,58
 
 [LabelStatusBar]
-Coordinates=862,1277,103,58
+Coordinates=761,1478,103,58
 
 [Image2]
-Coordinates=973,1354,57,58
+Coordinates=386,1478,57,58
 
 [RectangleInfo]
-Coordinates=810,1567,94,36
+Coordinates=1992,1646,94,36
 
 [ImageOfferFinishDateTime]
-Coordinates=215,1277,169,58
+Coordinates=2050,1478,169,58
 
 [Image1]
-Coordinates=898,1354,57,58
+Coordinates=1320,1562,57,58
 
 [RectangleStatusBar]
-Coordinates=634,1431,129,36
+Coordinates=2003,1708,129,36
 
 [ImageFinishIcon]
-Coordinates=741,1277,109,58
+Coordinates=469,1478,109,58
 
 [MainForm.FDMemTableServices]
-Coordinates=223,812,203,212
+Coordinates=288,940,203,212
 
 [ComboBoxLocationChildren]
-Coordinates=70,660,175,146
+Coordinates=1563,951,175,146
 ExplicitSubNodes=
 Visible=True
 
 [BindSourceDB1]
-Coordinates=1113,812,106,58
+Coordinates=1775,1350,106,58
 
 [ActionListAddApp]
 Coordinates=366,228,116,36
@@ -423,23 +420,19 @@ Coordinates=366,228,116,36
 Coordinates=1084,373,124,36
 
 [MainForm.FDMemTableHowItWorks]
-Coordinates=421,812,222,212
-
-[ListViewAppsList]
-Coordinates=10,73,217,410
-Visible=True
+Coordinates=517,940,222,212
 
 [FMXLoadingLocChildren]
-Coordinates=772,1431,156,36
+Coordinates=179,1708,156,36
 
 [FDMemTableAppapp_property_requisites_count]
 Coordinates=843,479,291,36
 
 [ButtonNextStep3]
-Coordinates=1746,1277,112,58
+Coordinates=1051,1350,112,58
 
 [ButtonFinishDIalogClose]
-Coordinates=578,1277,156,58
+Coordinates=10,1562,156,58
 
 [ImageListAppList]
 Coordinates=164,1,113,36
@@ -448,19 +441,19 @@ Coordinates=164,1,113,36
 Coordinates=189,501,259,344
 
 [VertScrollBoxFinish]
-Coordinates=1190,1431,127,36
+Coordinates=319,1646,127,36
 
 [VertScrollBoxAppOwne]
-Coordinates=1328,1431,149,36
+Coordinates=509,1708,149,36
 
 [VertScrollBoxRequizitesTab]
-Coordinates=1729,1508,175,36
+Coordinates=1088,1646,175,36
 
 [authForm.RESTRequestLoginPRecovery]
 Coordinates=1235,1326,249,124
 
 [VertScrollBoxGeneralTab]
-Coordinates=525,1508,161,36
+Coordinates=472,1646,161,36
 
 [authForm.RESTResponsePRecovery]
 Coordinates=697,501,227,344
@@ -472,7 +465,7 @@ Coordinates=1532,10,245,344
 Coordinates=10,1475,217,102
 
 [FMXLoadingPreloader]
-Coordinates=918,1508,143,36
+Coordinates=10,1708,143,36
 
 [GanmcxadeblisRegForm.FDMemTable1]
 Coordinates=530,1665,208,51
@@ -502,32 +495,32 @@ Coordinates=1736,1123,230,141
 Coordinates=1797,1326,222,87
 
 [CheckBoxUserParams]
-Coordinates=1646,556,144,90
+Coordinates=1686,657,144,90
 
 [RectanglePropertyRequizites]
-Coordinates=1067,1508,181,36
+Coordinates=684,1708,181,36
 
 [MainForm.FDMemTableMyAppsCount]
-Coordinates=10,1164,234,102
+Coordinates=1377,1178,234,102
 
 [MainForm.RESTRespMyAppsCount]
-Coordinates=795,10,220,344
+Coordinates=987,10,220,344
 
 [MainForm.RESTRequestMyAppsCount]
-Coordinates=10,1015,238,146
+Coordinates=524,1178,238,146
 
 [DModule.FDTableCurrentUser]
-Coordinates=1048,1354,189,212
+Coordinates=225,592,189,300
 
 [DModule.FDTableLocation]
 Coordinates=377,1015,167,36
 Visible=False
 
 [DModule.FDTableMainfields]
-Coordinates=10,1431,177,58
+Coordinates=1403,1562,177,58
 
 [DModule.FDTablePages]
-Coordinates=547,1015,155,124
+Coordinates=966,1178,155,124
 
 [DModule.FDTableApp_service_types]
 Coordinates=1200,420,227,36
@@ -537,10 +530,10 @@ Visible=False
 Coordinates=434,1194,236,58
 
 [DModule.FDQueryCustom]
-Coordinates=403,1354,165,58
+Coordinates=347,1562,165,58
 
 [TextFinishText]
-Coordinates=10,1277,99,58
+Coordinates=1268,1350,99,58
 Visible=True
 
 [DModule.FDTableList_property_types]
@@ -548,39 +541,45 @@ Coordinates=110,1160,231,36
 Visible=False
 
 [DModule.FDTableNotifications]
-Coordinates=524,501,189,322
+Coordinates=10,592,189,322
 
 [BindSourceDB4]
-Coordinates=1767,821,215,124
+Coordinates=283,1189,215,124
 
 [BindSourceDB5]
-Coordinates=1340,410,211,146
+Coordinates=659,658,211,146
 
 [BindSourceDB6]
-Coordinates=377,1015,154,168
+Coordinates=1177,940,154,168
 
 [DModule.FDTableLocationChildren]
 Coordinates=60,520,216,36
 Visible=False
 
 [BindSourceDB2]
-Coordinates=330,640,200,168
+Coordinates=1818,940,200,168
 
 [DModule.FDTableAddApp]
-Coordinates=918,872,164,256
+Coordinates=1271,592,164,256
 
 [Label2]
-Coordinates=0,0,53,58
+Coordinates=1483,1350,53,58
 
 [Label1]
-Coordinates=732,1062,53,58
+Coordinates=1189,1350,53,58
 
 [Image3]
-Coordinates=751,995,57,58
+Coordinates=2089,1350,57,58
 
 [DModule.FDTableAddAppPropRequizites]
-Coordinates=16,502,252,212
+Coordinates=10,940,252,212
 
 [Image4]
-Coordinates=72,1,57,58
+Coordinates=734,1562,57,58
+
+[Rectangle1]
+Coordinates=1886,1646,80,36
+
+[MainForm.PushEvents1]
+Coordinates=1805,1178,151,102
 

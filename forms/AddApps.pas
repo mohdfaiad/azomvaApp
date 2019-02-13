@@ -68,7 +68,6 @@ type
     RectangleFinishMain: TRectangle;
     ActionListAddApp: TActionList;
     ActionAddApp: TAction;
-    ListView1: TListView;
     ComboBoxApp_property_types: TComboBox;
     FDMemTableTMPApp: TFDMemTable;
     FDMemTableTMPAppid: TWideStringField;
@@ -140,8 +139,6 @@ type
     ComboBoxLocationChildren: TComboBox;
     BindSourceDB1: TBindSourceDB;
     FMXLoadingLocChildren: TFMXLoadingIndicator;
-    ListViewAppsList: TListView;
-    LinkListControlToField4: TLinkListControlToField;
     FDMemTableAppapp_property_requisites_count: TIntegerField;
     ImageListAppList: TImageList;
     VertScrollBoxGeneralTab: TVertScrollBox;
@@ -163,6 +160,8 @@ type
     Label2: TLabel;
     Image4: TImage;
     Rectangle1: TRectangle;
+    ListViewAppsList: TListView;
+    LabelNotFound: TLabel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ButtonFinishAddingClick(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
@@ -281,13 +280,32 @@ end;
 procedure TFormAddApps.ListViewAppsListUpdateObjects(const Sender: TObject;
   const AItem: TListViewItem);
 begin
-  TListItemImage(AItem.Objects.FindDrawable('IconCreateDate')).ImageIndex := 0;
-  TListItemImage(AItem.Objects.FindDrawable('IconCalendar')).ImageIndex := 1;
-  TListItemImage(AItem.Objects.FindDrawable('ArrowIcon')).ImageIndex := 2;
-  TListItemText(AItem.Objects.FindDrawable('location')).Width :=
-    ListViewAppsList.Width - 100;
-  TListItemImage(AItem.Objects.FindDrawable('SelectedLineRedBG'))
-    .ImageIndex := 4;
+  // LBItemLine 1
+  TListItemImage(AItem.Objects.FindDrawable('LBItemLine1')).OwnsBitmap := True;
+  TListItemImage(AItem.Objects.FindDrawable('LBItemLine1')).Bitmap :=
+    DModule.getBitmapFromResource('LBItemLine');
+  TListItemImage(AItem.Objects.FindDrawable('LBItemLine1')).PlaceOffset.X :=
+    TListItemText(AItem.Objects.FindDrawable('TextLocation')).PlaceOffset.X;
+  TListItemImage(AItem.Objects.FindDrawable('LBItemLine1')).PlaceOffset.Y :=
+    TListItemText(AItem.Objects.FindDrawable('TextLocation')).PlaceOffset.Y;
+
+  // LBItemLine 2
+  TListItemImage(AItem.Objects.FindDrawable('LBItemLine2')).OwnsBitmap := True;
+  TListItemImage(AItem.Objects.FindDrawable('LBItemLine2')).Bitmap :=
+    DModule.getBitmapFromResource('LBItemLine');
+  TListItemImage(AItem.Objects.FindDrawable('LBItemLine2')).PlaceOffset.X :=
+    TListItemText(AItem.Objects.FindDrawable('TextPropType')).PlaceOffset.X;
+  TListItemImage(AItem.Objects.FindDrawable('LBItemLine2')).PlaceOffset.Y :=
+    TListItemText(AItem.Objects.FindDrawable('TextPropType')).PlaceOffset.Y;
+
+  // LBItemLine 3
+  TListItemImage(AItem.Objects.FindDrawable('LBItemLine3')).OwnsBitmap := True;
+  TListItemImage(AItem.Objects.FindDrawable('LBItemLine3')).Bitmap :=
+    DModule.getBitmapFromResource('LBItemLine');
+  TListItemImage(AItem.Objects.FindDrawable('LBItemLine3')).PlaceOffset.X :=
+    TListItemText(AItem.Objects.FindDrawable('TextArea')).PlaceOffset.X;
+  TListItemImage(AItem.Objects.FindDrawable('LBItemLine3')).PlaceOffset.Y :=
+    TListItemText(AItem.Objects.FindDrawable('TextArea')).PlaceOffset.Y;
 end;
 
 procedure TFormAddApps.MemoNoteEnter(Sender: TObject);
@@ -751,6 +769,10 @@ end;
 procedure TFormAddApps.TabControlMainChange(Sender: TObject);
 begin
   self.v_StepNumber := TTabControl(Sender).ActiveTab.Index;
+  if TTabControl(Sender).ActiveTab = TabItemFinish then
+  begin
+    // ListViewAppsList.Height:=ListViewAppsList.Height *
+  end;
 end;
 
 end.
