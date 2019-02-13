@@ -241,8 +241,8 @@ type
     FDMemTableInitUserMyContractsCount: TWideStringField;
     FDMemTableInitUsernotifications: TWideStringField;
     PushEvents1: TPushEvents;
-    ButtonMainAddApp: TButton;
     MyAppsFrame1: TMyAppsFrame;
+    SpeedButtonAddApp: TSpeedButton;
     procedure AuthActionExecute(Sender: TObject);
     procedure ActionAppAddingExecute(Sender: TObject);
     procedure ActionMyAppsExecute(Sender: TObject);
@@ -295,7 +295,7 @@ type
     procedure RESTRequestVersioningAfterExecute(Sender: TCustomRESTRequest);
     procedure TimerVersioningOpenTableTimer(Sender: TObject);
     procedure ButtonMainAddAppTap(Sender: TObject; const Point: TPointF);
-    procedure ButtonMainAddAppClick(Sender: TObject);
+    procedure SpeedButtonAddAppClick(Sender: TObject);
     // procedure DoReceiveNotificationEvent(Sender: TObject; const ServiceNotification: TPushServiceNotification);
     // procedure DoServiceConnectionChange(Sender: TObject; PushChanges: TPushService.TChanges);
   private
@@ -371,7 +371,7 @@ begin
         end);
     end);
   aTask.Start;
-  //MyAppsFrame1.initFrame;
+  // MyAppsFrame1.initFrame;
 end;
 
 procedure TMainForm.userAuthUI;
@@ -394,7 +394,7 @@ begin
   ButtonAuth.Visible := False;
   TabItemMyApps.Visible := True;
   TabItemMyOffers.Visible := True;
-  //MyAppsFrame1.initFrame;
+  // MyAppsFrame1.initFrame;
   NotificationOffersFrame1.initFrame;
   RectangleMyAppsPleaseLogin.Visible := False;
   RectangleMyOffersPleaseLogin.Visible := False;
@@ -845,12 +845,6 @@ begin
 end;
 
 // Add application
-procedure TMainForm.ButtonMainAddAppClick(Sender: TObject);
-begin
-  ActionAppAdding.Execute;
-end;
-
-// Add application
 procedure TMainForm.ButtonMainAddAppTap(Sender: TObject; const Point: TPointF);
 begin
   ActionAppAdding.Execute;
@@ -905,6 +899,19 @@ end;
 
 procedure TMainForm.TabControl1Change(Sender: TObject);
 begin
+  if DModule.sesskey.IsEmpty = True then
+  begin
+    TabItemMyApps.StyleLookup := 'TabItemMainPage';
+    TabItemMyOffers.StyleLookup := 'TabItemMainPage';
+    TabItemMyContracts.StyleLookup := 'TabItemMainPage';
+  end
+  else
+  begin
+    TabItemMyApps.StyleLookup := 'TabItemMainPageNumbers';
+    TabItemMyOffers.StyleLookup := 'TabItemMainPageNumbers';
+    TabItemMyContracts.StyleLookup := 'TabItemMainPageNumbers';
+  end;
+
   if TabControl1.ActiveTab = TabItemMain then
   begin
     TabItemMain.ImageIndex := 0;
@@ -912,10 +919,6 @@ begin
     TabItemMyContracts.ImageIndex := 29;
     TabItemMyApps.ImageIndex := 13;
     TabItemMyOffers.ImageIndex := 14;
-
-    TabItemMyApps.StyleLookup := 'TabItemMainPageNumbers';
-    TabItemMyOffers.StyleLookup := 'TabItemMainPageNumbers';
-    TabItemMyContracts.StyleLookup := 'TabItemMainPageNumbers';
   end
   else if TabControl1.ActiveTab = TabItemUserArea then
   begin
@@ -924,9 +927,6 @@ begin
     TabItemMyContracts.ImageIndex := 29;
     TabItemMyApps.ImageIndex := 13;
     TabItemMyOffers.ImageIndex := 14;
-    TabItemMyApps.StyleLookup := 'TabItemMainPageNumbers';
-    TabItemMyOffers.StyleLookup := 'TabItemMainPageNumbers';
-    TabItemMyContracts.StyleLookup := 'TabItemMainPageNumbers';
   end
   else if TabControl1.ActiveTab = TabItemMyContracts then
   begin
@@ -935,9 +935,10 @@ begin
     TabItemMyContracts.ImageIndex := 30;
     TabItemMyApps.ImageIndex := 13;
     TabItemMyOffers.ImageIndex := 14;
-    TabItemMyApps.StyleLookup := 'TabItemMainPageNumbers';
-    TabItemMyOffers.StyleLookup := 'TabItemMainPageNumbers';
-    TabItemMyContracts.StyleLookup := 'TabItemMainPageNumbersActive';
+    if DModule.sesskey.IsEmpty = True then
+      TabItemMyContracts.StyleLookup := 'TabItemMainPage'
+    else
+      TabItemMyContracts.StyleLookup := 'TabItemMainPageNumbersActive';
   end
   else if TabControl1.ActiveTab = TabItemMyApps then
   begin
@@ -946,9 +947,12 @@ begin
     TabItemMyContracts.ImageIndex := 29;
     TabItemMyApps.ImageIndex := 12;
     TabItemMyOffers.ImageIndex := 14;
-    TabItemMyApps.StyleLookup := 'TabItemMainPageNumbersActive';
-    TabItemMyOffers.StyleLookup := 'TabItemMainPageNumbers';
-    TabItemMyContracts.StyleLookup := 'TabItemMainPageNumbers';
+
+    if DModule.sesskey.IsEmpty = True then
+      TabItemMyApps.StyleLookup := 'TabItemMainPage'
+    else
+      TabItemMyApps.StyleLookup := 'TabItemMainPageNumbersActive';
+
   end
   else if TabControl1.ActiveTab = TabItemMyOffers then
   begin
@@ -957,9 +961,10 @@ begin
     TabItemMyContracts.ImageIndex := 29;
     TabItemMyApps.ImageIndex := 13;
     TabItemMyOffers.ImageIndex := 15;
-    TabItemMyApps.StyleLookup := 'TabItemMainPageNumbers';
-    TabItemMyOffers.StyleLookup := 'TabItemMainPageNumbersActive';
-    TabItemMyContracts.StyleLookup := 'TabItemMainPageNumbers';
+    if DModule.sesskey.IsEmpty = True then
+      TabItemMyOffers.StyleLookup := 'TabItemMainPage'
+    else
+      TabItemMyOffers.StyleLookup := 'TabItemMainPageNumbersActive';
   end;
 end;
 
@@ -981,6 +986,11 @@ begin
     FMXLoadingTotalAppsCount.Visible := False;
     FMXLoadingTotalAppsCount.Enabled := False;
     FMXLoadingTotalAppsCount.Visible := False; }
+end;
+
+procedure TMainForm.SpeedButtonAddAppClick(Sender: TObject);
+begin
+  ActionAppAdding.Execute;
 end;
 
 function TMainForm.getDeviceID: string;

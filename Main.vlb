@@ -717,3 +717,6 @@ Coordinates=2972,1,204,51
 Coordinates=1893,1665,83,33
 Visible=False
 
+[MyAppsFrame1.FDMemTableApps]
+Visible=False
+

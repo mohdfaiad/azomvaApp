@@ -515,6 +515,15 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
+        <DeployFile Include="fonts\BPG Nino Mtavruli.ttf" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>Azomva\assets\internal\</RemoteDir>
+            <RemoteName>BPG Nino Mtavruli.ttf</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
         <DeployFile Include="..\azomva.com\Design\azomvebi\icons\AppList\ItemSpaceBG.png" Condition="'$(Config)'=='Debug'">
             <RemoteDir>Azomva\assets\internal\</RemoteDir>
             <RemoteName>ItemSpaceBG.png</RemoteName>
@@ -538,15 +547,6 @@
             <RemoteName>libAzomva.so</RemoteName>
             <DeployClass>AndroidLibnativeMipsFile</DeployClass>
             <Operation>1</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="E:\Dropbox\projects\azomva.com\fonts\BPG Nino Mtavruli.ttf" Condition="'$(Config)'=='Debug'">
-            <RemoteDir>Azomva\assets\internal\</RemoteDir>
-            <RemoteName>BPG Nino Mtavruli.ttf</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
             <LocalCommand/>
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
