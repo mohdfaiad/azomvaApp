@@ -512,6 +512,10 @@
             <ResourceType>RCDATA</ResourceType>
             <ResourceId>ItemSpaceBG</ResourceId>
         </RcItem>
+        <RcItem Include="Design\azomvebi\elements\ListBoxNormal_1.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>LBItemLine</ResourceId>
+        </RcItem>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -1107,6 +1111,12 @@
                     <Platform Name="Android">
                         <RemoteDir>res\values-v21\</RemoteDir>
                         <RemoteName>styles.xml</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Design\azomvebi\elements\ListBoxNormal_1.png" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Android">
+                        <RemoteDir>.\assets\internal\</RemoteDir>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

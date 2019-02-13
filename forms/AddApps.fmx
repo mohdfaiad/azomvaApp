@@ -22,7 +22,7 @@ object FormAddApps: TFormAddApps
     Size.Height = 602.000000000000000000
     Size.PlatformDefault = False
     TabHeight = 60.000000000000000000
-    TabIndex = 2
+    TabIndex = 0
     TabOrder = 0
     TabPosition = Top
     OnChange = TabControlMainChange
@@ -44,7 +44,7 @@ object FormAddApps: TFormAddApps
       TextSettings.Font.Size = 10.000000000000000000
       TextSettings.FontColor = claWhite
       StyledSettings = []
-      IsSelected = False
+      IsSelected = True
       ImageIndex = 3
       Size.Width = 166.000000000000000000
       Size.Height = 60.000000000000000000
@@ -550,7 +550,7 @@ object FormAddApps: TFormAddApps
       TextSettings.Font.Size = 10.000000000000000000
       TextSettings.FontColor = claWhite
       StyledSettings = []
-      IsSelected = True
+      IsSelected = False
       ImageIndex = 4
       Size.Width = 166.000000000000000000
       Size.Height = 60.000000000000000000
@@ -41140,7 +41140,7 @@ object FormAddApps: TFormAddApps
     end
     object LinkListControlToField2: TLinkListControlToField
       Category = 'Quick Bindings'
-      DataSource = BindSourceDB4
+      DataSource = BindSourceDBList_property_types
       FieldName = 'title'
       Control = ComboBoxApp_property_types
       FillExpressions = <>
@@ -41149,7 +41149,7 @@ object FormAddApps: TFormAddApps
     end
     object LinkListControlToField1: TLinkListControlToField
       Category = 'Quick Bindings'
-      DataSource = BindSourceDB5
+      DataSource = BindSourceDBApp_service_types
       FieldName = 'title'
       Control = ListBoxServiceTypes
       FillExpressions = <
@@ -41162,7 +41162,7 @@ object FormAddApps: TFormAddApps
     end
     object LinkListControlToField5: TLinkListControlToField
       Category = 'Quick Bindings'
-      DataSource = BindSourceDB6
+      DataSource = BindSourceDBLocation
       FieldName = 'title'
       Control = ComboBoxLocation
       FillExpressions = <>
@@ -41171,10 +41171,22 @@ object FormAddApps: TFormAddApps
     end
     object LinkListControlToField3: TLinkListControlToField
       Category = 'Quick Bindings'
-      DataSource = BindSourceDB2
+      DataSource = BindSourceDBLocationChildren
       FieldName = 'title'
       Control = ComboBoxLocationChildren
       FillExpressions = <>
+      FillHeaderExpressions = <>
+      FillBreakGroups = <>
+    end
+    object LinkListControlToField4: TLinkListControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDBPropRequiz
+      Control = ListViewAppsList
+      FillExpressions = <
+        item
+          SourceMemberName = 'area'
+          ControlMemberName = 'TextArea'
+        end>
       FillHeaderExpressions = <>
       FillBreakGroups = <>
     end
@@ -41340,7 +41352,7 @@ object FormAddApps: TFormAddApps
     UpdateOptions.CheckRequired = False
     UpdateOptions.AutoCommitUpdates = True
     StoreDefs = True
-    Left = 424
+    Left = 416
     Top = 266
     object FDMemTableApp_service_typesMemtitle: TStringField
       FieldName = 'title'
@@ -41486,7 +41498,7 @@ object FormAddApps: TFormAddApps
     UpdateOptions.CheckRequired = False
     UpdateOptions.AutoCommitUpdates = True
     StoreDefs = True
-    Left = 426
+    Left = 418
     Top = 216
     object FDMemTableAppid: TWideStringField
       FieldName = 'id'
@@ -41575,13 +41587,8 @@ object FormAddApps: TFormAddApps
   object BindSourceDBApp: TBindSourceDB
     DataSet = FDMemTableApp
     ScopeMappings = <>
-    Left = 288
-    Top = 216
-  end
-  object BindSourceDB1: TBindSourceDB
-    ScopeMappings = <>
-    Left = 288
-    Top = 216
+    Left = 96
+    Top = 176
   end
   object ImageListAppList: TImageList
     Source = <
@@ -41908,28 +41915,34 @@ object FormAddApps: TFormAddApps
     Left = 504
     Top = 100
   end
-  object BindSourceDB4: TBindSourceDB
+  object BindSourceDBList_property_types: TBindSourceDB
     DataSet = DModule.FDTableList_property_types
     ScopeMappings = <>
-    Left = 288
-    Top = 216
+    Left = 416
+    Top = 160
   end
-  object BindSourceDB5: TBindSourceDB
+  object BindSourceDBApp_service_types: TBindSourceDB
     DataSet = DModule.FDTableApp_service_types
     ScopeMappings = <>
-    Left = 288
-    Top = 216
+    Left = 280
+    Top = 104
   end
-  object BindSourceDB6: TBindSourceDB
+  object BindSourceDBLocation: TBindSourceDB
     DataSet = DModule.FDTableLocation
     ScopeMappings = <>
     Left = 288
     Top = 216
   end
-  object BindSourceDB2: TBindSourceDB
+  object BindSourceDBLocationChildren: TBindSourceDB
     DataSet = DModule.FDTableLocationChildren
     ScopeMappings = <>
     Left = 280
     Top = 304
+  end
+  object BindSourceDBPropRequiz: TBindSourceDB
+    DataSet = DModule.FDTableAddAppPropRequizites
+    ScopeMappings = <>
+    Left = 280
+    Top = 352
   end
 end
