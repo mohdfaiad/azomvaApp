@@ -172,12 +172,9 @@ type
     procedure ActionAddAppExecute(Sender: TObject);
     procedure ButtonFinishDIalogCloseClick(Sender: TObject);
     procedure ButtonAppReCreateClick(Sender: TObject);
-    procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
-      Shift: TShiftState);
-    procedure ListBoxServiceTypesItemClick(const Sender: TCustomListBox;
-      const Item: TListBoxItem);
-    procedure ListViewAppsListUpdateObjects(const Sender: TObject;
-      const AItem: TListViewItem);
+    procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
+    procedure ListBoxServiceTypesItemClick(const Sender: TCustomListBox; const Item: TListBoxItem);
+    procedure ListViewAppsListUpdateObjects(const Sender: TObject; const AItem: TListViewItem);
     procedure RESTRequestListsAfterExecute(Sender: TCustomRESTRequest);
     procedure EditCadcodeEnter(Sender: TObject);
     procedure EditCadcodeExit(Sender: TObject);
@@ -187,10 +184,8 @@ type
     procedure EditAddressExit(Sender: TObject);
     procedure MemoNoteEnter(Sender: TObject);
     procedure MemoNoteExit(Sender: TObject);
-    procedure FormVirtualKeyboardHidden(Sender: TObject;
-      KeyboardVisible: Boolean; const Bounds: TRect);
-    procedure FormVirtualKeyboardShown(Sender: TObject;
-      KeyboardVisible: Boolean; const Bounds: TRect);
+    procedure FormVirtualKeyboardHidden(Sender: TObject; KeyboardVisible: Boolean; const Bounds: TRect);
+    procedure FormVirtualKeyboardShown(Sender: TObject; KeyboardVisible: Boolean; const Bounds: TRect);
     procedure TabControlMainChange(Sender: TObject);
   private
   var
@@ -227,8 +222,7 @@ begin
   self.Show;
   self.RectangleFinishMain.Height := Screen.Height + (Screen.Height / 2);
   self.RectDialogFinishApp.Height := Screen.Height + (Screen.Height / 2);
-  self.RectanglePropertyRequizites.Height := Screen.Height +
-    (Screen.Height / 2);
+  self.RectanglePropertyRequizites.Height := Screen.Height + (Screen.Height / 2);
 
   self.LabelStatusBar.Text := DModule.statusBarTitle;
   self.RectangleStatusBar.Opacity := DModule.statusBarOpacity;
@@ -258,8 +252,7 @@ begin
   self.EditUserParamsPhone.Enabled := False;
 end;
 
-procedure TFormAddApps.ListBoxServiceTypesItemClick(const Sender
-  : TCustomListBox; const Item: TListBoxItem);
+procedure TFormAddApps.ListBoxServiceTypesItemClick(const Sender: TCustomListBox; const Item: TListBoxItem);
 begin
   if Item.IsChecked = False then
   begin
@@ -277,13 +270,11 @@ begin
   end;
 end;
 
-procedure TFormAddApps.ListViewAppsListUpdateObjects(const Sender: TObject;
-  const AItem: TListViewItem);
+procedure TFormAddApps.ListViewAppsListUpdateObjects(const Sender: TObject; const AItem: TListViewItem);
 begin
   // LBItemLine 1
   TListItemImage(AItem.Objects.FindDrawable('LBItemLine1')).OwnsBitmap := True;
-  TListItemImage(AItem.Objects.FindDrawable('LBItemLine1')).Bitmap :=
-    DModule.getBitmapFromResource('LBItemLine');
+  TListItemImage(AItem.Objects.FindDrawable('LBItemLine1')).Bitmap := DModule.getBitmapFromResource('LBItemLine');
   TListItemImage(AItem.Objects.FindDrawable('LBItemLine1')).PlaceOffset.X :=
     TListItemText(AItem.Objects.FindDrawable('TextLocation')).PlaceOffset.X;
   TListItemImage(AItem.Objects.FindDrawable('LBItemLine1')).PlaceOffset.Y :=
@@ -291,8 +282,7 @@ begin
 
   // LBItemLine 2
   TListItemImage(AItem.Objects.FindDrawable('LBItemLine2')).OwnsBitmap := True;
-  TListItemImage(AItem.Objects.FindDrawable('LBItemLine2')).Bitmap :=
-    DModule.getBitmapFromResource('LBItemLine');
+  TListItemImage(AItem.Objects.FindDrawable('LBItemLine2')).Bitmap := DModule.getBitmapFromResource('LBItemLine');
   TListItemImage(AItem.Objects.FindDrawable('LBItemLine2')).PlaceOffset.X :=
     TListItemText(AItem.Objects.FindDrawable('TextPropType')).PlaceOffset.X;
   TListItemImage(AItem.Objects.FindDrawable('LBItemLine2')).PlaceOffset.Y :=
@@ -300,8 +290,7 @@ begin
 
   // LBItemLine 3
   TListItemImage(AItem.Objects.FindDrawable('LBItemLine3')).OwnsBitmap := True;
-  TListItemImage(AItem.Objects.FindDrawable('LBItemLine3')).Bitmap :=
-    DModule.getBitmapFromResource('LBItemLine');
+  TListItemImage(AItem.Objects.FindDrawable('LBItemLine3')).Bitmap := DModule.getBitmapFromResource('LBItemLine');
   TListItemImage(AItem.Objects.FindDrawable('LBItemLine3')).PlaceOffset.X :=
     TListItemText(AItem.Objects.FindDrawable('TextArea')).PlaceOffset.X;
   TListItemImage(AItem.Objects.FindDrawable('LBItemLine3')).PlaceOffset.Y :=
@@ -310,14 +299,12 @@ end;
 
 procedure TFormAddApps.MemoNoteEnter(Sender: TObject);
 begin
-  VertScrollBoxRequizitesTab.ViewportPosition :=
-    PointF(VertScrollBoxRequizitesTab.ViewportPosition.X, 380);
+  VertScrollBoxRequizitesTab.ViewportPosition := PointF(VertScrollBoxRequizitesTab.ViewportPosition.X, 380);
 end;
 
 procedure TFormAddApps.MemoNoteExit(Sender: TObject);
 begin
-  VertScrollBoxRequizitesTab.ViewportPosition :=
-    PointF(VertScrollBoxRequizitesTab.ViewportPosition.X, 0);
+  VertScrollBoxRequizitesTab.ViewportPosition := PointF(VertScrollBoxRequizitesTab.ViewportPosition.X, 0);
 end;
 
 procedure TFormAddApps.RESTRequestListsAfterExecute(Sender: TCustomRESTRequest);
@@ -341,8 +328,7 @@ begin
     begin
       V_IsChecked := V_IsChecked + 1;
       if v_where_string.Length > 0 then
-        v_where_string := v_where_string + ' or id=' +
-          ListBoxServiceTypes.ListItems[I].ItemData.Detail
+        v_where_string := v_where_string + ' or id=' + ListBoxServiceTypes.ListItems[I].ItemData.Detail
       else
       begin
         v_id := ListBoxServiceTypes.ListItems[I].Index.ToString;
@@ -369,8 +355,7 @@ begin
   DModule.FDTableLocation.Filter := 'pid=0';
   DModule.FDTableLocation.Filtered := True;
 
-  V_App_service_types := V_App_service_types.Remove
-    (V_App_service_types.Length - 1);
+  V_App_service_types := V_App_service_types.Remove(V_App_service_types.Length - 1);
   if V_IsChecked > 0 then
   begin
     { FMXLoadingPreloader.Visible := True;
@@ -482,17 +467,15 @@ begin
         name := 'note';
         Value := TIdURI.ParamsEncode(MemoNote.Text);
       end;
-      RESTRequestAddApp.AddParameter('location_id',
-        self.v_global_location_id.ToString);
-      RESTRequestAddApp.AddParameter('deadlineby_user',
-        DateTimeToStr(TMSFMXDateTimeEdit1.DateTime));
+      RESTRequestAddApp.AddParameter('location_id', self.v_global_location_id.ToString);
+      RESTRequestAddApp.AddParameter('deadlineby_user', DateTimeToStr(TMSFMXDateTimeEdit1.DateTime));
 
       // მომსახურების ტიპები
       FDMemTableApp_service_typesMem.First;
       while not FDMemTableApp_service_typesMem.Eof do
       begin
-        RESTRequestAddApp.Params.AddItem('app_service_types[]',
-          FDMemTableApp_service_typesMem.FieldByName('title').AsString);
+        RESTRequestAddApp.Params.AddItem('app_service_types[]', FDMemTableApp_service_typesMem.FieldByName('title')
+          .AsString);
         FDMemTableApp_service_typesMem.Next;
       end;
 
@@ -501,20 +484,18 @@ begin
       FDMemTablePropRequz.First;
       while not FDMemTablePropRequz.Eof do
       begin
-        RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString +
-          '][app_service_types]',
+        RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString + '][app_service_types]',
           FDMemTablePropRequz.FieldByName('app_service_types').AsString);
-        RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString +
-          '][app_property_type_id]',
+        RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString + '][app_property_type_id]',
           FDMemTablePropRequz.FieldByName('app_property_type_id').AsString);
-        RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString +
-          '][cadcode]', FDMemTablePropRequz.FieldByName('cadcode').AsString);
-        RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString + '][area]',
-          FDMemTablePropRequz.FieldByName('area').AsString);
-        RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString +
-          '][location_id]', self.v_global_location_id.ToString);
-        RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString +
-          '][address]', FDMemTablePropRequz.FieldByName('address').AsString);
+        RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString + '][cadcode]',
+          FDMemTablePropRequz.FieldByName('cadcode').AsString);
+        RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString + '][area]', FDMemTablePropRequz.FieldByName('area')
+          .AsString);
+        RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString + '][location_id]',
+          self.v_global_location_id.ToString);
+        RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString + '][address]',
+          FDMemTablePropRequz.FieldByName('address').AsString);
         {
           RESTRequestAddApp.Params.AddItem('lon_lat', TIdURI.ParamsEncode(DModule.MyPosition.Latitude.ToString + ',' +
           DModule.MyPosition.Longitude.ToString));
@@ -565,38 +546,28 @@ begin
   // set listview item
   FDMemTablePropRequz.Open;
   FDMemTablePropRequz.Insert;
-  FDMemTablePropRequz.FieldByName('app_service_types').AsString :=
-    V_App_service_types;
-  FDMemTablePropRequz.FieldByName('app_property_type_id').AsInteger :=
-    DModule.FDTableList_property_types.FieldByName('id').AsInteger;
-  FDMemTablePropRequz.FieldByName('app_property_type_name').AsString :=
-    DModule.FDTableList_property_types.FieldByName('title').AsString;
+  FDMemTablePropRequz.FieldByName('app_service_types').AsString := V_App_service_types;
+  FDMemTablePropRequz.FieldByName('app_property_type_id').AsInteger := DModule.FDTableList_property_types.FieldByName
+    ('id').AsInteger;
+  FDMemTablePropRequz.FieldByName('app_property_type_name').AsString := DModule.FDTableList_property_types.FieldByName
+    ('title').AsString;
   FDMemTablePropRequz.FieldByName('cadcode').AsString := EditCadcode.Text;
   FDMemTablePropRequz.FieldByName('area').AsString := EditArea.Text;
-  self.v_global_location_id := DModule.FDTableLocationChildren.FieldByName('id')
-    .AsInteger;
-  FDMemTablePropRequz.FieldByName('location_id').AsInteger :=
-    self.v_global_location_id;
-  FDMemTablePropRequz.FieldByName('address').AsString :=
-    TIdURI.ParamsEncode(EditAddress.Text);
+  self.v_global_location_id := DModule.FDTableLocationChildren.FieldByName('id').AsInteger;
+  FDMemTablePropRequz.FieldByName('location_id').AsInteger := self.v_global_location_id;
+  FDMemTablePropRequz.FieldByName('address').AsString := TIdURI.ParamsEncode(EditAddress.Text);
 
   if self.CheckBoxUserParams.IsChecked = True then
   begin
-    FDMemTablePropRequz.FieldByName('full_name').AsString :=
-      TIdURI.ParamsEncode(EditUserParamsFullname.Text);
-    FDMemTablePropRequz.FieldByName('email').AsString :=
-      TIdURI.ParamsEncode(EditUserParamsEmail.Text);
-    FDMemTablePropRequz.FieldByName('phone').AsString :=
-      TIdURI.ParamsEncode(EditUserParamsPhone.Text);
+    FDMemTablePropRequz.FieldByName('full_name').AsString := TIdURI.ParamsEncode(EditUserParamsFullname.Text);
+    FDMemTablePropRequz.FieldByName('email').AsString := TIdURI.ParamsEncode(EditUserParamsEmail.Text);
+    FDMemTablePropRequz.FieldByName('phone').AsString := TIdURI.ParamsEncode(EditUserParamsPhone.Text);
   end
   else
   begin
-    FDMemTablePropRequz.FieldByName('full_name').AsString :=
-      TIdURI.ParamsEncode(DModule.full_name);
-    FDMemTablePropRequz.FieldByName('email').AsString :=
-      TIdURI.ParamsEncode(DModule.email);
-    FDMemTablePropRequz.FieldByName('phone').AsString :=
-      TIdURI.ParamsEncode(DModule.phone);
+    FDMemTablePropRequz.FieldByName('full_name').AsString := TIdURI.ParamsEncode(DModule.full_name);
+    FDMemTablePropRequz.FieldByName('email').AsString := TIdURI.ParamsEncode(DModule.email);
+    FDMemTablePropRequz.FieldByName('phone').AsString := TIdURI.ParamsEncode(DModule.phone);
   end;
 
   FDMemTablePropRequz.Post;
@@ -610,10 +581,9 @@ begin
     begin
       Insert;
       FieldByName('create_date').AsDateTime := Now();
-      FieldByName('app_property_type_name').AsString :=
-        DModule.FDTableList_property_types.FieldByName('title').AsString;
-      FieldByName('location_address').AsString :=
-        DModule.FDTableLocation.FieldByName('title').AsString;
+      FieldByName('app_property_type_name').AsString := DModule.FDTableList_property_types.FieldByName('title')
+        .AsString;
+      FieldByName('location_address').AsString := DModule.FDTableLocation.FieldByName('title').AsString;
       FieldByName('area').AsString := EditArea.Text;
       FieldByName('address').AsString := EditAddress.Text;
       Post;
@@ -624,15 +594,13 @@ begin
     with FDMemTableApp do
     begin
       Edit;
-      FieldByName('app_property_type_name').AsString :=
-        FieldByName('app_property_type_name').AsString + ', ' +
+      FieldByName('app_property_type_name').AsString := FieldByName('app_property_type_name').AsString + ', ' +
         DModule.FDTableList_property_types.FieldByName('title').AsString;
-      FieldByName('area').AsString := FieldByName('area').AsString + ', ' +
-        EditArea.Text;
-      FieldByName('address').AsString := FieldByName('address').AsString + ', '
-        + EditAddress.Text;
+      FieldByName('area').AsString := FieldByName('area').AsString + ', ' + EditArea.Text;
+      FieldByName('address').AsString := FieldByName('address').AsString + ', ' + EditAddress.Text;
       Post;
     end;
+    ListViewAppsList.Height := ListViewAppsList.Height * FDMemTableApp.RecordCount;
   end;
   // HeaderFrame1.LabelAppName.Text := FDMemTableApp.RecordCount.ToString;
 end;
@@ -675,22 +643,19 @@ begin
   Action := TCloseAction.caFree;
 end;
 
-procedure TFormAddApps.FormKeyUp(Sender: TObject; var Key: Word;
-var KeyChar: Char; Shift: TShiftState);
+procedure TFormAddApps.FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
 begin
   if self.v_KeyboardVisible = False then
     if (Key = 137) and (self.v_StepNumber = 0) then
       self.Close;
 end;
 
-procedure TFormAddApps.FormVirtualKeyboardHidden(Sender: TObject;
-KeyboardVisible: Boolean; const Bounds: TRect);
+procedure TFormAddApps.FormVirtualKeyboardHidden(Sender: TObject; KeyboardVisible: Boolean; const Bounds: TRect);
 begin
   self.v_KeyboardVisible := False;
 end;
 
-procedure TFormAddApps.FormVirtualKeyboardShown(Sender: TObject;
-KeyboardVisible: Boolean; const Bounds: TRect);
+procedure TFormAddApps.FormVirtualKeyboardShown(Sender: TObject; KeyboardVisible: Boolean; const Bounds: TRect);
 begin
   self.v_KeyboardVisible := True;
 end;
@@ -718,39 +683,33 @@ end;
 
 procedure TFormAddApps.EditCadcodeEnter(Sender: TObject);
 begin
-  VertScrollBoxRequizitesTab.ViewportPosition :=
-    PointF(VertScrollBoxRequizitesTab.ViewportPosition.X, 230);
+  VertScrollBoxRequizitesTab.ViewportPosition := PointF(VertScrollBoxRequizitesTab.ViewportPosition.X, 230);
   // VertScrollBoxRequizitesTab.AnimateFloat('ViewportPosition.X', 245, 0.5, FMX.Types.TAnimationType.InOut);
 end;
 
 procedure TFormAddApps.EditAreaEnter(Sender: TObject);
 begin
-  VertScrollBoxRequizitesTab.ViewportPosition :=
-    PointF(VertScrollBoxRequizitesTab.ViewportPosition.X, 295);
+  VertScrollBoxRequizitesTab.ViewportPosition := PointF(VertScrollBoxRequizitesTab.ViewportPosition.X, 295);
 end;
 
 procedure TFormAddApps.EditAddressEnter(Sender: TObject);
 begin
-  VertScrollBoxRequizitesTab.ViewportPosition :=
-    PointF(VertScrollBoxRequizitesTab.ViewportPosition.X, 350);
+  VertScrollBoxRequizitesTab.ViewportPosition := PointF(VertScrollBoxRequizitesTab.ViewportPosition.X, 350);
 end;
 
 procedure TFormAddApps.EditAddressExit(Sender: TObject);
 begin
-  VertScrollBoxRequizitesTab.ViewportPosition :=
-    PointF(VertScrollBoxRequizitesTab.ViewportPosition.X, 0);
+  VertScrollBoxRequizitesTab.ViewportPosition := PointF(VertScrollBoxRequizitesTab.ViewportPosition.X, 0);
 end;
 
 procedure TFormAddApps.EditAreaExit(Sender: TObject);
 begin
-  VertScrollBoxRequizitesTab.ViewportPosition :=
-    PointF(VertScrollBoxRequizitesTab.ViewportPosition.X, 0);
+  VertScrollBoxRequizitesTab.ViewportPosition := PointF(VertScrollBoxRequizitesTab.ViewportPosition.X, 0);
 end;
 
 procedure TFormAddApps.EditCadcodeExit(Sender: TObject);
 begin
-  VertScrollBoxRequizitesTab.ViewportPosition :=
-    PointF(VertScrollBoxRequizitesTab.ViewportPosition.X, 0);
+  VertScrollBoxRequizitesTab.ViewportPosition := PointF(VertScrollBoxRequizitesTab.ViewportPosition.X, 0);
 end;
 
 procedure TFormAddApps.SpeedButton1Click(Sender: TObject);
@@ -769,10 +728,6 @@ end;
 procedure TFormAddApps.TabControlMainChange(Sender: TObject);
 begin
   self.v_StepNumber := TTabControl(Sender).ActiveTab.Index;
-  if TTabControl(Sender).ActiveTab = TabItemFinish then
-  begin
-    // ListViewAppsList.Height:=ListViewAppsList.Height *
-  end;
 end;
 
 end.

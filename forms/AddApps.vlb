@@ -208,7 +208,7 @@ Coordinates=431,1350,229,80
 
 [FDMemTableApp]
 Visible=True
-Coordinates=1866,1572,115,36
+Coordinates=1991,1582,115,36
 
 [FDMemTableAppstatus_name]
 Coordinates=1522,1,188,36
@@ -253,7 +253,7 @@ Coordinates=1522,768,198,36
 Coordinates=1304,419,163,36
 
 [BindSourceDBApp]
-Coordinates=1741,1562,115,36
+Coordinates=1866,1572,176,542
 
 [FDMemTableAppnote]
 Coordinates=1304,529,140,36
@@ -582,4 +582,11 @@ Coordinates=1886,1646,80,36
 
 [MainForm.PushEvents1]
 Coordinates=1805,1178,151,102
+
+[LabelNotFound]
+Coordinates=0,0,102,58
+
+[ListViewAppsList]
+Coordinates=121,1,112,300
+Visible=True
 
