@@ -496,56 +496,88 @@ begin
         DateTimeToStr(TMSFMXDateTimeEdit1.DateTime));
 
       // მომსახურების ტიპები
-      FDMemTableApp_service_typesMem.First;
-      while not FDMemTableApp_service_typesMem.Eof do
-      begin
+      { FDMemTableApp_service_typesMem.Open;
+        FDMemTableApp_service_typesMem.First;
+        while not FDMemTableApp_service_typesMem.Eof do
+        begin
         RESTRequestAddApp.Params.AddItem('app_service_types[]',
-          FDMemTableApp_service_typesMem.FieldByName('title').AsString);
+        FDMemTableApp_service_typesMem.FieldByName('title').AsString);
         FDMemTableApp_service_typesMem.Next;
-      end;
+        end; }
 
       // ქონების რეკვიზიტები
       I := 0;
-      FDMemTablePropRequz.First;
-      while not FDMemTablePropRequz.Eof do
+      DModule.FDTableAddAppPropRequizites.Close;
+      DModule.FDTableAddAppPropRequizites.Filter := 'app_id=' +
+        self.v_InsertedAppId.ToString;
+      DModule.FDTableAddAppPropRequizites.Filtered := True;
+      DModule.FDTableAddAppPropRequizites.First;
+      while not DModule.FDTableAddAppPropRequizites.Eof do
       begin
-        RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString +
+        { RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString +
           '][app_service_types]',
-          FDMemTablePropRequz.FieldByName('app_service_types').AsString);
+          FDMemTablePropRequz.FieldByName('app_service_types').AsString); }
         RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString +
           '][app_property_type_id]',
-          FDMemTablePropRequz.FieldByName('app_property_type_id').AsString);
+          DModule.FDTableAddAppPropRequizites.FieldByName
+          ('app_property_type_id').AsString);
         RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString +
-          '][cadcode]', FDMemTablePropRequz.FieldByName('cadcode').AsString);
+          '][cadcode]', DModule.FDTableAddAppPropRequizites.FieldByName
+          ('cadcode').AsString);
         RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString + '][area]',
-          FDMemTablePropRequz.FieldByName('area').AsString);
+          DModule.FDTableAddAppPropRequizites.FieldByName('area').AsString);
         RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString +
           '][location_id]', self.v_global_location_id.ToString);
         RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString +
-          '][address]', FDMemTablePropRequz.FieldByName('address').AsString);
+          '][address]', DModule.FDTableAddAppPropRequizites.FieldByName
+          ('address').AsString);
         {
           RESTRequestAddApp.Params.AddItem('lon_lat', TIdURI.ParamsEncode(DModule.MyPosition.Latitude.ToString + ',' +
           DModule.MyPosition.Longitude.ToString));
         }
 
+        DModule.FDTableAppUserParams.Close;
+        DModule.FDTableAppUserParams.Filter := 'app_id=' +
+          self.v_InsertedAppId.ToString + ' and app_property_requisite_id=' +
+          DModule.FDTableAddAppPropRequizites.FieldByName('id').AsString;
+        DModule.FDTableAppUserParams.Filtered := True;
+        DModule.FDTableAppUserParams.First;
+
         with RESTRequestAddApp.Params.AddItem do
         begin
           name := 'PropRequz[' + I.ToString + '][full_name]';
-          Value := FDMemTablePropRequz.FieldByName('full_name').AsString;
+          Value := DModule.FDTableAppUserParams.FieldByName('full_name').AsString;
         end;
         with RESTRequestAddApp.Params.AddItem do
         begin
           name := 'PropRequz[' + I.ToString + '][phone]';
-          Value := FDMemTablePropRequz.FieldByName('phone').AsString;
+          Value := DModule.FDTableAppUserParams.FieldByName('phone').AsString;
         end;
         with RESTRequestAddApp.Params.AddItem do
         begin
           name := 'PropRequz[' + I.ToString + '][email]';
-          Value := FDMemTablePropRequz.FieldByName('email').AsString;
+          Value := DModule.FDTableAppUserParams.FieldByName('email').AsString;
+        end;
+
+        // მომსახურების ტიპები
+        // app_service_type_ids
+        DModule.FDTableApp_service_type_ids.Close;
+        DModule.FDTableApp_service_type_ids.Filter :=
+          'app_property_requisite_id=';
+        DModule.FDTableApp_service_type_ids.Filtered := True;
+
+        DModule.FDTableApp_service_type_ids.Active := True;
+        DModule.FDTableApp_service_type_ids.First;
+        while not DModule.FDTableApp_service_type_ids.Eof do
+        begin
+          RESTRequestAddApp.Params.AddItem('app_service_type_ids[]',
+            DModule.FDTableApp_service_type_ids.FieldByName
+            ('list_service_type_id').AsString);
+          DModule.FDTableApp_service_type_ids.Next;
         end;
 
         I := I + 1;
-        FDMemTablePropRequz.Next;
+        DModule.FDTableAddAppPropRequizites.Next;
       end;
       // დამკვეთის რეკვიზიტები
       RESTRequestAddApp.Execute;
@@ -561,6 +593,7 @@ begin
             ShowMessage(msg);
           end);
         self.Close;
+        DModule.updateAppClosed4Editing(self.v_InsertedAppId);
       end
       else
         MemoNote.Text := RESTResponseAddApp.Content;
@@ -579,41 +612,47 @@ begin
   // set listview item
   FDMemTablePropRequz.Open;
   FDMemTablePropRequz.Insert;
-  FDMemTablePropRequz.FieldByName('app_service_types').AsString :=
+  {DModule.FDTableAddAppPropRequizites.FieldByName('app_service_types').AsString :=
     V_App_service_types;
-  FDMemTablePropRequz.FieldByName('app_property_type_id').AsInteger :=
+  DModule.FDTableAddAppPropRequizites.FieldByName('app_property_type_id').AsInteger :=
+    DModule.FDTableList_property_types.FieldByName('id').AsInteger; }
+    DModule.FDTableList_property_types.FieldByName('app_id').AsInteger:=self.v_InsertedAppId;
+  DModule.FDTableList_property_types.FieldByName('app_property_type_id').AsInteger :=
     DModule.FDTableList_property_types.FieldByName('id').AsInteger;
-  FDMemTablePropRequz.FieldByName('app_property_type_name').AsString :=
-    DModule.FDTableList_property_types.FieldByName('title').AsString;
-  FDMemTablePropRequz.FieldByName('cadcode').AsString := EditCadcode.Text;
-  FDMemTablePropRequz.FieldByName('area').AsString := EditArea.Text;
+  DModule.FDTableList_property_types.FieldByName('cadcode').AsString := EditCadcode.Text;
+  DModule.FDTableList_property_types.FieldByName('area').AsString := EditArea.Text;
   self.v_global_location_id := DModule.FDTableLocationChildren.FieldByName('id')
     .AsInteger;
-  FDMemTablePropRequz.FieldByName('location_id').AsInteger :=
+  DModule.FDTableList_property_types.FieldByName('location_id').AsInteger :=
     self.v_global_location_id;
-  FDMemTablePropRequz.FieldByName('address').AsString :=
+  DModule.FDTableList_property_types.FieldByName('address').AsString :=
     TIdURI.ParamsEncode(EditAddress.Text);
+    DModule.FDTableList_property_types.Post;
+    DModule.FDTableList_property_types
 
+
+    DModule.FDTableAppUserParams.FieldByName('app_id').AsInteger:=self.v_InsertedAppId;
+    DModule.FDTableAppUserParams.FieldByName('app_property_requisite_id').AsInteger:=
   if self.CheckBoxUserParams.IsChecked = True then
   begin
-    FDMemTablePropRequz.FieldByName('full_name').AsString :=
+    DModule.FDTableAppUserParams.FieldByName('full_name').AsString :=
       TIdURI.ParamsEncode(EditUserParamsFullname.Text);
-    FDMemTablePropRequz.FieldByName('email').AsString :=
+    DModule.FDTableAppUserParams.FieldByName('email').AsString :=
       TIdURI.ParamsEncode(EditUserParamsEmail.Text);
-    FDMemTablePropRequz.FieldByName('phone').AsString :=
+    DModule.FDTableAppUserParams.FieldByName('phone').AsString :=
       TIdURI.ParamsEncode(EditUserParamsPhone.Text);
   end
   else
   begin
-    FDMemTablePropRequz.FieldByName('full_name').AsString :=
+    DModule.FDTableAppUserParams.FieldByName('full_name').AsString :=
       TIdURI.ParamsEncode(DModule.full_name);
-    FDMemTablePropRequz.FieldByName('email').AsString :=
+    DModule.FDTableAppUserParams.FieldByName('email').AsString :=
       TIdURI.ParamsEncode(DModule.email);
-    FDMemTablePropRequz.FieldByName('phone').AsString :=
+    DModule.FDTableAppUserParams.FieldByName('phone').AsString :=
       TIdURI.ParamsEncode(DModule.phone);
   end;
 
-  FDMemTablePropRequz.Post;
+
 
   V_App_service_types := '';
   {
@@ -686,8 +725,7 @@ begin
     // 'note';
     vAppParams[7] := MemoNote.Text;
     // 'add_date';
-    vAppParams[8] := DateTimeToStr(Now(),
-      DModule.DateFormatSettings);
+    vAppParams[8] := DateTimeToStr(Now(), DModule.DateFormatSettings);
     // is_current_record
     vAppParams[9] := '1';
     self.v_InsertedAppId := DModule.insertApp(vAppParams);
