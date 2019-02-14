@@ -102,7 +102,7 @@ Coordinates=373,1110,113,51
 Coordinates=533,1359,125,33
 
 []
-Coordinates=1775,1350,92,51
+Coordinates=1313,1359,129,33
 Visible=True
 
 [MainForm.FDMemTablePages]
@@ -208,7 +208,7 @@ Coordinates=152,1110,195,69
 
 [FDMemTableApp]
 Visible=True
-Coordinates=407,1369,98,33
+Coordinates=515,1379,98,33
 
 [FDMemTableAppstatus_name]
 Coordinates=1522,1,161,33
@@ -253,7 +253,7 @@ Coordinates=1522,768,170,33
 Coordinates=1304,419,140,33
 
 [BindSourceDBApp]
-Coordinates=299,1359,147,447
+Coordinates=407,1369,147,447
 
 [FDMemTableAppnote]
 Coordinates=1304,529,120,33
@@ -314,9 +314,6 @@ Coordinates=887,1282,106,33
 
 [FDMemTablePropRequzapp_service_types]
 Coordinates=766,314,224,33
-
-[TMSFMXDateTimeEdit1]
-Coordinates=1313,1359,129,33
 
 [RectangleRadioGroup]
 Coordinates=142,1418,123,33
@@ -563,9 +560,6 @@ Visible=False
 [Image4]
 Coordinates=280,1282,49,51
 
-[Rectangle1]
-Coordinates=1629,1282,69,33
-
 [MainForm.PushEvents1]
 Coordinates=1301,961,131,87
 
@@ -590,6 +584,30 @@ Coordinates=10,970,185,105
 Coordinates=783,758,171,141
 
 [BindSourceDBPropRequiz]
-Coordinates=1760,10,196,195
+Coordinates=1760,10,196,231
 Visible=True
+
+[RectanglePropRequzNextButton]
+Coordinates=1629,1282,173,33
+
+[DModule.FDTableApp_service_type_ids]
+Coordinates=0,0,210,123
+
+[DModule.FDTableAppUserParams]
+Coordinates=163,165,181,177
+
+[RectangleFinishApp]
+Coordinates=871,421,113,33
+
+[RectangleTimeOfFinishApp]
+Coordinates=971,647,149,33
+
+[FloatKeyAnimation1]
+Coordinates=1179,647,113,33
+
+[TimeEditAppEndTime]
+Coordinates=15,165,121,51
+
+[DateEditAppEndDate]
+Coordinates=457,458,117,51
 

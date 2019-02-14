@@ -18,7 +18,7 @@ uses
   FMX.ListView.Appearances, FMX.ListView.Adapters.Base,
   FMX.ListView, System.Actions,
   FMX.ActnList, FMX.TMSBaseControl, FMX.TMSDateTimeEdit,
-  REST.Types, System.ImageList, FMX.ImgList, FMX.Effects;
+  REST.Types, System.ImageList, FMX.ImgList, FMX.Effects, FMX.DateTimeCtrls;
 
 type
   TFormAddApps = class(TForm)
@@ -115,7 +115,6 @@ type
     FDMemTablePropRequzemail: TStringField;
     FDMemTablePropRequzphone: TStringField;
     FDMemTablePropRequzapp_service_types: TWideStringField;
-    TMSFMXDateTimeEdit1: TTMSFMXDateTimeEdit;
     LabelOfferFinishDateTime: TLabel;
     RectangleRadioGroup: TRectangle;
     LabelNaxazisMomzadebisVada: TLabel;
@@ -158,11 +157,16 @@ type
     Image3: TImage;
     Label2: TLabel;
     Image4: TImage;
-    Rectangle1: TRectangle;
+    RectanglePropRequzNextButton: TRectangle;
     ListViewAppsList: TListView;
     LabelNotFound: TLabel;
     BindSourceDBPropRequiz: TBindSourceDB;
     LinkListControlToField4: TLinkListControlToField;
+    RectangleTimeOfFinishApp: TRectangle;
+    DateEditAppEndDate: TDateEdit;
+    TimeEditAppEndTime: TTimeEdit;
+    FloatKeyAnimation1: TFloatKeyAnimation;
+    RectangleFinishApp: TRectangle;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ButtonFinishAddingClick(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
@@ -186,13 +190,24 @@ type
     procedure EditAreaEnter(Sender: TObject);
     procedure EditAddressEnter(Sender: TObject);
     procedure EditAddressExit(Sender: TObject);
-    procedure MemoNoteEnter(Sender: TObject);
     procedure MemoNoteExit(Sender: TObject);
     procedure FormVirtualKeyboardHidden(Sender: TObject;
       KeyboardVisible: Boolean; const Bounds: TRect);
     procedure FormVirtualKeyboardShown(Sender: TObject;
       KeyboardVisible: Boolean; const Bounds: TRect);
     procedure TabControlMainChange(Sender: TObject);
+    procedure RectangleVada1Tap(Sender: TObject; const Point: TPointF);
+    procedure RectangleVada1Click(Sender: TObject);
+    procedure RectangleVada2Click(Sender: TObject);
+    procedure RectangleVada2Tap(Sender: TObject; const Point: TPointF);
+    procedure Label7DgeClick(Sender: TObject);
+    procedure Label7DgeTap(Sender: TObject; const Point: TPointF);
+    procedure RectangleVada3Click(Sender: TObject);
+    procedure RectangleVada3Tap(Sender: TObject; const Point: TPointF);
+    procedure Label4DgeClick(Sender: TObject);
+    procedure Label4DgeTap(Sender: TObject; const Point: TPointF);
+    procedure Label1DgeClick(Sender: TObject);
+    procedure Label1DgeTap(Sender: TObject; const Point: TPointF);
   private
   var
     v_initialized: Boolean;
@@ -204,6 +219,10 @@ type
     v_StepNumber: integer;
     v_ServiceTypes: TStringList;
     procedure fillListViewWithOneRecord;
+    procedure clearServiceTypesListBox;
+    procedure check1Day;
+    procedure check4Day;
+    procedure check7Day;
     { Private declarations }
   public
     { Public declarations }
@@ -237,9 +256,10 @@ begin
 
   self.LabelStatusBar.Text := DModule.statusBarTitle;
   self.RectangleStatusBar.Opacity := DModule.statusBarOpacity;
-  TMSFMXDateTimeEdit1.DateTime := (Now() + 1) + EncodeTime(21, 00, 00, 0);
-  TMSFMXDateTimeEdit1.TimeFormat := 'hh:nn:ss';
-  TMSFMXDateTimeEdit1.DateFormat := 'dd-mm-yyyy';
+  DateEditAppEndDate.Date := (Now() + 1) + EncodeTime(21, 00, 00, 0);
+  DateEditAppEndDate.Format := 'dd-mm-yyyy';
+
+  TimeEditAppEndTime.Format := 'hh:nn:ss';
 
   DModule.FDTableApp_service_types.Active := True;
 
@@ -263,13 +283,42 @@ begin
   self.EditUserParamsPhone.Enabled := False;
 end;
 
+procedure TFormAddApps.Label1DgeClick(Sender: TObject);
+begin
+  self.check1Day;
+end;
+
+procedure TFormAddApps.Label1DgeTap(Sender: TObject; const Point: TPointF);
+begin
+  self.check1Day;
+end;
+
+procedure TFormAddApps.Label4DgeClick(Sender: TObject);
+begin
+  self.check4Day;
+end;
+
+procedure TFormAddApps.Label4DgeTap(Sender: TObject; const Point: TPointF);
+begin
+  self.check4Day;
+end;
+
+procedure TFormAddApps.Label7DgeClick(Sender: TObject);
+begin
+  self.check7Day;
+end;
+
+procedure TFormAddApps.Label7DgeTap(Sender: TObject; const Point: TPointF);
+begin
+  self.check7Day;
+end;
+
 procedure TFormAddApps.ListBoxServiceTypesItemClick(const Sender
   : TCustomListBox; const Item: TListBoxItem);
 begin
   if Item.IsChecked = False then
   begin
     Item.IsChecked := True;
-    // Item.TextSettings.FontColor := TAlphaColor($FFFF3434);
     Item.StyleLookup := 'MylistboxitemstyleActive';
     Item.UpdateEffects;
   end
@@ -277,7 +326,6 @@ begin
   begin
     Item.IsChecked := False;
     Item.StyleLookup := 'Mylistboxitemstyle';
-    // Item.TextSettings.FontColor := TAlphaColor($FF898989);
     Item.UpdateEffects;
   end;
 end;
@@ -313,16 +361,82 @@ begin
     TListItemText(AItem.Objects.FindDrawable('TextArea')).PlaceOffset.Y;
 end;
 
-procedure TFormAddApps.MemoNoteEnter(Sender: TObject);
-begin
-  VertScrollBoxRequizitesTab.ViewportPosition :=
-    PointF(VertScrollBoxRequizitesTab.ViewportPosition.X, 380);
-end;
-
 procedure TFormAddApps.MemoNoteExit(Sender: TObject);
 begin
   VertScrollBoxRequizitesTab.ViewportPosition :=
     PointF(VertScrollBoxRequizitesTab.ViewportPosition.X, 0);
+end;
+
+procedure TFormAddApps.check1Day;
+begin
+  RadioButtonVada1.IsChecked := True;
+  // -----1 დღე
+  RectangleVada1.Stroke.Color := TAlphaColor($FFFF3434);
+  Label1Dge.TextSettings.FontColor := TAlphaColor($FFFF3434);
+  // -----4 დღე
+  RectangleVada2.Stroke.Color := TAlphaColor($FF929292);
+  Label4Dge.TextSettings.FontColor := TAlphaColor($FF929292);
+  // -----7 დღე
+  RectangleVada3.Stroke.Color := TAlphaColor($FF929292);
+  Label7Dge.TextSettings.FontColor := TAlphaColor($FF929292);
+end;
+
+procedure TFormAddApps.check4Day;
+begin
+  RadioButtonVada2.IsChecked := True;
+  // -----1 დღე
+  RectangleVada1.Stroke.Color := TAlphaColor($FF929292);
+  Label1Dge.TextSettings.FontColor := TAlphaColor($FF929292);
+  // -----4 დღე
+  RectangleVada2.Stroke.Color := TAlphaColor($FFFF3434);
+  Label4Dge.TextSettings.FontColor := TAlphaColor($FFFF3434);
+  // -----7 დღე
+  RectangleVada3.Stroke.Color := TAlphaColor($FF929292);
+  Label7Dge.TextSettings.FontColor := TAlphaColor($FF929292);
+end;
+
+procedure TFormAddApps.check7Day;
+begin
+  RadioButtonVada3.IsChecked := True;
+  // -----1 დღე
+  RectangleVada1.Stroke.Color := TAlphaColor($FF929292);
+  Label1Dge.TextSettings.FontColor := TAlphaColor($FF929292);
+  // -----4 დღე
+  RectangleVada2.Stroke.Color := TAlphaColor($FF929292);
+  Label4Dge.TextSettings.FontColor := TAlphaColor($FF929292);
+  // -----7 დღე
+  RectangleVada3.Stroke.Color := TAlphaColor($FFFF3434);
+  Label7Dge.TextSettings.FontColor := TAlphaColor($FFFF3434);
+end;
+
+procedure TFormAddApps.RectangleVada1Click(Sender: TObject);
+begin
+  self.check1Day;
+end;
+
+procedure TFormAddApps.RectangleVada1Tap(Sender: TObject; const Point: TPointF);
+begin
+  self.check1Day;
+end;
+
+procedure TFormAddApps.RectangleVada2Click(Sender: TObject);
+begin
+  self.check4Day;
+end;
+
+procedure TFormAddApps.RectangleVada2Tap(Sender: TObject; const Point: TPointF);
+begin
+  self.check4Day;
+end;
+
+procedure TFormAddApps.RectangleVada3Click(Sender: TObject);
+begin
+  self.check7Day;
+end;
+
+procedure TFormAddApps.RectangleVada3Tap(Sender: TObject; const Point: TPointF);
+begin
+  self.check7Day;
 end;
 
 procedure TFormAddApps.RESTRequestListsAfterExecute(Sender: TCustomRESTRequest);
@@ -441,7 +555,7 @@ end;
 // 5 step of wizzard
 procedure TFormAddApps.ActionAddAppExecute(Sender: TObject);
 var
-  I: integer;
+  I, I1: integer;
   aTask: ITask;
 begin
   FMXLoadingPreloader.Visible := True;
@@ -493,7 +607,8 @@ begin
       RESTRequestAddApp.AddParameter('location_id',
         self.v_global_location_id.ToString);
       RESTRequestAddApp.AddParameter('deadlineby_user',
-        DateTimeToStr(TMSFMXDateTimeEdit1.DateTime));
+        FormatDateTime('dd-mm-yyyy ', DateEditAppEndDate.Date) +
+        FormatDateTime('hh:mm', TimeEditAppEndTime.Time));
 
       // მომსახურების ტიპები
       { FDMemTableApp_service_typesMem.Open;
@@ -511,6 +626,7 @@ begin
       DModule.FDTableAddAppPropRequizites.Filter := 'app_id=' +
         self.v_InsertedAppId.ToString;
       DModule.FDTableAddAppPropRequizites.Filtered := True;
+      DModule.FDTableAddAppPropRequizites.Active := True;
       DModule.FDTableAddAppPropRequizites.First;
       while not DModule.FDTableAddAppPropRequizites.Eof do
       begin
@@ -541,12 +657,13 @@ begin
           self.v_InsertedAppId.ToString + ' and app_property_requisite_id=' +
           DModule.FDTableAddAppPropRequizites.FieldByName('id').AsString;
         DModule.FDTableAppUserParams.Filtered := True;
+        DModule.FDTableAppUserParams.Active := True;
         DModule.FDTableAppUserParams.First;
-
         with RESTRequestAddApp.Params.AddItem do
         begin
           name := 'PropRequz[' + I.ToString + '][full_name]';
-          Value := DModule.FDTableAppUserParams.FieldByName('full_name').AsString;
+          Value := DModule.FDTableAppUserParams.FieldByName
+            ('full_name').AsString;
         end;
         with RESTRequestAddApp.Params.AddItem do
         begin
@@ -565,15 +682,16 @@ begin
         DModule.FDTableApp_service_type_ids.Filter :=
           'app_property_requisite_id=';
         DModule.FDTableApp_service_type_ids.Filtered := True;
-
         DModule.FDTableApp_service_type_ids.Active := True;
         DModule.FDTableApp_service_type_ids.First;
+        I1 := 1;
         while not DModule.FDTableApp_service_type_ids.Eof do
         begin
-          RESTRequestAddApp.Params.AddItem('app_service_type_ids[]',
-            DModule.FDTableApp_service_type_ids.FieldByName
+          RESTRequestAddApp.Params.AddItem('app_service_type_ids[' + I1.ToString
+            + ']', DModule.FDTableApp_service_type_ids.FieldByName
             ('list_service_type_id').AsString);
           DModule.FDTableApp_service_type_ids.Next;
+          I1 := I1 + 1;
         end;
 
         I := I + 1;
@@ -609,30 +727,50 @@ var
   vExecuteDays, vNotificationOnDevice, vNotificationOnEmail,
     vInserterPropertyRequizId, I: integer;
 begin
-  // set listview item
-  FDMemTablePropRequz.Open;
-  FDMemTablePropRequz.Insert;
-  {DModule.FDTableAddAppPropRequizites.FieldByName('app_service_types').AsString :=
-    V_App_service_types;
-  DModule.FDTableAddAppPropRequizites.FieldByName('app_property_type_id').AsInteger :=
-    DModule.FDTableList_property_types.FieldByName('id').AsInteger; }
-    DModule.FDTableList_property_types.FieldByName('app_id').AsInteger:=self.v_InsertedAppId;
-  DModule.FDTableList_property_types.FieldByName('app_property_type_id').AsInteger :=
-    DModule.FDTableList_property_types.FieldByName('id').AsInteger;
-  DModule.FDTableList_property_types.FieldByName('cadcode').AsString := EditCadcode.Text;
-  DModule.FDTableList_property_types.FieldByName('area').AsString := EditArea.Text;
+  // Date Time Edit size modification
+  DateEditAppEndDate.Width := (RectangleTimeOfFinishApp.Width / 2) - 5;
+  TimeEditAppEndTime.Width := (RectangleTimeOfFinishApp.Width / 2) - 5;
+
   self.v_global_location_id := DModule.FDTableLocationChildren.FieldByName('id')
     .AsInteger;
-  DModule.FDTableList_property_types.FieldByName('location_id').AsInteger :=
+
+  // set listview item
+  DModule.FDTableAddAppPropRequizites.Active := True;
+  DModule.FDTableAddAppPropRequizites.Insert;
+  { DModule.FDTableAddAppPropRequizites.FieldByName('app_service_types').AsString :=
+    V_App_service_types;
+    DModule.FDTableAddAppPropRequizites.FieldByName('app_property_type_id').AsInteger :=
+    DModule.FDTableList_property_types.FieldByName('id').AsInteger; }
+  DModule.FDTableAddAppPropRequizites.FieldByName('app_id').AsInteger :=
+    self.v_InsertedAppId;
+  DModule.FDTableAddAppPropRequizites.FieldByName('app_property_type_id')
+    .AsInteger := DModule.FDTableList_property_types.FieldByName('id')
+    .AsInteger;
+  DModule.FDTableAddAppPropRequizites.FieldByName('cadcode').AsString :=
+    EditCadcode.Text;
+  DModule.FDTableAddAppPropRequizites.FieldByName('area').AsString :=
+    EditArea.Text;
+
+  DModule.FDTableAddAppPropRequizites.FieldByName('location_id').AsInteger :=
     self.v_global_location_id;
-  DModule.FDTableList_property_types.FieldByName('address').AsString :=
+  DModule.FDTableAddAppPropRequizites.FieldByName('address').AsString :=
     TIdURI.ParamsEncode(EditAddress.Text);
-    DModule.FDTableList_property_types.Post;
-    DModule.FDTableList_property_types
+  DModule.FDTableAddAppPropRequizites.Post;
+  // Get last record for ID
+  DModule.FDTableAddAppPropRequizites.Active := True;
+  DModule.FDTableAddAppPropRequizites.SQL.Add
+    ('select id from app_property_requisites t order by t.id desc limit 1');
+  DModule.FDTableAddAppPropRequizites.Active := True;
 
+  // Insert record to AppUserParams
+  DModule.FDTableAppUserParams.Active := True;
+  DModule.FDTableAppUserParams.Insert;
+  DModule.FDTableAppUserParams.FieldByName('app_id').AsInteger :=
+    self.v_InsertedAppId;
+  DModule.FDTableAppUserParams.FieldByName('app_property_requisite_id')
+    .AsInteger := DModule.FDTableAddAppPropRequizites.FieldByName('id')
+    .AsInteger;
 
-    DModule.FDTableAppUserParams.FieldByName('app_id').AsInteger:=self.v_InsertedAppId;
-    DModule.FDTableAppUserParams.FieldByName('app_property_requisite_id').AsInteger:=
   if self.CheckBoxUserParams.IsChecked = True then
   begin
     DModule.FDTableAppUserParams.FieldByName('full_name').AsString :=
@@ -651,8 +789,7 @@ begin
     DModule.FDTableAppUserParams.FieldByName('phone').AsString :=
       TIdURI.ParamsEncode(DModule.phone);
   end;
-
-
+  DModule.FDTableAppUserParams.Post;
 
   V_App_service_types := '';
   {
@@ -717,20 +854,22 @@ begin
     // 'notification_on_email';
     vAppParams[4] := vNotificationOnEmail.ToString;
     // 'deadlineby_user';
-    vAppParams[5] := DateTimeToStr(TMSFMXDateTimeEdit1.DateTime,
-      DModule.DateFormatSettings);
+    vAppParams[5] := FormatDateTime('dd-mm-yyyy ', DateEditAppEndDate.Date) +
+      FormatDateTime('hh:mm', TimeEditAppEndTime.Time);
+    { DateTimeToStr(DateEditAppEndDate.Date,
+      DModule.DateFormatSettings)+TimeToStr(TimeEditAppEndTime.Time); }
 
     // 'execute_days';
     vAppParams[6] := vExecuteDays.ToString;
     // 'note';
     vAppParams[7] := MemoNote.Text;
     // 'add_date';
-    vAppParams[8] := DateTimeToStr(Now(), DModule.DateFormatSettings);
+    vAppParams[8] := FormatDateTime('dd-mm-yyyy hh:mm', Now());
     // is_current_record
     vAppParams[9] := '1';
     self.v_InsertedAppId := DModule.insertApp(vAppParams);
   end;
-  SetLength(vPropRequiz, 16);
+  SetLength(vPropRequiz, 6);
   // app_id,app_property_type_id,location_id,address,cadcode,area
   // 'app_id';
   vPropRequiz[0] := self.v_InsertedAppId.ToString;
@@ -758,8 +897,20 @@ begin
     vAppServiceTypeLink[2] := self.v_ServiceTypes.Strings[I];
     DModule.insertAppServiceTypeLink(vAppServiceTypeLink);
   end;
+  // Reset checkboxes to ServiceTypes ListBox
+  self.clearServiceTypesListBox;
+end;
 
-  HeaderFrame1.LabelAppName.Text := FDMemTablePropRequz.RecordCount.ToString;
+procedure TFormAddApps.clearServiceTypesListBox;
+var
+  I: integer;
+begin
+  for I := 0 to ListBoxServiceTypes.Items.Count - 1 do
+  begin
+    ListBoxServiceTypes.ListItems[I].IsChecked := False;
+    ListBoxServiceTypes.ListItems[I].StyleLookup := 'Mylistboxitemstyle';
+    ListBoxServiceTypes.ListItems[I].UpdateEffects;
+  end;
 end;
 
 procedure TFormAddApps.ButtonNextStep3Click(Sender: TObject);
@@ -811,13 +962,23 @@ end;
 procedure TFormAddApps.FormVirtualKeyboardHidden(Sender: TObject;
 KeyboardVisible: Boolean; const Bounds: TRect);
 begin
-  self.v_KeyboardVisible := False;
+  if KeyboardVisible = False then
+  begin
+    self.v_KeyboardVisible := False;
+    VertScrollBoxRequizitesTab.ViewportPosition :=
+      PointF(VertScrollBoxRequizitesTab.ViewportPosition.X, 0);
+  end;
 end;
 
 procedure TFormAddApps.FormVirtualKeyboardShown(Sender: TObject;
 KeyboardVisible: Boolean; const Bounds: TRect);
 begin
-  self.v_KeyboardVisible := True;
+  if (MemoNote.IsFocused = True) and (KeyboardVisible = True) then
+  begin
+    self.v_KeyboardVisible := True;
+    VertScrollBoxRequizitesTab.ViewportPosition :=
+      PointF(VertScrollBoxRequizitesTab.ViewportPosition.X, Bounds.Height);
+  end;
 end;
 
 procedure TFormAddApps.HeaderFrame1ButtonBackClick(Sender: TObject);
