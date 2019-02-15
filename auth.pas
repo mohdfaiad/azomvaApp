@@ -307,9 +307,7 @@ begin
       v_params.Add(FDMemTableAuth.FieldByName('MyContractsCount').AsString);
       v_params.Add(FDMemTableAuth.FieldByName('MyAppsCount').AsString);
       v_params.Add(FDMemTableAuth.FieldByName('notifications').AsString);
-
       self.insertUser(v_params);
-
       MainForm.userAuthUI;
       FMXLoadingIndicatorLogin.Visible := False;
       FMXLoadingIndicatorLogin.Enabled := False;
@@ -344,9 +342,9 @@ begin
     SQL.Add('insert into ' + DModule.SQLiteDBName + '.current_user ');
     SQL.Add('(full_name,phone,email,token,created,Legacy_server_key,GCMAppID,MyContractsCount,MyAppsCount,notifications)');
     SQL.Add('values');
-    SQL.Add('("' + p_params.Strings[0] + '","' + p_params.Strings[1] + '","' + p_params.Strings[2] + '","' + p_params.Strings[3] + '","' +
-      p_params.Strings[4] + '","' + p_params.Strings[5] + '","' + p_params.Strings[6] + '","' + p_params.Strings[7] + '","' + p_params.Strings[8] +
-      '","' + p_params.Strings[9] + '")');
+    SQL.Add('("' + p_params.Strings[0] + '","' + p_params.Strings[1] + '","' + p_params.Strings[2] + '","' +
+      p_params.Strings[3] + '","' + p_params.Strings[4] + '","' + p_params.Strings[5] + '","' + p_params.Strings[6] +
+      '","' + p_params.Strings[7] + '","' + p_params.Strings[8] + '","' + p_params.Strings[9] + '")');
     ExecSQL;
   end;
   DModule.FDTableCurrentUser.Refresh;
@@ -362,10 +360,44 @@ begin
 end;
 
 function TauthForm.consoleAuth(p_AuthEmail, p_AuthPassword: string): Boolean;
+var
+  v_params: TStringList;
 begin
   self.AuthHttpRequest(p_AuthEmail, p_AuthPassword);
   if FDMemTableAuth.FieldByName('loginstatus').AsInteger = 1 then
-    Result := True
+  begin
+
+    if DModule.FDConnectionMain.Connected then
+    begin
+      DModule.FDTableCurrentUser.Active := True;
+      self.deleteUser;
+      v_params := TStringList.Create;
+      v_params.Add(FDMemTableAuth.FieldByName('full_name').AsString);
+      v_params.Add(FDMemTableAuth.FieldByName('phone').AsString);
+      v_params.Add(FDMemTableAuth.FieldByName('email').AsString);
+      v_params.Add(FDMemTableAuth.FieldByName('sesskey').AsString);
+      v_params.Add(DateTimeToStr(Now));
+      v_params.Add(FDMemTableAuth.FieldByName('Azomva_Legacy_server_key').AsString);
+      v_params.Add(FDMemTableAuth.FieldByName('Azomva_GCMAppID').AsString);
+      v_params.Add(FDMemTableAuth.FieldByName('MyContractsCount').AsString);
+      v_params.Add(FDMemTableAuth.FieldByName('MyAppsCount').AsString);
+      v_params.Add(FDMemTableAuth.FieldByName('notifications').AsString);
+      self.insertUser(v_params);
+      MainForm.userAuthUI;
+    end;
+
+    DModule.id := FDMemTableAuth.FieldByName('id').AsInteger;
+    DModule.full_name := FDMemTableAuth.FieldByName('full_name').AsString;
+    DModule.phone := FDMemTableAuth.FieldByName('phone').AsString;
+    DModule.email := FDMemTableAuth.FieldByName('email').AsString;
+    DModule.sesskey := FDMemTableAuth.FieldByName('sesskey').AsString;
+    DModule.notifications := FDMemTableAuth.FieldByName('notifications').AsInteger;
+    DModule.MyContractsCount := FDMemTableAuth.FieldByName('MyContractsCount').AsInteger;
+    DModule.MyAppsCount := FDMemTableAuth.FieldByName('MyAppsCount').AsInteger;
+    DModule.Azomva_GCMAppID := FDMemTableAuth.FieldByName('Azomva_GCMAppID').AsString;
+    DModule.Azomva_Legacy_server_key := FDMemTableAuth.FieldByName('Azomva_Legacy_server_key').AsString;
+    Result := True;
+  end
   else
     Result := False;
 end;
