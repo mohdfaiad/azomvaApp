@@ -243,6 +243,7 @@ type
     PushEvents1: TPushEvents;
     MyAppsFrame1: TMyAppsFrame;
     SpeedButtonAddApp: TSpeedButton;
+    CircleAddApp: TCircle;
     procedure AuthActionExecute(Sender: TObject);
     procedure ActionAppAddingExecute(Sender: TObject);
     procedure ActionMyAppsExecute(Sender: TObject);

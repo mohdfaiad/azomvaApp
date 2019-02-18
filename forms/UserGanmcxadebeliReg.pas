@@ -44,7 +44,6 @@ type
     Image1: TImage;
     ButtonCloseAuth: TButton;
     Button1: TButton;
-    StyleBookEditButtons: TStyleBook;
     ImageSignUp: TImage;
     RectangleAuth: TRectangle;
     FloatAnimationPassAuth: TFloatAnimation;
@@ -60,6 +59,7 @@ type
     FMXLoadingIndicatorReg: TFMXLoadingIndicator;
     Layout1: TLayout;
     Rectangle1: TRectangle;
+    StyleBookUserReg: TStyleBook;
     procedure RegButtonClick(Sender: TObject);
     procedure HeaderFrame1ButtonBackClick(Sender: TObject);
     procedure ButtonConfirmationClick(Sender: TObject);
@@ -102,7 +102,7 @@ implementation
 
 {$R *.fmx}
 
-uses Main, DataModule, auth, HelperUnit;
+uses Main, DataModule, auth, HelperUnit, AddApps;
 { TForm1 }
 
 procedure TGanmcxadeblisRegForm.HeaderFrame1ButtonBackClick(Sender: TObject);
