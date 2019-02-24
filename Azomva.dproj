@@ -5,7 +5,7 @@
         <FrameworkType>FMX</FrameworkType>
         <MainSource>Azomva.dpr</MainSource>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Debug</Config>
+        <Config Condition="'$(Config)'==''">Release</Config>
         <Platform Condition="'$(Platform)'==''">Android</Platform>
         <TargetedPlatforms>1113</TargetedPlatforms>
         <AppType>Application</AppType>
@@ -297,8 +297,8 @@
         <DCC_DebugInformation>0</DCC_DebugInformation>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Android)'!=''">
-        <VerInfo_Build>45</VerInfo_Build>
-        <VerInfo_Keys>package=com.azomva.com.ge.$(MSBuildProjectName);label=$(MSBuildProjectName);versionCode=45;versionName=1.0.0;persistent=False;restoreAnyVersion=False;installLocation=auto;largeHeap=False;theme=TitleBar;hardwareAccelerated=true;apiKey=AIzaSyBEXqFdpYNyWacE9K5dia6LemR-h7bDtqE</VerInfo_Keys>
+        <VerInfo_Build>47</VerInfo_Build>
+        <VerInfo_Keys>package=com.azomva.com.ge.$(MSBuildProjectName);label=$(MSBuildProjectName);versionCode=47;versionName=1.0.0;persistent=False;restoreAnyVersion=False;installLocation=auto;largeHeap=False;theme=TitleBar;hardwareAccelerated=true;apiKey=AIzaSyBEXqFdpYNyWacE9K5dia6LemR-h7bDtqE</VerInfo_Keys>
         <Android_LauncherIcon36>logo\logos\android\36x36.png</Android_LauncherIcon36>
         <Android_LauncherIcon48>logo\logos\android\48x48.png</Android_LauncherIcon48>
         <Android_LauncherIcon72>logo\logos\android\72x72.png</Android_LauncherIcon72>
@@ -434,20 +434,20 @@
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="Lib\PushNotifications-master\SharedVariables.pas"/>
-        <DCCReference Include="Lib\PushNotifications-master\DW.PushClient.pas"/>
-        <DCCReference Include="Lib\PushNotifications-master\DW.RemoteNotificationsPatch.iOS.pas"/>
-        <DCCReference Include="Lib\PushNotifications-master\DW.RegisterFCM.pas"/>
-        <DCCReference Include="FMX.FontGlyphs.Android.pas"/>
         <DCCReference Include="auth.pas">
             <Form>authForm</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="FMX.StatusBar.pas"/>
         <DCCReference Include="Lib\GrijjyFoundation-master\Grijjy.RemotePush.Receiver.pas"/>
         <DCCReference Include="forms\AppListV2.pas">
             <Form>AppListFormV2</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
+        <DCCReference Include="Frames\MyContractsFR.pas">
+            <Form>MyContractsFrame</Form>
+            <FormType>fmx</FormType>
+            <DesignClass>TFrame</DesignClass>
+        </DCCReference>
+        <DCCReference Include="lib\PushNotifications-master\DW.PushClient.pas"/>
         <RcItem Include="..\azomva.com\Design\azomvebi\icons\AppDetails\OfferPrice.png">
             <ResourceType>RCDATA</ResourceType>
             <ResourceId>OfferPriceBG</ResourceId>
@@ -537,8 +537,9 @@
                     <Source Name="MainSource">Azomva.dpr</Source>
                 </Source>
                 <Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k250.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp250.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\DataExplorerDBXPluginEnt260.bpl">DBExpress Enterprise Data Explorer Integration</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k260.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp260.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="3">
@@ -1096,11 +1097,6 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="$(NDKBasePath)\prebuilt\android-arm\gdbserver\gdbserver" Configuration="Debug" Class="AndroidGDBServer">
-                    <Platform Name="Android">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="logo\logos\android\640x480.png" Configuration="Release" Class="Android_SplashImage640">
                     <Platform Name="Android">
                         <RemoteName>splash_image.png</RemoteName>
@@ -1121,6 +1117,12 @@
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="..\azomva.com\Design\azomvebi\icons\stars\3.png" Configuration="Release" Class="ProjectFile">
+                    <Platform Name="Android">
+                        <RemoteDir>.\assets\internal\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Design\azomvebi\elements\ListBoxNormal_1.png" Configuration="Release" Class="ProjectFile">
                     <Platform Name="Android">
                         <RemoteDir>.\assets\internal\</RemoteDir>
                         <Overwrite>true</Overwrite>

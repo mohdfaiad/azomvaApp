@@ -111,9 +111,12 @@ type
     procedure FloatAnimationPassAuthFinish(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
-    procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
-    procedure FormVirtualKeyboardHidden(Sender: TObject; KeyboardVisible: Boolean; const Bounds: TRect);
-    procedure FormVirtualKeyboardShown(Sender: TObject; KeyboardVisible: Boolean; const Bounds: TRect);
+    procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
+      Shift: TShiftState);
+    procedure FormVirtualKeyboardHidden(Sender: TObject;
+      KeyboardVisible: Boolean; const Bounds: TRect);
+    procedure FormVirtualKeyboardShown(Sender: TObject;
+      KeyboardVisible: Boolean; const Bounds: TRect);
   private
     function checkEmailPass(EmailAddress, password, op: string): Boolean;
     procedure AuthHttpRequest(p_AuthEmail, p_AuthPassword: string);
@@ -200,7 +203,8 @@ begin
   begin
     FMXLoadingIndicatorActivationCode.Visible := True;
     RESTRequestPRecovery.Params.Clear;
-    RESTRequestPRecovery.AddParameter('code', EditPhoneNumberForActivation.Text);
+    RESTRequestPRecovery.AddParameter('code',
+      EditPhoneNumberForActivation.Text);
     RESTRequestPRecovery.ExecuteAsync(
       procedure
       begin
@@ -279,7 +283,8 @@ begin
     self.RectanglePreloader.Visible := False;
     Result := False;
   end;
-  if (self.EditAuthEmail.Text.Length > 6) and (self.EditAuthPassword.Text.Length >= 3) then
+  if (self.EditAuthEmail.Text.Length > 6) and
+    (self.EditAuthPassword.Text.Length >= 3) then
     Result := True;
 end;
 
@@ -287,7 +292,8 @@ procedure TauthForm.ButtonLoginClick(Sender: TObject);
 var
   v_params: TStringList;
 begin
-  if self.checkEmailPass(EditAuthEmail.Text, EditAuthPassword.Text, 'signin') = False then
+  if self.checkEmailPass(EditAuthEmail.Text, EditAuthPassword.Text, 'signin') = False
+  then
     exit;
   TButton(Sender).Text := 'იტვირთება...';
   if self.consoleAuth(EditAuthEmail.Text, EditAuthPassword.Text) = True then
@@ -302,7 +308,8 @@ begin
       v_params.Add(FDMemTableAuth.FieldByName('email').AsString);
       v_params.Add(FDMemTableAuth.FieldByName('sesskey').AsString);
       v_params.Add(DateTimeToStr(Now));
-      v_params.Add(FDMemTableAuth.FieldByName('Azomva_Legacy_server_key').AsString);
+      v_params.Add(FDMemTableAuth.FieldByName('Azomva_Legacy_server_key')
+        .AsString);
       v_params.Add(FDMemTableAuth.FieldByName('Azomva_GCMAppID').AsString);
       v_params.Add(FDMemTableAuth.FieldByName('MyContractsCount').AsString);
       v_params.Add(FDMemTableAuth.FieldByName('MyAppsCount').AsString);
@@ -342,9 +349,11 @@ begin
     SQL.Add('insert into ' + DModule.SQLiteDBName + '.current_user ');
     SQL.Add('(full_name,phone,email,token,created,Legacy_server_key,GCMAppID,MyContractsCount,MyAppsCount,notifications)');
     SQL.Add('values');
-    SQL.Add('("' + p_params.Strings[0] + '","' + p_params.Strings[1] + '","' + p_params.Strings[2] + '","' +
-      p_params.Strings[3] + '","' + p_params.Strings[4] + '","' + p_params.Strings[5] + '","' + p_params.Strings[6] +
-      '","' + p_params.Strings[7] + '","' + p_params.Strings[8] + '","' + p_params.Strings[9] + '")');
+    SQL.Add('("' + p_params.Strings[0] + '","' + p_params.Strings[1] + '","' +
+      p_params.Strings[2] + '","' + p_params.Strings[3] + '","' +
+      p_params.Strings[4] + '","' + p_params.Strings[5] + '","' +
+      p_params.Strings[6] + '","' + p_params.Strings[7] + '","' +
+      p_params.Strings[8] + '","' + p_params.Strings[9] + '")');
     ExecSQL;
   end;
   DModule.FDTableCurrentUser.Refresh;
@@ -366,7 +375,6 @@ begin
   self.AuthHttpRequest(p_AuthEmail, p_AuthPassword);
   if FDMemTableAuth.FieldByName('loginstatus').AsInteger = 1 then
   begin
-
     if DModule.FDConnectionMain.Connected then
     begin
       DModule.FDTableCurrentUser.Active := True;
@@ -377,25 +385,29 @@ begin
       v_params.Add(FDMemTableAuth.FieldByName('email').AsString);
       v_params.Add(FDMemTableAuth.FieldByName('sesskey').AsString);
       v_params.Add(DateTimeToStr(Now));
-      v_params.Add(FDMemTableAuth.FieldByName('Azomva_Legacy_server_key').AsString);
+      v_params.Add(FDMemTableAuth.FieldByName('Azomva_Legacy_server_key')
+        .AsString);
       v_params.Add(FDMemTableAuth.FieldByName('Azomva_GCMAppID').AsString);
       v_params.Add(FDMemTableAuth.FieldByName('MyContractsCount').AsString);
       v_params.Add(FDMemTableAuth.FieldByName('MyAppsCount').AsString);
       v_params.Add(FDMemTableAuth.FieldByName('notifications').AsString);
       self.insertUser(v_params);
-      MainForm.userAuthUI;
     end;
-
     DModule.id := FDMemTableAuth.FieldByName('id').AsInteger;
     DModule.full_name := FDMemTableAuth.FieldByName('full_name').AsString;
     DModule.phone := FDMemTableAuth.FieldByName('phone').AsString;
     DModule.email := FDMemTableAuth.FieldByName('email').AsString;
     DModule.sesskey := FDMemTableAuth.FieldByName('sesskey').AsString;
-    DModule.notifications := FDMemTableAuth.FieldByName('notifications').AsInteger;
-    DModule.MyContractsCount := FDMemTableAuth.FieldByName('MyContractsCount').AsInteger;
+    DModule.notifications := FDMemTableAuth.FieldByName('notifications')
+      .AsInteger;
+    DModule.MyContractsCount := FDMemTableAuth.FieldByName('MyContractsCount')
+      .AsInteger;
     DModule.MyAppsCount := FDMemTableAuth.FieldByName('MyAppsCount').AsInteger;
-    DModule.Azomva_GCMAppID := FDMemTableAuth.FieldByName('Azomva_GCMAppID').AsString;
-    DModule.Azomva_Legacy_server_key := FDMemTableAuth.FieldByName('Azomva_Legacy_server_key').AsString;
+    DModule.Azomva_GCMAppID := FDMemTableAuth.FieldByName
+      ('Azomva_GCMAppID').AsString;
+    DModule.Azomva_Legacy_server_key := FDMemTableAuth.FieldByName
+      ('Azomva_Legacy_server_key').AsString;
+    MainForm.userAuthUI;
     Result := True;
   end
   else
@@ -422,19 +434,22 @@ begin
   self.closeAfterReg := False;
 end;
 
-procedure TauthForm.FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
+procedure TauthForm.FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
+Shift: TShiftState);
 begin
   if self.v_KeyboardVisible = False then
     if Key = 137 then
       self.Close;
 end;
 
-procedure TauthForm.FormVirtualKeyboardHidden(Sender: TObject; KeyboardVisible: Boolean; const Bounds: TRect);
+procedure TauthForm.FormVirtualKeyboardHidden(Sender: TObject;
+KeyboardVisible: Boolean; const Bounds: TRect);
 begin
   self.v_KeyboardVisible := False;
 end;
 
-procedure TauthForm.FormVirtualKeyboardShown(Sender: TObject; KeyboardVisible: Boolean; const Bounds: TRect);
+procedure TauthForm.FormVirtualKeyboardShown(Sender: TObject;
+KeyboardVisible: Boolean; const Bounds: TRect);
 begin
   self.v_KeyboardVisible := True;
 end;

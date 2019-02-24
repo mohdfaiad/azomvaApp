@@ -1,8 +1,4 @@
-﻿[NotificationOffersFrame1.FDMemTableNotifications]
-Visible=False
-Coordinates=1579,157,267,33
-
-[FDMemTableInit]
+﻿[FDMemTableInit]
 Visible=False
 Coordinates=1288,979,93,33
 
@@ -17,9 +13,6 @@ Coordinates=1288,875,165,33
 
 [BindSourceDB2]
 Coordinates=486,375,138,249
-
-[NotificationOffersFrame1.BindSourceDB1]
-Coordinates=979,1,242,339
 
 [ButtonAppAdding]
 Coordinates=1288,141,103,51
@@ -39,9 +32,6 @@ Coordinates=979,1250,49,51
 [Line2]
 Coordinates=116,211,41,33
 
-[NotificationOffersFrame1.FDMemTableNotificationsid]
-Coordinates=1579,53,276,33
-
 [FDMemTableServices]
 Coordinates=662,447,120,177
 
@@ -56,9 +46,6 @@ Coordinates=1322,1343,109,33
 
 [RESTResponseDataSetAdapterservices]
 Coordinates=1579,417,209,33
-
-[NotificationOffersFrame1.FDMemTableNotificationscreate_date]
-Coordinates=1487,469,324,33
 
 [RectangleBannerApps]
 Coordinates=1303,1433,124,33
@@ -90,23 +77,14 @@ Coordinates=1288,1485,74,33
 [RectangleApps]
 Coordinates=1075,1433,89,33
 
-[NotificationOffersFrame1.FDMemTableNotificationsoffer_full_name]
-Coordinates=1487,521,343,33
-
 [FDMemTableHowItWorkscreate_date]
 Coordinates=1868,53,195,33
 
 [ButtonAmzomvelebi]
 Coordinates=486,1,113,51
 
-[NotificationOffersFrame1.FMXLoadingIndicator1]
-Coordinates=1868,157,251,33
-
 [RectangleMainHeader]
 Coordinates=1579,573,121,33
-
-[NotificationOffersFrame1.FDMemTableNotificationsnotification_type_id]
-Coordinates=1487,625,364,33
 
 [TextMainPageText]
 Coordinates=377,700,104,51
@@ -133,23 +111,11 @@ Coordinates=367,769,116,303
 [RectangleUserArea]
 Coordinates=1579,833,109,33
 
-[NotificationOffersFrame1.FDMemTableNotificationsaction_id]
-Coordinates=1487,885,312,33
-
 [ActionService3]
 Coordinates=1579,937,88,33
 
-[NotificationOffersFrame1.FDMemTableNotificationsexecuted]
-Coordinates=1893,261,311,33
-
 [BindingsList1]
 Coordinates=1199,1540,82,33
-
-[NotificationOffersFrame1.RESTResponseNotifications]
-Coordinates=662,1,279,285
-
-[NotificationOffersFrame1.LabelNotFound]
-Coordinates=1288,281,216,51
 
 [ImageListRed]
 Coordinates=1110,1540,81,33
@@ -173,9 +139,6 @@ Coordinates=1288,1,161,51
 [ActionList1]
 Coordinates=942,1540,70,33
 
-[NotificationOffersFrame1.FDMemTableNotificationsfire_time]
-Coordinates=1893,469,310,33
-
 [ButtonAuth]
 Coordinates=733,1433,70,51
 
@@ -193,9 +156,6 @@ Coordinates=1579,1041,92,33
 
 [RESTResponseVersioning]
 Coordinates=55,446,144,285
-
-[NotificationOffersFrame1.BindingsList1]
-Coordinates=1889,625,208,33
 
 [ButtonAddApp]
 Coordinates=1288,631,87,51
@@ -323,9 +283,6 @@ Coordinates=1560,1611,77,33
 [RESTResponseDataSetMyAppsCount]
 Coordinates=1889,1249,199,33
 
-[NotificationOffersFrame1.RectanglePreloader]
-Coordinates=2242,53,237,33
-
 [Image3]
 Coordinates=979,1320,49,51
 
@@ -334,9 +291,6 @@ Coordinates=1893,1301,88,33
 
 [Image4]
 Coordinates=920,1433,49,51
-
-[NotificationOffersFrame1.RESTRequestNotifications]
-Coordinates=979,359,271,123
 
 [FloatAnimationInfoDialog]
 Coordinates=1893,1353,139,33
@@ -380,9 +334,6 @@ Coordinates=1352,1632,88,33
 [FDMemTableHowItWorkscontent]
 Coordinates=2242,365,175,33
 
-[NotificationOffersFrame1.FDMemTableNotificationsnotification_type_name]
-Coordinates=2157,417,382,33
-
 [ImageServicesIcon]
 Coordinates=851,1110,107,51
 
@@ -413,9 +364,6 @@ Coordinates=817,1632,108,33
 [ButtonMasterView]
 Coordinates=59,966,104,51
 
-[NotificationOffersFrame1.FDMemTableNotificationstitle]
-Coordinates=2577,53,285,33
-
 [RectangleInfo]
 Coordinates=728,1611,82,33
 
@@ -430,9 +378,6 @@ Coordinates=1288,421,132,51
 
 [FDMemTableAuthlname]
 Coordinates=301,1632,131,33
-
-[NotificationOffersFrame1]
-Coordinates=162,1632,137,33
 
 [FDMemTableAuthphone]
 Coordinates=23,1632,132,33
@@ -460,9 +405,6 @@ Coordinates=979,1180,77,51
 
 [ButtonGanmcxReg]
 Coordinates=1288,351,107,51
-
-[NotificationOffersFrame1.RESTResponseDataSetAdapterNotifications]
-Coordinates=2577,157,357,33
 
 [ActionUserNotifications]
 Coordinates=2242,1041,131,33
@@ -509,14 +451,8 @@ Coordinates=2577,313,193,33
 [Label5]
 Coordinates=565,1433,46,51
 
-[NotificationOffersFrame1.FDMemTableNotificationsexecuted_date]
-Coordinates=2577,365,338,33
-
 [FDMemTableServicescreate_date]
 Coordinates=2577,469,178,33
-
-[NotificationOffersFrame1.ListViewNotifications]
-Coordinates=204,1,244,195
 
 [VertScrollBox2]
 Coordinates=2242,1665,88,33
@@ -538,9 +474,6 @@ Coordinates=1845,1736,105,33
 
 [ShadowEffect2]
 Coordinates=1756,1736,88,33
-
-[NotificationOffersFrame1.FDMemTableNotificationsapp_id]
-Coordinates=2577,573,300,33
 
 [RectangleAppsCount]
 Coordinates=1627,1736,119,33
@@ -569,15 +502,6 @@ Coordinates=116,1,69,51
 [FMXLoadingIndicator1]
 Coordinates=803,1736,125,33
 
-[NotificationOffersFrame1.FDMemTableNotificationsuser_id]
-Coordinates=2577,677,303,33
-
-[NotificationOffersFrame1.FDMemTableNotificationsdescription]
-Coordinates=2577,781,322,33
-
-[NotificationOffersFrame1.FDMemTableNotificationsformAction]
-Coordinates=2577,833,322,33
-
 [Image7]
 Coordinates=368,1433,49,51
 
@@ -592,9 +516,6 @@ Coordinates=19,1110,66,51
 
 [FDMemTableServicesmodify_date]
 Coordinates=2577,937,181,33
-
-[NotificationOffersFrame1.FDMemTableNotificationsoffer_user_id]
-Coordinates=2577,989,332,33
 
 [RESTResponseSignOut]
 Coordinates=486,643,131,285
@@ -715,8 +636,5 @@ Coordinates=2972,1,204,51
 
 []
 Coordinates=1893,1665,83,33
-Visible=False
-
-[MyAppsFrame1.FDMemTableApps]
 Visible=False
 

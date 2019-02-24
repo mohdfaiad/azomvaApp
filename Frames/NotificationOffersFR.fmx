@@ -1,4 +1,5 @@
 object NotificationOffersFrame: TNotificationOffersFrame
+  Align = Client
   Size.Width = 540.000000000000000000
   Size.Height = 411.000000000000000000
   Size.PlatformDefault = False
@@ -99,11 +100,11 @@ object NotificationOffersFrame: TNotificationOffersFrame
     Client = DModule.RESTClient
     Params = <
       item
-        name = 'user_id'
+        Name = 'user_id'
         Value = '31'
       end
       item
-        name = 'sesskey'
+        Name = 'sesskey'
         Value = '0edd3f0a45005131bedad72cebd8236a'
       end>
     Resource = 'user/notifications'

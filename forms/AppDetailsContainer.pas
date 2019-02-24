@@ -217,6 +217,7 @@ end;
 
 procedure TAppDetailFormC.initForm(papp_id: Integer; is_owner: Boolean = false);
 begin
+  self.Show;
   Self.is_owner := is_owner;
   TabItemOffer.Visible := is_owner;
   TabItemOwner.Visible := false;

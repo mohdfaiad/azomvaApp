@@ -1,4 +1,5 @@
 object MyAppsFrame: TMyAppsFrame
+  Align = Client
   Size.Width = 583.000000000000000000
   Size.Height = 573.000000000000000000
   Size.PlatformDefault = False
@@ -10,53 +11,74 @@ object MyAppsFrame: TMyAppsFrame
     OnUpdateObjects = ListViewMyAppsUpdateObjects
     Transparent = True
     Images = ImageListAppList
+    ItemSpaces.Left = 0.000000000000000000
+    ItemSpaces.Right = 0.000000000000000000
     Align = Client
-    Size.Width = 583.000000000000000000
-    Size.Height = 573.000000000000000000
+    Margins.Left = 15.000000000000000000
+    Margins.Right = 15.000000000000000000
+    Margins.Bottom = 15.000000000000000000
+    Size.Width = 553.000000000000000000
+    Size.Height = 558.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 0
     ParentShowHint = False
     ShowHint = False
-    ItemAppearance.ItemHeight = 150
+    ItemAppearance.ItemHeight = 170
     ItemAppearance.HeaderHeight = 1
     ItemAppearance.FooterHeight = 1
     ItemAppearanceObjects.ItemObjects.ObjectsCollection = <
       item
+        AppearanceObjectName = 'BlottomBlock'
+        AppearanceClassName = 'TImageObjectAppearance'
+        Appearance.ScalingMode = Stretch
+        Appearance.Height = 50.000000000000000000
+        Appearance.PlaceOffset.Y = 110.000000000000000000
+      end
+      item
+        AppearanceObjectName = 'DetailsBackground'
+        AppearanceClassName = 'TImageObjectAppearance'
+        Appearance.ScalingMode = Stretch
+        Appearance.Height = 150.000000000000000000
+        Appearance.Visible = False
+        Appearance.PlaceOffset.Y = 160.000000000000000000
+      end
+      item
         AppearanceObjectName = 'create_date'
         AppearanceClassName = 'TTextObjectAppearance'
-        Appearance.Font.Size = 11.000000000000000000
+        Appearance.Font.Size = 13.000000000000000000
         Appearance.TextAlign = Leading
         Appearance.WordWrap = True
         Appearance.TextColor = xFF938686
         Appearance.Width = 166.000000000000000000
         Appearance.Height = 30.000000000000000000
-        Appearance.PlaceOffset.X = 34.000000000000000000
-        Appearance.PlaceOffset.Y = 118.000000000000000000
+        Appearance.PlaceOffset.X = 40.000000000000000000
+        Appearance.PlaceOffset.Y = 121.000000000000000000
       end
       item
         AppearanceObjectName = 'location'
         AppearanceClassName = 'TTextObjectAppearance'
         Appearance.Font.Family = 'BPG Nino Mtavruli'
-        Appearance.Font.Size = 18.000000000000000000
+        Appearance.Font.Size = 16.000000000000000000
         Appearance.Font.StyleExt = {00070000000000000004000000}
         Appearance.TextAlign = Leading
         Appearance.WordWrap = True
-        Appearance.TextColor = xFF232121
+        Appearance.TextColor = claBlack
         Appearance.Height = 40.000000000000000000
-        Appearance.PlaceOffset.Y = 10.000000000000000000
+        Appearance.PlaceOffset.X = 10.000000000000000000
+        Appearance.PlaceOffset.Y = 20.000000000000000000
       end
       item
         AppearanceObjectName = 'app_property_requisites_count'
         AppearanceClassName = 'TTextObjectAppearance'
         Appearance.Font.Family = 'BPG Nino Mtavruli'
-        Appearance.Font.Size = 11.000000000000000000
+        Appearance.Font.Size = 13.000000000000000000
         Appearance.TextAlign = Trailing
         Appearance.TextColor = xFF938686
-        Appearance.Width = 200.000000000000000000
+        Appearance.Width = 206.000000000000000000
         Appearance.Height = 30.000000000000000000
         Appearance.Align = Trailing
-        Appearance.PlaceOffset.X = -31.000000000000000000
-        Appearance.PlaceOffset.Y = 117.000000000000000000
+        Appearance.PlaceOffset.X = -40.000000000000000000
+        Appearance.PlaceOffset.Y = 122.000000000000000000
       end
       item
         AppearanceObjectName = 'IconCalendar'
@@ -64,38 +86,39 @@ object MyAppsFrame: TMyAppsFrame
         Appearance.ScalingMode = Stretch
         Appearance.Width = 25.000000000000000000
         Appearance.Height = 25.000000000000000000
-        Appearance.PlaceOffset.X = 3.000000000000000000
-        Appearance.PlaceOffset.Y = 53.000000000000000000
+        Appearance.PlaceOffset.X = 10.000000000000000000
+        Appearance.PlaceOffset.Y = 123.000000000000000000
       end
       item
         AppearanceObjectName = 'details'
         AppearanceClassName = 'TTextObjectAppearance'
-        Appearance.Font.Size = 10.000000000000000000
-        Appearance.TextAlign = Leading
+        Appearance.Font.Size = 16.000000000000000000
         Appearance.WordWrap = True
         Appearance.TextColor = xFF938686
         Appearance.Trimming = Word
-        Appearance.Height = 35.000000000000000000
+        Appearance.Height = 150.000000000000000000
+        Appearance.Align = Center
         Appearance.Visible = False
-        Appearance.PlaceOffset.Y = 150.000000000000000000
+        Appearance.PlaceOffset.Y = 160.000000000000000000
       end
       item
         AppearanceObjectName = 'area'
         AppearanceClassName = 'TTextObjectAppearance'
-        Appearance.Font.Size = 14.000000000000000000
+        Appearance.Font.Family = 'Arial'
+        Appearance.Font.Size = 11.000000000000000000
         Appearance.TextAlign = Leading
-        Appearance.TextColor = xFF232121
+        Appearance.TextColor = claBlack
         Appearance.Height = 35.000000000000000000
-        Appearance.PlaceOffset.X = 30.000000000000000000
-        Appearance.PlaceOffset.Y = 47.000000000000000000
+        Appearance.PlaceOffset.X = 40.000000000000000000
+        Appearance.PlaceOffset.Y = 61.000000000000000000
       end
       item
         AppearanceObjectName = 'IconCreateDate'
         AppearanceClassName = 'TImageObjectAppearance'
         Appearance.Width = 25.000000000000000000
         Appearance.Height = 25.000000000000000000
-        Appearance.PlaceOffset.X = 3.000000000000000000
-        Appearance.PlaceOffset.Y = 120.000000000000000000
+        Appearance.PlaceOffset.X = 10.000000000000000000
+        Appearance.PlaceOffset.Y = 64.000000000000000000
       end
       item
         AppearanceObjectName = 'ArrowIcon'
@@ -103,35 +126,73 @@ object MyAppsFrame: TMyAppsFrame
         Appearance.Width = 25.000000000000000000
         Appearance.Height = 25.000000000000000000
         Appearance.Align = Trailing
-        Appearance.PlaceOffset.X = -3.000000000000000000
-        Appearance.PlaceOffset.Y = 120.000000000000000000
+        Appearance.PlaceOffset.X = -10.000000000000000000
+        Appearance.PlaceOffset.Y = 123.000000000000000000
       end
       item
         AppearanceObjectName = 'ID'
         AppearanceClassName = 'TTextObjectAppearance'
         Appearance.TextAlign = Trailing
-        Appearance.Width = 100.000000000000000000
+        Appearance.TextColor = xFF938686
+        Appearance.Width = 40.000000000000000000
         Appearance.Height = 30.000000000000000000
         Appearance.Align = Trailing
-        Appearance.PlaceOffset.X = -3.000000000000000000
-        Appearance.PlaceOffset.Y = 12.000000000000000000
+        Appearance.PlaceOffset.X = -15.000000000000000000
+        Appearance.PlaceOffset.Y = 22.000000000000000000
       end
       item
         AppearanceObjectName = 'v_app_property_requisites_count'
         AppearanceClassName = 'TTextObjectAppearance'
         Appearance.Visible = False
+      end
+      item
+        AppearanceObjectName = 'ImageID'
+        AppearanceClassName = 'TImageObjectAppearance'
+        Appearance.Width = 80.000000000000000000
+        Appearance.Height = 40.000000000000000000
+        Appearance.Align = Trailing
+        Appearance.PlaceOffset.X = -10.000000000000000000
+        Appearance.PlaceOffset.Y = 16.000000000000000000
+      end
+      item
+        AppearanceObjectName = 'ImageTopBG'
+        AppearanceClassName = 'TImageObjectAppearance'
+        Appearance.ScalingMode = Stretch
+        Appearance.Height = 10.000000000000000000
+        Appearance.Align = Center
+      end
+      item
+        AppearanceObjectName = 'ImageBottomBG'
+        AppearanceClassName = 'TImageObjectAppearance'
+        Appearance.ScalingMode = Stretch
+        Appearance.Height = 10.000000000000000000
+        Appearance.Align = Center
+        Appearance.VertAlign = Trailing
       end>
     ItemAppearanceObjects.ItemEditObjects.ObjectsCollection = <>
-    ItemAppearanceObjects.HeaderObjects.Text.TextColor = claSeagreen
-    ItemAppearanceObjects.HeaderObjects.Text.Height = 0.009999999776482582
-    ItemAppearanceObjects.HeaderObjects.Text.Visible = False
-    ItemAppearanceObjects.FooterObjects.Text.Height = 1.000000000000000000
+    ItemAppearanceObjects.FooterObjects.Text.Height = 10.000000000000000000
     ItemAppearanceObjects.FooterObjects.Text.Visible = False
     StyleLookup = 'AppLIstListview'
     CanSwipeDelete = False
     OnItemClickEx = ListViewMyAppsItemClickEx
+    ShowSelection = False
     SearchVisible = True
     PullToRefresh = True
+    object LabelNotFound: TLabel
+      Align = Top
+      StyledSettings = [Family, Style]
+      Margins.Top = 50.000000000000000000
+      Position.Y = 98.000000000000000000
+      Size.Width = 519.000000000000000000
+      Size.Height = 23.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 11.000000000000000000
+      TextSettings.FontColor = claRed
+      TextSettings.HorzAlign = Center
+      Text = #4304#4320#4330#4308#4320#4311#4312' '#4329#4304#4316#4304#4332#4308#4320#4312' '#4304#4320' '#4315#4317#4312#4331#4308#4305#4316#4304
+      Visible = False
+      TabOrder = 0
+    end
   end
   object RESTRequestApps: TRESTRequest
     Client = DModule.RESTClient
@@ -381,32 +442,35 @@ object MyAppsFrame: TMyAppsFrame
       Control = ListViewMyApps
       FillExpressions = <
         item
-          SourceMemberName = 'id'
-          ControlMemberName = 'ID'
-        end
-        item
-          SourceMemberName = 'create_date'
-          ControlMemberName = 'create_date'
-        end
-        item
-          SourceMemberName = 'app_property_requisites'
-          ControlMemberName = 'details'
-        end
-        item
           SourceMemberName = 'location'
           ControlMemberName = 'location'
+          CustomFormat = #39#4315#4307#4308#4305#4304#4320#4308#4317#4305#4304': '#39' + %s'
         end
         item
           SourceMemberName = 'area'
           ControlMemberName = 'area'
+          CustomFormat = #39#4317#4305#4312#4308#4325#4322'('#4308#4305')'#4312#4321' '#4324#4304#4320#4311#4317#4305#4312': '#39' + %s'
         end
         item
           SourceMemberName = 'app_property_requisites_count'
           ControlMemberName = 'v_app_property_requisites_count'
         end
         item
+          SourceMemberName = 'app_property_requisites'
+          ControlMemberName = 'details'
+        end
+        item
+          SourceMemberName = 'create_date'
+          ControlMemberName = 'create_date'
+        end
+        item
+          SourceMemberName = 'id'
+          ControlMemberName = 'ID'
+        end
+        item
           SourceMemberName = 'app_property_requisites_count'
           ControlMemberName = 'app_property_requisites_count'
+          CustomFormat = #39#4317#4305#4312#4308#4325#4322#4308#4305#4312#4321' '#4320#4304#4317#4307#4308#4316#4317#4305#4304': '#39' + %s'
         end>
       FillHeaderExpressions = <>
       FillBreakGroups = <>

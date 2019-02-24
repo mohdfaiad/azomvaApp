@@ -29,15 +29,15 @@ uses
   HelperUnit in 'HelperUnit.pas',
   Main in 'Main.pas' {MainForm},
   DataModule in 'DataModule.pas' {DModule: TDataModule},
+  {$IFDEF ANDROID or IOS}
   SharedVariables in 'Lib\PushNotifications-master\SharedVariables.pas',
-  DW.PushClient in 'Lib\PushNotifications-master\DW.PushClient.pas',
-  DW.RemoteNotificationsPatch.iOS in 'Lib\PushNotifications-master\DW.RemoteNotificationsPatch.iOS.pas',
-  DW.RegisterFCM in 'Lib\PushNotifications-master\DW.RegisterFCM.pas',
-  FMX.FontGlyphs.Android in 'FMX.FontGlyphs.Android.pas',
+  {$ENDIF }
   auth in 'auth.pas' {authForm},
   FMX.StatusBar in 'FMX.StatusBar.pas',
   Grijjy.RemotePush.Receiver in 'Lib\GrijjyFoundation-master\Grijjy.RemotePush.Receiver.pas',
-  AppListV2 in 'forms\AppListV2.pas' {AppListFormV2};
+  AppListV2 in 'forms\AppListV2.pas' {AppListFormV2},
+  MyContractsFR in 'Frames\MyContractsFR.pas' {MyContractsFrame: TFrame},
+  DW.PushClient in 'lib\PushNotifications-master\DW.PushClient.pas';
 
 {$R *.res}
 
@@ -45,7 +45,6 @@ begin
   Application.Initialize;
   Application.CreateForm(TDModule, DModule);
   Application.CreateForm(TMainForm, MainForm);
-  Application.CreateForm(TAppListFormV2, AppListFormV2);
   Application.Run;
 
 end.

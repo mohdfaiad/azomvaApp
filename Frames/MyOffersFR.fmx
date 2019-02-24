@@ -1,4 +1,5 @@
 object myOffersFrame: TmyOffersFrame
+  Align = Client
   Size.Width = 620.000000000000000000
   Size.Height = 576.000000000000000000
   Size.PlatformDefault = False

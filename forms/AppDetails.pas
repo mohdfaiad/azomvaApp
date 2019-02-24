@@ -17,7 +17,7 @@ uses
   Data.Bind.DBScope, FMX.DateTimeCtrls,
   FMX.ScrollBox, FMX.Memo, FMX.Edit, IdURI,
   FMX.Ani, FMX.ListView, FMX.TabControl, FMX.Bind.GenData, FMX.Layouts,
-  FMX.LoadingIndicator, Header, System.ImageList, FMX.ImgList;
+  FMX.LoadingIndicator, Header, System.ImageList, FMX.ImgList, FMX.Effects;
 
 type
   TAppDetailForm = class(TForm)
@@ -30,22 +30,18 @@ type
     TabControl1: TTabControl;
     TabItemDetails: TTabItem;
     TabItemOffer: TTabItem;
-    ListViewAppDetails: TListView;
     BindSourceDB1: TBindSourceDB;
     BindingsList1: TBindingsList;
-    LinkListCToFAppDetails: TLinkListControlToField;
     ListViewOffers: TListView;
     RESTResponseDataSetAdapterBids: TRESTResponseDataSetAdapter;
     FDMemTableBids: TFDMemTable;
     BindSourceDB2: TBindSourceDB;
-    LinkListCToFOffer: TLinkListControlToField;
     FMXLoadingIndicator1: TFMXLoadingIndicator;
     RESTResponseDataSetAdapterRequiz: TRESTResponseDataSetAdapter;
     FDMemTableapp_property_requisites: TFDMemTable;
     TabItemProperties: TTabItem;
     ListViewProperties: TListView;
     BindSourceDB3: TBindSourceDB;
-    LinkListCToFProperties: TLinkListControlToField;
     FDMemTableapp_property_requisitesid: TWideStringField;
     FDMemTableapp_property_requisitesapp_id: TWideStringField;
     FDMemTableapp_property_requisitesapp_property_type_id: TWideStringField;
@@ -88,7 +84,6 @@ type
     FDMemTableAmzomveliregipaddr: TWideStringField;
     FDMemTableAmzomvelicontact_info: TWideStringField;
     BindSourceDB4: TBindSourceDB;
-    LinkListCToFAmzomveli: TLinkListControlToField;
     HeaderFrame1: THeaderFrame;
     ImageListIcons: TImageList;
     LabelDetails: TLabel;
@@ -136,6 +131,48 @@ type
     MemoCancelBody: TMemo;
     Line1: TLine;
     LabelNotFound: TLabel;
+    RectangleAppDetails: TRectangle;
+    TabControl2: TTabControl;
+    TabItem1: TTabItem;
+    ListViewAppDetails: TListView;
+    ShadowEffect4: TShadowEffect;
+    Label5: TLabel;
+    Image6: TImage;
+    TabItem2: TTabItem;
+    ListView1: TListView;
+    Label6: TLabel;
+    ShadowEffect2: TShadowEffect;
+    Label7: TLabel;
+    Image7: TImage;
+    TabItem3: TTabItem;
+    ListView2: TListView;
+    ShadowEffect1: TShadowEffect;
+    Label8: TLabel;
+    Image8: TImage;
+    TabItem4: TTabItem;
+    ListView3: TListView;
+    ShadowEffect3: TShadowEffect;
+    Label9: TLabel;
+    Image9: TImage;
+    Rectangle1: TRectangle;
+    Rectangle2: TRectangle;
+    Button2: TButton;
+    FMXLoadingIndicator3: TFMXLoadingIndicator;
+    Label10: TLabel;
+    Memo1: TMemo;
+    Line2: TLine;
+    Rectangle3: TRectangle;
+    Rectangle4: TRectangle;
+    Button3: TButton;
+    FMXLoadingIndicator4: TFMXLoadingIndicator;
+    Button4: TButton;
+    offererUserNameLabel: TLabel;
+    Label11: TLabel;
+    Image10: TImage;
+    LinkListControlToField1: TLinkListControlToField;
+    LinkListControlToField2: TLinkListControlToField;
+    LinkListControlToField3: TLinkListControlToField;
+    LinkListControlToField4: TLinkListControlToField;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ButtonBackClick(Sender: TObject);
     procedure HeaderFrame1ButtonBackClick(Sender: TObject);

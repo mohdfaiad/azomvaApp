@@ -1,4 +1,4 @@
-unit MyAppsFR;
+﻿unit MyAppsFR;
 
 interface
 
@@ -14,11 +14,12 @@ uses
   REST.Client, Data.Bind.Components, Data.Bind.ObjectScope, System.Rtti,
   System.Bindings.Outputs, FMX.Bind.Editors, Data.Bind.EngExt,
   FMX.Bind.DBEngExt, Data.Bind.DBScope, System.ImageList, FMX.ImgList,
-  System.Threading;
+  System.Threading, FMX.Controls.Presentation, FMX.Ani, FMX.Objects,
+  FMX.ScrollBox, FMX.Memo, FMX.LoadingIndicator, FMX.Effects, FMX.TabControl,
+  FMX.Layouts;
 
 type
   TMyAppsFrame = class(TFrame)
-    ListViewMyApps: TListView;
     RESTRequestApps: TRESTRequest;
     RESTResponseApps: TRESTResponse;
     RESTResponseDataSetAdapterApps: TRESTResponseDataSetAdapter;
@@ -46,9 +47,13 @@ type
     BindSourceDB1: TBindSourceDB;
     BindingsList1: TBindingsList;
     ImageListAppList: TImageList;
+    ListViewMyApps: TListView;
+    LabelNotFound: TLabel;
     LinkListControlToField1: TLinkListControlToField;
-    procedure ListViewMyAppsUpdateObjects(const Sender: TObject; const AItem: TListViewItem);
-    procedure ListViewMyAppsItemClickEx(const Sender: TObject; ItemIndex: Integer; const LocalClickPos: TPointF;
+    procedure ListViewMyAppsUpdateObjects(const Sender: TObject;
+      const AItem: TListViewItem);
+    procedure ListViewMyAppsItemClickEx(const Sender: TObject;
+      ItemIndex: Integer; const LocalClickPos: TPointF;
       const ItemObject: TListItemDrawable);
     procedure RESTRequestAppsAfterExecute(Sender: TCustomRESTRequest);
   private
@@ -73,43 +78,82 @@ begin
   end;
 end;
 
-procedure TMyAppsFrame.ListViewMyAppsItemClickEx(const Sender: TObject; ItemIndex: Integer; const LocalClickPos: TPointF;
+procedure TMyAppsFrame.ListViewMyAppsItemClickEx(const Sender: TObject;
+  ItemIndex: Integer; const LocalClickPos: TPointF;
   const ItemObject: TListItemDrawable);
 var
-  id, v_height: Integer;
+  id, v_height, v_detailsHeight: Integer;
 begin
-  if (ItemObject is TListItemText) or (ItemObject is TListItemImage) then
+  if (ItemObject.Name = 'app_property_requisites_count') or
+    (ItemObject.Name = 'BlottomBlock') or (ItemObject.Name = 'SelectedLineRedBG')
+  then
   begin
-    v_height := TListItemText(ListViewMyApps.Selected.View.FindDrawable('v_app_property_requisites_count'))
-      .Text.ToInteger * 35;
-    if (ItemObject.Name = 'app_property_requisites_count') or (ItemObject.Name = 'ArrowIcon') then
+    v_height := 170;
+    // TListItemText(ListViewAppsList.Selected.View.FindDrawable('v_app_property_requisites_count')).Text.ToInteger * 150;
+    v_detailsHeight := 150;
+    if ListViewMyApps.Selected.Height = v_height then
     begin
-      if ListViewMyApps.Selected.Height = 150 then
-      begin
-        ListViewMyApps.Selected.Height := v_height + 150;
-        TListItem(ListViewMyApps.Selected).View.FindDrawable('details').Visible := True;
-        TListItem(ListViewMyApps.Selected).View.FindDrawable('details').Height := v_height;
-        TListItemImage(ListViewMyApps.Selected.View.FindDrawable('ArrowIcon')).ImageIndex := 3;
-      end
-      else
-      begin
-        ListViewMyApps.Selected.Height := 150;
-        TListItem(ListViewMyApps.Selected).View.FindDrawable('details').Visible := False;
-        TListItemImage(ListViewMyApps.Selected.View.FindDrawable('ArrowIcon')).ImageIndex := 2;
-      end;
+      ListViewMyApps.Selected.Height := v_height + v_detailsHeight;
+      TListItem(ListViewMyApps.Selected).View.FindDrawable('details')
+        .Visible := True;
+      TListItem(ListViewMyApps.Selected).View.FindDrawable('DetailsBackground')
+        .Visible := True;
+      TListItem(ListViewMyApps.Selected).View.FindDrawable('details').Height :=
+        v_detailsHeight;
+      TListItemImage(ListViewMyApps.Selected.View.FindDrawable('ArrowIcon'))
+        .ImageIndex := 3;
+      TListItemImage(ListViewMyApps.Selected.View.FindDrawable('IconCalendar'))
+        .ImageIndex := 5;
+
+      TListItemText(ListViewMyApps.Items[ItemIndex].View.FindDrawable
+        ('app_property_requisites_count')).TextColor := TAlphaColorRec.White;
+      TListItemText(ListViewMyApps.Items[ItemIndex].View.FindDrawable
+        ('create_date')).TextColor := TAlphaColorRec.White;
+
+      // BlottomBlock Red
+      TListItemImage(ListViewMyApps.Items[ItemIndex].View.FindDrawable
+        ('BlottomBlock')).OwnsBitmap := True;
+      TListItemImage(ListViewMyApps.Items[ItemIndex].View.FindDrawable
+        ('BlottomBlock')).Bitmap := DModule.getBitmapFromResource
+        ('BlottomBlockRed');
     end
     else
     begin
-      id := self.FDMemTableApps.FieldByName('id').AsInteger;
-      with TAppDetailForm.Create(Application) do
-      begin
-        initForm(id, True);
-      end;
+      ListViewMyApps.Selected.Height := v_height;
+      TListItem(ListViewMyApps.Selected).View.FindDrawable('details')
+        .Visible := False;
+      TListItem(ListViewMyApps.Selected).View.FindDrawable('DetailsBackground')
+        .Visible := False;
+      TListItemImage(ListViewMyApps.Selected.View.FindDrawable('ArrowIcon'))
+        .ImageIndex := 2;
+      TListItemImage(ListViewMyApps.Selected.View.FindDrawable('IconCalendar'))
+        .ImageIndex := 1;
+
+      TListItemText(ListViewMyApps.Selected.View.FindDrawable('create_date'))
+        .TextColor := TAlphaColorRec.Black;
+      TListItemText(ListViewMyApps.Selected.View.FindDrawable
+        ('app_property_requisites_count')).TextColor := TAlphaColorRec.Black;
+
+      // BlottomBlock
+      TListItemImage(ListViewMyApps.Items[ItemIndex].View.FindDrawable
+        ('BlottomBlock')).OwnsBitmap := True;
+      TListItemImage(ListViewMyApps.Items[ItemIndex].View.FindDrawable
+        ('BlottomBlock')).Bitmap := DModule.getBitmapFromResource
+        ('BlottomBlock');
+    end;
+  end
+  else
+  begin
+    id := self.FDMemTableApps.FieldByName('id').AsInteger;
+    with TAppDetailForm.Create(Application) do
+    begin
+      initForm(id, True);
     end;
   end;
 end;
 
-procedure TMyAppsFrame.ListViewMyAppsUpdateObjects(const Sender: TObject; const AItem: TListViewItem);
+procedure TMyAppsFrame.ListViewMyAppsUpdateObjects(const Sender: TObject;
+  const AItem: TListViewItem);
 var
   v_width: Single;
 begin
@@ -121,24 +165,30 @@ begin
 
   // ID background
   TListItemImage(AItem.Objects.FindDrawable('ImageID')).OwnsBitmap := True;
-  TListItemImage(AItem.Objects.FindDrawable('ImageID')).Bitmap := DModule.getBitmapFromResource('AppListImageID');
+  TListItemImage(AItem.Objects.FindDrawable('ImageID')).Bitmap :=
+    DModule.getBitmapFromResource('AppListImageID');
 
   // BlottomBlock
   TListItemImage(AItem.Objects.FindDrawable('BlottomBlock')).OwnsBitmap := True;
-  TListItemImage(AItem.Objects.FindDrawable('BlottomBlock')).Bitmap := DModule.getBitmapFromResource('BlottomBlock');
+  TListItemImage(AItem.Objects.FindDrawable('BlottomBlock')).Bitmap :=
+    DModule.getBitmapFromResource('BlottomBlock');
 
   // DetailsBackground
-  TListItemImage(AItem.Objects.FindDrawable('DetailsBackground')).OwnsBitmap := True;
-  TListItemImage(AItem.Objects.FindDrawable('DetailsBackground')).Bitmap := DModule.getBitmapFromResource('DetailsBackground');
+  TListItemImage(AItem.Objects.FindDrawable('DetailsBackground'))
+    .OwnsBitmap := True;
+  TListItemImage(AItem.Objects.FindDrawable('DetailsBackground')).Bitmap :=
+    DModule.getBitmapFromResource('DetailsBackground');
 
   // Top BG
   TListItemImage(AItem.Objects.FindDrawable('ImageTopBG')).OwnsBitmap := True;
-  TListItemImage(AItem.Objects.FindDrawable('ImageTopBG')).Bitmap := DModule.getBitmapFromResource('ItemSpaceBG');
+  TListItemImage(AItem.Objects.FindDrawable('ImageTopBG')).Bitmap :=
+    DModule.getBitmapFromResource('ItemSpaceBG');
 
   // Bottom BG
-  TListItemImage(AItem.Objects.FindDrawable('ImageBottomBG')).OwnsBitmap := True;
-  TListItemImage(AItem.Objects.FindDrawable('ImageBottomBG')).Bitmap := DModule.getBitmapFromResource('ItemSpaceBG');
-
+  TListItemImage(AItem.Objects.FindDrawable('ImageBottomBG'))
+    .OwnsBitmap := True;
+  TListItemImage(AItem.Objects.FindDrawable('ImageBottomBG')).Bitmap :=
+    DModule.getBitmapFromResource('ItemSpaceBG');
 end;
 
 procedure TMyAppsFrame.reloadItems(sort_field, sort: String);
@@ -161,7 +211,8 @@ begin
       TThread.Queue(nil,
         procedure
         begin
-          mainForm.TabItemMyApps.Text := self.FDMemTableApps.RecordCount.ToString;
+          mainForm.TabItemMyApps.Text :=
+            self.FDMemTableApps.RecordCount.ToString;
         end);
     end);
   aTask.Start;

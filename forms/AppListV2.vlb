@@ -1,6 +1,6 @@
 ﻿[FDMemTableApps]
-Visible=False
-Coordinates=898,936,104,33
+Visible=True
+Coordinates=1012,946,104,33
 
 [FDMemTableLocations]
 Visible=False
@@ -113,7 +113,7 @@ Coordinates=1851,1760,104,33
 Coordinates=873,386,167,33
 
 [BindSourceDB1]
-Coordinates=307,10,147,447
+Coordinates=898,936,104,33
 
 [FDMemTableAppsarea]
 Coordinates=1137,56,125,33
@@ -159,7 +159,7 @@ Coordinates=880,1676,46,51
 Coordinates=873,881,172,33
 
 [ListViewAppsList]
-Coordinates=10,39,181,393
+Coordinates=10,39,181,411
 
 [Image3]
 Coordinates=1769,1548,49,51
@@ -484,7 +484,7 @@ Coordinates=1706,570,196,285
 Coordinates=1141,1676,103,51
 
 [MainForm.BindSourceDB2]
-Coordinates=599,962,144,213
+Coordinates=1764,606,144,213
 
 [RectangleChoose]
 Coordinates=1094,1844,101,33
@@ -568,7 +568,7 @@ Coordinates=875,10,168,339
 Coordinates=406,1760,142,51
 
 [DModule.FDTableAddAppPropRequizites]
-Coordinates=982,962,216,177
+Coordinates=982,962,216,213
 
 [DModule.FDTableMainfields]
 Coordinates=1645,1676,151,51
@@ -596,4 +596,19 @@ Coordinates=1267,1548,116,69
 
 [MainForm.RESTRequestDeviceToken]
 Coordinates=1599,1332,198,87
+
+[ActionListApps]
+Coordinates=107,1,90,33
+
+[GestureManager1]
+Coordinates=235,476,101,33
+
+[ActionSlideDownAppDetails]
+Coordinates=492,1,152,33
+
+[DModule.FDTableAppUserParams]
+Coordinates=432,911,181,177
+
+[DModule.FDTableApp_service_type_ids]
+Coordinates=492,398,210,123
 

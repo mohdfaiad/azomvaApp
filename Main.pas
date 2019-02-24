@@ -19,12 +19,16 @@ uses
   System.Notification,
   FMX.ScrollBox, FMX.Memo,
   IdURI, IdHTTP, System.IOUtils,
-  Inifiles, FMX.Header, User2ListFR,
-  System.Messaging, MyAppsFR, FireDAC.Stan.Async, FireDAC.DApt,
+  Inifiles, FMX.Header,
+  System.Messaging, FireDAC.Stan.Async, FireDAC.DApt,
   NotificationOffersFR, FMX.LoadingIndicator,
-  DataModule, DW.PushClient
+  DataModule, IPPeerClient, REST.Backend.PushTypes, System.JSON,
+  REST.Backend.BindSource, REST.Backend.PushDevice, FrameStand,
+  // App Frames
+  User2ListFR, MyAppsFR, MyContractsFR
 {$IFDEF ANDROID}
-    , // System.Android.Service,
+    , DW.PushClient,
+  // System.Android.Service,
   // FMX.DialogService,
   // Androidapi.JNI.PlayServices,
   // Androidapi.JNI.Telephony,
@@ -38,9 +42,7 @@ uses
   Androidapi.JNIBridge,
   Androidapi.JNI.JavaTypes,
   Androidapi.JNI.Net,
-  Androidapi.JNI.Provider, IPPeerClient, REST.Backend.PushTypes, System.JSON,
-  REST.Backend.BindSource,
-  REST.Backend.PushDevice
+  Androidapi.JNI.Provider
 {$ENDIF ANDROID}
 {$IFDEF IOS}
     , FMX.PushNotification.IOS
@@ -199,7 +201,6 @@ type
     FDMemTableMyAppsCount: TFDMemTable;
     FDMemTableMyAppsCountTotalAppsCount: TWideStringField;
     FDMemTableMyAppsCountMyAppsCount: TWideStringField;
-    NotificationOffersFrame1: TNotificationOffersFrame;
     RectangleService7: TRectangle;
     Image4: TImage;
     Label2: TLabel;
@@ -241,9 +242,9 @@ type
     FDMemTableInitUserMyContractsCount: TWideStringField;
     FDMemTableInitUsernotifications: TWideStringField;
     PushEvents1: TPushEvents;
-    MyAppsFrame1: TMyAppsFrame;
     SpeedButtonAddApp: TSpeedButton;
-    CircleAddApp: TCircle;
+    FrameStandMyApps: TFrameStand;
+    FrameStandNotifications: TFrameStand;
     procedure AuthActionExecute(Sender: TObject);
     procedure ActionAppAddingExecute(Sender: TObject);
     procedure ActionMyAppsExecute(Sender: TObject);
@@ -300,11 +301,15 @@ type
     // procedure DoReceiveNotificationEvent(Sender: TObject; const ServiceNotification: TPushServiceNotification);
     // procedure DoServiceConnectionChange(Sender: TObject; PushChanges: TPushService.TChanges);
   private
+    VMyAppsFrame: TFrameInfo<TMyAppsFrame>;
+    VNotificationOffersFrame: TFrameInfo<TNotificationOffersFrame>;
+    VMyContractsFrame: TFrameInfo<TMyContractsFrame>;
+{$IFDEF ANDROID or IOS}
     procedure PushClientChangeHandler(Sender: TObject;
       AChange: TPushService.TChanges);
     procedure PushClientReceiveNotificationHandler(Sender: TObject;
       const ANotification: TPushServiceNotification);
-{$IFDEF ANDROID}
+
     // procedure ServiceAppStart;
     // function isServiceStarted: Boolean;
 {$ENDIF ANDROID}
@@ -313,16 +318,17 @@ type
     function getDeviceID: string;
     procedure OnRegistrationError(Sender: TObject; const Error: string);
     procedure initNotificationReceiver;
+    procedure loadFrames;
     { Private declarations }
   public
     { Public declarations }
-{$IFDEF ANDROID}
+{$IFDEF ANDROID or IOS}
     FPushClient: TPushClient;
     PushService: TPushService;
     ServiceConnection: TPushServiceConnection;
     procedure notificationAlert(p_notification_id, p_ApplicationIconBadgeNumber
       : integer);
-{$ENDIF ANDROID}
+{$ENDIF}
     procedure userAuthUI;
     procedure showConnectionIsOffline;
     procedure reloadAppsCount;
@@ -344,6 +350,32 @@ uses
     , FMX.FontGlyphs.Android
 {$ENDIF}
     , AppListV2;
+
+procedure TMainForm.loadFrames;
+begin
+  // TMyAppsFrame
+  VMyAppsFrame := FrameStandMyApps.New<TMyAppsFrame>(TabItemMyApps,
+    'bluestand');
+  VMyAppsFrame.Show();
+  VMyAppsFrame.Frame.initFrame;
+
+  // TNotificationOffersFrame
+  VNotificationOffersFrame :=
+    FrameStandNotifications.New<TNotificationOffersFrame>(TabItemMyOffers,
+    'bluestand');
+  VNotificationOffersFrame.Show();
+  VNotificationOffersFrame.Frame.initFrame;
+
+  // TabItemMyContracts
+  VMyContractsFrame := FrameStandNotifications.New<TMyContractsFrame>
+    (TabItemMyContracts, 'bluestand');
+  VMyContractsFrame.Show();
+  VMyContractsFrame.Frame.initFrame;
+
+  RectangleMyAppsPleaseLogin.Visible := False;
+  RectangleMyOffersPleaseLogin.Visible := False;
+  RectangleMyContractsPleaseLogin.Visible := False;
+end;
 
 procedure TMainForm.reloadAppsCount;
 var
@@ -396,10 +428,22 @@ begin
   TabItemMyApps.Visible := True;
   TabItemMyOffers.Visible := True;
   // MyAppsFrame1.initFrame;
-  NotificationOffersFrame1.initFrame;
-  RectangleMyAppsPleaseLogin.Visible := False;
-  RectangleMyOffersPleaseLogin.Visible := False;
-  RectangleMyContractsPleaseLogin.Visible := False;
+  // Load all frames wich depended on user Auth
+  self.loadFrames;
+
+  if DModule.sesskey.IsEmpty = True then
+  begin
+    TabItemMyApps.StyleLookup := 'TabItemMainPage';
+    TabItemMyOffers.StyleLookup := 'TabItemMainPage';
+    TabItemMyContracts.StyleLookup := 'TabItemMainPage';
+  end
+  else
+  begin
+    TabItemMyApps.StyleLookup := 'TabItemMainPageNumbers';
+    TabItemMyOffers.StyleLookup := 'TabItemMainPageNumbers';
+    TabItemMyContracts.StyleLookup := 'TabItemMainPageNumbers';
+  end;
+
   self.PreloaderRectangle.Visible := False;
 end;
 
@@ -574,6 +618,7 @@ procedure TMainForm.OnRegistrationError(Sender: TObject; const Error: string);
 begin
   ShowMessage(Error);
 end;
+{$IFDEF ANDROID or IOS}
 
 procedure TMainForm.PushClientReceiveNotificationHandler(Sender: TObject;
 const ANotification: TPushServiceNotification);
@@ -628,6 +673,8 @@ begin
     notRec.ApplicationIconBadgeNumber := 0;
     self.notificationAlert(notRec); }
 end;
+{$ENDIF}
+{$IFDEF ANDROID or IOS}
 
 procedure TMainForm.notificationAlert(p_notification_id,
   p_ApplicationIconBadgeNumber: integer);
@@ -662,6 +709,7 @@ begin
     MyNotification.DisposeOf;
   end;
 end;
+{$ENDIF}
 
 procedure TMainForm.NotificationCenter1ReceiveLocalNotification(Sender: TObject;
 ANotification: TNotification);
@@ -684,6 +732,7 @@ begin
     end;
   end;
 end;
+{$IFDEF ANDROID or IOS}
 
 procedure TMainForm.PushClientChangeHandler(Sender: TObject;
 AChange: TPushService.TChanges);
@@ -706,11 +755,14 @@ begin
     aTask.Start;
   end;
 end;
+{$ENDIF}
 
 procedure TMainForm.FormDestroy(Sender: TObject);
 begin
+{$IFDEF ANDROID or IOS}
   if Assigned(self.FPushClient) then
     self.FPushClient.Free;
+{$ENDIF}
 end;
 
 procedure TMainForm.ActionRegGanmcxadebeliExecute(Sender: TObject);
@@ -900,6 +952,7 @@ end;
 
 procedure TMainForm.TabControl1Change(Sender: TObject);
 begin
+{$IFDEF ANDROID or IOS}
   if DModule.sesskey.IsEmpty = True then
   begin
     TabItemMyApps.StyleLookup := 'TabItemMainPage';
@@ -953,7 +1006,6 @@ begin
       TabItemMyApps.StyleLookup := 'TabItemMainPage'
     else
       TabItemMyApps.StyleLookup := 'TabItemMainPageNumbersActive';
-
   end
   else if TabControl1.ActiveTab = TabItemMyOffers then
   begin
@@ -967,6 +1019,7 @@ begin
     else
       TabItemMyOffers.StyleLookup := 'TabItemMainPageNumbersActive';
   end;
+{$ENDIF}
 end;
 
 procedure TMainForm.TextInfoTap(Sender: TObject; const Point: TPointF);
