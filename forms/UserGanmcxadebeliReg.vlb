@@ -4,3 +4,21 @@ Visible=False
 [MainForm.FDMemTableInit]
 Visible=False
 
+[FormAddApps.FDMemTableApp]
+Visible=False
+
+[DModule.FDTableList_property_types]
+Visible=False
+
+[DModule.FDTableApp_service_types]
+Visible=False
+
+[DModule.FDTableLocation]
+Visible=False
+
+[DModule.FDTableLocationChildren]
+Visible=False
+
+[DModule.FDTableAddAppPropRequizites]
+Visible=False
+

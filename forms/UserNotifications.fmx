@@ -18,7 +18,7 @@ object UserNotificationsForm: TUserNotificationsForm
     FooterAppearanceClassName = 'TListHeaderObjects'
     Align = Client
     Size.Width = 369.000000000000000000
-    Size.Height = 395.000000000000000000
+    Size.Height = 420.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 0
     ItemAppearance.ItemHeight = 100
@@ -105,7 +105,6 @@ object UserNotificationsForm: TUserNotificationsForm
   end
   inline HeaderFrame1: THeaderFrame
     Align = Top
-    Position.Y = 25.000000000000000000
     Size.Width = 369.000000000000000000
     Size.Height = 60.000000000000000000
     Size.PlatformDefault = False
@@ -132,6 +131,7 @@ object UserNotificationsForm: TUserNotificationsForm
     Size.Height = 25.000000000000000000
     Size.PlatformDefault = False
     Stroke.Kind = None
+    Visible = False
     object LabelStatusBar: TLabel
       Align = Client
       StyledSettings = []
@@ -150,11 +150,11 @@ object UserNotificationsForm: TUserNotificationsForm
     Client = DModule.RESTClient
     Params = <
       item
-        name = 'user_id'
+        Name = 'user_id'
         Value = '31'
       end
       item
-        name = 'sesskey'
+        Name = 'sesskey'
         Value = '0edd3f0a45005131bedad72cebd8236a'
       end>
     Resource = 'user/notifications'

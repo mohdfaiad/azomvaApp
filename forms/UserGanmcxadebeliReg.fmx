@@ -2,8 +2,8 @@ object GanmcxadeblisRegForm: TGanmcxadeblisRegForm
   Left = 0
   Top = 0
   Caption = 'Form1'
-  ClientHeight = 592
-  ClientWidth = 602
+  ClientHeight = 596
+  ClientWidth = 396
   SystemStatusBar.Visibility = Invisible
   StyleBook = StyleBookUserReg
   FormFactor.Width = 320
@@ -16,18 +16,18 @@ object GanmcxadeblisRegForm: TGanmcxadeblisRegForm
   DesignerMasterStyle = 3
   object VertScrollBoxMain: TVertScrollBox
     Align = Client
-    Size.Width = 602.000000000000000000
-    Size.Height = 507.000000000000000000
+    Size.Width = 396.000000000000000000
+    Size.Height = 536.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 0
-    Viewport.Width = 597.000000000000000000
-    Viewport.Height = 507.000000000000000000
+    Viewport.Width = 391.000000000000000000
+    Viewport.Height = 536.000000000000000000
     object Layout1: TLayout
       Anchors = [akLeft, akTop, akRight]
       Margins.Left = 15.000000000000000000
       Margins.Right = 15.000000000000000000
       Position.X = 15.000000000000000000
-      Size.Width = 570.000000000000000000
+      Size.Width = 359.000000000000000000
       Size.Height = 700.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 0
@@ -43,7 +43,7 @@ object GanmcxadeblisRegForm: TGanmcxadeblisRegForm
         Margins.Top = 3.000000000000000000
         Margins.Right = 10.000000000000000000
         Margins.Bottom = 3.000000000000000000
-        Size.Width = 550.000000000000000000
+        Size.Width = 339.000000000000000000
         Size.Height = 55.000000000000000000
         Size.PlatformDefault = False
         TextPrompt = #4321#4304#4334#4308#4314#4312' '#4306#4309#4304#4320#4312' ('#4313#4317#4315#4318#4304#4316#4312#4312#4321' '#4321#4304#4334#4308#4314#4312')'
@@ -64,7 +64,7 @@ object GanmcxadeblisRegForm: TGanmcxadeblisRegForm
         Margins.Top = 3.000000000000000000
         Margins.Right = 10.000000000000000000
         Margins.Bottom = 3.000000000000000000
-        Size.Width = 550.000000000000000000
+        Size.Width = 339.000000000000000000
         Size.Height = 55.000000000000000000
         Size.PlatformDefault = False
         TextPrompt = #4308#4314'. '#4324#4317#4321#4322#4304
@@ -94,7 +94,7 @@ object GanmcxadeblisRegForm: TGanmcxadeblisRegForm
         Margins.Top = 3.000000000000000000
         Margins.Right = 10.000000000000000000
         Margins.Bottom = 3.000000000000000000
-        Size.Width = 550.000000000000000000
+        Size.Width = 339.000000000000000000
         Size.Height = 55.000000000000000000
         Size.PlatformDefault = False
         TextPrompt = #4322#4308#4314#4308#4324#4317#4316#4312#4321' '#4316#4317#4315#4308#4320#4312
@@ -114,7 +114,7 @@ object GanmcxadeblisRegForm: TGanmcxadeblisRegForm
         Margins.Top = 3.000000000000000000
         Margins.Right = 10.000000000000000000
         Margins.Bottom = 3.000000000000000000
-        Size.Width = 550.000000000000000000
+        Size.Width = 339.000000000000000000
         Size.Height = 55.000000000000000000
         Size.PlatformDefault = False
         TextPrompt = #4318#4304#4320#4317#4314#4312
@@ -135,7 +135,7 @@ object GanmcxadeblisRegForm: TGanmcxadeblisRegForm
         Margins.Top = 3.000000000000000000
         Margins.Right = 10.000000000000000000
         Margins.Bottom = 3.000000000000000000
-        Size.Width = 550.000000000000000000
+        Size.Width = 339.000000000000000000
         Size.Height = 55.000000000000000000
         Size.PlatformDefault = False
         TextPrompt = #4306#4304#4312#4315#4308#4317#4320#4308#4311' '#4318#4304#4320#4317#4314#4312
@@ -151,7 +151,7 @@ object GanmcxadeblisRegForm: TGanmcxadeblisRegForm
         Margins.Right = 10.000000000000000000
         Position.X = 10.000000000000000000
         Position.Y = 401.000000000000000000
-        Size.Width = 550.000000000000000000
+        Size.Width = 339.000000000000000000
         Size.Height = 48.000000000000000000
         Size.PlatformDefault = False
         StyleLookup = 'speedbuttonstyle'
@@ -616,7 +616,7 @@ object GanmcxadeblisRegForm: TGanmcxadeblisRegForm
         Margins.Top = 10.000000000000000000
         Margins.Bottom = 10.000000000000000000
         Position.Y = 10.000000000000000000
-        Size.Width = 570.000000000000000000
+        Size.Width = 359.000000000000000000
         Size.Height = 71.000000000000000000
         Size.PlatformDefault = False
       end
@@ -624,7 +624,7 @@ object GanmcxadeblisRegForm: TGanmcxadeblisRegForm
         Align = Bottom
         Fill.Kind = None
         Position.Y = 550.000000000000000000
-        Size.Width = 570.000000000000000000
+        Size.Width = 359.000000000000000000
         Size.Height = 150.000000000000000000
         Size.PlatformDefault = False
         Stroke.Kind = None
@@ -638,7 +638,7 @@ object GanmcxadeblisRegForm: TGanmcxadeblisRegForm
         Margins.Bottom = 10.000000000000000000
         Position.X = 10.000000000000000000
         Position.Y = 456.000000000000000000
-        Size.Width = 550.000000000000000000
+        Size.Width = 339.000000000000000000
         Size.Height = 60.000000000000000000
         Size.PlatformDefault = False
         StyleLookup = 'buttonRed'
@@ -670,12 +670,11 @@ object GanmcxadeblisRegForm: TGanmcxadeblisRegForm
   end
   inline HeaderFrame1: THeaderFrame
     Align = Top
-    Position.Y = 25.000000000000000000
-    Size.Width = 602.000000000000000000
+    Size.Width = 396.000000000000000000
     Size.Height = 60.000000000000000000
     Size.PlatformDefault = False
     inherited RectangleHeader: TRectangle
-      Size.Width = 602.000000000000000000
+      Size.Width = 396.000000000000000000
       inherited ButtonBack: TButton
         Position.Y = 5.000000000000000000
         Size.Width = 48.000000000000000000
@@ -683,7 +682,7 @@ object GanmcxadeblisRegForm: TGanmcxadeblisRegForm
         OnClick = HeaderFrame1ButtonBackClick
       end
       inherited LabelAppName: TLabel
-        Size.Width = 554.000000000000000000
+        Size.Width = 348.000000000000000000
         Size.Height = 60.000000000000000000
         TextSettings.Font.Size = 16.000000000000000000
         TextSettings.Font.StyleExt = {00070000000000000004000000}
@@ -691,7 +690,7 @@ object GanmcxadeblisRegForm: TGanmcxadeblisRegForm
       end
     end
     inherited Line1: TLine
-      Size.Width = 602.000000000000000000
+      Size.Width = 396.000000000000000000
     end
   end
   object RectanglePreloader: TRectangle
@@ -1268,6 +1267,7 @@ object GanmcxadeblisRegForm: TGanmcxadeblisRegForm
     Size.Height = 25.000000000000000000
     Size.PlatformDefault = False
     Stroke.Kind = None
+    Visible = False
     object LabelStatusBar: TLabel
       Align = Client
       StyledSettings = []

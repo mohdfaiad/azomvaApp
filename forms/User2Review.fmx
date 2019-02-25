@@ -14,7 +14,6 @@ object User2ReviewForm: TUser2ReviewForm
   DesignerMasterStyle = 3
   inline HeaderFrame1: THeaderFrame
     Align = Top
-    Position.Y = 25.000000000000000000
     Size.Width = 379.000000000000000000
     Size.Height = 60.000000000000000000
     Size.PlatformDefault = False
@@ -63,27 +62,27 @@ object User2ReviewForm: TUser2ReviewForm
     Align = Client
     Images = MainForm.ImageListRed
     Size.Width = 379.000000000000000000
-    Size.Height = 425.000000000000000000
+    Size.Height = 450.000000000000000000
     Size.PlatformDefault = False
-    TabHeight = 49.000000000000000000
-    TabIndex = 1
+    TabHeight = 54.000000000000000000
+    TabIndex = 0
     TabOrder = 2
     TabPosition = Bottom
     OnChange = TabControl1Change
     Sizes = (
       379s
-      376s
+      396s
       379s
-      376s)
+      396s)
     object TabItemRating: TTabItem
       CustomIcon = <
         item
         end>
       StyledSettings = [Family, Size, Style]
-      IsSelected = False
+      IsSelected = True
       ImageIndex = 25
       Size.Width = 189.000000000000000000
-      Size.Height = 49.000000000000000000
+      Size.Height = 54.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'TabItemMainPageNumbers'
       TabOrder = 0
@@ -191,10 +190,10 @@ object User2ReviewForm: TUser2ReviewForm
         item
         end>
       StyledSettings = [Family, Size, Style]
-      IsSelected = True
+      IsSelected = False
       ImageIndex = 28
       Size.Width = 190.000000000000000000
-      Size.Height = 49.000000000000000000
+      Size.Height = 54.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'TabItemMainPage'
       TabOrder = 0
@@ -204,8 +203,9 @@ object User2ReviewForm: TUser2ReviewForm
       object RectangleComment: TRectangle
         Align = Client
         Size.Width = 379.000000000000000000
-        Size.Height = 376.000000000000000000
+        Size.Height = 396.000000000000000000
         Size.PlatformDefault = False
+        Stroke.Kind = None
         object MemoComment: TMemo
           Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
           DataDetectorTypes = []
@@ -215,11 +215,11 @@ object User2ReviewForm: TUser2ReviewForm
           Margins.Right = 10.000000000000000000
           Margins.Bottom = 20.000000000000000000
           Size.Width = 359.000000000000000000
-          Size.Height = 306.000000000000000000
+          Size.Height = 326.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 0
           Viewport.Width = 351.000000000000000000
-          Viewport.Height = 298.000000000000000000
+          Viewport.Height = 318.000000000000000000
         end
         object RectangleCommentHeader: TRectangle
           Align = Top
@@ -234,19 +234,18 @@ object User2ReviewForm: TUser2ReviewForm
           Stroke.Kind = None
           object Button1: TButton
             Align = Right
-            Images = MainForm.ImageList1
-            ImageIndex = 11
-            Position.X = 341.000000000000000000
-            Size.Width = 36.000000000000000000
-            Size.Height = 39.000000000000000000
+            Position.X = 329.000000000000000000
+            Size.Width = 48.000000000000000000
+            Size.Height = 48.000000000000000000
             Size.PlatformDefault = False
+            StyleLookup = 'organizetoolbutton'
             TabOrder = 0
           end
           object ButtonBack: TButton
             Align = Left
             IconTintColor = claWhitesmoke
-            Images = MainForm.ImageList1
-            ImageIndex = 49
+            Images = MainForm.ImageListRed
+            ImageIndex = 24
             Size.Width = 39.000000000000000000
             Size.Height = 39.000000000000000000
             Size.PlatformDefault = False
@@ -264,6 +263,7 @@ object User2ReviewForm: TUser2ReviewForm
     Size.Height = 25.000000000000000000
     Size.PlatformDefault = False
     Stroke.Kind = None
+    Visible = False
     object LabelStatusBar: TLabel
       Align = Client
       StyledSettings = []

@@ -273,8 +273,8 @@ begin
   LayoutAppsDetails.Position.Y := self.RectangleMain.Height +
     HeaderFrame1.Height + RectangleStatusBar.Height + 150;
   self.FloatAnimationLAD.StartValue := LayoutAppsDetails.Position.Y;
-  self.FloatAnimationLAD.StopValue := HeaderFrame1.Height +
-    RectangleStatusBar.Height;
+  self.FloatAnimationLAD.StopValue := HeaderFrame1.Height;
+    // +RectangleStatusBar.Height;
   LayoutAppsDetails.Height := self.RectangleMain.Height;
 
   self.loadOnlyMyApps := loadOnlyMyApps;
