@@ -297,8 +297,8 @@
         <DCC_DebugInformation>0</DCC_DebugInformation>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Android)'!=''">
-        <VerInfo_Build>47</VerInfo_Build>
-        <VerInfo_Keys>package=com.azomva.com.ge.$(MSBuildProjectName);label=$(MSBuildProjectName);versionCode=47;versionName=1.0.0;persistent=False;restoreAnyVersion=False;installLocation=auto;largeHeap=False;theme=TitleBar;hardwareAccelerated=true;apiKey=AIzaSyBEXqFdpYNyWacE9K5dia6LemR-h7bDtqE</VerInfo_Keys>
+        <VerInfo_Build>49</VerInfo_Build>
+        <VerInfo_Keys>package=com.azomva.com.ge.$(MSBuildProjectName);label=$(MSBuildProjectName);versionCode=49;versionName=1.0.0;persistent=False;restoreAnyVersion=False;installLocation=auto;largeHeap=False;theme=TitleBar;hardwareAccelerated=true;apiKey=AIzaSyBEXqFdpYNyWacE9K5dia6LemR-h7bDtqE</VerInfo_Keys>
         <Android_LauncherIcon36>logo\logos\android\36x36.png</Android_LauncherIcon36>
         <Android_LauncherIcon48>logo\logos\android\48x48.png</Android_LauncherIcon48>
         <Android_LauncherIcon72>logo\logos\android\72x72.png</Android_LauncherIcon72>
