@@ -245,6 +245,7 @@ type
     SpeedButtonAddApp: TSpeedButton;
     FrameStandMyApps: TFrameStand;
     FrameStandNotifications: TFrameStand;
+    ShadowEffect1: TShadowEffect;
     procedure AuthActionExecute(Sender: TObject);
     procedure ActionAppAddingExecute(Sender: TObject);
     procedure ActionMyAppsExecute(Sender: TObject);
@@ -268,7 +269,6 @@ type
     procedure Image3Click(Sender: TObject);
     procedure Label3Click(Sender: TObject);
     procedure LabelAppsClick(Sender: TObject);
-    procedure ColorPanel1Change(Sender: TObject);
     procedure ActionService1Execute(Sender: TObject);
     procedure ActionService2Execute(Sender: TObject);
     procedure ActionService3Execute(Sender: TObject);
@@ -1160,11 +1160,6 @@ begin
   ActionAppsList.Execute;
 end;
 
-procedure TMainForm.ColorPanel1Change(Sender: TObject);
-begin
-  // TmyWindow.StatusBarColor(self, $FFFF3434);
-end;
-
 { procedure TMainForm.DoReceiveNotificationEvent(Sender: TObject; const ServiceNotification: TPushServiceNotification);
   var
   title: String;
@@ -1179,30 +1174,35 @@ end;
   if TPushService.TChange.DeviceToken in PushChanges then
   Device_token := PushService.DeviceTokenValue[TPushService.TDeviceTokenNames.DeviceToken];
   end; }
-
-procedure RenderingSetupCallback(const Sender, Context: TObject;
-var ColorBits, DepthBits: integer; var Stencil: Boolean;
-var Multisamples: integer);
-begin
+{
+  procedure RenderingSetupCallback(const Sender, Context: TObject;
+  var ColorBits, DepthBits: integer; var Stencil: Boolean;
+  var Multisamples: integer);
+  begin
   // Override OpenGL rendering setup to use custom values.
   ColorBits := 16; // default is 24
   DepthBits := 0; // default is 24
   Stencil := False; // default is True
   Multisamples := 0; // default depends on TForm.Quality or TForm3D.Multisample
-end;
+  end;
 
-procedure RegisterRenderingSetup;
-var
+  procedure RegisterRenderingSetup;
+  var
   SetupService: IFMXRenderingSetupService;
-begin
+  begin
   if TPlatformServices.Current.SupportsPlatformService
-    (IFMXRenderingSetupService, IInterface(SetupService)) then
-    SetupService.Subscribe(RenderingSetupCallback);
+  (IFMXRenderingSetupService, IInterface(SetupService)) then
+  SetupService.Subscribe(RenderingSetupCallback);
   // There is also SetupService.Unsubscribe, which removes the hook.
-end;
-
+  end;
+}
 initialization
 
+TAndroidHelper.Activity.getWindow.clearFlags
+  (TJWindowManager_LayoutParams.JavaClass.FLAG_TRANSLUCENT_STATUS);
+TAndroidHelper.Activity.getWindow.addFlags
+  (TJWindowManager_LayoutParams.JavaClass.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+TAndroidHelper.Activity.getWindow.setStatusBarColor(TAlphaColor($FFFF3434));
 // TmyWindow.Init;
 
 { TThread.Queue(nil,

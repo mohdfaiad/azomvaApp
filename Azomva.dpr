@@ -33,7 +33,6 @@ uses
   SharedVariables in 'Lib\PushNotifications-master\SharedVariables.pas',
   {$ENDIF }
   auth in 'auth.pas' {authForm},
-  FMX.StatusBar in 'FMX.StatusBar.pas',
   Grijjy.RemotePush.Receiver in 'Lib\GrijjyFoundation-master\Grijjy.RemotePush.Receiver.pas',
   AppListV2 in 'forms\AppListV2.pas' {AppListFormV2},
   MyContractsFR in 'Frames\MyContractsFR.pas' {MyContractsFrame: TFrame},
