@@ -16,24 +16,26 @@ object UserAreaForm: TUserAreaForm
     Align = Client
     Fill.Kind = None
     Size.Width = 444.000000000000000000
-    Size.Height = 536.000000000000000000
+    Size.Height = 561.000000000000000000
     Size.PlatformDefault = False
     Stroke.Kind = None
     object Button1: TButton
       Align = Bottom
+      StyledSettings = [Size, Style, FontColor]
       Images = MainForm.ImageList1
       Margins.Left = 5.000000000000000000
       Margins.Top = 5.000000000000000000
       Margins.Right = 5.000000000000000000
       Margins.Bottom = 5.000000000000000000
       Position.X = 5.000000000000000000
-      Position.Y = 471.000000000000000000
+      Position.Y = 496.000000000000000000
       Size.Width = 434.000000000000000000
       Size.Height = 60.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'buttonRed'
       TabOrder = 1
       Text = #4330#4309#4314#4312#4314#4308#4305#4308#4305#4312#4321' '#4307#4304#4315#4304#4334#4321#4317#4309#4320#4308#4305#4304
+      TextSettings.Font.Family = 'BPG Nino Mtavruli'
       OnClick = Button1Click
     end
     object EditFullName: TEdit
@@ -84,7 +86,7 @@ object UserAreaForm: TUserAreaForm
       TabOrder = 5
       TextSettings.Font.Family = 'BPG Nino Mtavruli'
       Position.X = 5.000000000000000000
-      Position.Y = 261.000000000000000000
+      Position.Y = 286.000000000000000000
       Margins.Left = 5.000000000000000000
       Margins.Top = 5.000000000000000000
       Margins.Right = 5.000000000000000000
@@ -100,7 +102,7 @@ object UserAreaForm: TUserAreaForm
       Align = Bottom
       TabOrder = 6
       Position.X = 5.000000000000000000
-      Position.Y = 331.000000000000000000
+      Position.Y = 356.000000000000000000
       Margins.Left = 5.000000000000000000
       Margins.Top = 5.000000000000000000
       Margins.Right = 5.000000000000000000
@@ -114,7 +116,7 @@ object UserAreaForm: TUserAreaForm
       Align = Bottom
       TabOrder = 7
       Position.X = 5.000000000000000000
-      Position.Y = 401.000000000000000000
+      Position.Y = 426.000000000000000000
       Margins.Left = 5.000000000000000000
       Margins.Top = 5.000000000000000000
       Margins.Right = 5.000000000000000000
@@ -131,7 +133,7 @@ object UserAreaForm: TUserAreaForm
       Margins.Right = 5.000000000000000000
       Margins.Bottom = 5.000000000000000000
       Position.X = 5.000000000000000000
-      Position.Y = 228.000000000000000000
+      Position.Y = 253.000000000000000000
       Size.Width = 434.000000000000000000
       Size.Height = 23.000000000000000000
       Size.PlatformDefault = False
@@ -168,7 +170,6 @@ object UserAreaForm: TUserAreaForm
   end
   inline HeaderFrame1: THeaderFrame
     Align = Top
-    Position.Y = 25.000000000000000000
     Size.Width = 444.000000000000000000
     Size.Height = 60.000000000000000000
     Size.PlatformDefault = False
@@ -196,6 +197,7 @@ object UserAreaForm: TUserAreaForm
     Size.Height = 25.000000000000000000
     Size.PlatformDefault = False
     Stroke.Kind = None
+    Visible = False
     object LabelStatusBar: TLabel
       Align = Client
       StyledSettings = []
@@ -214,11 +216,11 @@ object UserAreaForm: TUserAreaForm
     Client = DModule.RESTClient
     Params = <
       item
-        name = 'sesskey'
+        Name = 'sesskey'
         Value = '37324266cc66b46bddbcde14625884c8'
       end
       item
-        name = 'user_id'
+        Name = 'user_id'
         Value = '27'
       end>
     Resource = 'user/profile'
