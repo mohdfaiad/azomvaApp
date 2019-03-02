@@ -273,12 +273,10 @@ begin
   LayoutAppsDetails.Position.Y := self.RectangleMain.Height +
     HeaderFrame1.Height + 150;
   self.FloatAnimationLAD.StartValue := LayoutAppsDetails.Position.Y;
-  self.FloatAnimationLAD.StopValue := HeaderFrame1.Height;
+  self.FloatAnimationLAD.StopValue := 60;
   LayoutAppsDetails.Height := self.RectangleMain.Height;
 
   self.loadOnlyMyApps := loadOnlyMyApps;
-  self.LabelStatusBar.Text := DModule.statusBarTitle;
-  self.RectangleStatusBar.Opacity := DModule.statusBarOpacity;
   PreloaderRectangle.Visible := True;
   // Run in another thread
   aTask := TTask.Create(
@@ -294,14 +292,12 @@ end;
 
 procedure TAppListFormV2.HeaderFrame1ButtonBackClick(Sender: TObject);
 begin
-  if self.LayoutAppsDetails.Position.Y = (HeaderFrame1.Height +
-    RectangleStatusBar.Height) then
+  if self.LayoutAppsDetails.Position.Y = HeaderFrame1.Height then
   begin
     FMXLoadingLoadAppDetails.Visible := True;
-    FloatAnimationLAD.StartValue := HeaderFrame1.Height +
-      RectangleStatusBar.Height;;
+    FloatAnimationLAD.StartValue := HeaderFrame1.Height;
     FloatAnimationLAD.StopValue := self.RectangleMain.Height +
-      HeaderFrame1.Height + RectangleStatusBar.Height;
+      HeaderFrame1.Height;
     FloatAnimationLAD.Start;
     self.HeaderFrame1.LabelAppName.Text := 'განცხადების სია';
   end
@@ -497,14 +493,12 @@ end;
 
 procedure TAppListFormV2.ActionSlideDownAppDetailsExecute(Sender: TObject);
 begin
-  if self.LayoutAppsDetails.Position.Y = (HeaderFrame1.Height +
-    RectangleStatusBar.Height) then
+  if self.LayoutAppsDetails.Position.Y = HeaderFrame1.Height then
   begin
     FMXLoadingLoadAppDetails.Visible := True;
-    FloatAnimationLAD.StartValue := HeaderFrame1.Height +
-      RectangleStatusBar.Height;;
+    FloatAnimationLAD.StartValue := HeaderFrame1.Height;
     FloatAnimationLAD.StopValue := self.RectangleMain.Height +
-      HeaderFrame1.Height + RectangleStatusBar.Height;
+      HeaderFrame1.Height;
     FloatAnimationLAD.Start;
     self.HeaderFrame1.LabelAppName.Text := 'განცხადების სია';
   end
@@ -516,9 +510,8 @@ begin
   initDetails(p_id);
   self.HeaderFrame1.LabelAppName.Text := 'განცხადება N ' + p_id.ToString;
   FloatAnimationLAD.StartValue := self.RectangleMain.Height +
-    HeaderFrame1.Height + RectangleStatusBar.Height;
-  FloatAnimationLAD.StopValue := HeaderFrame1.Height +
-    RectangleStatusBar.Height;
+    HeaderFrame1.Height;
+  FloatAnimationLAD.StopValue := HeaderFrame1.Height;
   FloatAnimationLAD.Start;
 end;
 
