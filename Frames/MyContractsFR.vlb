@@ -3,154 +3,140 @@ Visible=False
 Coordinates=23,1270,145,33
 
 [MainForm.RESTRequestSignOut]
-Coordinates=631,1074,174,87
+Coordinates=842,1056,174,87
 
 [DModule.FDTableCurrentUser]
-Coordinates=630,375,161,249
+Coordinates=199,375,161,249
 
 [DModule.FDTableAddApp]
-Coordinates=817,375,141,213
+Coordinates=747,375,141,213
 
 [DModule.FDTableAppUserParams]
-Coordinates=180,686,181,177
+Coordinates=378,668,181,177
 
 [MainForm.RESTResponseSignOut]
-Coordinates=232,375,183,285
+Coordinates=597,10,183,285
 
 [DModule.FDTableLocationChildren]
-Coordinates=10,925,186,123
+Coordinates=350,907,186,123
 
 [MainForm.RESTResponseVersioning]
-Coordinates=10,375,196,285
+Coordinates=985,10,196,285
 
 [DModule.RESTClient]
-Coordinates=988,1074,116,69
+Coordinates=1042,1056,116,69
 
 [DModule.FDTableMainfields]
-Coordinates=293,1187,151,51
+Coordinates=293,1169,151,51
 
 [MainForm.RESTRequestVersioning]
-Coordinates=801,686,187,177
+Coordinates=801,668,187,177
 
 [DModule.FDTableNotifications]
-Coordinates=441,375,163,267
+Coordinates=10,375,163,267
 
 [MainForm.PushEvents1]
-Coordinates=831,1074,131,87
+Coordinates=461,1056,131,87
 
 [DModule.FDQueryCustom]
-Coordinates=10,1187,142,51
+Coordinates=125,1169,142,51
 
 [DModule.FDTableApp_service_type_ids]
-Coordinates=222,925,210,123
+Coordinates=1014,668,210,123
 
 [MainForm.FDMemTableHowItWorks]
-Coordinates=387,686,190,177
+Coordinates=585,668,190,177
 
 [FDMemTableMyContracts]
-Coordinates=620,1197,140,33
+Coordinates=578,1169,140,33
 Visible=True
 
 [MainForm.FDMemTableMyAppsCount]
-Coordinates=10,1074,200,87
+Coordinates=10,1056,200,87
 
 [RESTResponseDSAMyContracts]
 Coordinates=1365,1,175,33
 
 [RESTRequestMyContracts]
-Coordinates=236,1074,144,87
+Coordinates=180,907,144,123
 
 [DModule.FDTableApp_service_types]
-Coordinates=628,925,195,105
+Coordinates=792,907,195,105
 
 [DModule.FDTableLocation]
-Coordinates=458,925,144,123
+Coordinates=10,907,144,123
 
 [LabelNotFound]
-Coordinates=178,1187,89,51
+Coordinates=10,1169,89,51
 
 [MainForm.FDMemTableAuth]
-Coordinates=934,10,153,285
+Coordinates=806,10,153,285
 
 [MainForm.RESTRequestMyAppsCount]
-Coordinates=1014,686,204,123
+Coordinates=562,907,204,123
 
 [MainForm.RESTRequestDeviceToken]
-Coordinates=1006,925,198,87
+Coordinates=618,1056,198,87
 
 [MainForm.FDMemTableServices]
-Coordinates=603,686,172,177
+Coordinates=180,668,172,177
 
 [RESTResponseMyContracts]
-Coordinates=755,10,153,285
+Coordinates=204,10,153,285
 
 [DModule.FDTableList_property_types]
-Coordinates=406,1074,199,87
+Coordinates=236,1056,199,87
 
 [MainForm.RESTRespMyAppsCount]
-Coordinates=541,10,188,285
+Coordinates=383,10,188,285
 
 [MainForm.FDMemTableInitUser]
 Coordinates=10,10,168,339
 
-[ListView1]
-Coordinates=204,46,105,249
-Visible=True
-
 [DModule.FDTablePages]
-Coordinates=849,925,131,105
+Coordinates=1013,907,131,105
 
 [DModule.FDTableAddAppPropRequizites]
-Coordinates=984,375,216,213
+Coordinates=914,375,216,213
 
 [MainForm.BindSourceDB2]
-Coordinates=10,686,144,213
-
-[FDMemTableMyContractsid]
-Coordinates=115,232,149,33
-
-[FDMemTableMyContractscreate_date]
-Coordinates=519,305,198,33
-
-[FDMemTableMyContractsapp_owner]
-Coordinates=787,426,195,33
-
-[FDMemTableMyContractsstart_date]
-Coordinates=787,789,190,33
-
-[FDMemTableMyContractsapp_offer_approved_id]
-Coordinates=294,817,254,33
-
-[FDMemTableMyContractsipaddr]
-Coordinates=115,817,172,33
-
-[FDMemTableMyContractsapp_status_id]
-Coordinates=600,1149,210,33
-
-[FDMemTableMyContractsapproved_user_id]
-Coordinates=1331,53,229,33
-
-[FDMemTableMyContractsoffer_description]
-Coordinates=1331,105,224,33
-
-[FDMemTableMyContractsoffered_price]
-Coordinates=1331,157,206,33
-
-[FDMemTableMyContractsapp_winer]
-Coordinates=1331,209,191,33
-
-[FDMemTableMyContractsapp_id]
-Coordinates=0,1116,174,33
-
-[FDMemTableMyContractsapproved_text]
-Coordinates=1331,261,211,33
-
-[FDMemTableMyContractsoffer_user_id]
-Coordinates=1331,313,206,33
+Coordinates=10,668,144,213
 
 [BindSourceDB1]
-Coordinates=470,1187,126,321
+Coordinates=595,384,126,213
 
 [BindingsList1]
-Coordinates=185,232,82,33
+Coordinates=470,1169,82,33
+Visible=True
+
+[ListViewMyContracts]
+Coordinates=386,375,129,231
+Visible=True
+
+[]
+Coordinates=115,232,149,33
+
+[FDMemTableMyContractsoffered_price]
+Coordinates=0,0,206,33
+
+[FDMemTableMyContractsganmcxadebeli_name]
+Coordinates=175,52,247,33
+
+[FDMemTableMyContractsapp_id]
+Coordinates=225,1,174,33
+
+[FDMemTableMyContractsoffer_description]
+Coordinates=617,1,224,33
+
+[FDMemTableMyContractsganmcxadebeli_id]
+Coordinates=879,1,230,33
+
+[FDMemTableMyContractscreate_date]
+Coordinates=227,123,198,33
+
+[FDMemTableMyContractsamzomveli_id]
+Coordinates=617,53,208,33
+
+[FDMemTableMyContractsimageindex]
+Coordinates=28,123,197,33
 

@@ -3,83 +3,82 @@ object MyContractsFrame: TMyContractsFrame
   Size.Width = 681.000000000000000000
   Size.Height = 427.000000000000000000
   Size.PlatformDefault = False
-  object ListView1: TListView
+  object ListViewMyContracts: TListView
     ItemAppearanceClassName = 'TDynamicAppearance'
     ItemEditAppearanceClassName = 'TDynamicAppearance'
     HeaderAppearanceClassName = 'TListHeaderObjects'
     FooterAppearanceClassName = 'TListHeaderObjects'
+    OnUpdateObjects = ListViewMyContractsUpdateObjects
     ItemIndex = 0
     Align = Client
     Size.Width = 681.000000000000000000
     Size.Height = 427.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 4
-    ItemAppearance.ItemHeight = 157
-    ItemAppearance.HeaderHeight = 1
-    ItemAppearance.FooterHeight = 1
+    ItemAppearance.ItemHeight = 130
     ItemAppearanceObjects.ItemObjects.ObjectsCollection = <
       item
-        AppearanceObjectName = 'offer_description'
+        AppearanceObjectName = 'ganmcxadebeli_name'
         AppearanceClassName = 'TTextObjectAppearance'
-        Appearance.Font.Family = '(Default)'
-        Appearance.Font.Size = 11.000000000000000000
+        Appearance.Font.Size = 13.000000000000000000
         Appearance.TextAlign = Leading
-        Appearance.TextVertAlign = Leading
-        Appearance.Width = 660.000000000000000000
-        Appearance.Height = 50.000000000000000000
-        Appearance.PlaceOffset.Y = 102.000000000000000000
+        Appearance.WordWrap = True
+        Appearance.Trimming = Word
+        Appearance.Height = 30.000000000000000000
+        Appearance.Align = Trailing
+        Appearance.PlaceOffset.X = 145.000000000000000000
+        Appearance.PlaceOffset.Y = -1.000000000000000000
       end
       item
         AppearanceObjectName = 'offered_price'
         AppearanceClassName = 'TTextObjectAppearance'
-        Appearance.Font.Family = '(Default)'
-        Appearance.Font.Size = 11.000000000000000000
+        Appearance.Font.Size = 13.000000000000000000
         Appearance.TextAlign = Leading
-        Appearance.Height = 25.000000000000000000
-        Appearance.PlaceOffset.Y = 50.000000000000000000
+        Appearance.WordWrap = True
+        Appearance.Trimming = Word
+        Appearance.Height = 30.000000000000000000
+        Appearance.Align = Trailing
+        Appearance.PlaceOffset.X = 145.000000000000000000
+        Appearance.PlaceOffset.Y = 28.000000000000000000
       end
       item
-        AppearanceObjectName = 'app_id'
+        AppearanceObjectName = 'offer_description'
         AppearanceClassName = 'TTextObjectAppearance'
-        Appearance.Font.Family = '(Default)'
         Appearance.Font.Size = 11.000000000000000000
         Appearance.TextAlign = Leading
-        Appearance.Height = 25.000000000000000000
-        Appearance.PlaceOffset.Y = 25.000000000000000000
+        Appearance.TextVertAlign = Leading
+        Appearance.WordWrap = True
+        Appearance.Trimming = Word
+        Appearance.Height = 44.000000000000000000
+        Appearance.Align = Trailing
+        Appearance.PlaceOffset.X = 145.000000000000000000
+        Appearance.PlaceOffset.Y = 86.000000000000000000
+      end
+      item
+        AppearanceObjectName = 'contractsImage'
+        AppearanceClassName = 'TImageObjectAppearance'
+        Appearance.Width = 105.000000000000000000
+        Appearance.Height = 105.000000000000000000
+        Appearance.PlaceOffset.X = 15.000000000000000000
+        Appearance.PlaceOffset.Y = 12.000000000000000000
       end
       item
         AppearanceObjectName = 'create_date'
         AppearanceClassName = 'TTextObjectAppearance'
-        Appearance.Font.Family = '(Default)'
-        Appearance.Font.Size = 11.000000000000000000
+        Appearance.Font.Size = 13.000000000000000000
         Appearance.TextAlign = Leading
-        Appearance.Height = 25.000000000000000000
-      end
-      item
-        AppearanceObjectName = 'id'
-        AppearanceClassName = 'TTextObjectAppearance'
-        Appearance.Font.Family = '(Default)'
-        Appearance.Font.Size = 11.000000000000000000
-        Appearance.TextAlign = Trailing
-        Appearance.Height = 25.000000000000000000
+        Appearance.WordWrap = True
+        Appearance.Trimming = Word
+        Appearance.Height = 30.000000000000000000
         Appearance.Align = Trailing
-      end
-      item
-        AppearanceObjectName = 'app_winer'
-        AppearanceClassName = 'TTextObjectAppearance'
-        Appearance.Font.Family = '(Default)'
-        Appearance.Font.Size = 11.000000000000000000
-        Appearance.TextAlign = Leading
-        Appearance.Height = 25.000000000000000000
-        Appearance.PlaceOffset.Y = 75.000000000000000000
+        Appearance.PlaceOffset.X = 145.000000000000000000
+        Appearance.PlaceOffset.Y = 57.000000000000000000
       end>
-    ItemAppearanceObjects.ItemEditObjects.ObjectsCollection = <
-      item
-        AppearanceObjectName = 'Text1'
-        AppearanceClassName = 'TTextObjectAppearance'
-      end>
+    ItemAppearanceObjects.ItemEditObjects.ObjectsCollection = <>
     ItemAppearanceObjects.HeaderObjects.Text.Visible = False
     ItemAppearanceObjects.FooterObjects.Text.Visible = False
+    OnItemClick = ListViewMyContractsItemClick
+    OnPullRefresh = ListViewMyContractsPullRefresh
     SearchVisible = True
     object LabelNotFound: TLabel
       Align = Top
@@ -99,8 +98,16 @@ object MyContractsFrame: TMyContractsFrame
   end
   object RESTRequestMyContracts: TRESTRequest
     Client = DModule.RESTClient
-    Params = <>
-    Resource = 'contracts/'
+    Params = <
+      item
+        Name = 'sesskey'
+        Value = '4799c032fb5faa42f3c8d2ac288612cc'
+      end
+      item
+        Name = 'user_id'
+        Value = '135'
+      end>
+    Resource = 'user/mycontractsdamkveti'
     Response = RESTResponseMyContracts
     SynchronizedEvents = False
     Left = 96
@@ -123,37 +130,27 @@ object MyContractsFrame: TMyContractsFrame
     Active = True
     FieldDefs = <
       item
-        Name = 'id'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'app_offer_approved_id'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'offer_user_id'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'approved_user_id'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
         Name = 'app_id'
         DataType = ftWideString
         Size = 255
       end
       item
-        Name = 'offered_price'
+        Name = 'amzomveli_id'
         DataType = ftWideString
         Size = 255
       end
       item
-        Name = 'start_date'
+        Name = 'ganmcxadebeli_id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'ganmcxadebeli_name'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'offered_price'
         DataType = ftWideString
         Size = 255
       end
@@ -168,27 +165,7 @@ object MyContractsFrame: TMyContractsFrame
         Size = 255
       end
       item
-        Name = 'ipaddr'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'approved_text'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'app_status_id'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'app_owner'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'app_winer'
+        Name = 'imageindex'
         DataType = ftWideString
         Size = 255
       end>
@@ -203,32 +180,24 @@ object MyContractsFrame: TMyContractsFrame
     StoreDefs = True
     Left = 96
     Top = 336
-    object FDMemTableMyContractsid: TWideStringField
-      FieldName = 'id'
-      Size = 255
-    end
-    object FDMemTableMyContractsapp_offer_approved_id: TWideStringField
-      FieldName = 'app_offer_approved_id'
-      Size = 255
-    end
-    object FDMemTableMyContractsoffer_user_id: TWideStringField
-      FieldName = 'offer_user_id'
-      Size = 255
-    end
-    object FDMemTableMyContractsapproved_user_id: TWideStringField
-      FieldName = 'approved_user_id'
-      Size = 255
-    end
     object FDMemTableMyContractsapp_id: TWideStringField
       FieldName = 'app_id'
       Size = 255
     end
-    object FDMemTableMyContractsoffered_price: TWideStringField
-      FieldName = 'offered_price'
+    object FDMemTableMyContractsamzomveli_id: TWideStringField
+      FieldName = 'amzomveli_id'
       Size = 255
     end
-    object FDMemTableMyContractsstart_date: TWideStringField
-      FieldName = 'start_date'
+    object FDMemTableMyContractsganmcxadebeli_id: TWideStringField
+      FieldName = 'ganmcxadebeli_id'
+      Size = 255
+    end
+    object FDMemTableMyContractsganmcxadebeli_name: TWideStringField
+      FieldName = 'ganmcxadebeli_name'
+      Size = 255
+    end
+    object FDMemTableMyContractsoffered_price: TWideStringField
+      FieldName = 'offered_price'
       Size = 255
     end
     object FDMemTableMyContractsoffer_description: TWideStringField
@@ -239,24 +208,8 @@ object MyContractsFrame: TMyContractsFrame
       FieldName = 'create_date'
       Size = 255
     end
-    object FDMemTableMyContractsipaddr: TWideStringField
-      FieldName = 'ipaddr'
-      Size = 255
-    end
-    object FDMemTableMyContractsapproved_text: TWideStringField
-      FieldName = 'approved_text'
-      Size = 255
-    end
-    object FDMemTableMyContractsapp_status_id: TWideStringField
-      FieldName = 'app_status_id'
-      Size = 255
-    end
-    object FDMemTableMyContractsapp_owner: TWideStringField
-      FieldName = 'app_owner'
-      Size = 255
-    end
-    object FDMemTableMyContractsapp_winer: TWideStringField
-      FieldName = 'app_winer'
+    object FDMemTableMyContractsimageindex: TWideStringField
+      FieldName = 'imageindex'
       Size = 255
     end
   end
@@ -274,36 +227,26 @@ object MyContractsFrame: TMyContractsFrame
     object LinkListControlToField1: TLinkListControlToField
       Category = 'Quick Bindings'
       DataSource = BindSourceDB1
-      Control = ListView1
+      Control = ListViewMyContracts
       FillExpressions = <
         item
           SourceMemberName = 'offered_price'
           ControlMemberName = 'offered_price'
-          CustomFormat = #39#4328#4308#4315#4317#4311#4304#4309#4304#4310#4308#4305#4323#4314#4312' '#4324#4304#4321#4312': '#39'     + %s'
+          CustomFormat = #39#4324#4304#4321#4312': '#39'+%s'
         end
         item
           SourceMemberName = 'offer_description'
           ControlMemberName = 'offer_description'
         end
         item
+          SourceMemberName = 'ganmcxadebeli_name'
+          ControlMemberName = 'ganmcxadebeli_name'
+          CustomFormat = #39#4304#4315#4310#4317#4315#4309#4308#4314#4312': '#39' +%s'
+        end
+        item
           SourceMemberName = 'create_date'
           ControlMemberName = 'create_date'
-          CustomFormat = #39#4307#4304#4311#4304#4316#4334#4315#4308#4305#4312#4321' '#4307#4320#4317': '#39' +%s'
-        end
-        item
-          SourceMemberName = 'app_id'
-          ControlMemberName = 'app_id'
-          CustomFormat = #39#4306#4304#4316#4330#4334#4304#4307#4308#4305#4312#4321' '#8470' : '#39' +%s'
-        end
-        item
-          SourceMemberName = 'id'
-          ControlMemberName = 'id'
-          CustomFormat = #39#4328#4308#4311#4304#4316#4334#4315#4308#4305#4312#4321' '#8470':  '#39' +%s'
-        end
-        item
-          SourceMemberName = 'app_winer'
-          ControlMemberName = 'app_winer'
-          CustomFormat = #39#4304#4315#4310#4317#4315#4309#4308#4314#4312': '#39' +%s'
+          CustomFormat = #39#4328#4308#4311#4304#4316#4334#4315#4308#4305#4312#4321' '#4307#4320#4317': '#39' +%s'
         end>
       FillHeaderExpressions = <>
       FillBreakGroups = <>

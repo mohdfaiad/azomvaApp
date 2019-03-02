@@ -38197,7 +38197,7 @@ object AppListFormV2: TAppListFormV2
   object RectangleStatusBar: TRectangle
     Align = MostTop
     Fill.Color = xFFFF3434
-    Opacity = 0.699999988079071000
+    Opacity = 0.699999988079071100
     Size.Width = 802.000000000000000000
     Size.Height = 25.000000000000000000
     Size.PlatformDefault = False
@@ -38406,7 +38406,7 @@ object AppListFormV2: TAppListFormV2
               Distance = 5.000000000000000000
               Direction = 45.000000000000000000
               Softness = 0.500000000000000000
-              Opacity = 0.400000005960464500
+              Opacity = 0.400000005960464400
               ShadowColor = claDarkgray
             end
           end
@@ -38707,7 +38707,7 @@ object AppListFormV2: TAppListFormV2
               Distance = 5.000000000000000000
               Direction = 45.000000000000000000
               Softness = 0.500000000000000000
-              Opacity = 0.400000005960464500
+              Opacity = 0.400000005960464400
               ShadowColor = claDarkgray
               Trigger = 'IsVisible=true'
             end
@@ -38980,7 +38980,7 @@ object AppListFormV2: TAppListFormV2
               Distance = 5.000000000000000000
               Direction = 45.000000000000000000
               Softness = 0.500000000000000000
-              Opacity = 0.400000005960464500
+              Opacity = 0.400000005960464400
               ShadowColor = claDarkgray
             end
           end
@@ -39260,7 +39260,7 @@ object AppListFormV2: TAppListFormV2
               Distance = 5.000000000000000000
               Direction = 45.000000000000000000
               Softness = 0.500000000000000000
-              Opacity = 0.400000005960464500
+              Opacity = 0.400000005960464400
               ShadowColor = claDarkgray
             end
           end

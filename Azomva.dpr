@@ -18,7 +18,6 @@ uses
   AppList in 'forms\AppList.pas' {AppListForm},
   BidsByApp in 'forms\BidsByApp.pas' {BidsByAppForm},
   map in 'forms\map.pas' {mapViewForm},
-  MyAppDetails in 'forms\MyAppDetails.pas' {MyAppDetailsForm},
   MyContracts in 'forms\MyContracts.pas' {MyContractsForm},
   SetNewPassword in 'forms\SetNewPassword.pas' {setNewPasswordForm},
   User1Review in 'forms\User1Review.pas' {User1ReviewForm},

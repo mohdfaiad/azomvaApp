@@ -22,8 +22,6 @@ type
     Line2: TLine;
     Circle1: TCircle;
     StyleBookMap: TStyleBook;
-    RectangleStatusBar: TRectangle;
-    LabelStatusBar: TLabel;
     ImageListMap: TImageList;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ButtonSetCoordsClick(Sender: TObject);
@@ -65,8 +63,6 @@ var
   helper: THelperUnit;
 begin
   self.show;
-  self.LabelStatusBar.Text := DModule.statusBarTitle;
-  self.RectangleStatusBar.Opacity := DModule.statusBarOpacity;
 {$IFDEF ANDROID}
   if TOSVersion.Major >= 6 then // Check(6)
   begin
