@@ -9,7 +9,6 @@ object MyContractsFrame: TMyContractsFrame
     HeaderAppearanceClassName = 'TListHeaderObjects'
     FooterAppearanceClassName = 'TListHeaderObjects'
     OnUpdateObjects = ListViewMyContractsUpdateObjects
-    ItemIndex = 0
     Align = Client
     Size.Width = 681.000000000000000000
     Size.Height = 427.000000000000000000
@@ -25,7 +24,6 @@ object MyContractsFrame: TMyContractsFrame
         Appearance.WordWrap = True
         Appearance.Trimming = Word
         Appearance.Height = 30.000000000000000000
-        Appearance.Align = Trailing
         Appearance.PlaceOffset.X = 145.000000000000000000
         Appearance.PlaceOffset.Y = -1.000000000000000000
       end
@@ -37,20 +35,18 @@ object MyContractsFrame: TMyContractsFrame
         Appearance.WordWrap = True
         Appearance.Trimming = Word
         Appearance.Height = 30.000000000000000000
-        Appearance.Align = Trailing
         Appearance.PlaceOffset.X = 145.000000000000000000
         Appearance.PlaceOffset.Y = 28.000000000000000000
       end
       item
         AppearanceObjectName = 'offer_description'
         AppearanceClassName = 'TTextObjectAppearance'
-        Appearance.Font.Size = 11.000000000000000000
+        Appearance.Font.Size = 10.000000000000000000
         Appearance.TextAlign = Leading
         Appearance.TextVertAlign = Leading
         Appearance.WordWrap = True
         Appearance.Trimming = Word
         Appearance.Height = 44.000000000000000000
-        Appearance.Align = Trailing
         Appearance.PlaceOffset.X = 145.000000000000000000
         Appearance.PlaceOffset.Y = 86.000000000000000000
       end
@@ -70,7 +66,6 @@ object MyContractsFrame: TMyContractsFrame
         Appearance.WordWrap = True
         Appearance.Trimming = Word
         Appearance.Height = 30.000000000000000000
-        Appearance.Align = Trailing
         Appearance.PlaceOffset.X = 145.000000000000000000
         Appearance.PlaceOffset.Y = 57.000000000000000000
       end>

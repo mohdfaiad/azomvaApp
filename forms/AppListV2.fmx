@@ -3,7 +3,7 @@ object AppListFormV2: TAppListFormV2
   Top = 0
   Caption = 'Form1'
   ClientHeight = 512
-  ClientWidth = 802
+  ClientWidth = 697
   Fill.Color = xFFF3F3F3
   Fill.Kind = Solid
   Position = MainFormCenter
@@ -20,7 +20,7 @@ object AppListFormV2: TAppListFormV2
   object RectangleMain: TRectangle
     Align = Client
     Fill.Kind = None
-    Size.Width = 802.000000000000000000
+    Size.Width = 697.000000000000000000
     Size.Height = 452.000000000000000000
     Size.PlatformDefault = False
     Stroke.Kind = None
@@ -36,14 +36,14 @@ object AppListFormV2: TAppListFormV2
       Margins.Top = 15.000000000000000000
       Margins.Right = 15.000000000000000000
       Margins.Bottom = -50.000000000000000000
-      Size.Width = 772.000000000000000000
+      Size.Width = 667.000000000000000000
       Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
       OnKeyUp = edtSearchAppsKeywordEditKeyUp
       object btnSearch: TButton
         Align = Right
         Margins.Right = 10.000000000000000000
-        Position.X = 730.000000000000000000
+        Position.X = 625.000000000000000000
         Position.Y = 9.000000000000000000
         Size.Width = 32.000000000000000000
         Size.Height = 32.000000000000000000
@@ -68,7 +68,7 @@ object AppListFormV2: TAppListFormV2
       Margins.Left = 15.000000000000000000
       Margins.Right = 15.000000000000000000
       Margins.Bottom = 15.000000000000000000
-      Size.Width = 772.000000000000000000
+      Size.Width = 667.000000000000000000
       Size.Height = 422.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 0
@@ -273,11 +273,11 @@ object AppListFormV2: TAppListFormV2
   end
   inline HeaderFrame1: THeaderFrame
     Align = Top
-    Size.Width = 802.000000000000000000
+    Size.Width = 697.000000000000000000
     Size.Height = 60.000000000000000000
     Size.PlatformDefault = False
     inherited RectangleHeader: TRectangle
-      Size.Width = 802.000000000000000000
+      Size.Width = 697.000000000000000000
       inherited ButtonBack: TButton
         Position.Y = 5.000000000000000000
         Size.Width = 48.000000000000000000
@@ -285,14 +285,14 @@ object AppListFormV2: TAppListFormV2
         OnClick = HeaderFrame1ButtonBackClick
       end
       inherited LabelAppName: TLabel
-        Size.Width = 714.000000000000000000
+        Size.Width = 609.000000000000000000
         TextSettings.Font.Size = 18.000000000000000000
         TextSettings.Font.StyleExt = {00070000000000000004000000}
         Text = #4306#4304#4316#4330#4334#4304#4307#4308#4305#4312#4321' '#4321#4312#4304
       end
     end
     inherited Line1: TLine
-      Size.Width = 802.000000000000000000
+      Size.Width = 697.000000000000000000
     end
   end
   object StyleBookAppList: TStyleBook
@@ -38197,7 +38197,7 @@ object AppListFormV2: TAppListFormV2
   object RectangleStatusBar: TRectangle
     Align = MostTop
     Fill.Color = xFFFF3434
-    Opacity = 0.699999988079071100
+    Opacity = 0.699999988079071000
     Size.Width = 802.000000000000000000
     Size.Height = 25.000000000000000000
     Size.PlatformDefault = False
@@ -38224,7 +38224,7 @@ object AppListFormV2: TAppListFormV2
     Margins.Top = 5.000000000000000000
     Margins.Right = 5.000000000000000000
     Margins.Bottom = 5.000000000000000000
-    Position.X = 752.000000000000000000
+    Position.X = 647.000000000000000000
     Position.Y = 49.000000000000000000
     Size.Width = 40.000000000000000000
     Size.Height = 40.000000000000000000
@@ -38238,14 +38238,14 @@ object AppListFormV2: TAppListFormV2
     Touch.GestureManager = GestureManager1
     Anchors = [akLeft, akTop, akRight, akBottom]
     Position.Y = 60.000000000000000000
-    Size.Width = 802.000000000000000000
+    Size.Width = 697.000000000000000000
     Size.Height = 453.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 1
     object RectangleAppDetails: TRectangle
       Align = Client
       Fill.Color = claWhitesmoke
-      Size.Width = 802.000000000000000000
+      Size.Width = 697.000000000000000000
       Size.Height = 453.000000000000000000
       Size.PlatformDefault = False
       Stroke.Color = claGray
@@ -38254,7 +38254,7 @@ object AppListFormV2: TAppListFormV2
         Touch.GestureManager = GestureManager1
         Align = Client
         Images = ImageListIcons
-        Size.Width = 802.000000000000000000
+        Size.Width = 697.000000000000000000
         Size.Height = 453.000000000000000000
         Size.PlatformDefault = False
         TabHeight = 49.000000000000000000
@@ -38262,13 +38262,13 @@ object AppListFormV2: TAppListFormV2
         TabOrder = 0
         TabPosition = PlatformDefault
         Sizes = (
-          802s
+          697s
           404s
-          802s
+          697s
           404s
-          802s
+          697s
           404s
-          802s
+          697s
           404s)
         object TabItemDetails: TTabItem
           CustomIcon = <
@@ -38281,7 +38281,7 @@ object AppListFormV2: TAppListFormV2
           StyledSettings = []
           IsSelected = True
           ImageIndex = 3
-          Size.Width = 200.000000000000000000
+          Size.Width = 174.000000000000000000
           Size.Height = 49.000000000000000000
           Size.PlatformDefault = False
           StyleLookup = ''
@@ -38296,13 +38296,14 @@ object AppListFormV2: TAppListFormV2
             HeaderAppearanceClassName = 'TListHeaderObjects'
             FooterAppearanceClassName = 'TListHeaderObjects'
             OnUpdateObjects = ListViewAppDetailsUpdateObjects
+            ItemIndex = 0
             Align = Top
             Margins.Left = 15.000000000000000000
             Margins.Top = 10.000000000000000000
             Margins.Right = 15.000000000000000000
             Position.X = 15.000000000000000000
             Position.Y = 55.000000000000000000
-            Size.Width = 772.000000000000000000
+            Size.Width = 667.000000000000000000
             Size.Height = 295.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 0
@@ -38406,7 +38407,7 @@ object AppListFormV2: TAppListFormV2
               Distance = 5.000000000000000000
               Direction = 45.000000000000000000
               Softness = 0.500000000000000000
-              Opacity = 0.400000005960464400
+              Opacity = 0.400000005960464500
               ShadowColor = claDarkgray
             end
           end
@@ -38419,7 +38420,7 @@ object AppListFormV2: TAppListFormV2
             Margins.Bottom = 5.000000000000000000
             Position.X = 15.000000000000000000
             Position.Y = 10.000000000000000000
-            Size.Width = 772.000000000000000000
+            Size.Width = 667.000000000000000000
             Size.Height = 30.000000000000000000
             Size.PlatformDefault = False
             TextSettings.Font.Family = 'BPG Nino Mtavruli'
@@ -38552,7 +38553,7 @@ object AppListFormV2: TAppListFormV2
           StyledSettings = []
           IsSelected = False
           ImageIndex = 0
-          Size.Width = 200.000000000000000000
+          Size.Width = 174.000000000000000000
           Size.Height = 49.000000000000000000
           Size.PlatformDefault = False
           StyleLookup = ''
@@ -38568,6 +38569,7 @@ object AppListFormV2: TAppListFormV2
             FooterAppearanceClassName = 'TListHeaderObjects'
             OnUpdateObjects = ListViewOffersUpdateObjects
             Transparent = True
+            ItemIndex = 0
             Images = ImageListStars
             ItemSpaces.Left = 0.000000000000000000
             ItemSpaces.Right = 0.000000000000000000
@@ -38578,7 +38580,7 @@ object AppListFormV2: TAppListFormV2
             Margins.Bottom = 15.000000000000000000
             Position.X = 15.000000000000000000
             Position.Y = 55.000000000000000000
-            Size.Width = 772.000000000000000000
+            Size.Width = 667.000000000000000000
             Size.Height = 293.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 0
@@ -38707,7 +38709,7 @@ object AppListFormV2: TAppListFormV2
               Distance = 5.000000000000000000
               Direction = 45.000000000000000000
               Softness = 0.500000000000000000
-              Opacity = 0.400000005960464400
+              Opacity = 0.400000005960464500
               ShadowColor = claDarkgray
               Trigger = 'IsVisible=true'
             end
@@ -38721,7 +38723,7 @@ object AppListFormV2: TAppListFormV2
             Margins.Bottom = 5.000000000000000000
             Position.X = 15.000000000000000000
             Position.Y = 10.000000000000000000
-            Size.Width = 772.000000000000000000
+            Size.Width = 667.000000000000000000
             Size.Height = 30.000000000000000000
             Size.PlatformDefault = False
             TextSettings.Font.Family = 'BPG Nino Mtavruli'
@@ -38854,7 +38856,7 @@ object AppListFormV2: TAppListFormV2
           StyledSettings = []
           IsSelected = False
           ImageIndex = 2
-          Size.Width = 200.000000000000000000
+          Size.Width = 174.000000000000000000
           Size.Height = 49.000000000000000000
           Size.PlatformDefault = False
           StyleLookup = ''
@@ -38870,12 +38872,13 @@ object AppListFormV2: TAppListFormV2
             FooterAppearanceClassName = 'TListHeaderObjects'
             OnUpdateObjects = ListViewPropertiesUpdateObjects
             Transparent = True
+            ItemIndex = 0
             Align = Client
             Margins.Left = 15.000000000000000000
             Margins.Top = 10.000000000000000000
             Margins.Right = 15.000000000000000000
             Margins.Bottom = 15.000000000000000000
-            Size.Width = 772.000000000000000000
+            Size.Width = 667.000000000000000000
             Size.Height = 334.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 0
@@ -38980,7 +38983,7 @@ object AppListFormV2: TAppListFormV2
               Distance = 5.000000000000000000
               Direction = 45.000000000000000000
               Softness = 0.500000000000000000
-              Opacity = 0.400000005960464400
+              Opacity = 0.400000005960464500
               ShadowColor = claDarkgray
             end
           end
@@ -38993,7 +38996,7 @@ object AppListFormV2: TAppListFormV2
             Margins.Bottom = 5.000000000000000000
             Position.X = 15.000000000000000000
             Position.Y = 10.000000000000000000
-            Size.Width = 772.000000000000000000
+            Size.Width = 667.000000000000000000
             Size.Height = 30.000000000000000000
             Size.PlatformDefault = False
             TextSettings.Font.Family = 'BPG Nino Mtavruli'
@@ -39126,7 +39129,7 @@ object AppListFormV2: TAppListFormV2
           StyledSettings = []
           IsSelected = False
           ImageIndex = 1
-          Size.Width = 202.000000000000000000
+          Size.Width = 175.000000000000000000
           Size.Height = 49.000000000000000000
           Size.PlatformDefault = False
           StyleLookup = ''
@@ -39140,6 +39143,7 @@ object AppListFormV2: TAppListFormV2
             HeaderAppearanceClassName = 'TListHeaderObjects'
             FooterAppearanceClassName = 'TListHeaderObjects'
             OnUpdateObjects = ListViewAmzomveliUpdateObjects
+            ItemIndex = 0
             Images = ImageListStars
             ItemSpaces.Left = 0.000000000000000000
             ItemSpaces.Right = 0.000000000000000000
@@ -39148,7 +39152,7 @@ object AppListFormV2: TAppListFormV2
             Margins.Top = 10.000000000000000000
             Margins.Right = 15.000000000000000000
             Margins.Bottom = 15.000000000000000000
-            Size.Width = 772.000000000000000000
+            Size.Width = 667.000000000000000000
             Size.Height = 334.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 0
@@ -39260,7 +39264,7 @@ object AppListFormV2: TAppListFormV2
               Distance = 5.000000000000000000
               Direction = 45.000000000000000000
               Softness = 0.500000000000000000
-              Opacity = 0.400000005960464400
+              Opacity = 0.400000005960464500
               ShadowColor = claDarkgray
             end
           end
@@ -39273,7 +39277,7 @@ object AppListFormV2: TAppListFormV2
             Margins.Bottom = 5.000000000000000000
             Position.X = 15.000000000000000000
             Position.Y = 10.000000000000000000
-            Size.Width = 772.000000000000000000
+            Size.Width = 667.000000000000000000
             Size.Height = 30.000000000000000000
             Size.PlatformDefault = False
             TextSettings.Font.Family = 'BPG Nino Mtavruli'
@@ -39493,8 +39497,8 @@ object AppListFormV2: TAppListFormV2
           426082}
         Fill.Bitmap.WrapMode = Tile
         Fill.Kind = Bitmap
-        Size.Width = 974.000000000000000000
-        Size.Height = 632.000000000000000000
+        Size.Width = 697.000000000000000000
+        Size.Height = 453.000000000000000000
         Size.PlatformDefault = False
         Visible = False
         object RectangleBody: TRectangle
@@ -39517,6 +39521,7 @@ object AppListFormV2: TAppListFormV2
             Text = #4307#4304#4321#4322#4323#4320#4312
             TextSettings.Font.Family = 'BPG Nino Mtavruli'
             TextSettings.Font.StyleExt = {00070000000000000004000000}
+            OnClick = ButtonApproveClick
             object FMXLoadingIndicatorApproved: TFMXLoadingIndicator
               Align = Right
               HitTest = False
@@ -39543,6 +39548,7 @@ object AppListFormV2: TAppListFormV2
             TextSettings.Font.Family = 'BPG Nino Mtavruli'
             TextSettings.Font.StyleExt = {00070000000000000004000000}
             TextSettings.FontColor = claWhite
+            OnClick = ButtonCancelClick
           end
           object offererUserNameLabel: TLabel
             Align = Top
@@ -40030,7 +40036,7 @@ object AppListFormV2: TAppListFormV2
     OutputConverters = <>
     Left = 42
     Top = 154
-    object LinkListControlToField1: TLinkListControlToField
+    object LinkListControlToFieldAppsList: TLinkListControlToField
       Category = 'Quick Bindings'
       DataSource = BindSourceDB1
       Control = ListViewAppsList
@@ -40077,7 +40083,7 @@ object AppListFormV2: TAppListFormV2
       FillHeaderExpressions = <>
       FillBreakGroups = <>
     end
-    object LinkListControlToField2: TLinkListControlToField
+    object LinkListControlToFieldOffers: TLinkListControlToField
       Category = 'Quick Bindings'
       DataSource = BindSourceDB3
       Control = ListViewOffers
@@ -40106,7 +40112,7 @@ object AppListFormV2: TAppListFormV2
       FillHeaderExpressions = <>
       FillBreakGroups = <>
     end
-    object LinkListControlToField3: TLinkListControlToField
+    object LinkListControlToFieldAppDetails: TLinkListControlToField
       Category = 'Quick Bindings'
       DataSource = BindSourceDB4
       Control = ListViewAppDetails
@@ -40139,7 +40145,7 @@ object AppListFormV2: TAppListFormV2
       FillHeaderExpressions = <>
       FillBreakGroups = <>
     end
-    object LinkListControlToField4: TLinkListControlToField
+    object LinkListControlToFieldProperties: TLinkListControlToField
       Category = 'Quick Bindings'
       DataSource = BindSourceDB5
       Control = ListViewProperties
@@ -40172,7 +40178,7 @@ object AppListFormV2: TAppListFormV2
       FillHeaderExpressions = <>
       FillBreakGroups = <>
     end
-    object LinkListControlToField5: TLinkListControlToField
+    object LinkListControlToFieldAmzomveli: TLinkListControlToField
       Category = 'Quick Bindings'
       DataSource = BindSourceDB6
       Control = ListViewAmzomveli
@@ -42078,7 +42084,7 @@ object AppListFormV2: TAppListFormV2
       end
       item
         Name = 'sesskey'
-        Value = '793dcd5f029d44685e96ce4f99968b1d'
+        Value = '32b9acae35b902385d0bc3b73cbd6d82'
       end
       item
         Name = 'user_id'

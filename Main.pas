@@ -246,6 +246,8 @@ type
     FrameStandMyApps: TFrameStand;
     FrameStandNotifications: TFrameStand;
     ShadowEffect1: TShadowEffect;
+    FrameStandContracts: TFrameStand;
+    CircleAddButton: TCircle;
     procedure AuthActionExecute(Sender: TObject);
     procedure ActionAppAddingExecute(Sender: TObject);
     procedure ActionMyAppsExecute(Sender: TObject);
@@ -367,7 +369,7 @@ begin
   VNotificationOffersFrame.Frame.initFrame;
 
   // TabItemMyContracts
-  VMyContractsFrame := FrameStandNotifications.New<TMyContractsFrame>
+  VMyContractsFrame := FrameStandContracts.New<TMyContractsFrame>
     (TabItemMyContracts, 'bluestand');
   VMyContractsFrame.Show();
   VMyContractsFrame.Frame.initFrame;

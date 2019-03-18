@@ -17,7 +17,8 @@ uses
   Data.Bind.DBScope, FMX.DateTimeCtrls,
   FMX.ScrollBox, FMX.Memo, FMX.Edit, IdURI,
   FMX.Ani, FMX.ListView, FMX.TabControl, FMX.Bind.GenData, FMX.Layouts,
-  FMX.LoadingIndicator, Header, System.ImageList, FMX.ImgList, FMX.Effects;
+  FMX.LoadingIndicator, Header, System.ImageList, FMX.ImgList, FMX.Effects,
+  IdURI;
 
 type
   TAppDetailForm = class(TForm)
@@ -28,19 +29,19 @@ type
     FDMemTableApp: TFDMemTable;
     RectangleMain: TRectangle;
     TabControl1: TTabControl;
-    TabItemDetails: TTabItem;
-    TabItemOffer: TTabItem;
+    TabItemDetails1: TTabItem;
+    TabItemOffer1: TTabItem;
     BindSourceDB1: TBindSourceDB;
     BindingsList1: TBindingsList;
-    ListViewOffers: TListView;
+    ListViewOffers1: TListView;
     RESTResponseDataSetAdapterBids: TRESTResponseDataSetAdapter;
     FDMemTableBids: TFDMemTable;
     BindSourceDB2: TBindSourceDB;
     FMXLoadingIndicator1: TFMXLoadingIndicator;
     RESTResponseDataSetAdapterRequiz: TRESTResponseDataSetAdapter;
     FDMemTableapp_property_requisites: TFDMemTable;
-    TabItemProperties: TTabItem;
-    ListViewProperties: TListView;
+    TabItemProperties1: TTabItem;
+    ListViewProperties1: TListView;
     BindSourceDB3: TBindSourceDB;
     FDMemTableapp_property_requisitesid: TWideStringField;
     FDMemTableapp_property_requisitesapp_id: TWideStringField;
@@ -54,24 +55,10 @@ type
     FDMemTableapp_property_requisiteslon_lat: TWideStringField;
     FDMemTableapp_property_requisitesservice_types: TWideStringField;
     FDMemTableapp_property_requisitesapp_user_param: TWideStringField;
-    FDMemTableAppid: TWideStringField;
-    FDMemTableAppuser_id: TWideStringField;
-    FDMemTableAppcreate_date: TWideStringField;
-    FDMemTableAppdeadlineby_user: TWideStringField;
-    FDMemTableAppimageIndex: TWideStringField;
-    FDMemTableAppusername: TWideStringField;
-    FDMemTableAppnote: TWideStringField;
-    FDMemTableAppstatus_name: TWideStringField;
-    FDMemTableAppstatus_color: TWideStringField;
-    FDMemTableAppstatus_progress: TWideStringField;
-    FDMemTableAppapp_status_id: TWideStringField;
-    FDMemTableAppnotification_on_email: TWideStringField;
-    FDMemTableAppnotification_on_device: TWideStringField;
-    FDMemTableAppbidscount: TWideStringField;
-    TabItemOwner: TTabItem;
+    TabItemOwner1: TTabItem;
     FDMemTableAmzomveli: TFDMemTable;
     RESTResponseDataSetAdapterAmzomveli: TRESTResponseDataSetAdapter;
-    ListViewAmzomveli: TListView;
+    ListViewAmzomveli1: TListView;
     FDMemTableAmzomveliid: TWideStringField;
     FDMemTableAmzomveliuser_type_id: TWideStringField;
     FDMemTableAmzomveliuser_status_id: TWideStringField;
@@ -91,12 +78,12 @@ type
     StyleBookAppDetails: TStyleBook;
     RESTResponseApproveds: TRESTResponse;
     RESTRequestApproveds: TRESTRequest;
-    RectangleChoose: TRectangle;
-    RectangleBody: TRectangle;
+    RectangleChoose1: TRectangle;
+    RectangleBody1: TRectangle;
     ButtonApprove: TButton;
     ButtonCancel: TButton;
-    LabelName: TLabel;
-    LabelPrice: TLabel;
+    LabelName1: TLabel;
+    LabelPrice1: TLabel;
     Image1: TImage;
     FMXLoadingIndicatorApproved: TFMXLoadingIndicator;
     RectangleStatusBar: TRectangle;
@@ -123,70 +110,95 @@ type
     FDMemTableBidsapproved_note: TWideStringField;
     FDMemTableBidsapproved: TWideStringField;
     FDMemTableBidsapproved_icon: TWideStringField;
-    RectangleCancel: TRectangle;
-    RectangleCancelBody: TRectangle;
+    RectangleCancel1: TRectangle;
+    RectangleCancelBody1: TRectangle;
     Button1: TButton;
     FMXLoadingIndicator2: TFMXLoadingIndicator;
     Label4: TLabel;
-    MemoCancelBody: TMemo;
+    MemoCancelBody1: TMemo;
     Line1: TLine;
     LabelNotFound: TLabel;
     RectangleAppDetails: TRectangle;
     TabControl2: TTabControl;
-    TabItem1: TTabItem;
+    TabItemDetails: TTabItem;
     ListViewAppDetails: TListView;
     ShadowEffect4: TShadowEffect;
     Label5: TLabel;
     Image6: TImage;
-    TabItem2: TTabItem;
-    ListView1: TListView;
+    TabItemOffer: TTabItem;
+    ListViewOffers: TListView;
     Label6: TLabel;
     ShadowEffect2: TShadowEffect;
     Label7: TLabel;
     Image7: TImage;
-    TabItem3: TTabItem;
-    ListView2: TListView;
+    TabItemProperties: TTabItem;
+    ListViewProperties: TListView;
     ShadowEffect1: TShadowEffect;
     Label8: TLabel;
     Image8: TImage;
-    TabItem4: TTabItem;
-    ListView3: TListView;
+    TabItemOwner: TTabItem;
+    ListViewAmzomveli: TListView;
     ShadowEffect3: TShadowEffect;
     Label9: TLabel;
     Image9: TImage;
-    Rectangle1: TRectangle;
-    Rectangle2: TRectangle;
+    RectangleCancel: TRectangle;
+    RectangleCancelBody: TRectangle;
     Button2: TButton;
     FMXLoadingIndicator3: TFMXLoadingIndicator;
     Label10: TLabel;
-    Memo1: TMemo;
+    MemoCancelBody: TMemo;
     Line2: TLine;
-    Rectangle3: TRectangle;
-    Rectangle4: TRectangle;
+    RectangleChoose: TRectangle;
+    RectangleBody: TRectangle;
     Button3: TButton;
     FMXLoadingIndicator4: TFMXLoadingIndicator;
     Button4: TButton;
     offererUserNameLabel: TLabel;
-    Label11: TLabel;
+    LabelPrice: TLabel;
     Image10: TImage;
-    LinkListControlToField1: TLinkListControlToField;
-    LinkListControlToField2: TLinkListControlToField;
-    LinkListControlToField3: TLinkListControlToField;
-    LinkListControlToField4: TLinkListControlToField;
+    LinkListControlToFieldAppDetails: TLinkListControlToField;
+    LinkListControlToFieldOffers: TLinkListControlToField;
+    LinkListControlToFieldProperties: TLinkListControlToField;
+    LinkListControlToFieldAmzomveli: TLinkListControlToField;
+    FDMemTableAppid: TWideStringField;
+    FDMemTableAppuser_id: TWideStringField;
+    FDMemTableAppdeadlineby_user: TWideStringField;
+    FDMemTableAppexecute_days: TWideStringField;
+    FDMemTableAppimageIndex: TWideStringField;
+    FDMemTableAppusername: TWideStringField;
+    FDMemTableAppnote: TWideStringField;
+    FDMemTableAppstatus_name: TWideStringField;
+    FDMemTableAppstatus_color: TWideStringField;
+    FDMemTableAppstatus_progress: TWideStringField;
+    FDMemTableAppapp_status_id: TWideStringField;
+    FDMemTableAppnotification_on_email: TWideStringField;
+    FDMemTableAppnotification_on_device: TWideStringField;
+    FDMemTableAppcreate_date: TWideStringField;
+    FDMemTableApplocation_id: TWideStringField;
+    FDMemTableAppbidscount: TWideStringField;
+    FDMemTableApplocation_name: TWideStringField;
+    FDMemTableAppcanbid: TWideStringField;
+    FDMemTableAppis_my_app: TWideStringField;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ButtonBackClick(Sender: TObject);
     procedure HeaderFrame1ButtonBackClick(Sender: TObject);
-    procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
-    procedure ListViewOffersItemClick(const Sender: TObject; const AItem: TListViewItem);
+    procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
+      Shift: TShiftState);
+    procedure ListViewOffers1ItemClick(const Sender: TObject;
+      const AItem: TListViewItem);
     procedure ButtonApproveClick(Sender: TObject);
-    procedure ListViewAmzomveliUpdateObjects(const Sender: TObject; const AItem: TListViewItem);
-    procedure ListViewOffersPullRefresh(Sender: TObject);
+    procedure ListViewAmzomveli1UpdateObjects(const Sender: TObject;
+      const AItem: TListViewItem);
+    procedure ListViewOffers1PullRefresh(Sender: TObject);
     procedure ListViewAppDetailsPullRefresh(Sender: TObject);
-    procedure ListViewAmzomveliPullRefresh(Sender: TObject);
-    procedure ListViewPropertiesPullRefresh(Sender: TObject);
-    procedure ListViewOffersUpdateObjects(const Sender: TObject; const AItem: TListViewItem);
+    procedure ListViewAmzomveli1PullRefresh(Sender: TObject);
+    procedure ListViewProperties1PullRefresh(Sender: TObject);
+    procedure ListViewOffers1UpdateObjects(const Sender: TObject;
+      const AItem: TListViewItem);
     procedure ButtonCancelClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -211,7 +223,8 @@ begin
   Action := TCloseAction.caFree;
 end;
 
-procedure TAppDetailForm.FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
+procedure TAppDetailForm.FormKeyUp(Sender: TObject; var Key: Word;
+  var KeyChar: Char; Shift: TShiftState);
 begin
   if Key = 137 then
     Self.Close;
@@ -222,6 +235,40 @@ begin
   // MemoCancelBody.Text
 end;
 
+procedure TAppDetailForm.Button3Click(Sender: TObject);
+var
+  aTask: ITask;
+begin
+  aTask := TTask.Create(
+    procedure()
+    begin
+      FMXLoadingIndicatorApproved.Visible := True;
+      Self.RESTRequestApproveds.Params.Clear;
+      RESTRequestApproveds.AddParameter('sesskey', DModule.sesskey);
+      RESTRequestApproveds.AddParameter('user_id', DModule.id.ToString);
+      RESTRequestApproveds.AddParameter('app_id', Self.app_id.ToString);
+      RESTRequestApproveds.AddParameter('app_offer_id',
+        Self.FDMemTableBids.FieldByName('id').AsString);
+      RESTRequestApproveds.AddParameter('note',
+        TIdURI.ParamsEncode('text here is depricated!'));
+      Self.RESTRequestApproveds.Execute;
+      FMXLoadingIndicatorApproved.Visible := false;
+      RectangleChoose.Visible := false;
+      TThread.Queue(nil,
+        procedure
+        begin
+          // Self.initFrame(Self.app_id, Self.is_owner);
+          ShowMessage(RESTResponseApproveds.Content);
+        end);
+    end);
+  aTask.Start;
+end;
+
+procedure TAppDetailForm.Button4Click(Sender: TObject);
+begin
+  RectangleChoose.Visible := false;
+end;
+
 procedure TAppDetailForm.ButtonApproveClick(Sender: TObject);
 begin
   FMXLoadingIndicatorApproved.Visible := True;
@@ -229,8 +276,10 @@ begin
   RESTRequestApproveds.AddParameter('sesskey', DModule.sesskey);
   RESTRequestApproveds.AddParameter('user_id', DModule.id.ToString);
   RESTRequestApproveds.AddParameter('app_id', Self.app_id.ToString);
-  RESTRequestApproveds.AddParameter('app_offer_id', Self.FDMemTableBids.FieldByName('id').AsString);
-  RESTRequestApproveds.AddParameter('note', TIdURI.ParamsEncode('text here is depricated!'));
+  RESTRequestApproveds.AddParameter('app_offer_id',
+    Self.FDMemTableBids.FieldByName('id').AsString);
+  RESTRequestApproveds.AddParameter('note',
+    TIdURI.ParamsEncode('text here is depricated!'));
   Self.RESTRequestApproveds.ExecuteAsync(
     procedure
     begin
@@ -338,7 +387,8 @@ begin
         TThread.Queue(nil,
           procedure
           begin
-            offered_price := FDMemTableBids.FieldByName('offered_price').AsString;
+            offered_price := FDMemTableBids.FieldByName
+              ('offered_price').AsString;
             LabelPrice.Text := offered_price + '₾';
           end);
       end;
@@ -346,7 +396,7 @@ begin
   aTask.Start;
 end;
 
-procedure TAppDetailForm.ListViewAmzomveliPullRefresh(Sender: TObject);
+procedure TAppDetailForm.ListViewAmzomveli1PullRefresh(Sender: TObject);
 begin
   Self.ListViewOffers.PullRefreshWait := True;
   Self.ListViewAppDetails.PullRefreshWait := True;
@@ -355,7 +405,8 @@ begin
   initForm(Self.app_id, Self.is_owner);
 end;
 
-procedure TAppDetailForm.ListViewAmzomveliUpdateObjects(const Sender: TObject; const AItem: TListViewItem);
+procedure TAppDetailForm.ListViewAmzomveli1UpdateObjects(const Sender: TObject;
+const AItem: TListViewItem);
 begin
   TListItemImage(AItem.Objects.FindDrawable('PhoneImage')).ImageIndex := 6;
   TListItemImage(AItem.Objects.FindDrawable('EmailImage')).ImageIndex := 7;
@@ -385,7 +436,8 @@ begin
   initForm(Self.app_id, Self.is_owner);
 end;
 
-procedure TAppDetailForm.ListViewOffersItemClick(const Sender: TObject; const AItem: TListViewItem);
+procedure TAppDetailForm.ListViewOffers1ItemClick(const Sender: TObject;
+const AItem: TListViewItem);
 begin
   if FDMemTableBids.FieldByName('approved_id').AsInteger > 0 then
     RectangleCancel.Visible := True
@@ -393,7 +445,7 @@ begin
     RectangleChoose.Visible := True;
 end;
 
-procedure TAppDetailForm.ListViewOffersPullRefresh(Sender: TObject);
+procedure TAppDetailForm.ListViewOffers1PullRefresh(Sender: TObject);
 begin
   Self.ListViewOffers.PullRefreshWait := True;
   Self.ListViewAppDetails.PullRefreshWait := True;
@@ -402,24 +454,29 @@ begin
   initForm(Self.app_id, Self.is_owner);
 end;
 
-procedure TAppDetailForm.ListViewOffersUpdateObjects(const Sender: TObject; const AItem: TListViewItem);
+procedure TAppDetailForm.ListViewOffers1UpdateObjects(const Sender: TObject;
+const AItem: TListViewItem);
 begin
-  if TListItemText(AItem.Objects.FindDrawable('approved')).Text = 'დადასტურებულია' then
+  if TListItemText(AItem.Objects.FindDrawable('approved')).Text = 'დადასტურებულია'
+  then
   begin
     TListItemImage(AItem.Objects.FindDrawable('ImageCheckBox')).ImageIndex := 9;
-    TListItemText(AItem.Objects.FindDrawable('approved')).TextColor := TAlphaColorRec.Green;
+    TListItemText(AItem.Objects.FindDrawable('approved')).TextColor :=
+      TAlphaColorRec.Green;
   end
   else
   begin
-    TListItemImage(AItem.Objects.FindDrawable('ImageCheckBox')).ImageIndex := 10;
-    TListItemText(AItem.Objects.FindDrawable('approved')).TextColor := TAlphaColorRec.Red;
+    TListItemImage(AItem.Objects.FindDrawable('ImageCheckBox'))
+      .ImageIndex := 10;
+    TListItemText(AItem.Objects.FindDrawable('approved')).TextColor :=
+      TAlphaColorRec.Red;
   end;
 
   TListItemImage(AItem.Objects.FindDrawable('ImageStars')).ImageIndex :=
     TListItemText(AItem.Objects.FindDrawable('TextStars')).Text.ToInteger;
 end;
 
-procedure TAppDetailForm.ListViewPropertiesPullRefresh(Sender: TObject);
+procedure TAppDetailForm.ListViewProperties1PullRefresh(Sender: TObject);
 begin
   Self.ListViewOffers.PullRefreshWait := True;
   Self.ListViewAppDetails.PullRefreshWait := True;

@@ -99,6 +99,23 @@ end;
 procedure TMyContractsFrame.ListViewMyContractsUpdateObjects
   (const Sender: TObject; const AItem: TListViewItem);
 begin
+
+  TListItemText(AItem.Objects.FindDrawable('offer_description')).Width :=
+    ListViewMyContracts.Width - TListItemText
+    (AItem.Objects.FindDrawable('offer_description')).PlaceOffset.X;
+
+  TListItemText(AItem.Objects.FindDrawable('ganmcxadebeli_name')).Width :=
+    ListViewMyContracts.Width - TListItemText
+    (AItem.Objects.FindDrawable('ganmcxadebeli_name')).PlaceOffset.X;
+
+  TListItemText(AItem.Objects.FindDrawable('offered_price')).Width :=
+    ListViewMyContracts.Width - TListItemText
+    (AItem.Objects.FindDrawable('offered_price')).PlaceOffset.X;
+
+  TListItemText(AItem.Objects.FindDrawable('create_date')).Width :=
+    ListViewMyContracts.Width - TListItemText
+    (AItem.Objects.FindDrawable('create_date')).PlaceOffset.X;
+
   // contractsImage
   TListItemImage(AItem.Objects.FindDrawable('contractsImage'))
     .OwnsBitmap := True;

@@ -75,7 +75,7 @@ object MyAppDetailsForm: TMyAppDetailsForm
       Size.Height = 440.000000000000000000
       Size.PlatformDefault = False
       TabHeight = 49.000000000000000000
-      TabIndex = 0
+      TabIndex = 1
       TabOrder = 0
       TabPosition = PlatformDefault
       Sizes = (
@@ -93,7 +93,7 @@ object MyAppDetailsForm: TMyAppDetailsForm
         TextSettings.Font.Size = 10.000000000000000000
         TextSettings.FontColor = claWhite
         StyledSettings = []
-        IsSelected = True
+        IsSelected = False
         ImageIndex = 7
         Size.Width = 228.000000000000000000
         Size.Height = 49.000000000000000000
@@ -37852,7 +37852,7 @@ object MyAppDetailsForm: TMyAppDetailsForm
         TextSettings.Font.Size = 10.000000000000000000
         TextSettings.FontColor = claWhite
         StyledSettings = []
-        IsSelected = False
+        IsSelected = True
         ImageIndex = 47
         Size.Width = 228.000000000000000000
         Size.Height = 49.000000000000000000
@@ -38148,7 +38148,7 @@ object MyAppDetailsForm: TMyAppDetailsForm
         Position.X = -4.000000000000000000
         Position.Y = -8.000000000000000000
         Size.Width = 48.000000000000000000
-        Size.Height = 48.000000000000000000
+        Size.Height = 38.000000000000000000
         Size.PlatformDefault = False
         StyleLookup = 'priortoolbutton'
         TabOrder = 0
@@ -38176,7 +38176,7 @@ object MyAppDetailsForm: TMyAppDetailsForm
         Position.X = 531.000000000000000000
         Position.Y = -15.000000000000000000
         Size.Width = 48.000000000000000000
-        Size.Height = 48.000000000000000000
+        Size.Height = 45.000000000000000000
         Size.PlatformDefault = False
         StyleLookup = 'addtoolbutton'
         TabOrder = 2
@@ -38317,7 +38317,7 @@ object MyAppDetailsForm: TMyAppDetailsForm
         Position.X = -4.000000000000000000
         Position.Y = -8.000000000000000000
         Size.Width = 48.000000000000000000
-        Size.Height = 48.000000000000000000
+        Size.Height = 38.000000000000000000
         Size.PlatformDefault = False
         StyleLookup = 'priortoolbutton'
         TabOrder = 0
@@ -38345,7 +38345,7 @@ object MyAppDetailsForm: TMyAppDetailsForm
         Position.X = 508.000000000000000000
         Position.Y = -15.000000000000000000
         Size.Width = 48.000000000000000000
-        Size.Height = 48.000000000000000000
+        Size.Height = 45.000000000000000000
         Size.PlatformDefault = False
         StyleLookup = 'addtoolbutton'
         TabOrder = 2
@@ -38419,15 +38419,15 @@ object MyAppDetailsForm: TMyAppDetailsForm
     Client = DModule.RESTClient
     Params = <
       item
-        Name = 'app_id'
+        name = 'app_id'
         Value = '19'
       end
       item
-        Name = 'sesskey'
+        name = 'sesskey'
         Value = '2b14cf526bae524b363589111cbe67f5'
       end
       item
-        Name = 'user_id'
+        name = 'user_id'
         Value = '31'
       end>
     Resource = 'apps/mydetails'

@@ -17,7 +17,7 @@ uses
   FMX.MultiView, FMX.Layouts, FMX.ListBox, FMX.Ani, FMX.LoadingIndicator,
   Header, System.ImageList, FMX.ImgList, appDetailsFR, FMX.Effects,
   FMX.TabControl, FMX.ScrollBox, FMX.Memo, FMX.Edit, FMX.SearchBox,
-  FMX.Gestures, System.Actions, FMX.ActnList;
+  FMX.Gestures, System.Actions, FMX.ActnList, IdURI;
 
 type
   TAppListFormV2 = class(TForm)
@@ -41,7 +41,7 @@ type
     BindSourceDB2: TBindSourceDB;
     FMXLoadingIndicator1: TFMXLoadingIndicator;
     ListViewAppsList: TListView;
-    LinkListControlToField1: TLinkListControlToField;
+    LinkListControlToFieldAppsList: TLinkListControlToField;
     HeaderFrame1: THeaderFrame;
     StyleBookAppList: TStyleBook;
     ImageListAppList: TImageList;
@@ -163,13 +163,13 @@ type
     FDMemTableapp_property_requisitesapp_user_param: TWideStringField;
     RESTResponseDataSetAdapterRequiz: TRESTResponseDataSetAdapter;
     BindSourceDB3: TBindSourceDB;
-    LinkListControlToField2: TLinkListControlToField;
+    LinkListControlToFieldOffers: TLinkListControlToField;
     BindSourceDB4: TBindSourceDB;
-    LinkListControlToField3: TLinkListControlToField;
+    LinkListControlToFieldAppDetails: TLinkListControlToField;
     BindSourceDB5: TBindSourceDB;
-    LinkListControlToField4: TLinkListControlToField;
+    LinkListControlToFieldProperties: TLinkListControlToField;
     BindSourceDB6: TBindSourceDB;
-    LinkListControlToField5: TLinkListControlToField;
+    LinkListControlToFieldAmzomveli: TLinkListControlToField;
     RectangleCancel: TRectangle;
     RectangleCancelBody: TRectangle;
     Button1: TButton;
@@ -226,6 +226,8 @@ type
       KeyboardVisible: Boolean; const Bounds: TRect);
     procedure FormVirtualKeyboardShown(Sender: TObject;
       KeyboardVisible: Boolean; const Bounds: TRect);
+    procedure ButtonApproveClick(Sender: TObject);
+    procedure ButtonCancelClick(Sender: TObject);
   private
     app_id: Integer;
     is_owner: Boolean;
@@ -358,6 +360,40 @@ procedure TAppListFormV2.edtSearchAppsKeywordEditKeyUp(Sender: TObject;
 var Key: Word; var KeyChar: Char; Shift: TShiftState);
 begin
   self.ListViewAppsSearchAction(edtSearchAppsKeywordEdit.Text);
+end;
+
+procedure TAppListFormV2.ButtonApproveClick(Sender: TObject);
+var
+  aTask: ITask;
+begin
+  aTask := TTask.Create(
+    procedure()
+    begin
+      FMXLoadingIndicatorApproved.Visible := True;
+      self.RESTRequestApproveds.Params.Clear;
+      RESTRequestApproveds.AddParameter('sesskey', DModule.sesskey);
+      RESTRequestApproveds.AddParameter('user_id', DModule.id.ToString);
+      RESTRequestApproveds.AddParameter('app_id', self.app_id.ToString);
+      RESTRequestApproveds.AddParameter('app_offer_id',
+        self.FDMemTableBids.FieldByName('id').AsString);
+      RESTRequestApproveds.AddParameter('note',
+        TIdURI.ParamsEncode('text here is depricated!'));
+      self.RESTRequestApproveds.Execute;
+      FMXLoadingIndicatorApproved.Visible := False;
+      RectangleChoose.Visible := False;
+      TThread.Queue(nil,
+        procedure
+        begin
+          // Self.initFrame(Self.app_id, Self.is_owner);
+          ShowMessage(RESTResponseApproveds.Content);
+        end);
+    end);
+  aTask.Start;
+end;
+
+procedure TAppListFormV2.ButtonCancelClick(Sender: TObject);
+begin
+  RectangleChoose.Visible := False;
 end;
 
 procedure TAppListFormV2.ButtonCloseObjectDetailsClick(Sender: TObject);
