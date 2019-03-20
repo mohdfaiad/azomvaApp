@@ -38296,7 +38296,6 @@ object AppListFormV2: TAppListFormV2
             HeaderAppearanceClassName = 'TListHeaderObjects'
             FooterAppearanceClassName = 'TListHeaderObjects'
             OnUpdateObjects = ListViewAppDetailsUpdateObjects
-            ItemIndex = 0
             Align = Top
             Margins.Left = 15.000000000000000000
             Margins.Top = 10.000000000000000000
@@ -38569,7 +38568,6 @@ object AppListFormV2: TAppListFormV2
             FooterAppearanceClassName = 'TListHeaderObjects'
             OnUpdateObjects = ListViewOffersUpdateObjects
             Transparent = True
-            ItemIndex = 0
             Images = ImageListStars
             ItemSpaces.Left = 0.000000000000000000
             ItemSpaces.Right = 0.000000000000000000
@@ -38872,7 +38870,6 @@ object AppListFormV2: TAppListFormV2
             FooterAppearanceClassName = 'TListHeaderObjects'
             OnUpdateObjects = ListViewPropertiesUpdateObjects
             Transparent = True
-            ItemIndex = 0
             Align = Client
             Margins.Left = 15.000000000000000000
             Margins.Top = 10.000000000000000000
@@ -39143,7 +39140,6 @@ object AppListFormV2: TAppListFormV2
             HeaderAppearanceClassName = 'TListHeaderObjects'
             FooterAppearanceClassName = 'TListHeaderObjects'
             OnUpdateObjects = ListViewAmzomveliUpdateObjects
-            ItemIndex = 0
             Images = ImageListStars
             ItemSpaces.Left = 0.000000000000000000
             ItemSpaces.Right = 0.000000000000000000

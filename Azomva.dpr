@@ -35,7 +35,8 @@ uses
   Grijjy.RemotePush.Receiver in 'Lib\GrijjyFoundation-master\Grijjy.RemotePush.Receiver.pas',
   AppListV2 in 'forms\AppListV2.pas' {AppListFormV2},
   MyContractsFR in 'Frames\MyContractsFR.pas' {MyContractsFrame: TFrame},
-  DW.PushClient in 'lib\PushNotifications-master\DW.PushClient.pas';
+  DW.PushClient in 'lib\PushNotifications-master\DW.PushClient.pas',
+  DW.RegisterFCM in 'Lib\PushNotifications-master\DW.RegisterFCM.pas';
 
 {$R *.res}
 

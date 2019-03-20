@@ -17,8 +17,7 @@ uses
   Data.Bind.DBScope, FMX.DateTimeCtrls,
   FMX.ScrollBox, FMX.Memo, FMX.Edit, IdURI,
   FMX.Ani, FMX.ListView, FMX.TabControl, FMX.Bind.GenData, FMX.Layouts,
-  FMX.LoadingIndicator, Header, System.ImageList, FMX.ImgList, FMX.Effects,
-  IdURI;
+  FMX.LoadingIndicator, Header, System.ImageList, FMX.ImgList, FMX.Effects;
 
 type
   TAppDetailForm = class(TForm)
@@ -199,6 +198,8 @@ type
     procedure Button1Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
+    procedure ListViewAppDetailsUpdateObjects(const Sender: TObject; const AItem: TListViewItem);
+    procedure ListViewPropertiesUpdateObjects(const Sender: TObject; const AItem: TListViewItem);
   private
     { Private declarations }
   public
@@ -415,16 +416,6 @@ begin
   TListItemImage(AItem.Objects.FindDrawable('ImageBottomBG1')).ImageIndex := 8;
   TListItemImage(AItem.Objects.FindDrawable('ImageBottomBG2')).ImageIndex := 8;
   TListItemImage(AItem.Objects.FindDrawable('ImageBottomBG3')).ImageIndex := 8;
-
-  // ListItemImage(AItem.Objects.FindDrawable('ImageBottomBG'))
-  // .Bitmap.Assign(ImageListStars.Source.Items[8].MultiResBitmap.Bitmaps[1]);
-  { ListItemImage(AItem.Objects.FindDrawable('ImageBottomBG')).BeginUpdate;
-    TListItemImage(AItem.Objects.FindDrawable('ImageBottomBG')).Bitmap :=
-    TBitmap.Create(1500, 100);
-    TListItemImage(AItem.Objects.FindDrawable('ImageBottomBG'))
-    .Bitmap.Canvas.ClearRect(TRectF.Create(0, 0, 500, 45),
-    TAlphaColor($FFE7E7E7));
-    TListItemImage(AItem.Objects.FindDrawable('ImageBottomBG')).EndUpdate; }
 end;
 
 procedure TAppDetailForm.ListViewAppDetailsPullRefresh(Sender: TObject);
@@ -434,6 +425,26 @@ begin
   Self.ListViewProperties.PullRefreshWait := True;
   Self.ListViewAmzomveli.PullRefreshWait := True;
   initForm(Self.app_id, Self.is_owner);
+end;
+
+procedure TAppDetailForm.ListViewAppDetailsUpdateObjects(const Sender: TObject; const AItem: TListViewItem);
+begin
+  // Grey line background
+  TListItemImage(AItem.Objects.FindDrawable('ImageLine1')).OwnsBitmap := True;
+  TListItemImage(AItem.Objects.FindDrawable('ImageLine1')).Bitmap :=
+    DModule.getBitmapFromResource('AppDetails_line');
+
+  TListItemImage(AItem.Objects.FindDrawable('ImageLine2')).OwnsBitmap := True;
+  TListItemImage(AItem.Objects.FindDrawable('ImageLine2')).Bitmap :=
+    DModule.getBitmapFromResource('AppDetails_line');
+
+  TListItemImage(AItem.Objects.FindDrawable('ImageLine3')).OwnsBitmap := True;
+  TListItemImage(AItem.Objects.FindDrawable('ImageLine3')).Bitmap :=
+    DModule.getBitmapFromResource('AppDetails_line');
+
+  TListItemImage(AItem.Objects.FindDrawable('ImageLine4')).OwnsBitmap := True;
+  TListItemImage(AItem.Objects.FindDrawable('ImageLine4')).Bitmap :=
+    DModule.getBitmapFromResource('AppDetails_line');
 end;
 
 procedure TAppDetailForm.ListViewOffers1ItemClick(const Sender: TObject;
@@ -456,6 +467,9 @@ end;
 
 procedure TAppDetailForm.ListViewOffers1UpdateObjects(const Sender: TObject;
 const AItem: TListViewItem);
+var
+  StarName: String;
+  StarNumber: Integer;
 begin
   if TListItemText(AItem.Objects.FindDrawable('approved')).Text = 'დადასტურებულია'
   then
@@ -471,9 +485,41 @@ begin
     TListItemText(AItem.Objects.FindDrawable('approved')).TextColor :=
       TAlphaColorRec.Red;
   end;
+  // ImageOfferPrice
+  TListItemImage(AItem.Objects.FindDrawable('ImageOfferPrice'))
+    .OwnsBitmap := True;
+  TListItemImage(AItem.Objects.FindDrawable('ImageOfferPrice')).Bitmap :=
+    DModule.getBitmapFromResource('OfferPriceBG');
 
-  TListItemImage(AItem.Objects.FindDrawable('ImageStars')).ImageIndex :=
-    TListItemText(AItem.Objects.FindDrawable('TextStars')).Text.ToInteger;
+  // Bottom grey background
+  TListItemImage(AItem.Objects.FindDrawable('ImageBottomBackground'))
+    .OwnsBitmap := True;
+  TListItemImage(AItem.Objects.FindDrawable('ImageBottomBackground')).Bitmap :=
+    DModule.getBitmapFromResource('OfferBottomBackground');
+
+  // Rating Stars
+  StarNumber := TListItemText(AItem.Objects.FindDrawable('TextStars'))
+    .Text.ToInteger;
+  case StarNumber of
+    0:
+      StarName := '0star';
+    1:
+      StarName := '1star';
+    2:
+      StarName := '2star';
+    3:
+      StarName := '3star';
+    4:
+      StarName := '4star';
+    5:
+      StarName := '5star';
+  end;
+
+  TListItemImage(AItem.Objects.FindDrawable('ImageStars')).OwnsBitmap := True;
+  TListItemImage(AItem.Objects.FindDrawable('ImageStars')).Bitmap :=
+    DModule.getBitmapFromResource(StarName);
+
+  // TListItemImage(AItem.Objects.FindDrawable('ImageStars')).ImageIndex := TListItemText(AItem.Objects.FindDrawable('TextStars')).Text.ToInteger;
 end;
 
 procedure TAppDetailForm.ListViewProperties1PullRefresh(Sender: TObject);
@@ -483,6 +529,26 @@ begin
   Self.ListViewProperties.PullRefreshWait := True;
   Self.ListViewAmzomveli.PullRefreshWait := True;
   initForm(Self.app_id, Self.is_owner);
+end;
+
+procedure TAppDetailForm.ListViewPropertiesUpdateObjects(const Sender: TObject; const AItem: TListViewItem);
+begin
+  // Grey line background
+  TListItemImage(AItem.Objects.FindDrawable('ImageLine1')).OwnsBitmap := True;
+  TListItemImage(AItem.Objects.FindDrawable('ImageLine1')).Bitmap :=
+    DModule.getBitmapFromResource('AppDetails_line');
+
+  TListItemImage(AItem.Objects.FindDrawable('ImageLine2')).OwnsBitmap := True;
+  TListItemImage(AItem.Objects.FindDrawable('ImageLine2')).Bitmap :=
+    DModule.getBitmapFromResource('AppDetails_line');
+
+  TListItemImage(AItem.Objects.FindDrawable('ImageLine3')).OwnsBitmap := True;
+  TListItemImage(AItem.Objects.FindDrawable('ImageLine3')).Bitmap :=
+    DModule.getBitmapFromResource('AppDetails_line');
+
+  TListItemImage(AItem.Objects.FindDrawable('ImageLine4')).OwnsBitmap := True;
+  TListItemImage(AItem.Objects.FindDrawable('ImageLine4')).Bitmap :=
+    DModule.getBitmapFromResource('AppDetails_line');
 end;
 
 end.
